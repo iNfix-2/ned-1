@@ -6,12 +6,14 @@ import PlatformsCarousel from './components/PlatformsCarousel';
 import AtlasSection from './components/AtlasSection';
 import NewsSection from './components/NewsSection';
 import ContactModal from './components/ContactModal';
+import GalleryModal from './components/GalleryModal';
 import Footer from './components/Footer';
 import MissionsPage from './pages/MissionsPage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home'); // 'home' or 'missions'
   const [contactModalOpen, setContactModalOpen] = useState(false);
+  const [galleryOpen, setGalleryOpen] = useState(false);
 
   // Sync with URL hash
   useEffect(() => {
@@ -66,7 +68,7 @@ export default function App() {
             />
 
             {/* Section 3: Platforms ("Unmanned Aerial Systems") */}
-            <PlatformsCarousel onOpenContact={() => setContactModalOpen(true)} />
+            <PlatformsCarousel onOpenContact={() => setContactModalOpen(true)} onOpenGallery={() => setGalleryOpen(true)} />
 
             {/* Section 4: ATLAS Earth Banner */}
             <AtlasSection onOpenContact={() => setContactModalOpen(true)} />
@@ -84,6 +86,13 @@ export default function App() {
       <ContactModal
         isOpen={contactModalOpen}
         onClose={() => setContactModalOpen(false)}
+      />
+
+      {/* Field Operations Gallery */}
+      <GalleryModal
+        isOpen={galleryOpen}
+        onClose={() => setGalleryOpen(false)}
+        onOpenContact={() => setContactModalOpen(true)}
       />
     </div>
   );

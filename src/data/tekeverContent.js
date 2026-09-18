@@ -21,8 +21,8 @@ export const MISSIONS_LIST = [
     badge: 'SURVEILLANCE & SECURITY TECHNOLOGY',
     title: 'Persistent Awareness. Smarter Protection.',
     description: 'We integrate cameras, sensors, software, communications, analytics, and command interfaces to support authorized security, critical infrastructure, and asset surveillance.',
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
-    thumb: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80',
+    image: '/assets/images/missions/persistent-awareness.jpg',
+    thumb: '/assets/images/missions/persistent-awareness.jpg',
     tag: 'Critical Infrastructure // Perimeter Security'
   },
   {
@@ -115,7 +115,7 @@ export const CORE_SERVICES = [
     date: 'SERVICE DIVISION 01',
     title: 'Enterprise & Digital Solutions',
     summary: 'Technology That Works for Your Organisation. Enterprise software, business process automation, ERP and workflow solutions, payroll automation, cloud and digital infrastructure.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80'
+    image: '/assets/images/services/enterprise-digital.jpg'
   },
   {
     id: 'service-2',
@@ -131,7 +131,7 @@ export const CORE_SERVICES = [
     date: 'SERVICE DIVISION 03',
     title: 'Research & Innovation',
     summary: 'Engineering What Comes Next. AI and robotics, autonomous systems, UAV technologies, computer vision, sensor fusion, geospatial intelligence, and mission software.',
-    image: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=600&q=80'
+    image: '/assets/images/services/research-innovation.jpg'
   },
   {
     id: 'service-4',
@@ -139,7 +139,7 @@ export const CORE_SERVICES = [
     date: 'SERVICE DIVISION 04',
     title: 'Academy & Professional Training',
     summary: 'Developing the People Behind the Technology. Specialized technical education via NATI (Nethawk Advanced Technology Institute) for UAV operators, engineers, and AI specialists.',
-    image: 'https://images.unsplash.com/photo-1519074069444-1ba4ea16e838?auto=format&fit=crop&w=600&q=80'
+    image: '/assets/images/services/academy-training.jpg'
   }
 ];
 

@@ -18,8 +18,8 @@ const MISSIONS_DATA = [
     badge: 'SURVEILLANCE & SECURITY TECHNOLOGY',
     title: 'Persistent Awareness. Smarter Protection.',
     description: 'We integrate cameras, sensors, software, communications, analytics, and command interfaces to support authorized security, critical infrastructure, and asset surveillance.',
-    backdrop: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=2000&q=85',
-    thumb: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80',
+    backdrop: '/assets/images/missions/persistent-awareness.jpg',
+    thumb: '/assets/images/missions/persistent-awareness.jpg',
     orbitLabel: 'Persistent Awareness',
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-in-the-sea-43187-large.mp4'
   },

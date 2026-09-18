@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PLATFORMS_LIST } from '../data/tekeverContent';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function PlatformsCarousel({ onOpenContact }) {
+export default function PlatformsCarousel({ onOpenContact, onOpenGallery }) {
   const [activeIdx, setActiveIdx] = useState(1); // Long-Endurance ISR UAS in center
   const [isPaused, setIsPaused] = useState(false);
 
@@ -126,7 +126,7 @@ export default function PlatformsCarousel({ onOpenContact }) {
 
           <div>
             <button
-              onClick={onOpenContact}
+              onClick={onOpenGallery || onOpenContact}
               className="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold tracking-wider uppercase transition-all hover:scale-105 shadow-xl shadow-blue-500/25"
             >
               Discover More

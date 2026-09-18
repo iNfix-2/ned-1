@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { CORE_SERVICES } from '../data/tekeverContent';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function NewsSection({ onOpenContact }) {
   const scrollRef = useRef(null);
@@ -71,13 +71,6 @@ export default function NewsSection({ onOpenContact }) {
                 <p className="text-xs text-slate-300 line-clamp-3 leading-relaxed">
                   {service.summary}
                 </p>
-
-                {/* Circular Arrow Button at bottom */}
-                <div className="pt-2">
-                  <div className="w-9 h-9 rounded-full bg-white/15 group-hover:bg-blue-600 border border-white/20 group-hover:border-blue-600 text-white flex items-center justify-center transition-all group-hover:translate-x-1 shadow-lg">
-                    <ArrowRight className="w-4 h-4" />
-                  </div>
-                </div>
               </div>
 
             </div>
