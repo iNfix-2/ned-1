@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Hero({ onOpenContact }) {
   return (
-    <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden bg-[#070d14]">
+    <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden bg-black">
       {/* Background Video from Assets */}
       <div className="absolute inset-0 overflow-hidden">
         <video
@@ -10,14 +10,14 @@ export default function Hero({ onOpenContact }) {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover scale-105"
+          className="w-full h-full object-cover"
         >
           <source src="/assets/video/nethawk-hero.mp4" type="video/mp4" />
           <source src="/assets/images/video/nethawk-hero.mp4" type="video/mp4" />
         </video>
-        {/* Gradients to ensure text readability and maintain cinematic mood */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1722] via-black/40 to-black/50"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#0d1722]"></div>
+        {/* Clean, neutral dark gradient for text contrast without blue tint or grain */}
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
       </div>
 
       {/* Center Content from Document */}
@@ -27,9 +27,6 @@ export default function Hero({ onOpenContact }) {
         </h1>
         
         <div className="space-y-2 max-w-2xl mx-auto">
-          <p className="text-sm sm:text-base font-mono text-[#38bdf8] font-bold tracking-wider uppercase">
-            Technology. Intelligence. Capability.
-          </p>
           <p className="text-sm sm:text-base text-slate-200/90 font-normal drop-shadow leading-relaxed">
             Delivering integrated digital, engineering, automation, security, and defence technology capabilities.
           </p>
