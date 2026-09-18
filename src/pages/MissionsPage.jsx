@@ -8,8 +8,8 @@ const MISSIONS_DATA = [
     badge: 'NETHAWK DEFENCE TECH',
     title: 'ISR & Aerial Surveillance',
     description: "Tactical and long-endurance unmanned aerial systems (UAS/UAV) engineered for persistent aerial surveillance, special mission integration, and operational intelligence.",
-    backdrop: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=2000&q=85',
-    thumb: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=600&q=80',
+    backdrop: '/assets/images/missions/nethawk-command-center.jpg',
+    thumb: '/assets/images/missions/nethawk-command-center.jpg',
     orbitLabel: 'ISR & Aerial Surveillance',
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-drone-flying-over-clouds-40455-large.mp4'
   },
@@ -28,8 +28,8 @@ const MISSIONS_DATA = [
     badge: 'AI, DATA & INTELLIGENT SYSTEMS',
     title: 'Turning Data into Useful Intelligence',
     description: 'Developing intelligent technologies that help organisations process information, identify patterns, monitor environments, and support better decision-making.',
-    backdrop: 'https://images.unsplash.com/photo-1579829366248-204fe8413f31?auto=format&fit=crop&w=2000&q=85',
-    thumb: 'https://images.unsplash.com/photo-1579829366248-204fe8413f31?auto=format&fit=crop&w=600&q=80',
+    backdrop: '/assets/images/missions/nethawk-tactical-team.jpg',
+    thumb: '/assets/images/missions/nethawk-tactical-team.jpg',
     orbitLabel: 'Intelligent Systems',
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-rural-forest-road-42686-large.mp4'
   },
@@ -38,8 +38,8 @@ const MISSIONS_DATA = [
     badge: 'ENGINEERING & SYSTEMS INTEGRATION',
     title: 'From Concept to Operational Capability',
     description: 'Connecting hardware, software, communications, sensors, and mission systems into complete operational solutions with lifecycle support.',
-    backdrop: 'https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=2000&q=85',
-    thumb: 'https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=600&q=80',
+    backdrop: '/assets/images/missions/nethawk-engineering-team.jpg',
+    thumb: '/assets/images/missions/nethawk-engineering-team.jpg',
     orbitLabel: 'Systems Integration',
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-airplane-taking-off-from-an-airport-43097-large.mp4'
   }
@@ -82,9 +82,6 @@ export default function MissionsPage({ onNavigateHome, onOpenContact }) {
         {/* Left Column: Mission Details from Nethawk Document */}
         <div className="relative z-20 max-w-xl text-left space-y-6">
           <div className="space-y-2">
-            <span className="text-xs font-mono text-[#38bdf8] font-bold tracking-wider uppercase block">
-              {activeMission.badge}
-            </span>
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.12] drop-shadow-md">
               {activeMission.title}
             </h1>

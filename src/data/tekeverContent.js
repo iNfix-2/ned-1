@@ -12,8 +12,8 @@ export const MISSIONS_LIST = [
     badge: 'NETHAWK DEFENCE TECH',
     title: 'ISR & Aerial Surveillance',
     description: "Tactical and long-endurance unmanned aerial systems (UAS/UAV) engineered for persistent aerial surveillance, special mission integration, and operational intelligence.",
-    image: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80',
-    thumb: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=400&q=80',
+    image: '/assets/images/missions/nethawk-command-center.jpg',
+    thumb: '/assets/images/missions/nethawk-command-center.jpg',
     tag: 'Defence Tech // Tactical ISR'
   },
   {
@@ -30,8 +30,8 @@ export const MISSIONS_LIST = [
     badge: 'INTELLIGENT SYSTEMS',
     title: 'Operating in Complex Mission Environments',
     description: 'Autonomous systems and edge computer vision providing intelligent video analysis, automated pattern recognition, and real-time decision-support.',
-    image: 'https://images.unsplash.com/photo-1579829366248-204fe8413f31?auto=format&fit=crop&w=1200&q=80',
-    thumb: 'https://images.unsplash.com/photo-1579829366248-204fe8413f31?auto=format&fit=crop&w=400&q=80',
+    image: '/assets/images/missions/nethawk-tactical-team.jpg',
+    thumb: '/assets/images/missions/nethawk-tactical-team.jpg',
     tag: 'AI & Machine Learning // Computer Vision'
   },
   {
@@ -39,8 +39,8 @@ export const MISSIONS_LIST = [
     badge: 'ENGINEERING & SYSTEMS INTEGRATION',
     title: 'From Concept to Operational Capability',
     description: 'Connecting hardware, embedded systems, avionics, sensors, communications, and command software into unified mission-ready solutions.',
-    image: 'https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=1200&q=80',
-    thumb: 'https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=400&q=80',
+    image: '/assets/images/missions/nethawk-engineering-team.jpg',
+    thumb: '/assets/images/missions/nethawk-engineering-team.jpg',
     tag: 'Systems Integration // Mission Capability'
   }
 ];
@@ -108,7 +108,7 @@ export const CORE_SERVICES = [
     date: 'SERVICE DIVISION 02',
     title: 'Engineering & Systems Integration',
     summary: 'From Concept to Operational Capability. Systems engineering, embedded systems, electronics integration, prototype development, testing, validation, and lifecycle support.',
-    image: 'https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=600&q=80'
+    image: '/assets/images/missions/nethawk-engineering-team.jpg'
   },
   {
     id: 'service-3',

@@ -209,8 +209,8 @@ export default function ModularAutonomy({ onOpenContact }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="aspect-[16/10] rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
               <img
-                src="https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=1200&q=80"
-                alt="Aircraft in hangar"
+                src="/assets/images/missions/nethawk-engineering-team.jpg"
+                alt="Engineering and systems integration team"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
