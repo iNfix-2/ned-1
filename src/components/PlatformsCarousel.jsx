@@ -3,15 +3,15 @@ import { PLATFORMS_LIST } from '../data/tekeverContent';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function PlatformsCarousel({ onOpenContact, onOpenGallery }) {
-  const [activeIdx, setActiveIdx] = useState(1); // Long-Endurance ISR UAS in center
+  const [activeIdx, setActiveIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Auto-slide every 4.5s, pause on hover
+  // Auto-slide every 5s, pause on hover
   useEffect(() => {
     if (isPaused) return;
     const id = setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % PLATFORMS_LIST.length);
-    }, 4500);
+    }, 5000);
     return () => clearInterval(id);
   }, [isPaused]);
 
@@ -26,8 +26,13 @@ export default function PlatformsCarousel({ onOpenContact, onOpenGallery }) {
   const currentPlatform = PLATFORMS_LIST[activeIdx];
 
   return (
-    <section id="platforms" className="pt-16 pb-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#020e1c] via-[#051830] to-[#020e1c] relative overflow-hidden text-center" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
-      <div className="max-w-7xl mx-auto space-y-10">
+    <section
+      id="platforms"
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#020e1c] via-[#051830] to-[#020e1c] relative overflow-hidden text-center"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div className="max-w-6xl mx-auto space-y-12">
         
         {/* Header from Nethawk Solutions Document */}
         <div className="space-y-3 max-w-2xl mx-auto">
@@ -40,98 +45,83 @@ export default function PlatformsCarousel({ onOpenContact, onOpenGallery }) {
           </p>
         </div>
 
-        {/* 3D Perspective Aircraft Fleet Stage */}
-        <div className="relative py-8 flex items-center justify-center min-h-[360px] sm:min-h-[420px]">
+        {/* Full Width Platform Card Display */}
+        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] min-h-[420px] sm:min-h-[500px] max-h-[560px] rounded-[32px] sm:rounded-[36px] overflow-hidden shadow-2xl border border-white/15 group">
           
-          {/* Left Arrow Button */}
+          {/* Background Images with smooth fade transition */}
+          {PLATFORMS_LIST.map((platform, idx) => (
+            <div
+              key={platform.id}
+              className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out ${
+                idx === activeIdx ? 'opacity-100 scale-100 z-0' : 'opacity-0 scale-105 pointer-events-none'
+              }`}
+              style={{
+                backgroundImage: `url('${platform.image}')`,
+              }}
+            >
+              {/* Gradients to keep typography readable and maintain atmospheric contrast */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50"></div>
+            </div>
+          ))}
+
+          {/* Card Content Overlay */}
+          <div className="absolute inset-0 p-6 sm:p-12 flex flex-col justify-end z-10 text-left">
+            <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
+              
+              <div className="space-y-2 max-w-xl">
+                <span className="text-[11px] sm:text-xs font-mono text-[#38bdf8] font-bold tracking-wider uppercase block">
+                  {currentPlatform.role}
+                </span>
+                <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+                  {currentPlatform.name}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-200/90 leading-relaxed max-w-lg hidden sm:block">
+                  {currentPlatform.desc}
+                </p>
+
+                {/* Pagination Dots Indicator */}
+                <div className="flex items-center space-x-2 pt-2">
+                  {PLATFORMS_LIST.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveIdx(i)}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        activeIdx === i ? 'w-8 bg-[#38bdf8] shadow-[0_0_8px_#38bdf8]' : 'w-2 bg-white/40 hover:bg-white/70'
+                      }`}
+                      aria-label={`Go to platform ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <button
+                onClick={onOpenGallery || onOpenContact}
+                className="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold tracking-wider uppercase transition-all hover:scale-105 shadow-xl shadow-blue-500/25 whitespace-nowrap"
+              >
+                Discover More
+              </button>
+
+            </div>
+          </div>
+
+          {/* Navigation Arrows */}
           <button
             onClick={handlePrev}
-            className="absolute left-4 sm:left-12 z-30 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/20 text-white flex items-center justify-center transition-all hover:scale-110 shadow-xl"
-            aria-label="Previous system"
+            className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all hover:scale-110 opacity-80 hover:opacity-100 shadow-xl"
+            aria-label="Previous platform"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
-
-          {/* Right Arrow Button */}
           <button
             onClick={handleNext}
-            className="absolute right-4 sm:right-12 z-30 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/20 text-white flex items-center justify-center transition-all hover:scale-110 shadow-xl"
-            aria-label="Next system"
+            className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all hover:scale-110 opacity-80 hover:opacity-100 shadow-xl"
+            aria-label="Next platform"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          {/* 3 Planes in Perspective Display */}
-          <div className="flex items-center justify-center w-full max-w-5xl relative">
-            
-            {/* Left Plane: Tactical UAV */}
-            <div 
-              onClick={() => setActiveIdx(0)}
-              className={`transition-all duration-500 cursor-pointer hidden md:block w-72 transform -rotate-12 ${
-                activeIdx === 0 ? 'scale-110 opacity-100 z-20' : 'scale-75 opacity-35 hover:opacity-60 z-10 filter blur-[1.5px]'
-              }`}
-            >
-              <div className="w-full h-44 rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative">
-                <img
-                  src={PLATFORMS_LIST[0].image}
-                  alt={PLATFORMS_LIST[0].name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              </div>
-            </div>
-
-            {/* Center Plane: Active Platform */}
-            <div className="transition-all duration-500 z-20 mx-2 sm:mx-8 transform scale-105 sm:scale-115">
-              <div className="relative w-80 sm:w-[480px] aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl border border-white/20 group">
-                <img
-                  src={currentPlatform.image}
-                  alt={currentPlatform.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                
-                {/* Platform Label on Center Image */}
-                <div className="absolute bottom-4 left-6 text-left">
-                  <div className="text-xl font-extrabold text-white">{currentPlatform.name}</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Plane: Counter-UAS & Mission C2 */}
-            <div 
-              onClick={() => setActiveIdx(2)}
-              className={`transition-all duration-500 cursor-pointer hidden md:block w-72 transform rotate-12 ${
-                activeIdx === 2 ? 'scale-110 opacity-100 z-20' : 'scale-75 opacity-35 hover:opacity-60 z-10 filter blur-[1.5px]'
-              }`}
-            >
-              <div className="w-full h-44 rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative">
-                <img
-                  src={PLATFORMS_LIST[2].image}
-                  alt={PLATFORMS_LIST[2].name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Text & Discover More Button */}
-        <div className="space-y-4 pt-2">
-          <div className="text-sm font-sans font-medium text-slate-300">
-            Mission: Aerial Surveillance &amp; ISR
-          </div>
-
-          <div>
-            <button
-              onClick={onOpenGallery || onOpenContact}
-              className="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold tracking-wider uppercase transition-all hover:scale-105 shadow-xl shadow-blue-500/25"
-            >
-              Discover More
-            </button>
-          </div>
         </div>
 
       </div>
