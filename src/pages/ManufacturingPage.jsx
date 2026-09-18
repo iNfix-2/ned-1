@@ -60,8 +60,23 @@ export default function ManufacturingPage({ onNavigateHome, onNavigateMissions, 
   }, [videoModalOpen]);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#050b14] text-white flex flex-col justify-between overflow-hidden select-none font-sans">
-      {/* 1. Header Navigation */}
+    <div className="relative min-h-screen w-full bg-[#050b14] text-white flex flex-col justify-between overflow-x-hidden font-sans">
+      {/* 1. Full-Screen Background Image taking 100% View Width */}
+      <div 
+        className="fixed inset-0 w-full h-full bg-cover bg-center transition-all duration-1000 ease-out z-0 pointer-events-none"
+        style={{
+          backgroundImage: `url('${activeItem.backdrop}')`,
+        }}
+      >
+        {/* Cinematic Vignettes */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-black/75"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-[#050b14]"></div>
+
+        {/* Glowing Blue Celestial Sphere */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[650px] h-[320px] sm:h-[650px] rounded-full bg-gradient-to-tr from-blue-600/25 via-blue-900/15 to-transparent blur-3xl pointer-events-none"></div>
+      </div>
+
+      {/* 2. Header Navigation */}
       <Navbar 
         onOpenContact={onOpenContact} 
         onNavigateHome={onNavigateHome}
@@ -72,27 +87,15 @@ export default function ManufacturingPage({ onNavigateHome, onNavigateMissions, 
         activePage="manufacturing"
       />
 
-      {/* 2. Main Visual Canvas Container */}
-      <div className="relative flex-grow flex items-center justify-between px-6 sm:px-16 pt-24 pb-12 w-full max-w-[1920px] mx-auto">
-        {/* Full-Screen Background with Celestial Glow */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-out"
-          style={{
-            backgroundImage: `url('${activeItem.backdrop}')`,
-          }}
-        >
-          {/* Cinematic Vignettes */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-black/75"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-[#050b14]"></div>
-
-          {/* Glowing Blue Celestial Sphere */}
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] sm:w-[650px] h-[420px] sm:h-[650px] rounded-full bg-gradient-to-tr from-blue-600/25 via-blue-900/15 to-transparent blur-3xl pointer-events-none"></div>
-        </div>
-
+      {/* 3. Main Visual Canvas Container */}
+      <div className="relative z-10 flex-grow flex flex-col lg:flex-row items-start lg:items-center justify-between px-6 sm:px-12 lg:px-16 pt-28 sm:pt-32 pb-16 w-full max-w-[1920px] mx-auto gap-8 lg:gap-12">
         {/* Left Column: Manufacturing Details */}
-        <div className="relative z-20 max-w-xl text-left space-y-6">
+        <div className="relative z-20 max-w-xl text-left space-y-4 sm:space-y-6">
           <div className="space-y-2">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.12] drop-shadow-md">
+            <span className="text-[11px] sm:text-xs font-mono text-[#38bdf8] font-bold tracking-wider uppercase block">
+              SOVEREIGN MANUFACTURING CAPABILITY
+            </span>
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12] drop-shadow-md">
               {activeItem.title}
             </h1>
           </div>
@@ -102,7 +105,7 @@ export default function ManufacturingPage({ onNavigateHome, onNavigateMissions, 
           </p>
 
           {/* Technical Specs Tags */}
-          <div className="grid grid-cols-2 gap-2.5 max-w-md pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 max-w-md pt-2">
             {activeItem.specs.map((spec, i) => (
               <div key={i} className="px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 text-[11px] font-mono text-slate-200 flex items-center space-x-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8]"></span>
@@ -111,24 +114,50 @@ export default function ManufacturingPage({ onNavigateHome, onNavigateMissions, 
             ))}
           </div>
 
-          <div className="pt-4 flex items-center space-x-4">
+          <div className="pt-2 flex flex-wrap items-center gap-3">
             <button
               onClick={() => setVideoModalOpen(true)}
-              className="inline-flex items-center px-8 py-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white text-xs font-medium tracking-wide border border-white/25 transition-all hover:scale-105 shadow-2xl"
+              className="inline-flex items-center px-7 py-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white text-xs font-medium tracking-wide border border-white/25 transition-all hover:scale-105 shadow-2xl"
             >
               Play Video
             </button>
             <button
               onClick={onOpenContact}
-              className="inline-flex items-center px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold tracking-wider uppercase transition-all hover:scale-105 shadow-xl shadow-blue-500/25"
+              className="inline-flex items-center px-7 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold tracking-wider uppercase transition-all hover:scale-105 shadow-xl shadow-blue-500/25"
             >
               Request Specs
             </button>
           </div>
+
+          {/* Mobile / Tablet Horizontal Track Switcher (visible on < lg) */}
+          <div className="pt-6 lg:hidden w-full">
+            <div className="text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-2.5">
+              Select Manufacturing Domain
+            </div>
+            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
+              {MANUFACTURING_DATA.map((item, idx) => {
+                const isActive = idx === activeIdx;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => setActiveIdx(idx)}
+                    className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all flex items-center space-x-2 border ${
+                      isActive
+                        ? 'bg-blue-600/30 border-blue-500 text-white shadow-lg'
+                        : 'bg-white/5 border-white/15 text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-pulse"></span>}
+                    <span>{item.orbitLabel}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
-        {/* Center: Circular Play Button */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden md:flex items-center justify-center">
+        {/* Center: Circular Play Button (Desktop) */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden xl:flex items-center justify-center">
           <button
             onClick={() => setVideoModalOpen(true)}
             className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-xl border border-white/30 text-white flex items-center justify-center relative group shadow-2xl transition-all hover:scale-110"
@@ -139,8 +168,8 @@ export default function ManufacturingPage({ onNavigateHome, onNavigateMissions, 
           </button>
         </div>
 
-        {/* Right Column: Orbit Cards */}
-        <div className="relative z-20 hidden lg:flex flex-col items-end justify-center h-full max-h-[720px] w-[500px]">
+        {/* Right Column: Orbit Cards (Desktop) */}
+        <div className="relative z-20 hidden lg:flex flex-col items-end justify-center h-full max-h-[720px] w-[460px] xl:w-[500px]">
           {/* SVG Orbit Arc Line */}
           <div className="absolute top-0 bottom-0 right-[150px] w-28 pointer-events-none">
             <svg className="w-full h-full" viewBox="0 0 100 680" fill="none">
@@ -168,7 +197,7 @@ export default function ManufacturingPage({ onNavigateHome, onNavigateMissions, 
                 >
                   <div className="mr-4 text-right max-w-[200px]">
                     <span className={`text-xs font-semibold block leading-tight ${
-                      isActive ? 'text-white' : 'text-slate-400'
+                      isActive ? 'text-white font-bold' : 'text-slate-400'
                     }`}>
                       {item.orbitLabel}
                     </span>

@@ -15,9 +15,9 @@ export default function NewsSection({ onOpenContact }) {
   return (
     <section
       id="services"
-      className="relative min-h-screen py-8 sm:py-12 px-4 sm:px-8 lg:px-12 bg-gradient-to-b from-[#020e1c] via-[#041427] to-[#010813] overflow-hidden flex flex-col justify-center"
+      className="relative min-h-screen py-16 sm:py-20 px-6 sm:px-12 bg-gradient-to-b from-[#020e1c] via-[#041427] to-[#010813] overflow-hidden flex flex-col justify-center"
     >
-      <div className="max-w-[92vw] 2xl:max-w-[1600px] w-full mx-auto space-y-4 sm:space-y-6 flex flex-col justify-center">
+      <div className="w-full max-w-[1920px] mx-auto space-y-6 flex flex-col justify-center">
         
         {/* Header Row: Big 'Services' Title + Circular Nav Arrows */}
         <div className="flex items-end justify-between">

@@ -48,90 +48,83 @@ export default function AtlasSection({ onOpenContact }) {
   return (
     <section
       id="ai-systems"
-      className="relative min-h-screen py-8 sm:py-12 px-4 sm:px-8 lg:px-12 bg-gradient-to-b from-[#020e1c] via-[#031326] to-[#020e1c] overflow-hidden flex flex-col justify-center items-center"
+      className="relative w-full min-h-[85vh] lg:h-screen lg:min-h-[700px] overflow-hidden flex flex-col justify-between items-center bg-[#020e1c] text-center"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="max-w-[92vw] 2xl:max-w-[1600px] w-full mx-auto flex flex-col items-center justify-center">
-        
-        {/* Massive Rounded Slideshow Banner Card (80% viewport height) */}
-        <div 
-          className="relative w-full h-[80vh] min-h-[580px] max-h-[85vh] rounded-[32px] sm:rounded-[40px] overflow-hidden border border-white/10 shadow-2xl group flex items-center justify-center text-center"
+      {/* 1. Full-Bleed Background Images taking 100% View Width */}
+      {SLIDES.map((slide, idx) => (
+        <div
+          key={idx}
+          className={`absolute inset-0 w-full h-full bg-cover bg-center transition-all duration-1000 ease-in-out ${
+            idx === currentIndex ? 'opacity-100 scale-100 z-0' : 'opacity-0 scale-105 pointer-events-none'
+          }`}
+          style={{
+            backgroundImage: `url('${slide.image}')`,
+          }}
         >
-          {/* Background Images with smooth fade transition */}
-          {SLIDES.map((slide, idx) => (
-            <div
-              key={idx}
-              className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out ${
-                idx === currentIndex ? 'opacity-100 scale-100 z-0' : 'opacity-0 scale-105 pointer-events-none'
-              }`}
-              style={{
-                backgroundImage: `url('${slide.image}')`,
-              }}
-            >
-              {/* Gradients to keep typography readable and maintain high-tech atmosphere */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/60"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50"></div>
-            </div>
-          ))}
-
-          {/* Central AI, Data & Intelligent Systems Typography */}
-          <div className="relative z-10 space-y-4 px-6 max-w-2xl transition-all duration-500">
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-widest drop-shadow-2xl">
-              {SLIDES[currentIndex].title}
-            </h2>
-            
-            <p className="text-xs sm:text-sm font-mono text-[#38bdf8] tracking-widest uppercase font-semibold drop-shadow">
-              {SLIDES[currentIndex].subtitle}
-            </p>
-
-            <p className="text-xs sm:text-sm text-slate-200/90 max-w-lg mx-auto drop-shadow leading-relaxed hidden sm:block">
-              {SLIDES[currentIndex].description}
-            </p>
-
-            <div className="pt-4">
-              <button
-                onClick={onOpenContact}
-                className="px-8 py-3 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-xl text-white text-xs font-medium tracking-wide border border-white/25 transition-all hover:scale-105 shadow-xl"
-              >
-                {SLIDES[currentIndex].cta}
-              </button>
-            </div>
-          </div>
-
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-20 p-2.5 sm:p-3 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-md border border-white/20 text-white transition-all hover:scale-110 opacity-70 hover:opacity-100"
-            aria-label="Previous Slide"
-          >
-            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-20 p-2.5 sm:p-3 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-md border border-white/20 text-white transition-all hover:scale-110 opacity-70 hover:opacity-100"
-            aria-label="Next Slide"
-          >
-            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-          </button>
-
-          {/* Slide Indicator Dots */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center space-x-2.5">
-            {SLIDES.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentIndex(idx)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  idx === currentIndex ? 'w-8 bg-[#38bdf8] shadow-[0_0_8px_#38bdf8]' : 'w-2 bg-white/40 hover:bg-white/70'
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
-          </div>
-
+          {/* Gradients to keep typography readable and maintain high-tech atmosphere */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/70"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/60"></div>
         </div>
+      ))}
 
+      {/* Top spacer / header alignment */}
+      <div className="pt-16 sm:pt-20 lg:pt-24"></div>
+
+      {/* 2. Central AI, Data & Intelligent Systems Typography */}
+      <div className="relative z-10 space-y-4 px-6 max-w-3xl mx-auto my-auto transition-all duration-500">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-widest drop-shadow-2xl">
+          {SLIDES[currentIndex].title}
+        </h2>
+        
+        <p className="text-xs sm:text-sm font-mono text-[#38bdf8] tracking-widest uppercase font-semibold drop-shadow">
+          {SLIDES[currentIndex].subtitle}
+        </p>
+
+        <p className="text-xs sm:text-sm text-slate-200/90 max-w-lg mx-auto drop-shadow leading-relaxed hidden sm:block">
+          {SLIDES[currentIndex].description}
+        </p>
+
+        <div className="pt-4">
+          <button
+            onClick={onOpenContact}
+            className="px-8 py-3 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-xl text-white text-xs font-medium tracking-wide border border-white/25 transition-all hover:scale-105 shadow-xl"
+          >
+            {SLIDES[currentIndex].cta}
+          </button>
+        </div>
       </div>
+
+      {/* 3. Bottom Slide Indicator Dots */}
+      <div className="relative z-20 pb-12 sm:pb-16 lg:pb-20 flex items-center space-x-2.5">
+        {SLIDES.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrentIndex(idx)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              idx === currentIndex ? 'w-8 bg-[#38bdf8] shadow-[0_0_8px_#38bdf8]' : 'w-2 bg-white/40 hover:bg-white/70'
+            }`}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3.5 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-md border border-white/20 text-white transition-all hover:scale-110 opacity-70 hover:opacity-100 shadow-xl"
+        aria-label="Previous Slide"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3.5 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-md border border-white/20 text-white transition-all hover:scale-110 opacity-70 hover:opacity-100 shadow-xl"
+        aria-label="Next Slide"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
     </section>
   );
 }
