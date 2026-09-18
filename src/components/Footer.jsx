@@ -1,6 +1,13 @@
 import React from 'react';
 
-export default function Footer({ onOpenContact }) {
+export default function Footer({ 
+  onOpenContact, 
+  onNavigateHome, 
+  onNavigateMissions, 
+  onNavigateManufacturing, 
+  onNavigateAcademy, 
+  onNavigateDefenseTech 
+}) {
   return (
     <footer className="bg-[#03070f] text-slate-400 font-sans text-xs relative overflow-hidden border-t border-white/10 pt-20 pb-12">
       
@@ -12,11 +19,16 @@ export default function Footer({ onOpenContact }) {
           
           {/* Brand Logo & Tagline */}
           <div className="lg:col-span-2 space-y-3">
-            <img 
-              src="/assets/images/logo/lockup.png" 
-              alt="NETHAWK SOLUTIONS" 
-              className="h-9 sm:h-10 w-auto object-contain mb-1"
-            />
+            <button 
+              onClick={onNavigateHome}
+              className="text-left focus:outline-none block"
+            >
+              <img 
+                src="/assets/images/logo/lockup.png" 
+                alt="NETHAWK SOLUTIONS" 
+                className="h-9 sm:h-10 w-auto object-contain mb-1"
+              />
+            </button>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
               Delivering integrated digital, engineering, automation, security, and defence technology capabilities.
             </p>
@@ -30,12 +42,12 @@ export default function Footer({ onOpenContact }) {
                 Services
               </h4>
               <ul className="space-y-2 text-[10.5px] sm:text-xs leading-snug sm:leading-relaxed">
-                <li><a href="#services" className="hover:text-white transition-colors block">Enterprise &amp; Digital</a></li>
-                <li><a href="#platforms" className="hover:text-white transition-colors block">Nethawk Defence Tech</a></li>
-                <li><a href="#ai-systems" className="hover:text-white transition-colors block">AI &amp; Intelligent Systems</a></li>
-                <li><a href="#services" className="hover:text-white transition-colors block">Surveillance &amp; Security</a></li>
-                <li><a href="#services" className="hover:text-white transition-colors block">Systems Integration</a></li>
-                <li><a href="#services" className="hover:text-white transition-colors block">Research &amp; Innovation</a></li>
+                <li><button onClick={onNavigateDefenseTech} className="hover:text-white transition-colors text-left block">Nethawk Defence Tech</button></li>
+                <li><button onClick={onNavigateManufacturing} className="hover:text-white transition-colors text-left block">UAS Manufacturing</button></li>
+                <li><button onClick={onNavigateAcademy} className="hover:text-white transition-colors text-left block">Academy &amp; NATI</button></li>
+                <li><button onClick={onNavigateMissions} className="hover:text-white transition-colors text-left block">ISR &amp; Surveillance</button></li>
+                <li><button onClick={onNavigateMissions} className="hover:text-white transition-colors text-left block">Intelligent Systems</button></li>
+                <li><button onClick={onNavigateMissions} className="hover:text-white transition-colors text-left block">Systems Integration</button></li>
               </ul>
             </div>
 
@@ -45,10 +57,10 @@ export default function Footer({ onOpenContact }) {
                 Company
               </h4>
               <ul className="space-y-2 text-[10.5px] sm:text-xs leading-snug sm:leading-relaxed">
-                <li><a href="#why-us" className="hover:text-white transition-colors block">About Nethawk</a></li>
-                <li><a href="#why-us" className="hover:text-white transition-colors block">Our Mission &amp; Vision</a></li>
-                <li><a href="#services" className="hover:text-white transition-colors block">Academy &amp; NATI</a></li>
-                <li><a href="#why-us" className="hover:text-white transition-colors block">Industries We Serve</a></li>
+                <li><button onClick={onNavigateHome} className="hover:text-white transition-colors text-left block">About Nethawk</button></li>
+                <li><button onClick={onNavigateHome} className="hover:text-white transition-colors text-left block">Our Mission &amp; Vision</button></li>
+                <li><button onClick={onNavigateAcademy} className="hover:text-white transition-colors text-left block">NATI Training Institute</button></li>
+                <li><button onClick={onNavigateDefenseTech} className="hover:text-white transition-colors text-left block">UAV Platforms</button></li>
                 <li><button onClick={onOpenContact} className="hover:text-white transition-colors text-left block">Why Nethawk</button></li>
               </ul>
             </div>

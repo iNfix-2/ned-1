@@ -1,68 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
-import { Play, X } from 'lucide-react';
+import { Play, X, Shield, Crosshair, Radar, Radio } from 'lucide-react';
 
-const MISSIONS_DATA = [
+const DEFENSE_DATA = [
   {
-    id: 'isr',
-    badge: 'NETHAWK DEFENCE TECH',
-    title: 'ISR & Aerial Surveillance',
-    description: "Tactical and long-endurance unmanned aerial systems (UAS/UAV) engineered for persistent aerial surveillance, special mission integration, and operational intelligence.",
-    backdrop: '/assets/images/missions/nethawk-command-center.jpg',
-    thumb: '/assets/images/missions/nethawk-command-center.jpg',
-    orbitLabel: 'ISR & Aerial Surveillance',
+    id: 'tactical-uav',
+    title: 'Tactical UAV Platforms',
+    description: 'Special mission integration for tactical over-the-horizon intelligence, equipped with modular EO/IR stabilized gimbal payloads and encrypted high-bandwidth datalinks.',
+    backdrop: '/assets/images/defense/nethawk-tactical-uav.jpg',
+    thumb: '/assets/images/defense/nethawk-tactical-uav.jpg',
+    orbitLabel: 'Tactical UAV Fleet',
+    specs: ['Composite Airframe', 'Modular EO/IR Gimbal', 'Encrypted GCS Link', 'Rapid Deployment'],
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-drone-flying-over-clouds-40455-large.mp4'
   },
   {
-    id: 'security',
-    badge: 'SURVEILLANCE & SECURITY TECHNOLOGY',
-    title: 'Persistent Awareness. Smarter Protection.',
-    description: 'We integrate cameras, sensors, software, communications, analytics, and command interfaces to support authorized security, critical infrastructure, and asset surveillance.',
-    backdrop: '/assets/images/missions/persistent-awareness.jpg',
-    thumb: '/assets/images/missions/persistent-awareness.jpg',
-    orbitLabel: 'Persistent Awareness',
+    id: 'strategic-isr',
+    title: 'Long-Endurance Strategic ISR',
+    description: 'Advanced uncrewed aerial systems delivering persistent multi-hour surveillance across land borders, maritime economic zones, and critical national infrastructure.',
+    backdrop: '/assets/images/defense/nethawk-isr-recon.jpg',
+    thumb: '/assets/images/defense/nethawk-isr-recon.jpg',
+    orbitLabel: 'Long-Endurance ISR',
+    specs: ['Extended Wingspan', 'Multi-Hour Endurance', 'BVLOS Satcom Link', 'Multi-Sensor Fusion'],
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-in-the-sea-43187-large.mp4'
   },
   {
-    id: 'contested',
-    badge: 'AI, DATA & INTELLIGENT SYSTEMS',
-    title: 'Turning Data into Useful Intelligence',
-    description: 'Developing intelligent technologies that help organisations process information, identify patterns, monitor environments, and support better decision-making.',
-    backdrop: '/assets/images/missions/nethawk-tactical-team.jpg',
-    thumb: '/assets/images/missions/nethawk-tactical-team.jpg',
-    orbitLabel: 'Intelligent Systems',
+    id: 'counter-uas',
+    title: 'Counter-UAS & Mission C2',
+    description: 'Integrated command-and-control architectures and counter-unmanned capabilities for detecting, tracking, classifying, and neutralizing unauthorized aerial threats.',
+    backdrop: '/assets/images/defense/nethawk-c2-mission.jpg',
+    thumb: '/assets/images/defense/nethawk-c2-mission.jpg',
+    orbitLabel: 'Counter-UAS & C2',
+    specs: ['RF & Radar Detection', 'Unified Tactical C2', 'Automated Threat ID', 'Kinetic / EW Defeat'],
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-rural-forest-road-42686-large.mp4'
   },
   {
-    id: 'integration',
-    badge: 'ENGINEERING & SYSTEMS INTEGRATION',
-    title: 'From Concept to Operational Capability',
-    description: 'Connecting hardware, software, communications, sensors, and mission systems into complete operational solutions with lifecycle support.',
-    backdrop: '/assets/images/missions/nethawk-engineering-team.jpg',
-    thumb: '/assets/images/missions/nethawk-engineering-team.jpg',
-    orbitLabel: 'Systems Integration',
+    id: 'swarm-mesh',
+    title: 'Swarm Intelligence & Mesh Autonomy',
+    description: 'Decentralized autonomous cooperative flight systems providing resilient self-healing tactical mesh communications, automated reconnaissance swarming, and edge AI target recognition.',
+    backdrop: '/assets/images/defense/nethawk-counter-uas.jpg',
+    thumb: '/assets/images/defense/nethawk-counter-uas.jpg',
+    orbitLabel: 'Swarm Autonomy',
+    specs: ['Self-Healing Mesh', 'Cooperative Swarming', 'Edge Target AI', 'Contested Airspace'],
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-airplane-taking-off-from-an-airport-43097-large.mp4'
   }
 ];
 
-export default function MissionsPage({ onNavigateHome, onNavigateMissions, onNavigateManufacturing, onNavigateAcademy, onNavigateDefenseTech, onOpenContact }) {
+export default function DefenseTechPage({ onNavigateHome, onNavigateMissions, onNavigateManufacturing, onNavigateAcademy, onNavigateDefenseTech, onOpenContact }) {
   const [activeIdx, setActiveIdx] = useState(0);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
-  const activeMission = MISSIONS_DATA[activeIdx];
+  const activeItem = DEFENSE_DATA[activeIdx];
 
-  // Auto-slide orbit every 6s, pause while video modal is open
   useEffect(() => {
     if (videoModalOpen) return;
     const id = setInterval(() => {
-      setActiveIdx((prev) => (prev + 1) % MISSIONS_DATA.length);
+      setActiveIdx((prev) => (prev + 1) % DEFENSE_DATA.length);
     }, 6000);
     return () => clearInterval(id);
   }, [videoModalOpen]);
 
   return (
     <div className="relative min-h-screen w-full bg-[#050b14] text-white flex flex-col justify-between overflow-hidden select-none font-sans">
-      
       {/* 1. Header Navigation */}
       <Navbar 
         onOpenContact={onOpenContact} 
@@ -71,17 +69,16 @@ export default function MissionsPage({ onNavigateHome, onNavigateMissions, onNav
         onNavigateManufacturing={onNavigateManufacturing}
         onNavigateAcademy={onNavigateAcademy}
         onNavigateDefenseTech={onNavigateDefenseTech}
-        activePage="missions"
+        activePage="defense-tech"
       />
 
       {/* 2. Main Visual Canvas Container */}
       <div className="relative flex-grow flex items-center justify-between px-6 sm:px-16 pt-24 pb-12 w-full max-w-[1920px] mx-auto">
-        
-        {/* Full-Screen Mission Background with Celestial Glow */}
+        {/* Full-Screen Background with Celestial Glow */}
         <div 
           className="absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-out"
           style={{
-            backgroundImage: `url('${activeMission.backdrop}')`,
+            backgroundImage: `url('${activeItem.backdrop}')`,
           }}
         >
           {/* Cinematic Vignettes */}
@@ -92,44 +89,58 @@ export default function MissionsPage({ onNavigateHome, onNavigateMissions, onNav
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] sm:w-[650px] h-[420px] sm:h-[650px] rounded-full bg-gradient-to-tr from-blue-600/25 via-blue-900/15 to-transparent blur-3xl pointer-events-none"></div>
         </div>
 
-        {/* Left Column: Mission Details from Nethawk Document */}
+        {/* Left Column: Defense Details */}
         <div className="relative z-20 max-w-xl text-left space-y-6">
           <div className="space-y-2">
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.12] drop-shadow-md">
-              {activeMission.title}
+              {activeItem.title}
             </h1>
           </div>
 
           <p className="text-xs sm:text-sm md:text-base text-slate-300 font-normal leading-relaxed max-w-lg drop-shadow">
-            {activeMission.description}
+            {activeItem.description}
           </p>
 
-          <div className="pt-2">
+          {/* Technical Specs Tags */}
+          <div className="grid grid-cols-2 gap-2.5 max-w-md pt-2">
+            {activeItem.specs.map((spec, i) => (
+              <div key={i} className="px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 text-[11px] font-mono text-slate-200 flex items-center space-x-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8]"></span>
+                <span>{spec}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="pt-4 flex items-center space-x-4">
             <button
               onClick={() => setVideoModalOpen(true)}
               className="inline-flex items-center px-8 py-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white text-xs font-medium tracking-wide border border-white/25 transition-all hover:scale-105 shadow-2xl"
             >
               Play Video
             </button>
+            <button
+              onClick={onOpenContact}
+              className="inline-flex items-center px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold tracking-wider uppercase transition-all hover:scale-105 shadow-xl shadow-blue-500/25"
+            >
+              Request Briefing
+            </button>
           </div>
         </div>
 
-        {/* Center: Glowing Circular Play Button */}
+        {/* Center: Circular Play Button */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden md:flex items-center justify-center">
           <button
             onClick={() => setVideoModalOpen(true)}
             className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-xl border border-white/30 text-white flex items-center justify-center relative group shadow-2xl transition-all hover:scale-110"
-            aria-label="Play mission video"
+            aria-label="Play video"
           >
-            {/* Ambient Blue Glow on Bottom-Right */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-transparent via-blue-600/40 to-blue-500 opacity-70 group-hover:opacity-100 transition-opacity"></div>
             <Play className="w-8 h-8 text-white fill-white ml-1 relative z-10 drop-shadow" />
           </button>
         </div>
 
-        {/* Right Column: The Vertical Curved Orbit Arc and Cards */}
+        {/* Right Column: Orbit Cards */}
         <div className="relative z-20 hidden lg:flex flex-col items-end justify-center h-full max-h-[720px] w-[500px]">
-          
           {/* SVG Orbit Arc Line */}
           <div className="absolute top-0 bottom-0 right-[150px] w-28 pointer-events-none">
             <svg className="w-full h-full" viewBox="0 0 100 680" fill="none">
@@ -143,7 +154,7 @@ export default function MissionsPage({ onNavigateHome, onNavigateMissions, onNav
 
           {/* Orbit Cards Stack */}
           <div className="space-y-6 w-full flex flex-col items-end">
-            {MISSIONS_DATA.map((item, idx) => {
+            {DEFENSE_DATA.map((item, idx) => {
               const isActive = idx === activeIdx;
               return (
                 <div
@@ -155,7 +166,6 @@ export default function MissionsPage({ onNavigateHome, onNavigateMissions, onNav
                       : 'opacity-50 hover:opacity-90 hover:scale-102'
                   }`}
                 >
-                  {/* Left Label on Active Card */}
                   <div className="mr-4 text-right max-w-[200px]">
                     <span className={`text-xs font-semibold block leading-tight ${
                       isActive ? 'text-white' : 'text-slate-400'
@@ -164,14 +174,12 @@ export default function MissionsPage({ onNavigateHome, onNavigateMissions, onNav
                     </span>
                   </div>
 
-                  {/* Active Dot Positioned on the Arc */}
                   <div className="w-6 flex items-center justify-center mr-3 relative">
                     {isActive && (
                       <span className="w-2 h-2 rounded-full bg-[#38bdf8] shadow-[0_0_10px_#38bdf8] animate-pulse"></span>
                     )}
                   </div>
 
-                  {/* Thumbnail Card */}
                   <div className={`w-36 sm:w-44 aspect-[16/10] rounded-2xl overflow-hidden border transition-all shadow-2xl relative ${
                     isActive ? 'border-white/40 ring-2 ring-white/10' : 'border-white/15'
                   }`}>
@@ -186,16 +194,13 @@ export default function MissionsPage({ onNavigateHome, onNavigateMissions, onNav
               );
             })}
           </div>
-
         </div>
-
       </div>
 
-      {/* Video Player Modal */}
+      {/* Video Modal */}
       {videoModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-2xl animate-in fade-in">
           <div className="relative w-full max-w-5xl aspect-video bg-black rounded-3xl overflow-hidden border border-white/20 shadow-2xl">
-            {/* Close Button */}
             <button
               onClick={() => setVideoModalOpen(false)}
               className="absolute top-6 right-6 z-30 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white transition-colors border border-white/20"
@@ -203,10 +208,8 @@ export default function MissionsPage({ onNavigateHome, onNavigateMissions, onNav
             >
               <X className="w-6 h-6" />
             </button>
-
-            {/* Video Player */}
             <video
-              src={activeMission.videoUrl}
+              src={activeItem.videoUrl}
               autoPlay
               controls
               loop
@@ -215,7 +218,6 @@ export default function MissionsPage({ onNavigateHome, onNavigateMissions, onNav
           </div>
         </div>
       )}
-
     </div>
   );
 }

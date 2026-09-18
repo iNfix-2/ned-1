@@ -9,9 +9,12 @@ import ContactModal from './components/ContactModal';
 import GalleryModal from './components/GalleryModal';
 import Footer from './components/Footer';
 import MissionsPage from './pages/MissionsPage';
+import ManufacturingPage from './pages/ManufacturingPage';
+import AcademyPage from './pages/AcademyPage';
+import DefenseTechPage from './pages/DefenseTechPage';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('home'); // 'home' or 'missions'
+  const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'missions' | 'manufacturing' | 'academy' | 'defense-tech'
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [galleryOpen, setGalleryOpen] = useState(false);
 
@@ -21,9 +24,23 @@ export default function App() {
       const hash = window.location.hash.toLowerCase();
       if (hash === '#missions' || hash === '#/missions') {
         setCurrentPage('missions');
+      } else if (hash === '#manufacturing' || hash === '#/manufacturing') {
+        setCurrentPage('manufacturing');
+      } else if (hash === '#academy' || hash === '#/academy') {
+        setCurrentPage('academy');
+      } else if (
+        hash === '#defense-tech' || 
+        hash === '#/defense-tech' || 
+        hash === '#platforms' || 
+        hash === '#/platforms' ||
+        hash === '#defense' ||
+        hash === '#/defense'
+      ) {
+        setCurrentPage('defense-tech');
       } else {
         setCurrentPage('home');
       }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     handleHashChange();
@@ -33,52 +50,117 @@ export default function App() {
 
   const navigateTo = (page) => {
     setCurrentPage(page);
-    window.location.hash = page === 'missions' ? '#missions' : '';
+    if (page === 'missions') {
+      window.location.hash = '#missions';
+    } else if (page === 'manufacturing') {
+      window.location.hash = '#manufacturing';
+    } else if (page === 'academy') {
+      window.location.hash = '#academy';
+    } else if (page === 'defense-tech') {
+      window.location.hash = '#defense-tech';
+    } else {
+      window.location.hash = '';
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div className="min-h-screen bg-[#020e1c] text-white flex flex-col font-sans selection:bg-blue-600 selection:text-white antialiased overflow-x-hidden">
       
-      {currentPage === 'missions' ? (
-        /* Missions Page (Matching media_1789642969822.jpg exactly) */
+      {/* 1. Missions Page */}
+      {currentPage === 'missions' && (
         <MissionsPage 
           onNavigateHome={() => navigateTo('home')}
+          onNavigateMissions={() => navigateTo('missions')}
+          onNavigateManufacturing={() => navigateTo('manufacturing')}
+          onNavigateAcademy={() => navigateTo('academy')}
+          onNavigateDefenseTech={() => navigateTo('defense-tech')}
           onOpenContact={() => setContactModalOpen(true)}
         />
-      ) : (
-        /* Home Page (Matching media_1789642929433.png exactly) */
+      )}
+
+      {/* 2. Manufacturing Page */}
+      {currentPage === 'manufacturing' && (
+        <ManufacturingPage 
+          onNavigateHome={() => navigateTo('home')}
+          onNavigateMissions={() => navigateTo('missions')}
+          onNavigateManufacturing={() => navigateTo('manufacturing')}
+          onNavigateAcademy={() => navigateTo('academy')}
+          onNavigateDefenseTech={() => navigateTo('defense-tech')}
+          onOpenContact={() => setContactModalOpen(true)}
+        />
+      )}
+
+      {/* 3. Academy & NATI Page */}
+      {currentPage === 'academy' && (
+        <AcademyPage 
+          onNavigateHome={() => navigateTo('home')}
+          onNavigateMissions={() => navigateTo('missions')}
+          onNavigateManufacturing={() => navigateTo('manufacturing')}
+          onNavigateAcademy={() => navigateTo('academy')}
+          onNavigateDefenseTech={() => navigateTo('defense-tech')}
+          onOpenContact={() => setContactModalOpen(true)}
+        />
+      )}
+
+      {/* 4. Defense Tech & UAS Platforms Page */}
+      {currentPage === 'defense-tech' && (
+        <DefenseTechPage 
+          onNavigateHome={() => navigateTo('home')}
+          onNavigateMissions={() => navigateTo('missions')}
+          onNavigateManufacturing={() => navigateTo('manufacturing')}
+          onNavigateAcademy={() => navigateTo('academy')}
+          onNavigateDefenseTech={() => navigateTo('defense-tech')}
+          onOpenContact={() => setContactModalOpen(true)}
+        />
+      )}
+
+      {/* 5. Home Page Landing */}
+      {currentPage === 'home' && (
         <>
-          {/* 1. Floating Pill Navigation */}
+          {/* Floating Pill Navigation */}
           <Navbar 
             onOpenContact={() => setContactModalOpen(true)}
             onNavigateHome={() => navigateTo('home')}
             onNavigateMissions={() => navigateTo('missions')}
+            onNavigateManufacturing={() => navigateTo('manufacturing')}
+            onNavigateAcademy={() => navigateTo('academy')}
+            onNavigateDefenseTech={() => navigateTo('defense-tech')}
             activePage="home"
           />
 
-          {/* 2. Main Home Page Content */}
+          {/* Main Home Page Content */}
           <main className="flex-grow">
-            {/* Section 1: Hero ("Your eyes on the unknown") */}
+            {/* Hero Section */}
             <Hero onOpenContact={() => setContactModalOpen(true)} />
 
-            {/* Section 2: Missions Banner ("When a mission is calling, TEKEVER delivers.") */}
+            {/* Missions Banner ("When a mission is calling...") */}
             <MissionBanner 
               onNavigateMissions={() => navigateTo('missions')}
             />
 
-            {/* Section 3: Platforms ("Unmanned Aerial Systems") */}
-            <PlatformsCarousel onOpenContact={() => setContactModalOpen(true)} onOpenGallery={() => setGalleryOpen(true)} />
+            {/* Platforms Carousel ("Unmanned Aerial Systems") */}
+            <PlatformsCarousel 
+              onOpenContact={() => setContactModalOpen(true)} 
+              onOpenGallery={() => setGalleryOpen(true)} 
+            />
 
-            {/* Section 4: ATLAS Earth Banner */}
+            {/* ATLAS Earth Banner */}
             <AtlasSection onOpenContact={() => setContactModalOpen(true)} />
 
-            {/* Section 5: News 4-Card Feed */}
+            {/* News 4-Card Feed */}
             <NewsSection onOpenContact={() => setContactModalOpen(true)} />
           </main>
 
-          {/* 3. Comprehensive Corporate Footer with Giant Watermark */}
-          <Footer onOpenContact={() => setContactModalOpen(true)} />
+          {/* Comprehensive Corporate Footer */}
+          <Footer 
+            onOpenContact={() => setContactModalOpen(true)}
+            onNavigateHome={() => navigateTo('home')}
+            onNavigateMissions={() => navigateTo('missions')}
+            onNavigateManufacturing={() => navigateTo('manufacturing')}
+            onNavigateAcademy={() => navigateTo('academy')}
+            onNavigateDefenseTech={() => navigateTo('defense-tech')}
+          />
         </>
       )}
 

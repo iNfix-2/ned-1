@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
-export default function Navbar({ onOpenContact, onNavigateHome, onNavigateMissions, activePage = 'home' }) {
+export default function Navbar({ 
+  onOpenContact, 
+  onNavigateHome, 
+  onNavigateMissions, 
+  onNavigateManufacturing, 
+  onNavigateAcademy, 
+  onNavigateDefenseTech, 
+  activePage = 'home' 
+}) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -34,30 +42,36 @@ export default function Navbar({ onOpenContact, onNavigateHome, onNavigateMissio
               Missions
             </button>
 
-            {/* 2. Manufacturing (with Indicator Dot) */}
-            <a
-              href="#services"
-              className="text-slate-300 hover:text-white flex items-center transition-colors"
+            {/* 2. Manufacturing */}
+            <button
+              onClick={onNavigateManufacturing}
+              className={`flex items-center transition-colors ${
+                activePage === 'manufacturing' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
+              }`}
             >
               <span className="w-1.5 h-1.5 rounded-full mr-2 bg-[#38bdf8] shadow-[0_0_8px_#38bdf8]"></span>
               <span>Manufacturing</span>
-            </a>
+            </button>
 
             {/* 3. Academy */}
-            <a 
-              href="#services" 
-              className="text-slate-300 hover:text-white transition-colors"
+            <button
+              onClick={onNavigateAcademy}
+              className={`transition-colors ${
+                activePage === 'academy' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
+              }`}
             >
               Academy
-            </a>
+            </button>
 
             {/* 4. Defense Tech */}
-            <a 
-              href="#platforms" 
-              className="text-slate-300 hover:text-white transition-colors"
+            <button
+              onClick={onNavigateDefenseTech}
+              className={`transition-colors ${
+                activePage === 'defense-tech' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
+              }`}
             >
               Defense Tech
-            </a>
+            </button>
 
             {/* 5. Contact */}
             <button
@@ -92,7 +106,9 @@ export default function Navbar({ onOpenContact, onNavigateHome, onNavigateMissio
               setMobileOpen(false);
               onNavigateHome();
             }}
-            className="w-full text-left text-sm font-semibold text-white py-2 border-b border-white/5"
+            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
+              activePage === 'home' ? 'font-semibold text-white' : 'font-medium text-slate-300'
+            }`}
           >
             Home
           </button>
@@ -101,32 +117,46 @@ export default function Navbar({ onOpenContact, onNavigateHome, onNavigateMissio
               setMobileOpen(false);
               onNavigateMissions();
             }}
-            className="w-full text-left text-sm font-medium text-slate-300 py-2 border-b border-white/5"
+            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
+              activePage === 'missions' ? 'font-semibold text-white' : 'font-medium text-slate-300'
+            }`}
           >
             Missions
           </button>
-          <a
-            href="#services"
-            onClick={() => setMobileOpen(false)}
-            className="block text-sm font-semibold text-white py-2 border-b border-white/5 flex items-center"
+          <button
+            onClick={() => {
+              setMobileOpen(false);
+              onNavigateManufacturing();
+            }}
+            className={`w-full text-left text-sm py-2 border-b border-white/5 flex items-center ${
+              activePage === 'manufacturing' ? 'font-semibold text-white' : 'font-medium text-slate-300'
+            }`}
           >
             <span className="w-2 h-2 rounded-full bg-[#38bdf8] mr-2"></span>
             Manufacturing
-          </a>
-          <a
-            href="#services"
-            onClick={() => setMobileOpen(false)}
-            className="block text-sm font-medium text-slate-300 py-2 border-b border-white/5"
+          </button>
+          <button
+            onClick={() => {
+              setMobileOpen(false);
+              onNavigateAcademy();
+            }}
+            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
+              activePage === 'academy' ? 'font-semibold text-white' : 'font-medium text-slate-300'
+            }`}
           >
             Academy &amp; NATI Institute
-          </a>
-          <a
-            href="#platforms"
-            onClick={() => setMobileOpen(false)}
-            className="block text-sm font-medium text-slate-300 py-2 border-b border-white/5"
+          </button>
+          <button
+            onClick={() => {
+              setMobileOpen(false);
+              onNavigateDefenseTech();
+            }}
+            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
+              activePage === 'defense-tech' ? 'font-semibold text-white' : 'font-medium text-slate-300'
+            }`}
           >
             Defense Tech &amp; UAV Systems
-          </a>
+          </button>
           <button
             onClick={() => {
               setMobileOpen(false);
