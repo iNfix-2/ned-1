@@ -31,6 +31,17 @@ export default function Hero({ onOpenContact }) {
             Delivering integrated digital, engineering, automation, security, and defence technology capabilities.
           </p>
         </div>
+
+        {/* Frosted Translucent Pill Button */}
+        <div className="pt-6">
+          <button
+            onClick={onOpenContact}
+            className="inline-flex items-center px-8 py-3 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-xl text-white text-xs font-medium tracking-wide border border-white/30 transition-all hover:scale-105 shadow-2xl"
+          >
+            Download Capability Document
+          </button>
+        </div>
+      </div>
     </section>
   );
 }
