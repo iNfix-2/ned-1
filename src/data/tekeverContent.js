@@ -51,7 +51,7 @@ export const PLATFORMS_LIST = [
     name: 'Tactical UAV Platform',
     role: 'NETHAWK DEFENCE TECH',
     tagline: 'Special mission integration for tactical over-the-horizon intelligence.',
-    image: '/assets/platforms/nsl-drone-capture-5.jpg',
+    image: '/assets/images/platforms/nethawk-tactical-uav.jpg',
     specs: {
       mtow: 'Tactical Class',
       wingspan: 'Composite Airframe',
