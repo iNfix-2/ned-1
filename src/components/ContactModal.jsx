@@ -34,10 +34,6 @@ export default function ContactModal({ isOpen, onClose }) {
         {!submitted ? (
           <div>
             <div className="space-y-2 mb-6">
-              <div className="text-xs font-mono text-[#38bdf8] uppercase tracking-wider font-semibold flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 bg-[#38bdf8]"></span>
-                <span>Let's Build the Future Together</span>
-              </div>
               <h3 className="text-2xl font-extrabold text-white tracking-tight">
                 Discuss Your Requirements
               </h3>

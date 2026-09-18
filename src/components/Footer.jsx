@@ -8,7 +8,7 @@ export default function Footer({ onOpenContact }) {
       <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10 space-y-16">
         
         {/* Top Section: Logo + Link Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-5 lg:gap-10">
           
           {/* Brand Logo & Tagline */}
           <div className="lg:col-span-2 space-y-3">
@@ -17,86 +17,79 @@ export default function Footer({ onOpenContact }) {
               alt="NETHAWK SOLUTIONS" 
               className="h-9 sm:h-10 w-auto object-contain mb-1"
             />
-            <p className="text-xs text-[#38bdf8] font-mono font-bold tracking-wider uppercase">
-              Wings to Rise, Eyes to See.
-            </p>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
               Delivering integrated digital, engineering, automation, security, and defence technology capabilities.
             </p>
           </div>
 
-          {/* Services */}
-          <div className="space-y-3">
-            <h4 className="text-white text-xs font-bold uppercase tracking-wider">
-              Services
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li><a href="#services" className="hover:text-white transition-colors">Enterprise &amp; Digital</a></li>
-              <li><a href="#platforms" className="hover:text-white transition-colors">Nethawk Defence Tech</a></li>
-              <li><a href="#ai-systems" className="hover:text-white transition-colors">AI &amp; Intelligent Systems</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Surveillance &amp; Security</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Systems Integration</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Research &amp; Innovation</a></li>
-            </ul>
-          </div>
+          {/* 3-Column Tabs Grid: Services, Company, Our Values */}
+          <div className="grid grid-cols-3 gap-2.5 sm:gap-6 lg:gap-8 lg:col-span-3">
+            {/* Services */}
+            <div className="space-y-3">
+              <h4 className="text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider">
+                Services
+              </h4>
+              <ul className="space-y-2 text-[10.5px] sm:text-xs leading-snug sm:leading-relaxed">
+                <li><a href="#services" className="hover:text-white transition-colors block">Enterprise &amp; Digital</a></li>
+                <li><a href="#platforms" className="hover:text-white transition-colors block">Nethawk Defence Tech</a></li>
+                <li><a href="#ai-systems" className="hover:text-white transition-colors block">AI &amp; Intelligent Systems</a></li>
+                <li><a href="#services" className="hover:text-white transition-colors block">Surveillance &amp; Security</a></li>
+                <li><a href="#services" className="hover:text-white transition-colors block">Systems Integration</a></li>
+                <li><a href="#services" className="hover:text-white transition-colors block">Research &amp; Innovation</a></li>
+              </ul>
+            </div>
 
-          {/* Company & Ecosystem */}
-          <div className="space-y-3">
-            <h4 className="text-white text-xs font-bold uppercase tracking-wider">
-              Company
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li><a href="#why-us" className="hover:text-white transition-colors">About Nethawk</a></li>
-              <li><a href="#why-us" className="hover:text-white transition-colors">Our Mission &amp; Vision</a></li>
-              <li><a href="#why-us" className="hover:text-white transition-colors">The Nethawk Ecosystem</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Academy &amp; NATI</a></li>
-              <li><a href="#why-us" className="hover:text-white transition-colors">Industries We Serve</a></li>
-              <li><button onClick={onOpenContact} className="hover:text-white transition-colors">Why Nethawk</button></li>
-            </ul>
-          </div>
+            {/* Company */}
+            <div className="space-y-3">
+              <h4 className="text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider">
+                Company
+              </h4>
+              <ul className="space-y-2 text-[10.5px] sm:text-xs leading-snug sm:leading-relaxed">
+                <li><a href="#why-us" className="hover:text-white transition-colors block">About Nethawk</a></li>
+                <li><a href="#why-us" className="hover:text-white transition-colors block">Our Mission &amp; Vision</a></li>
+                <li><a href="#services" className="hover:text-white transition-colors block">Academy &amp; NATI</a></li>
+                <li><a href="#why-us" className="hover:text-white transition-colors block">Industries We Serve</a></li>
+                <li><button onClick={onOpenContact} className="hover:text-white transition-colors text-left block">Why Nethawk</button></li>
+              </ul>
+            </div>
 
-          {/* Values & Standards */}
-          <div className="space-y-3">
-            <h4 className="text-white text-xs font-bold uppercase tracking-wider">
-              Our Values
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li className="text-slate-300 font-medium">Excellence</li>
-              <li className="text-slate-300 font-medium">Innovation</li>
-              <li className="text-slate-300 font-medium">Precision</li>
-              <li className="text-slate-300 font-medium">Integrity</li>
-              <li className="text-slate-300 font-medium">Security</li>
-            </ul>
+            {/* Values & Standards */}
+            <div className="space-y-3">
+              <h4 className="text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider">
+                Our Values
+              </h4>
+              <ul className="space-y-2 text-[10.5px] sm:text-xs leading-snug sm:leading-relaxed">
+                <li className="text-slate-300 font-medium">Excellence</li>
+                <li className="text-slate-300 font-medium">Innovation</li>
+                <li className="text-slate-300 font-medium">Precision</li>
+                <li className="text-slate-300 font-medium">Integrity</li>
+                <li className="text-slate-300 font-medium">Security</li>
+              </ul>
+            </div>
           </div>
 
         </div>
 
-        {/* Middle Section: Contact & Mission Statement */}
-        <div className="border-t border-white/5 pt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-[11px] leading-relaxed">
+        {/* Middle Section: Contact, Vision & Mission Statements */}
+        <div className="border-t border-white/5 pt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-[11px] leading-relaxed">
           
           {/* Contact */}
           <div className="space-y-1">
             <h5 className="text-white font-bold uppercase tracking-wider mb-2">Get In Touch</h5>
-            <div><a href="mailto:info@nethawksolutions.com" className="hover:text-[#38bdf8]">info@nethawksolutions.com</a></div>
-            <div><a href="mailto:contact@nethawksolutions.com" className="hover:text-[#38bdf8]">contact@nethawksolutions.com</a></div>
-          </div>
-
-          {/* Mission */}
-          <div className="space-y-1">
-            <h5 className="text-white font-bold uppercase tracking-wider mb-2">Our Mission</h5>
-            <p className="text-slate-400">To deliver innovative, reliable, and intelligence-driven technology solutions that improve operational effectiveness and protect critical assets.</p>
+            <div><a href="mailto:info@nethawksolutions.org" className="hover:text-white transition-colors">info@nethawksolutions.org</a></div>
+            <div><a href="mailto:contact@nethawksolutions.org" className="hover:text-white transition-colors">contact@nethawksolutions.org</a></div>
           </div>
 
           {/* Vision */}
           <div className="space-y-1">
             <h5 className="text-white font-bold uppercase tracking-wider mb-2">Our Vision</h5>
-            <p className="text-slate-400">To become a globally recognised technology solutions company, advancing digital and engineering capabilities through practical technology.</p>
+            <p className="text-slate-400">To become the provider of innovative technology solutions transforming businesses, government institutions, defence, and national development.</p>
           </div>
 
-          {/* Ecosystem */}
+          {/* Mission */}
           <div className="space-y-1">
-            <h5 className="text-white font-bold uppercase tracking-wider mb-2">The Ecosystem</h5>
-            <p className="text-slate-400 font-mono text-[10px]">Research → Engineering → Development → Integration → Deployment → Training → Support</p>
+            <h5 className="text-white font-bold uppercase tracking-wider mb-2">Our Mission</h5>
+            <p className="text-slate-400">To build secure, intelligent, and scalable technology solutions that solve real-world problems, strengthen organizations, drive innovation, and create lasting impact.</p>
           </div>
 
         </div>

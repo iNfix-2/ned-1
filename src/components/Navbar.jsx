@@ -69,10 +69,10 @@ export default function Navbar({ onOpenContact, onNavigateHome, onNavigateMissio
           </div>
         </nav>
 
-        {/* Hamburger Menu Toggle */}
+        {/* Hamburger Menu Toggle (Mobile only) */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="p-2.5 text-white bg-[#151d28]/70 hover:bg-[#151d28]/90 backdrop-blur-xl border border-white/15 rounded-full transition-colors flex items-center justify-center"
+          className="md:hidden p-2.5 text-white bg-[#151d28]/70 hover:bg-[#151d28]/90 backdrop-blur-xl border border-white/15 rounded-full transition-colors flex items-center justify-center"
           aria-label="Menu"
         >
           {mobileOpen ? <X className="w-4 h-4" /> : (

@@ -64,11 +64,7 @@ export default function NewsSection({ onOpenContact }) {
 
               {/* Story Content Overlay */}
               <div className="relative z-10 space-y-3 text-left">
-                <div className="text-[10px] font-mono text-[#38bdf8] font-bold uppercase tracking-wider">
-                  {service.category}
-                </div>
-
-                <h3 className="text-base sm:text-lg font-bold text-white leading-snug group-hover:text-[#38bdf8] transition-colors">
+                <h3 className="text-base sm:text-lg font-bold text-white leading-snug group-hover:text-slate-200 transition-colors">
                   {service.title}
                 </h3>
 
