@@ -13,12 +13,15 @@ export default function NewsSection({ onOpenContact }) {
   };
 
   return (
-    <section id="services" className="py-24 px-6 sm:px-12 bg-gradient-to-b from-[#020e1c] via-[#041427] to-[#010813] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto space-y-12">
+    <section
+      id="services"
+      className="relative min-h-[90vh] sm:min-h-screen py-16 sm:py-24 px-6 sm:px-12 bg-gradient-to-b from-[#020e1c] via-[#041427] to-[#010813] overflow-hidden flex flex-col justify-center"
+    >
+      <div className="max-w-7xl w-full mx-auto space-y-8 sm:space-y-12">
         
         {/* Header Row: Big 'Services' Title + Circular Nav Arrows */}
         <div className="flex items-end justify-between">
-          <h2 className="text-5xl sm:text-7xl font-bold text-slate-300/35 tracking-tight select-none">
+          <h2 className="text-4xl sm:text-7xl font-bold text-slate-300/35 tracking-tight select-none">
             Services
           </h2>
 
@@ -48,7 +51,8 @@ export default function NewsSection({ onOpenContact }) {
           {CORE_SERVICES.map((service) => (
             <div
               key={service.id}
-              className="group relative h-[440px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl flex flex-col justify-end p-6 bg-[#020710] flex-shrink-0"
+              className="group relative h-[56vh] min-h-[460px] max-h-[600px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl flex flex-col justify-end p-6 cursor-pointer bg-[#020710] flex-shrink-0"
+              onClick={onOpenContact}
             >
               {/* Card Background Image */}
               <div 

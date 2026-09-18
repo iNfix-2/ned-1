@@ -28,11 +28,11 @@ export default function PlatformsCarousel({ onOpenContact, onOpenGallery }) {
   return (
     <section
       id="platforms"
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#020e1c] via-[#051830] to-[#020e1c] relative overflow-hidden text-center"
+      className="relative min-h-[90vh] sm:min-h-screen py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#020e1c] via-[#051830] to-[#020e1c] overflow-hidden text-center flex flex-col justify-center"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="max-w-6xl mx-auto space-y-12">
+      <div className="max-w-6xl w-full mx-auto space-y-8 sm:space-y-12">
         
         {/* Header from Nethawk Solutions Document */}
         <div className="space-y-3 max-w-2xl mx-auto">
@@ -46,7 +46,7 @@ export default function PlatformsCarousel({ onOpenContact, onOpenGallery }) {
         </div>
 
         {/* Full Width Platform Card Display */}
-        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] min-h-[420px] sm:min-h-[500px] max-h-[560px] rounded-[32px] sm:rounded-[36px] overflow-hidden shadow-2xl border border-white/15 group">
+        <div className="relative w-full h-[58vh] min-h-[440px] sm:min-h-[500px] max-h-[640px] rounded-[32px] sm:rounded-[36px] overflow-hidden shadow-2xl border border-white/15 group">
           
           {/* Background Images with smooth fade transition */}
           {PLATFORMS_LIST.map((platform, idx) => (

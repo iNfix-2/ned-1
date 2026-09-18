@@ -17,7 +17,7 @@ export default function MissionBanner({ onOpenContact, onNavigateMissions }) {
 
   return (
     <section
-      className="relative pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#020b17] via-[#041528] to-[#020e1c] overflow-hidden"
+      className="relative min-h-[90vh] sm:min-h-screen py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#020b17] via-[#041528] to-[#020e1c] overflow-hidden flex flex-col justify-center"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -29,14 +29,14 @@ export default function MissionBanner({ onOpenContact, onNavigateMissions }) {
         </svg>
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10 text-center space-y-12">
+      <div className="max-w-6xl w-full mx-auto relative z-10 text-center space-y-8 sm:space-y-12">
         {/* Section Headline from Document */}
         <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-snug max-w-2xl mx-auto">
           Securing Africa's Critical Infrastructures
         </h2>
 
         {/* Big Rounded Ocean / Security Card */}
-        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] max-h-[520px] rounded-[32px] overflow-hidden shadow-2xl border border-white/15 group">
+        <div className="relative w-full h-[58vh] min-h-[440px] sm:min-h-[500px] max-h-[640px] rounded-[32px] sm:rounded-[36px] overflow-hidden shadow-2xl border border-white/15 group">
           
           {/* Oceanic / Mission Background Image */}
           <div 
