@@ -48,8 +48,7 @@ export default function NewsSection({ onOpenContact }) {
           {CORE_SERVICES.map((service) => (
             <div
               key={service.id}
-              className="group relative h-[440px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl flex flex-col justify-end p-6 cursor-pointer bg-[#020710] flex-shrink-0"
-              onClick={onOpenContact}
+              className="group relative h-[440px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl flex flex-col justify-end p-6 bg-[#020710] flex-shrink-0"
             >
               {/* Card Background Image */}
               <div 
