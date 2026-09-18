@@ -23,7 +23,7 @@ export default function Hero({ onOpenContact }) {
       {/* Center Content from Document */}
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-6">
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.08] drop-shadow-md">
-          Wings to Rise, Eyes to See.
+          Nethawk Solutions Securing Africa
         </h1>
         
         <div className="space-y-2 max-w-2xl mx-auto">
