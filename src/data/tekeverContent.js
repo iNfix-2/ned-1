@@ -51,7 +51,7 @@ export const PLATFORMS_LIST = [
     name: 'Tactical UAV Platform',
     role: 'NETHAWK DEFENCE TECH',
     tagline: 'Special mission integration for tactical over-the-horizon intelligence.',
-    image: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=900&q=80',
+    image: '/assets/platforms/nsl-drone-capture-5.jpg',
     specs: {
       mtow: 'Tactical Class',
       wingspan: 'Composite Airframe',
@@ -66,7 +66,7 @@ export const PLATFORMS_LIST = [
     name: 'Long-Endurance ISR UAS',
     role: 'PERSISTENT SURVEILLANCE',
     tagline: 'Advanced unmanned aerial system delivering persistent operational awareness.',
-    image: '/assets/images/platforms/nethawk-vtol-isr.jpg',
+    image: '/assets/platforms/nsl-drone-capture-2.jpg',
     specs: {
       mtow: 'Heavy Payload',
       wingspan: 'Extended Span',
@@ -81,7 +81,7 @@ export const PLATFORMS_LIST = [
     name: 'Counter-UAS & Mission C2',
     role: 'DEFENCE INTEGRATION',
     tagline: 'Integrated command-and-control systems and counter-unmanned capabilities.',
-    image: 'https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=900&q=80',
+    image: '/assets/platforms/nsl-drone-capture-7.jpg',
     specs: {
       mtow: 'Rapid Deploy',
       wingspan: 'Modular C2',
@@ -90,6 +90,21 @@ export const PLATFORMS_LIST = [
       comms: 'Tactical Mesh C4ISR'
     },
     desc: 'Protecting critical assets, government infrastructure, and authorized defense perimeters against unauthorized aerial systems.'
+  },
+  {
+    id: 'field-ops-vtol',
+    name: 'Field Ops VTOL UAS',
+    role: 'FIELD OPERATIONS',
+    tagline: 'Flight-line proven VTOL platform in live operational handling.',
+    image: '/assets/platforms/ops-live-vtol.jpg',
+    specs: {
+      mtow: 'VTOL Class',
+      wingspan: 'Fixed-Wing VTOL',
+      endurance: 'Extended Ops',
+      payload: 'ISR Gimbal',
+      comms: 'Tactical Data Link'
+    },
+    desc: 'Live field operations with rapid launch, recovery, and turnaround for surveillance and special mission tasking.'
   }
 ];
 

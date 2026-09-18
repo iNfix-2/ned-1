@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PLATFORMS_LIST } from '../data/tekeverContent';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function PlatformsCarousel({ onOpenContact }) {
   const [activeIdx, setActiveIdx] = useState(1); // Long-Endurance ISR UAS in center
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Auto-slide every 4.5s, pause on hover
+  useEffect(() => {
+    if (isPaused) return;
+    const id = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % PLATFORMS_LIST.length);
+    }, 4500);
+    return () => clearInterval(id);
+  }, [isPaused]);
 
   const handlePrev = () => {
     setActiveIdx((prev) => (prev === 0 ? PLATFORMS_LIST.length - 1 : prev - 1));
@@ -16,7 +26,7 @@ export default function PlatformsCarousel({ onOpenContact }) {
   const currentPlatform = PLATFORMS_LIST[activeIdx];
 
   return (
-    <section id="platforms" className="pt-16 pb-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#2f4054] via-[#3d4f64] to-[#121c29] relative overflow-hidden text-center">
+    <section id="platforms" className="pt-16 pb-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#2f4054] via-[#3d4f64] to-[#121c29] relative overflow-hidden text-center" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
       <div className="max-w-7xl mx-auto space-y-10">
         
         {/* Header from Nethawk Solutions Document */}

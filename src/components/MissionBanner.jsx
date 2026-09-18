@@ -1,12 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MISSIONS_LIST } from '../data/tekeverContent';
 
 export default function MissionBanner({ onOpenContact, onNavigateMissions }) {
   const [activeIdx, setActiveIdx] = useState(0); // 'ISR & Aerial Surveillance'
+  const [isPaused, setIsPaused] = useState(false);
   const activeMission = MISSIONS_LIST[activeIdx];
 
+  // Auto-slide every 5s, pause on hover
+  useEffect(() => {
+    if (isPaused) return;
+    const id = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % MISSIONS_LIST.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [isPaused]);
+
   return (
-    <section className="relative pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0d1722] via-[#243547] to-[#2f4054] overflow-hidden">
+    <section
+      className="relative pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0d1722] via-[#243547] to-[#2f4054] overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       
       {/* Subtle Orbital Curved White Line */}
       <div className="absolute inset-0 pointer-events-none opacity-20">

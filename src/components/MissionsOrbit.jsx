@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MISSIONS_LIST } from '../data/tekeverContent';
 import { Play } from 'lucide-react';
 
 export default function MissionsOrbit({ onOpenContact }) {
   const [activeIdx, setActiveIdx] = useState(0); // 'Autonomous Collaborative Electronic Warfare'
+  const [isPaused, setIsPaused] = useState(false);
   const activeMission = MISSIONS_LIST[activeIdx];
 
+  // Auto-slide every 5.5s, pause on hover
+  useEffect(() => {
+    if (isPaused) return;
+    const id = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % MISSIONS_LIST.length);
+    }, 5500);
+    return () => clearInterval(id);
+  }, [isPaused]);
+
   return (
-    <section id="missions" className="relative min-h-screen py-24 px-6 sm:px-12 bg-[#060c16] flex items-center overflow-hidden">
+    <section id="missions" className="relative min-h-screen py-24 px-6 sm:px-12 bg-[#060c16] flex items-center overflow-hidden" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
       
       {/* Dark Tactical Backdrop with Drone and Celestial Dome */}
       <div 

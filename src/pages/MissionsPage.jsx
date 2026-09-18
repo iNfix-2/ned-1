@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import { Play, X } from 'lucide-react';
 
@@ -50,6 +50,15 @@ export default function MissionsPage({ onNavigateHome, onOpenContact }) {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
   const activeMission = MISSIONS_DATA[activeIdx];
+
+  // Auto-slide orbit every 6s, pause while video modal is open
+  useEffect(() => {
+    if (videoModalOpen) return;
+    const id = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % MISSIONS_DATA.length);
+    }, 6000);
+    return () => clearInterval(id);
+  }, [videoModalOpen]);
 
   return (
     <div className="relative min-h-screen w-full bg-[#050b14] text-white flex flex-col justify-between overflow-hidden select-none font-sans">
