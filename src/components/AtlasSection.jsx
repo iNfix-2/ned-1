@@ -46,7 +46,7 @@ export default function AtlasSection({ onOpenContact }) {
   };
 
   return (
-    <section id="ai-systems" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#040a14] relative">
+    <section id="ai-systems" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#020e1c] via-[#031326] to-[#020e1c] relative">
       <div className="max-w-6xl mx-auto">
         
         {/* Massive Rounded Slideshow Banner Card */}

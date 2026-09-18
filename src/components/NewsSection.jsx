@@ -13,7 +13,7 @@ export default function NewsSection({ onOpenContact }) {
   };
 
   return (
-    <section id="services" className="py-24 px-6 sm:px-12 bg-[#08121e] relative overflow-hidden">
+    <section id="services" className="py-24 px-6 sm:px-12 bg-gradient-to-b from-[#020e1c] via-[#041427] to-[#010813] relative overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* Header Row: Big 'Services' Title + Circular Nav Arrows */}

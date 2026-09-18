@@ -17,7 +17,7 @@ export default function MissionBanner({ onOpenContact, onNavigateMissions }) {
 
   return (
     <section
-      className="relative pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0d1722] via-[#243547] to-[#2f4054] overflow-hidden"
+      className="relative pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#020b17] via-[#041528] to-[#020e1c] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >

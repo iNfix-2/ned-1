@@ -26,7 +26,7 @@ export default function PlatformsCarousel({ onOpenContact, onOpenGallery }) {
   const currentPlatform = PLATFORMS_LIST[activeIdx];
 
   return (
-    <section id="platforms" className="pt-16 pb-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#2f4054] via-[#3d4f64] to-[#121c29] relative overflow-hidden text-center" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+    <section id="platforms" className="pt-16 pb-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#020e1c] via-[#051830] to-[#020e1c] relative overflow-hidden text-center" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
       <div className="max-w-7xl mx-auto space-y-10">
         
         {/* Header from Nethawk Solutions Document */}

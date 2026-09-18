@@ -38,7 +38,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070d14] text-white flex flex-col font-sans selection:bg-blue-600 selection:text-white antialiased overflow-x-hidden">
+    <div className="min-h-screen bg-[#020e1c] text-white flex flex-col font-sans selection:bg-blue-600 selection:text-white antialiased overflow-x-hidden">
       
       {currentPage === 'missions' ? (
         /* Missions Page (Matching media_1789642969822.jpg exactly) */
