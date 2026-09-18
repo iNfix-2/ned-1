@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MISSIONS_LIST } from '../data/tekeverContent';
 
 export default function MissionBanner({ onOpenContact, onNavigateMissions }) {
-  const [activeIdx, setActiveIdx] = useState(1); // 'Persistent Awareness. Smarter Protection.'
+  const [activeIdx, setActiveIdx] = useState(0); // 'ISR & Aerial Surveillance'
   const activeMission = MISSIONS_LIST[activeIdx];
 
   return (
@@ -18,8 +18,7 @@ export default function MissionBanner({ onOpenContact, onNavigateMissions }) {
       <div className="max-w-6xl mx-auto relative z-10 text-center space-y-12">
         {/* Section Headline from Document */}
         <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-snug max-w-2xl mx-auto">
-          Engineering Solutions for a Connected World,<br />
-          NETHAWK delivers.
+          Securing Africa's Critical Infrastructures
         </h2>
 
         {/* Big Rounded Ocean / Security Card */}
@@ -41,9 +40,6 @@ export default function MissionBanner({ onOpenContact, onNavigateMissions }) {
             <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 text-left">
               
               <div className="space-y-2">
-                <span className="text-[11px] font-mono text-[#38bdf8] font-bold tracking-wider uppercase block">
-                  {activeMission.badge}
-                </span>
                 <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
                   {activeMission.title}
                 </h3>
