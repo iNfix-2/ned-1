@@ -15,13 +15,13 @@ export default function NewsSection({ onOpenContact }) {
   return (
     <section
       id="services"
-      className="relative min-h-[90vh] sm:min-h-screen py-16 sm:py-24 px-6 sm:px-12 bg-gradient-to-b from-[#020e1c] via-[#041427] to-[#010813] overflow-hidden flex flex-col justify-center"
+      className="relative min-h-screen py-8 sm:py-12 px-4 sm:px-8 lg:px-12 bg-gradient-to-b from-[#020e1c] via-[#041427] to-[#010813] overflow-hidden flex flex-col justify-center"
     >
-      <div className="max-w-7xl w-full mx-auto space-y-8 sm:space-y-12">
+      <div className="max-w-[92vw] 2xl:max-w-[1600px] w-full mx-auto space-y-4 sm:space-y-6 flex flex-col justify-center">
         
         {/* Header Row: Big 'Services' Title + Circular Nav Arrows */}
         <div className="flex items-end justify-between">
-          <h2 className="text-4xl sm:text-7xl font-bold text-slate-300/35 tracking-tight select-none">
+          <h2 className="text-3xl sm:text-6xl font-bold text-slate-300/35 tracking-tight select-none">
             Services
           </h2>
 
@@ -43,7 +43,7 @@ export default function NewsSection({ onOpenContact }) {
           </div>
         </div>
 
-        {/* 4 Tall Rounded Service Cards Grid */}
+        {/* 4 Tall Rounded Service Cards Grid (80% viewport height) */}
         <div
           ref={scrollRef}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto pb-4 scrollbar-none"
@@ -51,7 +51,7 @@ export default function NewsSection({ onOpenContact }) {
           {CORE_SERVICES.map((service) => (
             <div
               key={service.id}
-              className="group relative h-[56vh] min-h-[460px] max-h-[600px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl flex flex-col justify-end p-6 cursor-pointer bg-[#020710] flex-shrink-0"
+              className="group relative h-[78vh] sm:h-[80vh] min-h-[540px] max-h-[85vh] rounded-3xl overflow-hidden border border-white/10 shadow-2xl flex flex-col justify-end p-6 cursor-pointer bg-[#020710] flex-shrink-0"
               onClick={onOpenContact}
             >
               {/* Card Background Image */}

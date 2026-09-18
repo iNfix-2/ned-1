@@ -48,15 +48,15 @@ export default function AtlasSection({ onOpenContact }) {
   return (
     <section
       id="ai-systems"
-      className="relative min-h-[90vh] sm:min-h-screen py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#020e1c] via-[#031326] to-[#020e1c] overflow-hidden flex flex-col justify-center"
+      className="relative min-h-screen py-8 sm:py-12 px-4 sm:px-8 lg:px-12 bg-gradient-to-b from-[#020e1c] via-[#031326] to-[#020e1c] overflow-hidden flex flex-col justify-center items-center"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="max-w-6xl w-full mx-auto">
+      <div className="max-w-[92vw] 2xl:max-w-[1600px] w-full mx-auto flex flex-col items-center justify-center">
         
-        {/* Massive Rounded Slideshow Banner Card */}
+        {/* Massive Rounded Slideshow Banner Card (80% viewport height) */}
         <div 
-          className="relative w-full h-[62vh] min-h-[460px] sm:min-h-[520px] max-h-[660px] rounded-[32px] sm:rounded-[36px] overflow-hidden border border-white/10 shadow-2xl group flex items-center justify-center text-center"
+          className="relative w-full h-[80vh] min-h-[580px] max-h-[85vh] rounded-[32px] sm:rounded-[40px] overflow-hidden border border-white/10 shadow-2xl group flex items-center justify-center text-center"
         >
           {/* Background Images with smooth fade transition */}
           {SLIDES.map((slide, idx) => (
