@@ -21,13 +21,6 @@ export default function PlatformsCarousel({ onOpenContact }) {
         
         {/* Header from Nethawk Solutions Document */}
         <div className="space-y-3 max-w-2xl mx-auto">
-          <div className="flex items-center justify-center space-x-2">
-            <span className="w-1.5 h-1.5 bg-[#38bdf8] rounded-full"></span>
-            <span className="text-[11px] font-mono text-[#38bdf8] font-bold tracking-widest uppercase">
-              NETHAWK DEFENCE TECH
-            </span>
-          </div>
-          
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
             Advanced Defence &amp; Unmanned Systems
           </h2>
@@ -70,15 +63,15 @@ export default function PlatformsCarousel({ onOpenContact }) {
             >
               <div className="w-full h-44 rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative">
                 <img
-                  src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=800&q=80"
-                  alt="Tactical UAV"
+                  src={PLATFORMS_LIST[0].image}
+                  alt={PLATFORMS_LIST[0].name}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               </div>
             </div>
 
-            {/* Center Plane: Long-Endurance ISR UAS */}
+            {/* Center Plane: Active Platform */}
             <div className="transition-all duration-500 z-20 mx-2 sm:mx-8 transform scale-105 sm:scale-115">
               <div className="relative w-80 sm:w-[480px] aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl border border-white/20 group">
                 <img
@@ -90,7 +83,6 @@ export default function PlatformsCarousel({ onOpenContact }) {
                 
                 {/* Platform Label on Center Image */}
                 <div className="absolute bottom-4 left-6 text-left">
-                  <div className="text-[10px] font-mono text-[#38bdf8] font-bold uppercase tracking-wider">{currentPlatform.role}</div>
                   <div className="text-xl font-extrabold text-white">{currentPlatform.name}</div>
                 </div>
               </div>
@@ -105,8 +97,8 @@ export default function PlatformsCarousel({ onOpenContact }) {
             >
               <div className="w-full h-44 rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative">
                 <img
-                  src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=800&q=80"
-                  alt="Counter-UAS"
+                  src={PLATFORMS_LIST[2].image}
+                  alt={PLATFORMS_LIST[2].name}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>

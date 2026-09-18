@@ -216,8 +216,8 @@ export default function ModularAutonomy({ onOpenContact }) {
             </div>
             <div className="aspect-[16/10] rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
               <img
-                src="https://images.unsplash.com/photo-1517976487502-5f6063b4041d?auto=format&fit=crop&w=1200&q=80"
-                alt="Sensor gimbal closeup"
+                src="/assets/images/platforms/nethawk-vtol-isr.jpg"
+                alt="Long-Endurance ISR UAS Platform"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>

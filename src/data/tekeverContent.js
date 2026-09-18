@@ -66,7 +66,7 @@ export const PLATFORMS_LIST = [
     name: 'Long-Endurance ISR UAS',
     role: 'PERSISTENT SURVEILLANCE',
     tagline: 'Advanced unmanned aerial system delivering persistent operational awareness.',
-    image: 'https://images.unsplash.com/photo-1517976487502-5f6063b4041d?auto=format&fit=crop&w=900&q=80',
+    image: '/assets/images/platforms/nethawk-vtol-isr.jpg',
     specs: {
       mtow: 'Heavy Payload',
       wingspan: 'Extended Span',
