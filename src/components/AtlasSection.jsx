@@ -48,7 +48,7 @@ export default function AtlasSection({ onOpenContact }) {
   return (
     <section
       id="ai-systems"
-      className="relative w-full min-h-[85vh] lg:h-screen lg:min-h-[700px] overflow-hidden flex flex-col justify-between items-center bg-[#020e1c] text-center"
+      className="relative w-full min-h-[75vh] lg:min-h-[640px] overflow-hidden flex flex-col justify-between items-center bg-[#020e1c] text-center pt-4 sm:pt-8 pb-10 sm:pb-16"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -70,7 +70,7 @@ export default function AtlasSection({ onOpenContact }) {
       ))}
 
       {/* Top spacer / header alignment */}
-      <div className="pt-16 sm:pt-20 lg:pt-24"></div>
+      <div className="pt-2 sm:pt-4"></div>
 
       {/* 2. Central AI, Data & Intelligent Systems Typography */}
       <div className="relative z-10 space-y-4 px-6 max-w-3xl mx-auto my-auto transition-all duration-500">

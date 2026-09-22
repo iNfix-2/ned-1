@@ -28,7 +28,7 @@ export default function PlatformsCarousel({ onOpenContact, onOpenGallery, onSele
   return (
     <section
       id="platforms"
-      className="relative w-full min-h-[85vh] lg:h-screen lg:min-h-[700px] overflow-hidden flex flex-col justify-between bg-[#020e1c] text-center"
+      className="relative w-full min-h-[75vh] lg:min-h-[640px] overflow-hidden flex flex-col justify-between bg-[#020e1c] text-center pt-4 sm:pt-8 pb-10 sm:pb-16"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -50,7 +50,7 @@ export default function PlatformsCarousel({ onOpenContact, onOpenGallery, onSele
       ))}
 
       {/* 2. Top Header Section */}
-      <div className="relative z-20 max-w-7xl w-full mx-auto px-6 sm:px-12 pt-16 sm:pt-20 lg:pt-24 space-y-2">
+      <div className="relative z-20 max-w-7xl w-full mx-auto px-6 sm:px-12 pt-2 sm:pt-4 space-y-2">
         <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight drop-shadow-md">
           Advanced Defence &amp; Unmanned Systems
         </h2>

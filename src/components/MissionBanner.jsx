@@ -17,7 +17,7 @@ export default function MissionBanner({ onOpenContact, onNavigateMissions }) {
 
   return (
     <section
-      className="relative w-full min-h-screen py-12 sm:py-16 px-4 sm:px-8 lg:px-12 flex flex-col justify-center items-center bg-[#020e1c] overflow-hidden"
+      className="relative w-full pt-4 sm:pt-6 pb-8 sm:pb-12 px-4 sm:px-8 lg:px-12 flex flex-col items-center bg-[#020e1c] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -28,10 +28,10 @@ export default function MissionBanner({ onOpenContact, onNavigateMissions }) {
         </svg>
       </div>
 
-      <div className="max-w-6xl w-full mx-auto relative z-10 space-y-6 sm:space-y-8 flex flex-col items-center justify-center">
+      <div className="max-w-6xl w-full mx-auto relative z-10 space-y-4 sm:space-y-5 flex flex-col items-center justify-center">
         
         {/* 1. Header Text positioned cleanly ABOVE the image card */}
-        <div className="text-center max-w-3xl mx-auto space-y-2">
+        <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2">
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-snug drop-shadow-md">
             Securing Africa's Critical Infrastructures
           </h2>
@@ -40,8 +40,8 @@ export default function MissionBanner({ onOpenContact, onNavigateMissions }) {
           </p>
         </div>
 
-        {/* 2. Padded, Rounded Image Card Container (Does not span to each end) */}
-        <div className="relative w-full h-[52vh] sm:h-[58vh] min-h-[420px] sm:min-h-[480px] max-h-[620px] rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-2xl border border-white/15 group">
+        {/* 2. Padded, Rounded Image Card Container (Taller by 20%) */}
+        <div className="relative w-full h-[65vh] sm:h-[72vh] min-h-[500px] sm:min-h-[580px] max-h-[740px] rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-2xl border border-white/15 group">
           
           {/* Mission Background Image Slides */}
           {MISSIONS_LIST.map((mission, idx) => (
