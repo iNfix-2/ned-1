@@ -68,7 +68,9 @@ export default function Footer({
               <ul className="space-y-2 text-[10.5px] sm:text-xs leading-snug sm:leading-relaxed">
                 <li><button onClick={onNavigateAbout || onNavigateHome} className="hover:text-white transition-colors text-left block">About Nethawk</button></li>
                 <li><button onClick={onNavigateManufacturing} className="hover:text-white transition-colors text-left block">Manufacturing</button></li>
-                <li><button onClick={onNavigateAcademy} className="hover:text-white transition-colors text-left block">NATI Academy</button></li>
+                <li><a href="/academy/index.html" className="hover:text-white transition-colors text-left block font-medium text-sky-400">NATI Academy Hub</a></li>
+                <li><a href="/academy/training-programmes.html" className="hover:text-white transition-colors text-left block">Academy Programmes</a></li>
+                <li><a href="/academy/admissions.html" className="hover:text-white transition-colors text-left block">Admissions &amp; Apply</a></li>
                 <li><button onClick={onNavigateNews || onNavigateHome} className="hover:text-white transition-colors text-left block">In the Media</button></li>
                 <li><button onClick={onNavigateContact || onOpenContact} className="hover:text-white transition-colors text-left block">How to Reach Us</button></li>
               </ul>

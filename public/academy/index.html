@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>NATI | Nethawk Aviation Training Institute</title>
+    <meta
+        content="NATI — ICAO-aligned professional aviation training. Air traffic services, airport emergency response, and executive aviation management."
+        name="description" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body class="bg-background text-on-surface font-body-lg selection:bg-secondary selection:text-on-secondary">
+    <!-- Top Navigation -->
+    <!-- Top Navigation -->
+    <nav
+        class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-md flex justify-between items-center px-grid-margin py-4">
+        <a href="index.html" class="flex items-center"><img src="assets/images/logo-white.png" alt="NATI Logo"
+                class="h-[52px] w-auto" /></a>
+        <div class="hidden md:flex gap-7 items-center">
+            <a class="font-label-caps text-primary font-bold border-b-2 border-secondary pb-1"
+                href="index.html">Home</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors"
+                href="about-us.html">About</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors"
+                href="training-programmes.html">Programmes</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors"
+                href="services.html">Services</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors"
+                href="admissions.html">Admissions</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors"
+                href="calendar-timetable.html">Timetable</a>
+        </div>
+        <div class="flex items-center gap-3">
+            <a href="apply-now.html" class="hidden sm:inline-flex bg-secondary hover:bg-secondary/80 text-on-secondary-container px-5 py-2 rounded text-xs font-bold transition-all items-center gap-1.5">Apply Now</a>
+            <a href="/" class="inline-flex items-center gap-1.5 text-xs font-mono text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 px-3.5 py-2 rounded-full border border-white/10 transition-all">
+                <span>←</span>
+                <span>Nethawk Main</span>
+            </a>
+            <button aria-label="Toggle Menu" class="md:hidden text-on-surface hover:text-secondary transition-colors"
+                id="mobile-menu-btn"><span class="material-symbols-outlined text-[28px]">menu</span></button>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-background/10 z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40 z-10"></div>
+            <img alt="NATI aviation professionals in operational training"
+                class="w-full h-full object-cover" src="assets/images/hero-uav-assembly.jpg" />
+        </div>
+        <div class="relative z-20 px-grid-margin w-full max-w-6xl">
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-3 glass-surface px-5 py-2 rounded-full">
+                    <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                    <span class="font-label-caps text-label-caps text-on-surface tracking-[0.15em]">NETHAWK AVIATION TRAINING INSTITUTE</span>
+                </div>
+                <h1 class="font-display-lg text-display-lg text-white max-w-3xl">
+                    Elevating African Aviation Through
+                    <span class="text-secondary">Discipline &amp; Mastery.</span>
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
+                    NATI is a professional aviation institute training the people behind safe airspace —
+                    communicators, emergency responders, and aviation leaders — with instructor-led,
+                    standards-driven programmes.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a class="bg-secondary text-on-secondary-container px-10 py-4 font-bold rounded hover:shadow-lg hover:shadow-secondary/20 transition-all inline-flex items-center gap-3 justify-center text-center"
+                        href="about-us.html">Discover NATI
+                        <span class="material-symbols-outlined">arrow_forward</span></a>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 max-w-2xl">
+                    <div>
+                        <p class="font-display-lg text-headline-lg text-white">ICAO</p>
+                        <p class="font-label-caps text-label-caps text-on-surface-variant mt-1">ALIGNED STANDARDS</p>
+                    </div>
+                    <div>
+                        <p class="font-display-lg text-headline-lg text-white">100%</p>
+                        <p class="font-label-caps text-label-caps text-on-surface-variant mt-1">INSTRUCTOR-LED</p>
+                    </div>
+                    <div>
+                        <p class="font-display-lg text-headline-lg text-white">3</p>
+                        <p class="font-label-caps text-label-caps text-on-surface-variant mt-1">TRAINING SCHOOLS</p>
+                    </div>
+                    <div>
+                        <p class="font-display-lg text-headline-lg text-white">Safety</p>
+                        <p class="font-label-caps text-label-caps text-on-surface-variant mt-1">FIRST CULTURE</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Technical Decoration -->
+        <div class="absolute bottom-8 left-grid-margin right-grid-margin z-20 hidden lg:flex items-center justify-between font-label-caps text-label-caps text-outline-variant">
+            <div class="flex items-center gap-10">
+                <div class="flex flex-col">
+                    <span>SCROLL</span>
+                    <span class="text-on-surface">EXPLORE THE INSTITUTE ↓</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-10">
+                <div class="flex flex-col text-right">
+                    <span>STANDARDS</span>
+                    <span class="text-on-surface">DISCIPLINE • PRECISION • MASTERY</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Value Props / Trust Statements -->
+    <section class="py-section-padding bg-surface-container-lowest relative border-y border-outline-variant/30">
+        <div class="px-grid-margin grid grid-cols-1 md:grid-cols-3 gap-element-gap">
+            <div class="p-8 border-l-2 border-secondary space-y-3">
+                <span class="font-label-caps text-label-caps text-secondary block">01</span>
+                <h3 class="font-display-lg text-title-md text-white">Standards-Driven Training</h3>
+                <p class="text-on-surface-variant">Courses built around ICAO procedures — from ATS communication to aerodrome emergency response.</p>
+            </div>
+            <div class="p-8 border-l-2 border-outline-variant space-y-3">
+                <span class="font-label-caps text-label-caps text-on-surface-variant block">02</span>
+                <h3 class="font-display-lg text-title-md text-white">Operational Readiness</h3>
+                <p class="text-on-surface-variant">Scenario-based instruction that prepares personnel for live traffic, real emergencies, and executive decisions.</p>
+            </div>
+            <div class="p-8 border-l-2 border-outline-variant space-y-3">
+                <span class="font-label-caps text-label-caps text-on-surface-variant block">03</span>
+                <h3 class="font-display-lg text-title-md text-white">Career Pathways</h3>
+                <p class="text-on-surface-variant">Clear progression from foundation and entry-level courses to advanced and officer-level qualifications.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Institute Section -->
+    <section class="py-section-padding relative overflow-hidden">
+        <div class="grid-accent absolute inset-0 opacity-20"></div>
+        <div class="px-grid-margin relative z-10">
+            <div class="max-w-3xl mb-12">
+                <span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase">The Institute</span>
+                <h2 class="font-display-lg text-headline-lg text-white mt-3">More Than a School.</h2>
+                <p class="text-on-surface-variant mt-3">Training, services, and community — everything NATI stands for beyond the classroom.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="about-us.html" class="glass-surface p-8 rounded-lg accent-glow group hover:border-secondary transition-all space-y-5 block hover:-translate-y-1 duration-300">
+                    <div class="flex items-start justify-between">
+                        <span class="material-symbols-outlined text-secondary text-4xl">school</span>
+                        <span class="px-3 py-1 rounded-full bg-secondary/15 border border-secondary/30 font-label-caps text-label-caps text-secondary">OUR STORY</span>
+                    </div>
+                    <h3 class="font-display-lg text-title-md text-white group-hover:text-secondary transition-colors">About NATI</h3>
+                    <p class="text-on-surface-variant text-sm leading-relaxed">Our mission, values, and the standards behind every programme we run.</p>
+                    <span class="inline-flex items-center gap-2 text-secondary font-bold text-sm">OUR MISSION <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
+                </a>
+                <a href="services.html" class="glass-surface p-8 rounded-lg accent-glow group hover:border-secondary transition-all space-y-5 block hover:-translate-y-1 duration-300">
+                    <div class="flex items-start justify-between">
+                        <span class="material-symbols-outlined text-secondary text-4xl">settings_suggest</span>
+                        <span class="px-3 py-1 rounded-full bg-secondary/15 border border-secondary/30 font-label-caps text-label-caps text-secondary">WHAT WE DO</span>
+                    </div>
+                    <h3 class="font-display-lg text-title-md text-white group-hover:text-secondary transition-colors">Services &amp; Support</h3>
+                    <p class="text-on-surface-variant text-sm leading-relaxed">Consultancy, technical support, and enterprise training for aviation organisations.</p>
+                    <span class="inline-flex items-center gap-2 text-secondary font-bold text-sm">OUR SERVICES <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
+                </a>
+                <a href="about-us.html" class="glass-surface p-8 rounded-lg accent-glow group hover:border-secondary transition-all space-y-5 block hover:-translate-y-1 duration-300">
+                    <div class="flex items-start justify-between">
+                        <span class="material-symbols-outlined text-secondary text-4xl">groups</span>
+                        <span class="px-3 py-1 rounded-full bg-secondary/15 border border-secondary/30 font-label-caps text-label-caps text-secondary">COMMUNITY</span>
+                    </div>
+                    <h3 class="font-display-lg text-title-md text-white group-hover:text-secondary transition-colors">Campus &amp; Student Life</h3>
+                    <p class="text-on-surface-variant text-sm leading-relaxed">Labs, field drills, and a community of aviation professionals learning together.</p>
+                    <span class="inline-flex items-center gap-2 text-secondary font-bold text-sm">STUDENT LIFE <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section class="py-section-padding relative overflow-hidden bg-surface-container-low">
+        <div class="px-grid-margin grid grid-cols-1 lg:grid-cols-2 gap-grid-margin items-center relative z-10">
+            <div class="relative overflow-hidden rounded-lg">
+                <img src="assets/images/trainee-controller.jpg" alt="NATI trainee operating a drone controller during practical flight training" class="w-full aspect-[4/3] object-cover" />
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-6 flex items-center gap-6">
+                    <div>
+                        <p class="font-display-lg text-headline-lg text-white">9</p>
+                        <p class="font-label-caps text-label-caps text-on-surface-variant">COURSES</p>
+                    </div>
+                    <div class="w-px h-10 bg-outline-variant"></div>
+                    <div>
+                        <p class="font-display-lg text-headline-lg text-white">3</p>
+                        <p class="font-label-caps text-label-caps text-on-surface-variant">SCHOOLS</p>
+                    </div>
+                    <div class="w-px h-10 bg-outline-variant"></div>
+                    <div>
+                        <p class="font-display-lg text-headline-lg text-white">ICAO</p>
+                        <p class="font-label-caps text-label-caps text-on-surface-variant">ALIGNED</p>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-8">
+                <div class="space-y-3">
+                    <span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase">Why NATI</span>
+                    <h2 class="font-display-lg text-headline-lg text-white">Elevating the Standards of <span
+                            class="text-secondary">Aviation.</span></h2>
+                </div>
+                <div class="tech-line-h w-24"></div>
+                <p class="font-body-lg text-on-surface-variant leading-relaxed">
+                    The Nethawk Aviation Training Institute (NATI) trains the people behind safe airspace — air
+                    traffic communicators, aerodrome rescue and firefighting personnel, and aviation executives.
+                    <br /><br />
+                    Our graduates leave with more than a certificate: the procedures, discipline, and judgement to
+                    perform under real operational pressure.
+                </p>
+                <div class="pt-2 flex flex-wrap gap-4">
+                    <a class="inline-flex items-center gap-4 text-secondary font-bold hover:gap-6 transition-all"
+                        href="about-us.html">
+                        LEARN MORE ABOUT OUR MISSION
+                        <span class="material-symbols-outlined">trending_flat</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Why Choose NATI (Bento Style Cards) -->
+    <section class="py-section-padding bg-surface-container-lowest border-y border-outline-variant/30">
+        <div class="px-grid-margin mb-element-gap max-w-3xl">
+            <span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase">The NATI Advantage</span>
+            <h2 class="font-display-lg text-headline-lg text-white mt-3">Built for Operational Excellence.</h2>
+            <p class="text-on-surface-variant mt-3">Four principles behind every course we run.</p>
+        </div>
+        <div class="px-grid-margin grid grid-cols-1 md:grid-cols-12 gap-gutter">
+            <div class="md:col-span-4 glass-surface p-8 group hover:border-secondary transition-colors cursor-default space-y-3">
+                <span class="material-symbols-outlined text-secondary text-4xl">verified</span>
+                <h3 class="font-display-lg text-title-md text-white mb-2">ICAO-Aligned Procedures</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">ATS communication, radar services, and information management taught to international standards.</p>
+            </div>
+            <div
+                class="md:col-span-8 glass-surface p-8 group hover:border-secondary transition-colors cursor-default relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-8">
+                    <span class="material-symbols-outlined text-secondary/30 text-8xl"
+                        style="font-variation-settings: 'FILL' 1;">radar</span>
+                </div>
+                <span class="material-symbols-outlined text-secondary text-4xl">groups</span>
+                <h3 class="font-display-lg text-title-md text-white mb-2 max-w-md mt-3">Instructor-Led Operations</h3>
+                <p class="text-on-surface-variant text-sm max-w-sm leading-relaxed">From aerodrome emergency drills to ATC refresher sessions — learn by doing, under serving-experienced instructors.</p>
+            </div>
+            <div class="md:col-span-7 glass-surface p-8 group hover:border-secondary transition-colors cursor-default space-y-3">
+                <span class="material-symbols-outlined text-secondary text-4xl">health_and_safety</span>
+                <h3 class="font-display-lg text-title-md text-white mb-2">Safety-First Culture</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">Rescue, firefighting, and emergency procedures drilled to minimize risk and maximize reliability when it matters most.</p>
+            </div>
+            <div class="md:col-span-5 bg-primary-container p-8 accent-glow border border-primary/20 space-y-3">
+                <span class="material-symbols-outlined text-on-primary-container text-4xl">trending_up</span>
+                <h3 class="font-display-lg text-title-md text-white mb-2">Career Progression</h3>
+                <p class="text-on-primary-container text-sm leading-relaxed">Entry-level firefighting to fire-officer command. Foundation ATS to advanced information management. Executive decision-making.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Courses Banner (compact) -->
+    <section class="py-section-padding px-grid-margin">
+        <div class="max-w-4xl mx-auto">
+            <a href="training-programmes.html" class="group glass-surface rounded-lg p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-secondary transition-all">
+                <div class="space-y-2">
+                    <span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase">Course Catalog</span>
+                    <h2 class="font-display-lg text-title-md text-white group-hover:text-secondary transition-colors">Browse our 9 professional courses.</h2>
+                    <p class="text-on-surface-variant text-sm">Air traffic services, emergency response, and executive management.</p>
+                </div>
+                <span class="inline-flex items-center gap-3 bg-secondary text-on-secondary-container px-8 py-4 font-bold rounded shrink-0">VIEW COURSES <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
+            </a>
+        </div>
+    </section>
+    <!-- Quote Section -->
+    <section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-background/60 z-10 backdrop-blur-[2px]"></div>
+        <img alt="NATI Aviation Graphic" class="absolute inset-0 w-full h-full object-cover"
+            src="assets/images/simulation-class.png" />
+        <div class="relative z-20 px-grid-margin text-center max-w-4xl">
+            <span class="material-symbols-outlined text-secondary text-6xl mb-6"
+                style="font-variation-settings: 'FILL' 1;">format_quote</span>
+            <blockquote class="font-display-lg text-headline-lg text-white mb-8 italic">
+                "Excellence in aviation begins with discipline, precision, and practical mastery."
+            </blockquote>
+            <cite class="font-label-caps text-label-caps text-secondary uppercase tracking-[0.2em]">— NATI Flight
+                command</cite>
+        </div>
+    </section>
+    <!-- Gallery Section -->
+    <section class="py-section-padding bg-surface">
+        <div class="px-grid-margin mb-10 max-w-3xl">
+            <span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase">Life at NATI</span>
+            <h2 class="font-display-lg text-headline-lg text-white mt-3">Training, In Practice.</h2>
+            <p class="text-on-surface-variant mt-3">Field operations, technical labs, and theory — the three places every NATI trainee learns.</p>
+        </div>
+        <div class="px-grid-margin grid grid-cols-1 md:grid-cols-3 gap-element-gap">
+            <div class="md:col-span-2 group relative overflow-hidden h-[400px] rounded-lg">
+                <img alt="NATI trainees and guests observing a flight demonstration outdoors"
+                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    src="assets/images/life-field-ops.jpg" />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex items-end">
+                    <span class="font-label-caps text-label-caps text-secondary">FIELD OPERATIONS / PRACTICAL DRILLS</span>
+                </div>
+            </div>
+            <div class="group relative overflow-hidden h-[400px] rounded-lg">
+                <img alt="NATI trainees working hands-on with UAV electronics at the lab bench"
+                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    src="assets/images/life-tech-lab.jpg" />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex items-end">
+                    <span class="font-label-caps text-label-caps text-secondary">TECHNICAL LABS / HANDS-ON</span>
+                </div>
+            </div>
+            <div class="group relative overflow-hidden h-[400px] rounded-lg">
+                <img alt="NATI instructor teaching search-and-rescue support operations in a theory session"
+                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    src="assets/images/life-theory.jpg" />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex items-end">
+                    <span class="font-label-caps text-label-caps text-secondary">THEORY &amp; BRIEFINGS</span>
+                </div>
+            </div>
+            <div class="md:col-span-2 glass-surface rounded-lg flex items-center justify-center p-12 text-center">
+                <div class="space-y-4">
+                    <h3 class="font-display-lg text-headline-lg text-white">Join the Next Cohort.</h3>
+                    <p class="text-on-surface-variant max-w-lg">Train with instructors, drill in labs and field sessions, and graduate ready for operations.</p>
+                    <a class="inline-flex bg-secondary text-on-secondary-container px-12 py-4 font-bold rounded hover:shadow-lg transition-all mt-4 items-center gap-3 justify-center text-center"
+                        href="services.html">EXPLORE SERVICES <span class="material-symbols-outlined">arrow_forward</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest border-t border-outline-variant">
+        <div class="grid grid-cols-3 md:grid-cols-4 gap-element-gap px-grid-margin py-section-padding w-full">
+            <div class="space-y-6 col-span-3 md:col-span-1">
+                <img alt="NATI Logo" class="h-[52px] w-auto" src="assets/images/logo-white.png" />
+                <p class="text-on-surface-variant text-sm leading-relaxed">
+                    Nethawk Aviation Training Institute — professional training in air traffic services,
+                    airport emergency response, and aviation management.
+                </p>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 glass-surface flex items-center justify-center hover:text-secondary transition-colors"
+                        href="index.html"><span class="material-symbols-outlined text-sm">language</span></a>
+                    <a class="w-10 h-10 glass-surface flex items-center justify-center hover:text-secondary transition-colors"
+                        href="index.html"><span class="material-symbols-outlined text-sm">share</span></a>
+                    <a class="w-10 h-10 glass-surface flex items-center justify-center hover:text-secondary transition-colors"
+                        href="mailto:admissions@nati.aero"><span
+                            class="material-symbols-outlined text-sm">mail</span></a>
+                </div>
+            </div>
+            <div class="space-y-4 col-span-1">
+                <h4 class="font-label-caps text-label-caps text-white mb-6">EXPLORE</h4>
+                <ul class="space-y-3">
+                    <li><a class="text-on-surface-variant hover:text-secondary transition-colors text-sm"
+                            href="about-us.html">About NATI</a></li>
+                    <li><a class="text-on-surface-variant hover:text-secondary transition-colors text-sm"
+                            href="training-programmes.html">Courses</a></li>
+                    <li><a class="text-on-surface-variant hover:text-secondary transition-colors text-sm"
+                            href="services.html">Services</a></li>
+                </ul>
+            </div>
+            <div class="space-y-4 col-span-1">
+                <h4 class="font-label-caps text-label-caps text-white mb-6">ADMISSIONS</h4>
+                <ul class="space-y-3">
+                    <li><a class="text-on-surface-variant hover:text-secondary transition-colors text-sm"
+                            href="admissions.html">Admissions</a></li>
+                    <li><a class="text-on-surface-variant hover:text-secondary transition-colors text-sm"
+                            href="apply-now.html">Apply Now</a></li>
+                    <li><a class="text-on-surface-variant hover:text-secondary transition-colors text-sm"
+                            href="calendar-timetable.html">Calendar &amp; Timetable</a></li>
+                </ul>
+            </div>
+            <div class="space-y-4 col-span-1">
+                <h4 class="font-label-caps text-label-caps text-white mb-6">NEWSLETTER</h4>
+                <p class="text-on-surface-variant text-sm mb-4">Stay updated on new cohorts and aviation trends.</p>
+                <div class="flex border-b border-outline-variant pb-2">
+                    <input class="bg-transparent border-none focus:ring-0 text-sm w-full text-white"
+                        placeholder="Email address" type="email" />
+                    <button class="text-secondary hover:translate-x-1 transition-transform"
+                        onclick="alert('Thank you for subscribing to our newsletter!')" type="button">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div
+            class="px-grid-margin py-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-body-lg text-label-caps text-on-surface-variant/60">
+                © 2024 Nethawk Aviation Training Institute. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Simple scroll behavior for nav
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2');
+            }
+        });
+    </script>
+    <!-- Mobile Drawer -->
+    <div class="fixed inset-y-0 right-0 z-[100] w-64 bg-surface-container-high/95 backdrop-blur-2xl border-l border-white/10 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col p-6 overflow-y-auto"
+        id="mobile-drawer">
+        <div class="flex justify-between items-center mb-8">
+            <img src="assets/images/logo-white.png" alt="NATI Logo" class="h-[52px] w-auto" />
+            <button class="text-on-surface hover:text-secondary" id="close-menu-btn"><span
+                    class="material-symbols-outlined">close</span></button>
+        </div>
+        <div class="flex flex-col gap-4">
+            <a class="text-secondary font-bold text-sm flex items-center gap-2 border-b border-outline-variant/30 pb-2"
+                href="/">← Back to Nethawk Main</a>
+            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
+                href="index.html">Home</a>
+            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
+                href="about-us.html">About</a>
+            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
+                href="training-programmes.html">Programmes</a>
+            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
+                href="services.html">Services</a>
+            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
+                href="admissions.html">Admissions</a>
+            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
+                href="calendar-timetable.html">Timetable</a>
+            <a class="text-secondary font-bold border-b border-outline-variant/30 pb-2"
+                href="apply-now.html">Apply Now</a>
+        </div>
+    </div>
+    <!-- Mobile Overlay -->
+    <div class="fixed inset-0 z-[90] bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
+        id="mobile-overlay"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-menu-btn');
+            const drawer = document.getElementById('mobile-drawer');
+            const overlay = document.getElementById('mobile-overlay');
+
+            if (menuBtn && closeBtn && drawer && overlay) {
+                const toggleMenu = () => {
+                    const isOpen = !drawer.classList.contains('translate-x-full');
+                    if (isOpen) {
+                        drawer.classList.add('translate-x-full');
+                        overlay.classList.remove('opacity-100');
+                        overlay.classList.add('opacity-0');
+                        overlay.classList.add('pointer-events-none');
+                    } else {
+                        drawer.classList.remove('translate-x-full');
+                        overlay.classList.remove('opacity-0');
+                        overlay.classList.add('opacity-100');
+                        overlay.classList.remove('pointer-events-none');
+                    }
+                };
+                menuBtn.addEventListener('click', toggleMenu);
+                closeBtn.addEventListener('click', toggleMenu);
+                overlay.addEventListener('click', toggleMenu);
+            }
+        });
+    </script>
+</body>
+
+</html>

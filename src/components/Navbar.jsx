@@ -157,7 +157,17 @@ export default function Navbar({
               Digital
             </button>
 
-            {/* 7. About */}
+            {/* 7. Academy & NATI */}
+            <button
+              onClick={onNavigateAcademy}
+              className={`transition-colors ${
+                activePage === 'academy' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
+              }`}
+            >
+              Academy
+            </button>
+
+            {/* 8. About */}
             <button
               onClick={onNavigateAbout}
               className={`transition-colors ${
@@ -167,7 +177,7 @@ export default function Navbar({
               About
             </button>
 
-            {/* 8. Contact */}
+            {/* 9. Contact */}
             <button
               onClick={onNavigateContact || onOpenContact}
               className={`transition-colors ${

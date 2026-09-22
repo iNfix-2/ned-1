@@ -117,7 +117,7 @@ export default function App() {
     onNavigateNews: () => navigateTo('news'),
     onNavigateContact: () => navigateTo('contact'),
     onNavigateManufacturing: () => navigateTo('manufacturing'),
-    onNavigateAcademy: () => navigateTo('academy'),
+    onNavigateAcademy: () => { window.location.href = '/academy/index.html'; },
     onNavigateDefenseTech: () => navigateTo('defense-tech'),
     onOpenContact: () => setContactModalOpen(true),
     onOpenPolicy: openPolicy,

@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Hero({ onOpenContact }) {
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      // Progressively increase as user scrolls down from hero (0 at top, 1 at 350px)
+      const progress = Math.min(1, Math.max(0, scrollY / 350));
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Compute dynamic responsive bottom border radius (0px flat at top, curving up to 52px as user scrolls)
+  const bottomRadius = Math.round(scrollProgress * 52);
+  const buttonRadius = Math.round(24 + scrollProgress * 16);
+
   return (
-    <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden bg-black">
+    <section 
+      className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden bg-black transition-all duration-200"
+      style={{
+        borderBottomLeftRadius: `${bottomRadius}px`,
+        borderBottomRightRadius: `${bottomRadius}px`,
+      }}
+    >
       {/* Background Video from Assets - Pure & Vivid without any dark/color overlays */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div 
+        className="absolute inset-0 overflow-hidden transition-all duration-200"
+        style={{
+          borderBottomLeftRadius: `${bottomRadius}px`,
+          borderBottomRightRadius: `${bottomRadius}px`,
+        }}
+      >
         <video
           autoPlay
           loop
@@ -29,11 +60,14 @@ export default function Hero({ onOpenContact }) {
           </p>
         </div>
 
-        {/* Frosted Translucent Pill Button */}
+        {/* Frosted Translucent Pill Button with Responsive Scroll Border Radius */}
         <div className="pt-4">
           <button
             onClick={onOpenContact}
-            className="inline-flex items-center px-8 py-3 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md text-white text-xs font-medium tracking-wide border border-white/30 transition-all hover:scale-105 shadow-2xl"
+            style={{
+              borderRadius: `${buttonRadius}px`,
+            }}
+            className="inline-flex items-center px-8 py-3 bg-black/40 hover:bg-black/60 backdrop-blur-md text-white text-xs font-medium tracking-wide border border-white/30 transition-all hover:scale-105 shadow-2xl"
           >
             Download Capability Document
           </button>

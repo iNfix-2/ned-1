@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Our Training Courses | NATI</title>
+    <meta
+        content="NATI professional aviation courses. Air traffic services, airport emergency training, and executive aviation management."
+        name="description" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body class="bg-background text-on-surface font-body-lg">
+    <!-- TopNavBar -->
+    <!-- Top Navigation -->
+    <nav
+        class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-md flex justify-between items-center px-grid-margin py-4">
+        <a href="index.html" class="flex items-center"><img src="assets/images/logo-white.png" alt="NATI Logo" class="h-[52px] w-auto" /></a>
+        <div class="hidden md:flex gap-7 items-center">
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors"
+                href="index.html">Home</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors"
+                href="about-us.html">About</a>
+            <a class="font-label-caps text-primary font-bold border-b-2 border-secondary pb-1"
+                href="training-programmes.html">Programmes</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors"
+                href="services.html">Services</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors"
+                href="admissions.html">Admissions</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors"
+                href="calendar-timetable.html">Timetable</a>
+        </div>
+        <div class="flex items-center gap-3">
+            <a href="apply-now.html" class="hidden sm:inline-flex bg-secondary hover:bg-secondary/80 text-on-secondary-container px-5 py-2 rounded text-xs font-bold transition-all items-center gap-1.5">Apply Now</a>
+            <a href="/" class="inline-flex items-center gap-1.5 text-xs font-mono text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 px-3.5 py-2 rounded-full border border-white/10 transition-all">
+                <span>←</span>
+                <span>Nethawk Main</span>
+            </a>
+            <button aria-label="Toggle Menu" class="md:hidden text-on-surface hover:text-secondary transition-colors"
+                id="mobile-menu-btn"><span class="material-symbols-outlined text-[28px]">menu</span></button>
+        </div>
+    </nav>
+    <!-- Page Header Hero -->
+    <header class="relative pt-32 pb-16 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+        </div>
+        <div class="relative z-10 px-grid-margin">
+            <span class="font-label-caps text-label-caps text-secondary mb-4 block tracking-widest uppercase">NATI
+                Courses</span>
+            <h1 class="font-display-lg text-display-lg max-w-4xl mb-6">Our Training Courses</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                Professional short courses across air traffic services, airport emergency training, and executive
+                aviation management. ICAO-aligned, instructor-led, and built for real operational roles.
+            </p>
+            <div class="flex flex-wrap gap-4 mt-8">
+                <div class="surface_glass px-6 py-3 rounded-lg flex items-center gap-3">
+                    <span class="font-title-md text-title-md text-primary">9</span>
+                    <span class="font-label-caps text-label-caps text-on-surface-variant">Professional Courses</span>
+                </div>
+                <div class="surface_glass px-6 py-3 rounded-lg flex items-center gap-3">
+                    <span class="font-title-md text-title-md text-primary">3</span>
+                    <span class="font-label-caps text-label-caps text-on-surface-variant">Training Schools</span>
+                </div>
+                <div class="surface_glass px-6 py-3 rounded-lg flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary">verified</span>
+                    <span class="font-label-caps text-label-caps text-on-surface-variant">ICAO-Aligned</span>
+                </div>
+            </div>
+        </div>
+        <!-- Technical Accent Lines -->
+        <div class="absolute top-1/2 left-0 w-full h-[1px] technical-line"></div>
+        <div class="absolute top-0 right-[20%] w-[1px] h-full technical-line"></div>
+    </header>
+    <!-- Filters Section -->
+    <section class="px-grid-margin py-8 sticky top-[72px] z-40 bg-background/95 backdrop-blur-md">
+        <div class="flex flex-wrap gap-4 items-center">
+            <button
+                class="filter-btn px-6 py-2 rounded-full border border-secondary text-secondary font-label-caps text-label-caps bg-secondary/10"
+                data-filter="ALL">ALL (9)</button>
+            <button
+                class="filter-btn px-6 py-2 rounded-full border border-outline-variant text-on-surface-variant hover:border-secondary hover:text-secondary transition-all font-label-caps text-label-caps"
+                data-filter="ATS">ATS &amp; COMMUNICATION (5)</button>
+            <button
+                class="filter-btn px-6 py-2 rounded-full border border-outline-variant text-on-surface-variant hover:border-secondary hover:text-secondary transition-all font-label-caps text-label-caps"
+                data-filter="EMERGENCY">EMERGENCY &amp; FIRE (3)</button>
+            <button
+                class="filter-btn px-6 py-2 rounded-full border border-outline-variant text-on-surface-variant hover:border-secondary hover:text-secondary transition-all font-label-caps text-label-caps"
+                data-filter="EXECUTIVE">EXECUTIVE &amp; MANAGEMENT (1)</button>
+        </div>
+    </section>
+    <!-- Courses Catalog -->
+    <main class="px-grid-margin py-16 space-y-24">
+
+        <!-- ATS & COMMUNICATION -->
+        <article class="section-header" data-category="ATS">
+            <span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase">School 01 — 5 Courses</span>
+            <h2 class="font-headline-lg text-headline-lg mt-2">Air Traffic Services / Communication</h2>
+            <p class="text-on-surface-variant max-w-2xl mt-2">Communication, navigation, and information management courses for ATS personnel, built to ICAO standards.</p>
+        </article>
+
+        <!-- 01 English Language Proficiency -->
+        <article class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-12 group"
+            data-category="ATS">
+            <div class="lg:col-span-1">
+                <span class="font-label-caps text-label-caps text-outline">01</span>
+            </div>
+            <div class="lg:col-span-5 space-y-6">
+                <div class="space-y-2">
+                    <span class="font-label-caps text-label-caps text-secondary">ATS &amp; COMMUNICATION</span>
+                    <h2 class="font-headline-lg text-headline-lg group-hover:text-primary transition-colors">English Language Proficiency Test</h2>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">ICAO Level 4</span>
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Short Course</span>
+                </div>
+                <p class="text-on-surface-variant leading-relaxed"><span class="text-on-surface font-semibold">Course overview — </span>The aim of the course is to prepare participants in English language used in aviation so as to communicate effectively within the aviation community on at least operational level four (4) of the ICAO Language Proficiency requirement rating scale. Students should be able to aspire for higher levels.</p>
+            </div>
+            <div class="lg:col-span-6">
+                <div class="relative overflow-hidden rounded-lg surface_glass">
+                    <img src="assets/images/programme-01-english.jpg" alt="English language proficiency training" class="w-full aspect-[16/9] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+                </div>
+            </div>
+        </article>
+
+        <!-- 02 AMS -->
+        <article class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-12 group"
+            data-category="ATS">
+            <div class="lg:col-span-1">
+                <span class="font-label-caps text-label-caps text-outline">02</span>
+            </div>
+            <div class="lg:col-span-5 space-y-6">
+                <div class="space-y-2">
+                    <span class="font-label-caps text-label-caps text-secondary">ATS &amp; COMMUNICATION</span>
+                    <h2 class="font-headline-lg text-headline-lg group-hover:text-primary transition-colors">Aeronautical Mobile Service Course (AMS)</h2>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">ICAO Standards</span>
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Short Course</span>
+                </div>
+                <p class="text-on-surface-variant leading-relaxed"><span class="text-on-surface font-semibold">Course overview — </span>The aim of the Aeronautical Mobile Service course (AMS) is to provide training that will produce highly skilled and advanced personnel that will serve as providers in the exchange of communication operations necessary for ensuring safety of air navigation in the aviation industry in accordance with ICAO standards.</p>
+            </div>
+            <div class="lg:col-span-6">
+                <div class="relative overflow-hidden rounded-lg surface_glass">
+                    <img src="assets/images/programme-02-ams.jpg" alt="Aeronautical mobile service communication training" class="w-full aspect-[16/9] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+                </div>
+            </div>
+        </article>
+
+        <!-- 03 ATCRR -->
+        <article class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-12 group"
+            data-category="ATS">
+            <div class="lg:col-span-1">
+                <span class="font-label-caps text-label-caps text-outline">03</span>
+            </div>
+            <div class="lg:col-span-5 space-y-6">
+                <div class="space-y-2">
+                    <span class="font-label-caps text-label-caps text-secondary">ATS &amp; COMMUNICATION</span>
+                    <h2 class="font-headline-lg text-headline-lg group-hover:text-primary transition-colors">Terminal / Area ATC Radar Refresher Course (ATCCRR)</h2>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Radar Operations</span>
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Refresher</span>
+                </div>
+                <p class="text-on-surface-variant leading-relaxed"><span class="text-on-surface font-semibold">Course overview — </span>To enable participants to provide air traffic control services, flight information service and aerodrome information service to air traffic, based on the use of radar.</p>
+            </div>
+            <div class="lg:col-span-6">
+                <div class="relative overflow-hidden rounded-lg surface_glass">
+                    <img src="assets/images/programme-03-radar.jpg" alt="ATC radar refresher training" class="w-full aspect-[16/9] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+                </div>
+            </div>
+        </article>
+
+        <!-- 04 AAIMO -->
+        <article class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-12 group"
+            data-category="ATS">
+            <div class="lg:col-span-1">
+                <span class="font-label-caps text-label-caps text-outline">04</span>
+            </div>
+            <div class="lg:col-span-5 space-y-6">
+                <div class="space-y-2">
+                    <span class="font-label-caps text-label-caps text-secondary">ATS &amp; COMMUNICATION</span>
+                    <h2 class="font-headline-lg text-headline-lg group-hover:text-primary transition-colors">Advanced Aeronautical Information Management Officers Course</h2>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">AAIMO</span>
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Advanced</span>
+                </div>
+                <p class="text-on-surface-variant leading-relaxed"><span class="text-on-surface font-semibold">Course overview — </span>The aim of the Advanced Aeronautical Information Management (AAIMO) course is to provide advanced training that will produce highly skilled personnel that will ensure the flow (collection and dissemination), and management of aeronautical information necessary for safety and regularity of air navigation in accordance with ICAO standards.</p>
+            </div>
+            <div class="lg:col-span-6">
+                <div class="relative overflow-hidden rounded-lg surface_glass">
+                    <img src="assets/images/programme-04-aaimo.jpg" alt="Aeronautical information management training" class="w-full aspect-[16/9] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+                </div>
+            </div>
+        </article>
+
+        <!-- 05 ATS Foundation -->
+        <article class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-12 group"
+            data-category="ATS">
+            <div class="lg:col-span-1">
+                <span class="font-label-caps text-label-caps text-outline">05</span>
+            </div>
+            <div class="lg:col-span-5 space-y-6">
+                <div class="space-y-2">
+                    <span class="font-label-caps text-label-caps text-secondary">ATS &amp; COMMUNICATION</span>
+                    <h2 class="font-headline-lg text-headline-lg group-hover:text-primary transition-colors">Air Traffic Services / Communication — Foundation Course</h2>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Foundation</span>
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">General Aviation</span>
+                </div>
+                <p class="text-on-surface-variant leading-relaxed"><span class="text-on-surface font-semibold">Course overview — </span>To introduce participants to the general principles and practices in the aviation industry. To familiarize participants with air traffic services (ATS) procedures, airspace management and air traffic flow management, especially in general aviation operations.</p>
+            </div>
+            <div class="lg:col-span-6">
+                <div class="relative overflow-hidden rounded-lg surface_glass">
+                    <img src="assets/images/programme-05-foundation.jpg" alt="Air traffic services foundation training" class="w-full aspect-[16/9] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+                </div>
+            </div>
+        </article>
+
+        <!-- EMERGENCY & FIRE -->
+        <article class="section-header" data-category="EMERGENCY">
+            <span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase">School 02 — 3 Courses</span>
+            <h2 class="font-headline-lg text-headline-lg mt-2">Airport Emergency Training</h2>
+            <p class="text-on-surface-variant max-w-2xl mt-2">Rescue, firefighting, and emergency response courses for aerodrome personnel — from entry level to fire officers.</p>
+        </article>
+
+        <!-- 06 AEP -->
+        <article class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-12 group"
+            data-category="EMERGENCY">
+            <div class="lg:col-span-1">
+                <span class="font-label-caps text-label-caps text-outline">06</span>
+            </div>
+            <div class="lg:col-span-5 space-y-6">
+                <div class="space-y-2">
+                    <span class="font-label-caps text-label-caps text-secondary">EMERGENCY &amp; FIRE</span>
+                    <h2 class="font-headline-lg text-headline-lg group-hover:text-primary transition-colors">Airport Emergency Procedure (AEP)</h2>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Emergency Response</span>
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Aerodrome</span>
+                </div>
+                <p class="text-on-surface-variant leading-relaxed"><span class="text-on-surface font-semibold">Course overview — </span>This course is aimed at enhancing the capability, effectiveness and efficiency of emergency response personnel in handling occurrences at an aerodrome or its vicinity.</p>
+            </div>
+            <div class="lg:col-span-6">
+                <div class="relative overflow-hidden rounded-lg surface_glass">
+                    <img src="assets/images/programme-06-aep.jpg" alt="Airport emergency procedure training" class="w-full aspect-[16/9] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+                </div>
+            </div>
+        </article>
+
+        <!-- 07 Live Fire -->
+        <article class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-12 group"
+            data-category="EMERGENCY">
+            <div class="lg:col-span-1">
+                <span class="font-label-caps text-label-caps text-outline">07</span>
+            </div>
+            <div class="lg:col-span-5 space-y-6">
+                <div class="space-y-2">
+                    <span class="font-label-caps text-label-caps text-secondary">EMERGENCY &amp; FIRE</span>
+                    <h2 class="font-headline-lg text-headline-lg group-hover:text-primary transition-colors">Competent Aircraft Live Fire Simulator</h2>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Fire Officers</span>
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Tactical Command</span>
+                </div>
+                <p class="text-on-surface-variant leading-relaxed"><span class="text-on-surface font-semibold">Course overview — </span>To equip experienced airport firefighters with the theory, principles and practice of fire station management, and the skill required to perform tactical firefighting involving various emergencies and fire-ground command, to prepare them for their roles as airport fire officers.</p>
+            </div>
+            <div class="lg:col-span-6">
+                <div class="relative overflow-hidden rounded-lg surface_glass">
+                    <img src="assets/images/programme-07-livefire.jpg" alt="Aircraft live fire simulator training" class="w-full aspect-[16/9] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+                </div>
+            </div>
+        </article>
+
+        <!-- 08 IFF -->
+        <article class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-12 group"
+            data-category="EMERGENCY">
+            <div class="lg:col-span-1">
+                <span class="font-label-caps text-label-caps text-outline">08</span>
+            </div>
+            <div class="lg:col-span-5 space-y-6">
+                <div class="space-y-2">
+                    <span class="font-label-caps text-label-caps text-secondary">EMERGENCY &amp; FIRE</span>
+                    <h2 class="font-headline-lg text-headline-lg group-hover:text-primary transition-colors">Initial Fire Fighting Course (IFF)</h2>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Entry Level</span>
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Rescue &amp; Firefighting</span>
+                </div>
+                <p class="text-on-surface-variant leading-relaxed"><span class="text-on-surface font-semibold">Course overview — </span>To enable entry level personnel to identify and interpret theories, facts, concepts, principles, procedures, equipment, and components of aerodrome rescue and firefighting. At the end of the course, trainees will demonstrate the knowledge and skill required to perform basic rescue and firefighting services for aircraft operations.</p>
+            </div>
+            <div class="lg:col-span-6">
+                <div class="relative overflow-hidden rounded-lg surface_glass">
+                    <img src="assets/images/programme-08-iff.jpg" alt="Initial fire fighting course" class="w-full aspect-[16/9] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+                </div>
+            </div>
+        </article>
+
+        <!-- EXECUTIVE & MANAGEMENT -->
+        <article class="section-header" data-category="EXECUTIVE">
+            <span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase">School 03 — 1 Course</span>
+            <h2 class="font-headline-lg text-headline-lg mt-2">Executive &amp; Management</h2>
+            <p class="text-on-surface-variant max-w-2xl mt-2">Decision-level training for senior executives overseeing aviation planning and operations.</p>
+        </article>
+
+        <!-- 09 Executive -->
+        <article class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-12 group"
+            data-category="EXECUTIVE">
+            <div class="lg:col-span-1">
+                <span class="font-label-caps text-label-caps text-outline">09</span>
+            </div>
+            <div class="lg:col-span-5 space-y-6">
+                <div class="space-y-2">
+                    <span class="font-label-caps text-label-caps text-secondary">EXECUTIVE &amp; MANAGEMENT</span>
+                    <h2 class="font-headline-lg text-headline-lg group-hover:text-primary transition-colors">Executive Aviation Planning, Operations and Management Course</h2>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Senior Executives</span>
+                    <span class="px-4 py-1 rounded-full border border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Planning &amp; Operations</span>
+                </div>
+                <p class="text-on-surface-variant leading-relaxed"><span class="text-on-surface font-semibold">Course overview — </span>To provide senior executives with a comprehensive understanding of aviation planning, operations and management, enabling them to make informed decisions related to aviation activities and achieve business objectives.</p>
+            </div>
+            <div class="lg:col-span-6">
+                <div class="relative overflow-hidden rounded-lg surface_glass">
+                    <img src="assets/images/programme-09-executive.jpg" alt="Executive aviation planning and management" class="w-full aspect-[16/9] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+                </div>
+            </div>
+        </article>
+
+    </main>
+    <!-- Support Section (Bento Grid Style) -->
+    <section class="px-grid-margin py-section-padding bg-surface-container-low">
+        <div class="mb-12">
+            <h2 class="font-headline-lg text-headline-lg">Student Resources &amp; Success</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="surface_glass p-8 rounded-lg space-y-4 hover:border-primary/40 transition-colors">
+                <span class="material-symbols-outlined text-primary text-4xl">flight_takeoff</span>
+                <h3 class="font-title-md text-title-md">Career Placement</h3>
+                <p class="text-on-surface-variant text-body-lg">Direct pathways to major regional airlines and ATS
+                    service providers through our partner network.</p>
+            </div>
+            <div class="surface_glass p-8 rounded-lg space-y-4 hover:border-primary/40 transition-colors">
+                <span class="material-symbols-outlined text-primary text-4xl">science</span>
+                <h3 class="font-title-md text-title-md">Technical Labs</h3>
+                <p class="text-on-surface-variant text-body-lg">Access to cutting-edge simulators and
+                    aeronautical workshops for registered students.</p>
+            </div>
+            <div class="surface_glass p-8 rounded-lg space-y-4 hover:border-primary/40 transition-colors">
+                <span class="material-symbols-outlined text-primary text-4xl">school</span>
+                <h3 class="font-title-md text-title-md">Scholarship Fund</h3>
+                <p class="text-on-surface-variant text-body-lg">Merit-based financial support for exceptional candidates
+                    pursuing specialized aviation tracks.</p>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section -->
+    <section class="relative px-grid-margin py-section-padding text-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+        </div>
+        <div class="relative z-10 space-y-8 max-w-3xl mx-auto">
+            <h2 class="font-display-lg text-headline-lg">Ready to Launch Your Career?</h2>
+            <p class="text-body-lg text-on-surface-variant">Applications are currently open for the upcoming academic
+                semester. Connect with our admissions team for a personalized orientation.</p>
+            <div class="flex justify-center gap-6">
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest border-t border-outline-variant grid grid-cols-3 md:grid-cols-4 gap-element-gap px-grid-margin py-section-padding w-full">
+<div class="space-y-4 col-span-3 md:col-span-1">
+<img alt="NATI Logo" class="h-[52px] w-auto" src="assets/images/logo-white.png"/>
+<p class="text-on-surface-variant font-body-lg">Elevating standards in African aviation training through
+                innovation and precision.</p>
+</div>
+<div class="col-span-1">
+<h4 class="font-label-caps text-label-caps text-outline mb-6">RESOURCES</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-secondary-fixed transition-colors" href="index.html">Campus Locations</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary-fixed transition-colors" href="mailto:support@nati.com">Technical Support</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h4 class="font-label-caps text-label-caps text-outline mb-6">LEGAL</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-secondary-fixed transition-colors" href="index.html">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary-fixed transition-colors" href="index.html">Terms of Service</a></li>
+</ul>
+</div>
+<div class="space-y-6 col-span-1">
+<h4 class="font-label-caps text-label-caps text-outline">CONNECT</h4>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-sm">share</span>
+</div>
+<div class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-sm">mail</span>
+</div>
+</div>
+<p class="text-on-surface-variant font-label-caps text-[10px]">© 2024 Nethawk Aviation Training Institute.
+                All Rights Reserved.</p>
+</div>
+</footer>
+    <!-- Micro-interactions Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Parallax effect for header animation opacity
+            window.addEventListener('scroll', () => {
+                const scroll = window.scrollY;
+                const headerShader = document.querySelector('header webgl-shader');
+                if (headerShader) {
+                    headerShader.style.opacity = Math.max(0.1, 0.3 - (scroll / 1000));
+                }
+            });
+
+            // Smooth hover scaling for cards
+            const cards = document.querySelectorAll('.surface_glass');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-4px)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+    <!-- Mobile Drawer -->
+    <div class="fixed inset-y-0 right-0 z-[100] w-64 bg-surface-container-high/95 backdrop-blur-2xl border-l border-white/10 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col p-6 overflow-y-auto"
+        id="mobile-drawer">
+        <div class="flex justify-between items-center mb-8">
+            <img src="assets/images/logo-white.png" alt="NATI Logo" class="h-[52px] w-auto" />
+            <button class="text-on-surface hover:text-secondary" id="close-menu-btn"><span
+                    class="material-symbols-outlined">close</span></button>
+        </div>
+        <div class="flex flex-col gap-4">
+            <a class="text-secondary font-bold text-sm flex items-center gap-2 border-b border-outline-variant/30 pb-2"
+                href="/">← Back to Nethawk Main</a>
+            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
+                href="index.html">Home</a>
+            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
+                href="about-us.html">About</a>
+            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
+                href="training-programmes.html">Programmes</a>
+            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
+                href="services.html">Services</a>
+            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
+                href="admissions.html">Admissions</a>
+            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
+                href="calendar-timetable.html">Timetable</a>
+            <a class="text-secondary font-bold border-b border-outline-variant/30 pb-2"
+                href="apply-now.html">Apply Now</a>
+        </div>
+    </div>
+    <!-- Mobile Overlay -->
+    <div class="fixed inset-0 z-[90] bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
+        id="mobile-overlay"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-menu-btn');
+            const drawer = document.getElementById('mobile-drawer');
+            const overlay = document.getElementById('mobile-overlay');
+
+            if (menuBtn && closeBtn && drawer && overlay) {
+                const toggleMenu = () => {
+                    const isOpen = !drawer.classList.contains('translate-x-full');
+                    if (isOpen) {
+                        drawer.classList.add('translate-x-full');
+                        overlay.classList.remove('opacity-100');
+                        overlay.classList.add('opacity-0');
+                        overlay.classList.add('pointer-events-none');
+                    } else {
+                        drawer.classList.remove('translate-x-full');
+                        overlay.classList.remove('opacity-0');
+                        overlay.classList.add('opacity-100');
+                        overlay.classList.remove('pointer-events-none');
+                    }
+                };
+                menuBtn.addEventListener('click', toggleMenu);
+                closeBtn.addEventListener('click', toggleMenu);
+                overlay.addEventListener('click', toggleMenu);
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const articles = document.querySelectorAll('main > article');
+
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => {
+                        b.className = 'filter-btn px-6 py-2 rounded-full border border-outline-variant text-on-surface-variant hover:border-secondary hover:text-secondary transition-all font-label-caps text-label-caps';
+                    });
+                    btn.className = 'filter-btn px-6 py-2 rounded-full border border-secondary text-secondary font-label-caps text-label-caps bg-secondary/10';
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    articles.forEach(article => {
+                        const category = article.getAttribute('data-category');
+                        if (filterValue === 'ALL' || category === filterValue) {
+                            article.style.display = '';
+                            article.style.opacity = '0';
+                            setTimeout(() => {
+                                article.style.opacity = '1';
+                                article.style.transition = 'opacity 0.3s ease';
+                            }, 50);
+                        } else {
+                            article.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
