@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 export default function Navbar({ 
   onOpenContact, 
@@ -7,14 +7,26 @@ export default function Navbar({
   onNavigateMissions, 
   onNavigateManufacturing, 
   onNavigateAcademy, 
-  onNavigateDefenseTech, 
+  onNavigateDefenseTech,
+  onNavigatePlatforms,
+  onNavigateAR3,
+  onNavigateAR5,
+  onNavigateARX,
+  onNavigateWhyUs,
+  onNavigateAtlas,
+  onNavigateSpace,
+  onNavigateDigital,
+  onNavigateAbout,
+  onNavigateNews,
+  onNavigateContact,
   activePage = 'home' 
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [platformsDropdown, setPlatformsDropdown] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 sm:px-12 py-5 flex items-center justify-between">
-      {/* Image Logo */}
+      {/* Brand Logo */}
       <button 
         onClick={onNavigateHome}
         className="flex items-center space-x-2 group text-left focus:outline-none"
@@ -27,12 +39,85 @@ export default function Navbar({
         />
       </button>
 
-      {/* Floating Pill Navigation on Right */}
+      {/* Floating Pill Navigation on Right (TEKEVER style) */}
       <div className="flex items-center space-x-4">
-        <nav className="hidden md:flex items-center bg-[#151d28]/70 hover:bg-[#151d28]/90 backdrop-blur-xl border border-white/15 rounded-full px-7 py-2.5 shadow-2xl transition-all">
-          <div className="flex items-center space-x-7 text-xs font-medium tracking-wide">
+        <nav className="hidden lg:flex items-center bg-[#151d28]/80 hover:bg-[#151d28]/95 backdrop-blur-xl border border-white/15 rounded-full px-7 py-2.5 shadow-2xl transition-all">
+          <div className="flex items-center space-x-6 text-xs font-medium tracking-wide">
             
-            {/* 1. Missions */}
+            {/* 1. Why us? */}
+            <button
+              onClick={onNavigateWhyUs}
+              className={`transition-colors ${
+                activePage === 'why-us' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
+              }`}
+            >
+              Why us?
+            </button>
+
+            {/* 2. Platforms (with hover/click dropdown) */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setPlatformsDropdown(true)}
+              onMouseLeave={() => setPlatformsDropdown(false)}
+            >
+              <button
+                onClick={onNavigatePlatforms}
+                className={`flex items-center space-x-1 transition-colors ${
+                  activePage === 'platforms' || activePage === 'ar3' || activePage === 'ar5' || activePage === 'arx' || activePage === 'defense-tech'
+                    ? 'text-white font-bold'
+                    : 'text-slate-300 hover:text-white'
+                }`}
+              >
+                <span>Platforms</span>
+                <ChevronDown className="w-3.5 h-3.5 opacity-60" />
+              </button>
+
+              {platformsDropdown && (
+                <div className="absolute top-full left-0 mt-2 w-48 rounded-2xl bg-[#08121f]/95 backdrop-blur-2xl border border-white/15 p-2 shadow-2xl space-y-1 animate-in fade-in slide-in-from-top-2">
+                  <button
+                    onClick={() => {
+                      setPlatformsDropdown(false);
+                      onNavigatePlatforms ? onNavigatePlatforms() : onNavigateDefenseTech();
+                    }}
+                    className="w-full text-left px-3.5 py-2 rounded-xl text-xs text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+                  >
+                    All Platforms
+                  </button>
+                  <button
+                    onClick={() => {
+                      setPlatformsDropdown(false);
+                      onNavigateAR3 ? onNavigateAR3() : onNavigatePlatforms();
+                    }}
+                    className="w-full text-left px-3.5 py-2 rounded-xl text-xs text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center justify-between"
+                  >
+                    <span>AR3 EVO</span>
+                    <span className="text-[10px] font-mono text-blue-400">VTOL</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setPlatformsDropdown(false);
+                      onNavigateAR5 ? onNavigateAR5() : onNavigatePlatforms();
+                    }}
+                    className="w-full text-left px-3.5 py-2 rounded-xl text-xs text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center justify-between"
+                  >
+                    <span>AR5</span>
+                    <span className="text-[10px] font-mono text-blue-400">MALE</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setPlatformsDropdown(false);
+                      onNavigateARX ? onNavigateARX() : onNavigatePlatforms();
+                    }}
+                    className="w-full text-left px-3.5 py-2 rounded-xl text-xs text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center justify-between"
+                  >
+                    <span>ARX</span>
+                    <span className="text-[10px] font-mono text-blue-400">SWARM</span>
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* 3. Missions */}
             <button
               onClick={onNavigateMissions}
               className={`transition-colors ${
@@ -42,51 +127,62 @@ export default function Navbar({
               Missions
             </button>
 
-            {/* 2. Manufacturing */}
+            {/* 4. ATLAS */}
             <button
-              onClick={onNavigateManufacturing}
-              className={`flex items-center transition-colors ${
-                activePage === 'manufacturing' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
-              }`}
-            >
-              <span className="w-1.5 h-1.5 rounded-full mr-2 bg-[#38bdf8] shadow-[0_0_8px_#38bdf8]"></span>
-              <span>Manufacturing</span>
-            </button>
-
-            {/* 3. Academy */}
-            <button
-              onClick={onNavigateAcademy}
+              onClick={onNavigateAtlas}
               className={`transition-colors ${
-                activePage === 'academy' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
+                activePage === 'atlas' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
               }`}
             >
-              Academy
+              ATLAS
             </button>
 
-            {/* 4. Defense Tech */}
+            {/* 5. Space */}
             <button
-              onClick={onNavigateDefenseTech}
+              onClick={onNavigateSpace}
               className={`transition-colors ${
-                activePage === 'defense-tech' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
+                activePage === 'space' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
               }`}
             >
-              Defense Tech
+              Space
             </button>
 
-            {/* 5. Contact */}
+            {/* 6. Digital */}
             <button
-              onClick={onOpenContact}
-              className="text-slate-300 hover:text-white transition-colors"
+              onClick={onNavigateDigital}
+              className={`transition-colors ${
+                activePage === 'digital' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
+              }`}
+            >
+              Digital
+            </button>
+
+            {/* 7. About */}
+            <button
+              onClick={onNavigateAbout}
+              className={`transition-colors ${
+                activePage === 'about' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
+              }`}
+            >
+              About
+            </button>
+
+            {/* 8. Contact */}
+            <button
+              onClick={onNavigateContact || onOpenContact}
+              className={`transition-colors ${
+                activePage === 'contact' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
+              }`}
             >
               Contact
             </button>
           </div>
         </nav>
 
-        {/* Hamburger Menu Toggle (Mobile only) */}
+        {/* Hamburger Menu Toggle (Mobile & Tablet) */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2.5 text-white bg-[#151d28]/70 hover:bg-[#151d28]/90 backdrop-blur-xl border border-white/15 rounded-full transition-colors flex items-center justify-center"
+          className="lg:hidden p-2.5 text-white bg-[#151d28]/80 hover:bg-[#151d28]/95 backdrop-blur-xl border border-white/15 rounded-full transition-colors flex items-center justify-center"
           aria-label="Menu"
         >
           {mobileOpen ? <X className="w-4 h-4" /> : (
@@ -100,7 +196,7 @@ export default function Navbar({
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="fixed inset-x-4 top-20 bg-[#0c1420]/95 backdrop-blur-2xl border border-white/15 rounded-3xl p-6 shadow-2xl space-y-4 md:hidden z-50 animate-in fade-in slide-in-from-top-4">
+        <div className="fixed inset-x-4 top-20 bg-[#0c1420]/95 backdrop-blur-2xl border border-white/15 rounded-3xl p-6 shadow-2xl space-y-3 lg:hidden z-50 animate-in fade-in slide-in-from-top-4 max-h-[80vh] overflow-y-auto">
           <button
             onClick={() => {
               setMobileOpen(false);
@@ -111,6 +207,28 @@ export default function Navbar({
             }`}
           >
             Home
+          </button>
+          <button
+            onClick={() => {
+              setMobileOpen(false);
+              onNavigateWhyUs ? onNavigateWhyUs() : onNavigateHome();
+            }}
+            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
+              activePage === 'why-us' ? 'font-semibold text-white' : 'font-medium text-slate-300'
+            }`}
+          >
+            Why us?
+          </button>
+          <button
+            onClick={() => {
+              setMobileOpen(false);
+              onNavigatePlatforms ? onNavigatePlatforms() : onNavigateDefenseTech();
+            }}
+            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
+              activePage === 'platforms' ? 'font-semibold text-white' : 'font-medium text-slate-300'
+            }`}
+          >
+            Platforms (AR3, AR5, ARX)
           </button>
           <button
             onClick={() => {
@@ -126,13 +244,56 @@ export default function Navbar({
           <button
             onClick={() => {
               setMobileOpen(false);
+              onNavigateAtlas ? onNavigateAtlas() : onNavigateHome();
+            }}
+            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
+              activePage === 'atlas' ? 'font-semibold text-white' : 'font-medium text-slate-300'
+            }`}
+          >
+            ATLAS Real-Time Intelligence
+          </button>
+          <button
+            onClick={() => {
+              setMobileOpen(false);
+              onNavigateSpace ? onNavigateSpace() : onNavigateHome();
+            }}
+            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
+              activePage === 'space' ? 'font-semibold text-white' : 'font-medium text-slate-300'
+            }`}
+          >
+            Space &amp; Satellite
+          </button>
+          <button
+            onClick={() => {
+              setMobileOpen(false);
+              onNavigateDigital ? onNavigateDigital() : onNavigateHome();
+            }}
+            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
+              activePage === 'digital' ? 'font-semibold text-white' : 'font-medium text-slate-300'
+            }`}
+          >
+            Digital Systems
+          </button>
+          <button
+            onClick={() => {
+              setMobileOpen(false);
+              onNavigateAbout ? onNavigateAbout() : onNavigateHome();
+            }}
+            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
+              activePage === 'about' ? 'font-semibold text-white' : 'font-medium text-slate-300'
+            }`}
+          >
+            About
+          </button>
+          <button
+            onClick={() => {
+              setMobileOpen(false);
               onNavigateManufacturing();
             }}
-            className={`w-full text-left text-sm py-2 border-b border-white/5 flex items-center ${
+            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
               activePage === 'manufacturing' ? 'font-semibold text-white' : 'font-medium text-slate-300'
             }`}
           >
-            <span className="w-2 h-2 rounded-full bg-[#38bdf8] mr-2"></span>
             Manufacturing
           </button>
           <button
@@ -149,20 +310,9 @@ export default function Navbar({
           <button
             onClick={() => {
               setMobileOpen(false);
-              onNavigateDefenseTech();
+              onNavigateContact ? onNavigateContact() : onOpenContact();
             }}
-            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
-              activePage === 'defense-tech' ? 'font-semibold text-white' : 'font-medium text-slate-300'
-            }`}
-          >
-            Defense Tech &amp; UAV Systems
-          </button>
-          <button
-            onClick={() => {
-              setMobileOpen(false);
-              onOpenContact();
-            }}
-            className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs tracking-wider uppercase rounded-full text-center mt-2 transition-colors"
+            className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs tracking-wider uppercase rounded-full text-center mt-3 transition-colors"
           >
             Contact Team
           </button>

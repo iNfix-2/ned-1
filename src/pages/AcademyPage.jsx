@@ -45,7 +45,8 @@ const ACADEMY_DATA = [
   }
 ];
 
-export default function AcademyPage({ onNavigateHome, onNavigateMissions, onNavigateManufacturing, onNavigateAcademy, onNavigateDefenseTech, onOpenContact }) {
+export default function AcademyPage(props) {
+  const { onNavigateHome, onNavigateMissions, onNavigateManufacturing, onNavigateAcademy, onNavigateDefenseTech, onOpenContact } = props;
   const [activeIdx, setActiveIdx] = useState(0);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
@@ -78,12 +79,7 @@ export default function AcademyPage({ onNavigateHome, onNavigateMissions, onNavi
 
       {/* 2. Header Navigation */}
       <Navbar 
-        onOpenContact={onOpenContact} 
-        onNavigateHome={onNavigateHome}
-        onNavigateMissions={onNavigateMissions}
-        onNavigateManufacturing={onNavigateManufacturing}
-        onNavigateAcademy={onNavigateAcademy}
-        onNavigateDefenseTech={onNavigateDefenseTech}
+        {...props}
         activePage="academy"
       />
 

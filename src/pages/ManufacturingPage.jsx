@@ -45,7 +45,8 @@ const MANUFACTURING_DATA = [
   }
 ];
 
-export default function ManufacturingPage({ onNavigateHome, onNavigateMissions, onNavigateManufacturing, onNavigateAcademy, onNavigateDefenseTech, onOpenContact }) {
+export default function ManufacturingPage(props) {
+  const { onNavigateHome, onNavigateMissions, onNavigateManufacturing, onNavigateAcademy, onNavigateDefenseTech, onOpenContact } = props;
   const [activeIdx, setActiveIdx] = useState(0);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
@@ -78,12 +79,7 @@ export default function ManufacturingPage({ onNavigateHome, onNavigateMissions, 
 
       {/* 2. Header Navigation */}
       <Navbar 
-        onOpenContact={onOpenContact} 
-        onNavigateHome={onNavigateHome}
-        onNavigateMissions={onNavigateMissions}
-        onNavigateManufacturing={onNavigateManufacturing}
-        onNavigateAcademy={onNavigateAcademy}
-        onNavigateDefenseTech={onNavigateDefenseTech}
+        {...props}
         activePage="manufacturing"
       />
 

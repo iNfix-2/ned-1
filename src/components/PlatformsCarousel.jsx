@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PLATFORMS_LIST } from '../data/tekeverContent';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function PlatformsCarousel({ onOpenContact, onOpenGallery }) {
+export default function PlatformsCarousel({ onOpenContact, onOpenGallery, onSelectPlatform }) {
   const [activeIdx, setActiveIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -90,13 +90,23 @@ export default function PlatformsCarousel({ onOpenContact, onOpenGallery }) {
             </div>
           </div>
 
-          {/* Action Button */}
-          <button
-            onClick={onOpenGallery || onOpenContact}
-            className="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold tracking-wider uppercase transition-all hover:scale-105 shadow-xl shadow-blue-500/25 whitespace-nowrap"
-          >
-            Discover More
-          </button>
+          {/* Action Buttons */}
+          <div className="flex items-center space-x-3">
+            {onSelectPlatform && (
+              <button
+                onClick={() => onSelectPlatform(currentPlatform)}
+                className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wider uppercase transition-all backdrop-blur-sm whitespace-nowrap"
+              >
+                Specifications
+              </button>
+            )}
+            <button
+              onClick={onOpenGallery || onOpenContact}
+              className="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold tracking-wider uppercase transition-all hover:scale-105 shadow-xl shadow-blue-500/25 whitespace-nowrap"
+            >
+              Discover More
+            </button>
+          </div>
 
         </div>
       </div>

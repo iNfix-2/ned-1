@@ -7,35 +7,79 @@ import AtlasSection from './components/AtlasSection';
 import NewsSection from './components/NewsSection';
 import ContactModal from './components/ContactModal';
 import GalleryModal from './components/GalleryModal';
+import PlatformModal from './components/PlatformModal';
+import PolicyModal from './components/PolicyModal';
 import Footer from './components/Footer';
+
+// Dedicated Full Pages
+import WhyUsPage from './pages/WhyUsPage';
+import PlatformsPage from './pages/PlatformsPage';
+import AR3Page from './pages/AR3Page';
+import AR5Page from './pages/AR5Page';
+import ARXPage from './pages/ARXPage';
 import MissionsPage from './pages/MissionsPage';
+import AtlasPage from './pages/AtlasPage';
+import SpacePage from './pages/SpacePage';
+import DigitalPage from './pages/DigitalPage';
+import AboutPage from './pages/AboutPage';
+import NewsPage from './pages/NewsPage';
+import ContactPage from './pages/ContactPage';
 import ManufacturingPage from './pages/ManufacturingPage';
 import AcademyPage from './pages/AcademyPage';
 import DefenseTechPage from './pages/DefenseTechPage';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'missions' | 'manufacturing' | 'academy' | 'defense-tech'
+  const [currentPage, setCurrentPage] = useState('home');
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [galleryOpen, setGalleryOpen] = useState(false);
+  const [policyModalOpen, setPolicyModalOpen] = useState(false);
+  const [policyType, setPolicyType] = useState('privacy');
+  const [platformModalOpen, setPlatformModalOpen] = useState(false);
+  const [selectedPlatform, setSelectedPlatform] = useState(null);
+
+  const openPolicy = (type = 'privacy') => {
+    setPolicyType(type);
+    setPolicyModalOpen(true);
+  };
+
+  const openPlatformModal = (platform) => {
+    setSelectedPlatform(platform);
+    setPlatformModalOpen(true);
+  };
 
   // Sync with URL hash
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.toLowerCase();
-      if (hash === '#missions' || hash === '#/missions') {
+      const hash = window.location.hash.toLowerCase().replace(/\/$/, '');
+      if (hash === '#why-us' || hash === '#/why-us') {
+        setCurrentPage('why-us');
+      } else if (hash === '#platforms' || hash === '#/platforms') {
+        setCurrentPage('platforms');
+      } else if (hash === '#ar3' || hash === '#/ar3' || hash === '#/platforms/ar3') {
+        setCurrentPage('ar3');
+      } else if (hash === '#ar5' || hash === '#/ar5' || hash === '#/platforms/ar5') {
+        setCurrentPage('ar5');
+      } else if (hash === '#arx' || hash === '#/arx' || hash === '#/platforms/arx') {
+        setCurrentPage('arx');
+      } else if (hash === '#missions' || hash === '#/missions') {
         setCurrentPage('missions');
+      } else if (hash === '#atlas' || hash === '#/atlas') {
+        setCurrentPage('atlas');
+      } else if (hash === '#space' || hash === '#/space') {
+        setCurrentPage('space');
+      } else if (hash === '#digital' || hash === '#/digital') {
+        setCurrentPage('digital');
+      } else if (hash === '#about' || hash === '#/about') {
+        setCurrentPage('about');
+      } else if (hash === '#news' || hash === '#/news' || hash === '#media' || hash === '#/media') {
+        setCurrentPage('news');
+      } else if (hash === '#contact' || hash === '#/contact') {
+        setCurrentPage('contact');
       } else if (hash === '#manufacturing' || hash === '#/manufacturing') {
         setCurrentPage('manufacturing');
       } else if (hash === '#academy' || hash === '#/academy') {
         setCurrentPage('academy');
-      } else if (
-        hash === '#defense-tech' || 
-        hash === '#/defense-tech' || 
-        hash === '#platforms' || 
-        hash === '#/platforms' ||
-        hash === '#defense' ||
-        hash === '#/defense'
-      ) {
+      } else if (hash === '#defense-tech' || hash === '#/defense-tech' || hash === '#defense' || hash === '#/defense') {
         setCurrentPage('defense-tech');
       } else {
         setCurrentPage('home');
@@ -50,117 +94,102 @@ export default function App() {
 
   const navigateTo = (page) => {
     setCurrentPage(page);
-    if (page === 'missions') {
-      window.location.hash = '#missions';
-    } else if (page === 'manufacturing') {
-      window.location.hash = '#manufacturing';
-    } else if (page === 'academy') {
-      window.location.hash = '#academy';
-    } else if (page === 'defense-tech') {
-      window.location.hash = '#defense-tech';
-    } else {
+    if (page === 'home') {
       window.location.hash = '';
+    } else {
+      window.location.hash = `#/${page}`;
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navProps = {
+    onNavigateHome: () => navigateTo('home'),
+    onNavigateWhyUs: () => navigateTo('why-us'),
+    onNavigatePlatforms: () => navigateTo('platforms'),
+    onNavigateAR3: () => navigateTo('ar3'),
+    onNavigateAR5: () => navigateTo('ar5'),
+    onNavigateARX: () => navigateTo('arx'),
+    onNavigateMissions: () => navigateTo('missions'),
+    onNavigateAtlas: () => navigateTo('atlas'),
+    onNavigateSpace: () => navigateTo('space'),
+    onNavigateDigital: () => navigateTo('digital'),
+    onNavigateAbout: () => navigateTo('about'),
+    onNavigateNews: () => navigateTo('news'),
+    onNavigateContact: () => navigateTo('contact'),
+    onNavigateManufacturing: () => navigateTo('manufacturing'),
+    onNavigateAcademy: () => navigateTo('academy'),
+    onNavigateDefenseTech: () => navigateTo('defense-tech'),
+    onOpenContact: () => setContactModalOpen(true),
+    onOpenPolicy: openPolicy,
+    onSelectPlatform: openPlatformModal
   };
 
   return (
     <div className="min-h-screen bg-[#020e1c] text-white flex flex-col font-sans selection:bg-blue-600 selection:text-white antialiased overflow-x-hidden">
       
-      {/* 1. Missions Page */}
-      {currentPage === 'missions' && (
-        <MissionsPage 
-          onNavigateHome={() => navigateTo('home')}
-          onNavigateMissions={() => navigateTo('missions')}
-          onNavigateManufacturing={() => navigateTo('manufacturing')}
-          onNavigateAcademy={() => navigateTo('academy')}
-          onNavigateDefenseTech={() => navigateTo('defense-tech')}
-          onOpenContact={() => setContactModalOpen(true)}
-        />
-      )}
+      {/* 1. Why Us Page */}
+      {currentPage === 'why-us' && <WhyUsPage {...navProps} />}
 
-      {/* 2. Manufacturing Page */}
-      {currentPage === 'manufacturing' && (
-        <ManufacturingPage 
-          onNavigateHome={() => navigateTo('home')}
-          onNavigateMissions={() => navigateTo('missions')}
-          onNavigateManufacturing={() => navigateTo('manufacturing')}
-          onNavigateAcademy={() => navigateTo('academy')}
-          onNavigateDefenseTech={() => navigateTo('defense-tech')}
-          onOpenContact={() => setContactModalOpen(true)}
-        />
-      )}
+      {/* 2. Platforms Overview Page */}
+      {currentPage === 'platforms' && <PlatformsPage {...navProps} />}
 
-      {/* 3. Academy & NATI Page */}
-      {currentPage === 'academy' && (
-        <AcademyPage 
-          onNavigateHome={() => navigateTo('home')}
-          onNavigateMissions={() => navigateTo('missions')}
-          onNavigateManufacturing={() => navigateTo('manufacturing')}
-          onNavigateAcademy={() => navigateTo('academy')}
-          onNavigateDefenseTech={() => navigateTo('defense-tech')}
-          onOpenContact={() => setContactModalOpen(true)}
-        />
-      )}
+      {/* 3. AR3 EVO Platform Page */}
+      {currentPage === 'ar3' && <AR3Page {...navProps} />}
 
-      {/* 4. Defense Tech & UAS Platforms Page */}
-      {currentPage === 'defense-tech' && (
-        <DefenseTechPage 
-          onNavigateHome={() => navigateTo('home')}
-          onNavigateMissions={() => navigateTo('missions')}
-          onNavigateManufacturing={() => navigateTo('manufacturing')}
-          onNavigateAcademy={() => navigateTo('academy')}
-          onNavigateDefenseTech={() => navigateTo('defense-tech')}
-          onOpenContact={() => setContactModalOpen(true)}
-        />
-      )}
+      {/* 4. AR5 Platform Page */}
+      {currentPage === 'ar5' && <AR5Page {...navProps} />}
 
-      {/* 5. Home Page Landing */}
+      {/* 5. ARX Platform Page */}
+      {currentPage === 'arx' && <ARXPage {...navProps} />}
+
+      {/* 6. Missions Page */}
+      {currentPage === 'missions' && <MissionsPage {...navProps} />}
+
+      {/* 7. ATLAS Intelligence Page */}
+      {currentPage === 'atlas' && <AtlasPage {...navProps} />}
+
+      {/* 8. Space & Satellite Page */}
+      {currentPage === 'space' && <SpacePage {...navProps} />}
+
+      {/* 9. Digital Systems Page */}
+      {currentPage === 'digital' && <DigitalPage {...navProps} />}
+
+      {/* 10. About Page */}
+      {currentPage === 'about' && <AboutPage {...navProps} />}
+
+      {/* 11. In The Media / News Page */}
+      {currentPage === 'news' && <NewsPage {...navProps} />}
+
+      {/* 12. Contact / How to Reach Us Page */}
+      {currentPage === 'contact' && <ContactPage {...navProps} />}
+
+      {/* 13. Manufacturing Page */}
+      {currentPage === 'manufacturing' && <ManufacturingPage {...navProps} />}
+
+      {/* 14. Academy Page */}
+      {currentPage === 'academy' && <AcademyPage {...navProps} />}
+
+      {/* 15. Defense Tech Page */}
+      {currentPage === 'defense-tech' && <DefenseTechPage {...navProps} />}
+
+      {/* 16. Home Landing Page */}
       {currentPage === 'home' && (
         <>
-          {/* Floating Pill Navigation */}
-          <Navbar 
-            onOpenContact={() => setContactModalOpen(true)}
-            onNavigateHome={() => navigateTo('home')}
-            onNavigateMissions={() => navigateTo('missions')}
-            onNavigateManufacturing={() => navigateTo('manufacturing')}
-            onNavigateAcademy={() => navigateTo('academy')}
-            onNavigateDefenseTech={() => navigateTo('defense-tech')}
-            activePage="home"
-          />
+          <Navbar {...navProps} activePage="home" />
 
-          {/* Main Home Page Content */}
           <main className="flex-grow">
-            {/* Hero Section */}
             <Hero onOpenContact={() => setContactModalOpen(true)} />
-
-            {/* Missions Banner ("When a mission is calling...") */}
-            <MissionBanner 
-              onNavigateMissions={() => navigateTo('missions')}
-            />
-
-            {/* Platforms Carousel ("Unmanned Aerial Systems") */}
+            <MissionBanner onNavigateMissions={() => navigateTo('missions')} />
             <PlatformsCarousel 
               onOpenContact={() => setContactModalOpen(true)} 
-              onOpenGallery={() => setGalleryOpen(true)} 
+              onOpenGallery={() => setGalleryOpen(true)}
+              onSelectPlatform={openPlatformModal} 
             />
-
-            {/* ATLAS Earth Banner */}
             <AtlasSection onOpenContact={() => setContactModalOpen(true)} />
-
-            {/* News 4-Card Feed */}
             <NewsSection onOpenContact={() => setContactModalOpen(true)} />
           </main>
 
-          {/* Comprehensive Corporate Footer */}
-          <Footer 
-            onOpenContact={() => setContactModalOpen(true)}
-            onNavigateHome={() => navigateTo('home')}
-            onNavigateMissions={() => navigateTo('missions')}
-            onNavigateManufacturing={() => navigateTo('manufacturing')}
-            onNavigateAcademy={() => navigateTo('academy')}
-            onNavigateDefenseTech={() => navigateTo('defense-tech')}
-          />
+          <Footer {...navProps} />
         </>
       )}
 
@@ -170,11 +199,29 @@ export default function App() {
         onClose={() => setContactModalOpen(false)}
       />
 
-      {/* Field Operations Gallery */}
+      {/* Field Operations Gallery Modal */}
       <GalleryModal
         isOpen={galleryOpen}
         onClose={() => setGalleryOpen(false)}
         onOpenContact={() => setContactModalOpen(true)}
+      />
+
+      {/* Platform Specs Modal */}
+      <PlatformModal
+        isOpen={platformModalOpen}
+        platform={selectedPlatform}
+        onClose={() => setPlatformModalOpen(false)}
+        onRequestBrief={() => {
+          setPlatformModalOpen(false);
+          setContactModalOpen(true);
+        }}
+      />
+
+      {/* Policy Modal */}
+      <PolicyModal
+        isOpen={policyModalOpen}
+        type={policyType}
+        onClose={() => setPolicyModalOpen(false)}
       />
     </div>
   );

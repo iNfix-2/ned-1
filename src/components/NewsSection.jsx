@@ -1,13 +1,14 @@
 import React, { useRef } from 'react';
 import { CORE_SERVICES } from '../data/tekeverContent';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 export default function NewsSection({ onOpenContact }) {
   const scrollRef = useRef(null);
 
-  const scroll = (direction) => {
+  const handleScroll = (direction) => {
     if (scrollRef.current) {
-      const scrollAmount = direction === 'left' ? -350 : 350;
+      const cardWidth = scrollRef.current.querySelector('.service-card')?.offsetWidth || 340;
+      const scrollAmount = direction === 'left' ? -cardWidth - 20 : cardWidth + 20;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
@@ -15,65 +16,81 @@ export default function NewsSection({ onOpenContact }) {
   return (
     <section
       id="services"
-      className="relative min-h-screen py-16 sm:py-20 px-6 sm:px-12 bg-gradient-to-b from-[#020e1c] via-[#041427] to-[#010813] overflow-hidden flex flex-col justify-center"
+      className="relative min-h-[85vh] lg:min-h-screen py-16 sm:py-24 bg-gradient-to-b from-[#020e1c] via-[#041427] to-[#010813] overflow-hidden flex flex-col justify-center"
     >
-      <div className="w-full max-w-[1920px] mx-auto space-y-6 flex flex-col justify-center">
+      <div className="w-full max-w-[1920px] mx-auto space-y-6 sm:space-y-8">
         
-        {/* Header Row: Big 'Services' Title + Circular Nav Arrows */}
-        <div className="flex items-end justify-between">
-          <h2 className="text-3xl sm:text-6xl font-bold text-slate-300/35 tracking-tight select-none">
+        {/* Header Row: Big 'Services' (or 'News') Title + Circular Navigation Arrows (Exact TEKEVER style) */}
+        <div className="flex items-center justify-between px-6 sm:px-12">
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-normal text-slate-300/40 tracking-tight select-none">
             Services
           </h2>
 
-          <div className="flex items-center space-x-3 pb-2">
+          {/* Top-Right Circular Navigation Buttons (← and →) */}
+          <div className="flex items-center space-x-3">
             <button
-              onClick={() => scroll('left')}
-              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/20 text-white flex items-center justify-center transition-all hover:scale-110"
-              aria-label="Previous services"
+              onClick={() => handleScroll('left')}
+              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 backdrop-blur-xl border border-white/15 text-white flex items-center justify-center transition-all shadow-lg"
+              aria-label="Previous service"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-slate-200" />
             </button>
             <button
-              onClick={() => scroll('right')}
-              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/20 text-white flex items-center justify-center transition-all hover:scale-110"
-              aria-label="Next services"
+              onClick={() => handleScroll('right')}
+              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 backdrop-blur-xl border border-white/15 text-white flex items-center justify-center transition-all shadow-lg"
+              aria-label="Next service"
             >
-              <ChevronRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-200" />
             </button>
           </div>
         </div>
 
-        {/* 4 Tall Rounded Service Cards Grid (80% viewport height) */}
+        {/* Horizontal Snapping Carousel Cards (Peeking on Mobile & Desktop) */}
         <div
           ref={scrollRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto pb-4 scrollbar-none"
+          className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6 pt-2 scrollbar-none px-6 sm:px-12"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {CORE_SERVICES.map((service) => (
             <div
               key={service.id}
-              className="group relative h-[78vh] sm:h-[80vh] min-h-[540px] max-h-[85vh] rounded-3xl overflow-hidden border border-white/10 shadow-2xl flex flex-col justify-end p-6 cursor-pointer bg-[#020710] flex-shrink-0"
+              className="service-card snap-center shrink-0 w-[82vw] sm:w-[360px] md:w-[400px] lg:w-[420px] h-[62vh] min-h-[460px] max-h-[580px] rounded-[32px] sm:rounded-[36px] overflow-hidden relative border border-white/15 shadow-2xl group cursor-pointer flex flex-col justify-end p-6 sm:p-8 bg-[#020710] select-none transition-transform hover:-translate-y-1 duration-300"
               onClick={onOpenContact}
             >
-              {/* Card Background Image */}
+              {/* Background Image */}
               <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
                 style={{
                   backgroundImage: `url('${service.image}')`,
                 }}
               >
-                {/* Dark gradient overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/25"></div>
+                {/* Vignette Gradients */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10"></div>
               </div>
 
-              {/* Story Content Overlay */}
+              {/* Card Story Content Overlay */}
               <div className="relative z-10 space-y-3 text-left">
-                <h3 className="text-base sm:text-lg font-bold text-white leading-snug group-hover:text-slate-200 transition-colors">
+                {/* Date / Division Badge */}
+                <div className="text-xs sm:text-sm text-slate-300/80 font-normal">
+                  {service.date || service.category}
+                </div>
+
+                {/* Service Title */}
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white leading-snug group-hover:text-slate-100 transition-colors drop-shadow">
                   {service.title}
                 </h3>
 
-                <p className="text-xs text-slate-300 line-clamp-3 leading-relaxed">
+                {/* Short Summary Description */}
+                <p className="text-xs sm:text-sm text-slate-300/90 line-clamp-2 leading-relaxed font-normal">
                   {service.summary}
                 </p>
+
+                {/* Circular Frosted Action Button with Right Arrow (Exact TEKEVER style from photo) */}
+                <div className="pt-2">
+                  <div className="w-12 h-12 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-xl border border-white/25 text-white flex items-center justify-center transition-all group-hover:scale-110 shadow-xl group-hover:border-white/40">
+                    <ArrowRight className="w-5 h-5 text-white" />
+                  </div>
+                </div>
               </div>
 
             </div>

@@ -45,7 +45,8 @@ const MISSIONS_DATA = [
   }
 ];
 
-export default function MissionsPage({ onNavigateHome, onNavigateMissions, onNavigateManufacturing, onNavigateAcademy, onNavigateDefenseTech, onOpenContact }) {
+export default function MissionsPage(props) {
+  const { onNavigateHome, onNavigateMissions, onNavigateManufacturing, onNavigateAcademy, onNavigateDefenseTech, onOpenContact } = props;
   const [activeIdx, setActiveIdx] = useState(0);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
@@ -80,12 +81,7 @@ export default function MissionsPage({ onNavigateHome, onNavigateMissions, onNav
 
       {/* 2. Header Navigation */}
       <Navbar 
-        onOpenContact={onOpenContact} 
-        onNavigateHome={onNavigateHome}
-        onNavigateMissions={onNavigateMissions}
-        onNavigateManufacturing={onNavigateManufacturing}
-        onNavigateAcademy={onNavigateAcademy}
-        onNavigateDefenseTech={onNavigateDefenseTech}
+        {...props}
         activePage="missions"
       />
 
