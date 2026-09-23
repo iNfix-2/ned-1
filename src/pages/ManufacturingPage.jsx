@@ -89,7 +89,7 @@ export default function ManufacturingPage(props) {
         <div className="relative z-20 max-w-xl text-left space-y-4 sm:space-y-6">
           <div className="space-y-2">
             <span className="text-[11px] sm:text-xs font-mono text-[#38bdf8] font-bold tracking-wider uppercase block">
-              SOVEREIGN MANUFACTURING CAPABILITY
+              SOVEREIGN LABS &amp; RESEARCH
             </span>
             <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12] drop-shadow-md">
               {activeItem.title}
@@ -128,7 +128,7 @@ export default function ManufacturingPage(props) {
           {/* Mobile / Tablet Horizontal Track Switcher (visible on < lg) */}
           <div className="pt-6 lg:hidden w-full">
             <div className="text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-2.5">
-              Select Manufacturing Domain
+              Select Lab &amp; Research Domain
             </div>
             <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
               {MANUFACTURING_DATA.map((item, idx) => {

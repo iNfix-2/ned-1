@@ -52,9 +52,9 @@ export default function Footer({
               </h4>
               <ul className="space-y-2 text-[10.5px] sm:text-xs leading-snug sm:leading-relaxed">
                 <li><button onClick={onNavigateWhyUs || onNavigateHome} className="hover:text-white transition-colors text-left block">Why Us</button></li>
-                <li><button onClick={onNavigatePlatforms || onNavigateDefenseTech} className="hover:text-white transition-colors text-left block">Platforms</button></li>
+                <li><a href="https://skygridinc.live" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-left block">Skygrid Intelligence</a></li>
                 <li><button onClick={onNavigateMissions} className="hover:text-white transition-colors text-left block">Missions</button></li>
-                <li><button onClick={onNavigateAtlas || onNavigateHome} className="hover:text-white transition-colors text-left block">ATLAS Intelligence</button></li>
+                <li><button onClick={onNavigateManufacturing || onNavigateHome} className="hover:text-white transition-colors text-left block">Labs &amp; Research</button></li>
                 <li><button onClick={onNavigateSpace || onNavigateHome} className="hover:text-white transition-colors text-left block">Space &amp; Satellite</button></li>
                 <li><button onClick={onNavigateDigital || onNavigateHome} className="hover:text-white transition-colors text-left block">Digital Systems</button></li>
               </ul>
@@ -67,7 +67,7 @@ export default function Footer({
               </h4>
               <ul className="space-y-2 text-[10.5px] sm:text-xs leading-snug sm:leading-relaxed">
                 <li><button onClick={onNavigateAbout || onNavigateHome} className="hover:text-white transition-colors text-left block">About Nethawk</button></li>
-                <li><button onClick={onNavigateManufacturing} className="hover:text-white transition-colors text-left block">Manufacturing</button></li>
+                <li><button onClick={onNavigateManufacturing} className="hover:text-white transition-colors text-left block">Labs &amp; Research</button></li>
                 <li><a href="/academy/index.html" className="hover:text-white transition-colors text-left block font-medium text-sky-400">NATI Academy Hub</a></li>
                 <li><a href="/academy/training-programmes.html" className="hover:text-white transition-colors text-left block">Academy Programmes</a></li>
                 <li><a href="/academy/admissions.html" className="hover:text-white transition-colors text-left block">Admissions &amp; Apply</a></li>

@@ -18,7 +18,6 @@ import AR3Page from './pages/AR3Page';
 import AR5Page from './pages/AR5Page';
 import ARXPage from './pages/ARXPage';
 import MissionsPage from './pages/MissionsPage';
-import AtlasPage from './pages/AtlasPage';
 import SpacePage from './pages/SpacePage';
 import DigitalPage from './pages/DigitalPage';
 import AboutPage from './pages/AboutPage';
@@ -75,7 +74,14 @@ export default function App() {
         setCurrentPage('news');
       } else if (hash === '#contact' || hash === '#/contact') {
         setCurrentPage('contact');
-      } else if (hash === '#manufacturing' || hash === '#/manufacturing') {
+      } else if (
+        hash === '#manufacturing' || 
+        hash === '#/manufacturing' || 
+        hash === '#labs-research' || 
+        hash === '#/labs-research' || 
+        hash === '#labs' || 
+        hash === '#/labs'
+      ) {
         setCurrentPage('manufacturing');
       } else if (hash === '#academy' || hash === '#/academy') {
         setCurrentPage('academy');
@@ -110,12 +116,13 @@ export default function App() {
     onNavigateAR5: () => navigateTo('ar5'),
     onNavigateARX: () => navigateTo('arx'),
     onNavigateMissions: () => navigateTo('missions'),
-    onNavigateAtlas: () => navigateTo('atlas'),
+    onNavigateAtlas: () => navigateTo('home'),
     onNavigateSpace: () => navigateTo('space'),
     onNavigateDigital: () => navigateTo('digital'),
     onNavigateAbout: () => navigateTo('about'),
     onNavigateNews: () => navigateTo('news'),
     onNavigateContact: () => navigateTo('contact'),
+    onNavigateLabs: () => navigateTo('manufacturing'),
     onNavigateManufacturing: () => navigateTo('manufacturing'),
     onNavigateAcademy: () => { window.location.href = '/academy/index.html'; },
     onNavigateDefenseTech: () => navigateTo('defense-tech'),
@@ -145,31 +152,28 @@ export default function App() {
       {/* 6. Missions Page */}
       {currentPage === 'missions' && <MissionsPage {...navProps} />}
 
-      {/* 7. ATLAS Intelligence Page */}
-      {currentPage === 'atlas' && <AtlasPage {...navProps} />}
-
-      {/* 8. Space & Satellite Page */}
+      {/* 7. Space & Satellite Page */}
       {currentPage === 'space' && <SpacePage {...navProps} />}
 
-      {/* 9. Digital Systems Page */}
+      {/* 8. Digital Systems Page */}
       {currentPage === 'digital' && <DigitalPage {...navProps} />}
 
-      {/* 10. About Page */}
+      {/* 9. About Page */}
       {currentPage === 'about' && <AboutPage {...navProps} />}
 
-      {/* 11. In The Media / News Page */}
+      {/* 10. In The Media / News Page */}
       {currentPage === 'news' && <NewsPage {...navProps} />}
 
-      {/* 12. Contact / How to Reach Us Page */}
+      {/* 11. Contact / How to Reach Us Page */}
       {currentPage === 'contact' && <ContactPage {...navProps} />}
 
-      {/* 13. Manufacturing Page */}
+      {/* 12. Labs & Research (Manufacturing) Page */}
       {currentPage === 'manufacturing' && <ManufacturingPage {...navProps} />}
 
-      {/* 14. Academy Page */}
+      {/* 13. Academy Page */}
       {currentPage === 'academy' && <AcademyPage {...navProps} />}
 
-      {/* 15. Defense Tech Page */}
+      {/* 14. Defense Tech Page */}
       {currentPage === 'defense-tech' && <DefenseTechPage {...navProps} />}
 
       {/* 16. Home Landing Page */}

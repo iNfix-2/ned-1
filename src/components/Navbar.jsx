@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ExternalLink } from 'lucide-react';
 
 export default function Navbar({ 
   onOpenContact, 
@@ -23,6 +23,7 @@ export default function Navbar({
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [platformsDropdown, setPlatformsDropdown] = useState(false);
+  const [mobilePlatformsOpen, setMobilePlatformsOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 sm:px-12 py-5 flex items-center justify-between">
@@ -39,7 +40,7 @@ export default function Navbar({
         />
       </button>
 
-      {/* Floating Pill Navigation on Right (TEKEVER style) */}
+      {/* Floating Pill Navigation on Right */}
       <div className="flex items-center space-x-4">
         <nav className="hidden lg:flex items-center glass-pill rounded-full px-7 py-2.5 shadow-2xl transition-all">
           <div className="flex items-center space-x-6 text-xs font-medium tracking-wide">
@@ -54,65 +55,48 @@ export default function Navbar({
               Why us?
             </button>
 
-            {/* 2. Platforms (with hover/click dropdown) */}
+            {/* 2. Platforms (with hover/click dropdown for Skygrid & Affenas) */}
             <div 
               className="relative"
               onMouseEnter={() => setPlatformsDropdown(true)}
               onMouseLeave={() => setPlatformsDropdown(false)}
             >
               <button
-                onClick={onNavigatePlatforms}
-                className={`flex items-center space-x-1 transition-colors ${
-                  activePage === 'platforms' || activePage === 'ar3' || activePage === 'ar5' || activePage === 'arx' || activePage === 'defense-tech'
+                onClick={() => setPlatformsDropdown(!platformsDropdown)}
+                className={`flex items-center space-x-1.5 transition-colors ${
+                  activePage === 'platforms' || activePage === 'defense-tech'
                     ? 'text-white font-bold'
                     : 'text-slate-300 hover:text-white'
                 }`}
               >
                 <span>Platforms</span>
-                <ChevronDown className="w-3.5 h-3.5 opacity-60" />
+                <ChevronDown className={`w-3.5 h-3.5 opacity-70 transition-transform duration-200 ${platformsDropdown ? 'rotate-180' : ''}`} />
               </button>
 
               {platformsDropdown && (
-                <div className="absolute top-full left-0 mt-2 w-48 rounded-2xl glass-card p-2 shadow-2xl space-y-1 animate-in fade-in slide-in-from-top-2">
-                  <button
-                    onClick={() => {
-                      setPlatformsDropdown(false);
-                      onNavigatePlatforms ? onNavigatePlatforms() : onNavigateDefenseTech();
-                    }}
-                    className="w-full text-left px-3.5 py-2 rounded-xl text-xs text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+                <div className="absolute top-full left-0 mt-2 w-60 rounded-2xl glass-card p-2 shadow-2xl space-y-1 animate-in fade-in slide-in-from-top-2 border border-white/15">
+                  <a
+                    href="https://skygridinc.live"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setPlatformsDropdown(false)}
+                    className="w-full text-left px-3.5 py-2.5 rounded-xl text-xs text-sky-300 hover:text-white hover:bg-white/10 transition-colors flex items-center justify-between group"
                   >
-                    All Platforms
-                  </button>
-                  <button
-                    onClick={() => {
-                      setPlatformsDropdown(false);
-                      onNavigateAR3 ? onNavigateAR3() : onNavigatePlatforms();
-                    }}
-                    className="w-full text-left px-3.5 py-2 rounded-xl text-xs text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center justify-between"
-                  >
-                    <span>AR3 EVO</span>
-                    <span className="text-[10px] font-mono text-blue-400">VTOL</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setPlatformsDropdown(false);
-                      onNavigateAR5 ? onNavigateAR5() : onNavigatePlatforms();
-                    }}
-                    className="w-full text-left px-3.5 py-2 rounded-xl text-xs text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center justify-between"
-                  >
-                    <span>AR5</span>
-                    <span className="text-[10px] font-mono text-blue-400">MALE</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setPlatformsDropdown(false);
-                      onNavigateARX ? onNavigateARX() : onNavigatePlatforms();
-                    }}
-                    className="w-full text-left px-3.5 py-2 rounded-xl text-xs text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center justify-between"
-                  >
-                    <span>ARX</span>
-                    <span className="text-[10px] font-mono text-blue-400">SWARM</span>
-                  </button>
+                    <div className="flex items-center space-x-1.5">
+                      <span className="font-semibold text-white">Skygrid</span>
+                      <ExternalLink className="w-3.5 h-3.5 text-sky-400 opacity-80 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                    <span className="text-[10px] font-mono text-sky-400 bg-sky-500/15 border border-sky-500/30 px-2 py-0.5 rounded-full">
+                      skygridinc.live
+                    </span>
+                  </a>
+
+                  <div className="w-full text-left px-3.5 py-2.5 rounded-xl text-xs text-slate-300 flex items-center justify-between">
+                    <span className="font-medium text-slate-300">Affenas</span>
+                    <span className="text-[10px] font-mono bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full">
+                      Coming Soon
+                    </span>
+                  </div>
                 </div>
               )}
             </div>
@@ -127,14 +111,14 @@ export default function Navbar({
               Missions
             </button>
 
-            {/* 4. ATLAS */}
+            {/* 4. Labs & Research */}
             <button
-              onClick={onNavigateAtlas}
+              onClick={onNavigateManufacturing}
               className={`transition-colors ${
-                activePage === 'atlas' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
+                activePage === 'manufacturing' || activePage === 'labs' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
               }`}
             >
-              ATLAS
+              Labs &amp; Research
             </button>
 
             {/* 5. Space */}
@@ -217,7 +201,7 @@ export default function Navbar({
         />
       )}
 
-      {/* Floating Glassmorphism Menu Card matching media_1790064312340.jpg */}
+      {/* Floating Glassmorphism Menu Card matching mobile UI */}
       {mobileOpen && (
         <div 
           className="fixed top-20 left-4 right-4 sm:left-auto sm:right-12 w-auto max-w-[340px] sm:w-[380px] mx-auto z-50 lg:hidden glass-card rounded-[32px] px-8 pt-4 pb-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.22),0_25px_60px_-15px_rgba(0,0,0,0.65)] animate-in fade-in zoom-in-95 duration-200"
@@ -227,6 +211,7 @@ export default function Navbar({
 
           {/* Clean, spacious minimalist typography */}
           <div className="space-y-4 sm:space-y-5 text-left">
+            {/* 1. Why us? */}
             <button
               onClick={() => {
                 setMobileOpen(false);
@@ -236,15 +221,51 @@ export default function Navbar({
             >
               Why us?
             </button>
-            <button
-              onClick={() => {
-                setMobileOpen(false);
-                onNavigatePlatforms ? onNavigatePlatforms() : onNavigateDefenseTech();
-              }}
-              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
-            >
-              Platforms
-            </button>
+
+            {/* 2. Platforms with Dropdown Toggle Arrow */}
+            <div>
+              <button
+                onClick={() => setMobilePlatformsOpen(!mobilePlatformsOpen)}
+                className="w-full flex items-center justify-between text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide group"
+              >
+                <span>Platforms</span>
+                <ChevronDown 
+                  className={`w-5 h-5 text-slate-400 group-hover:text-white transition-transform duration-300 ${
+                    mobilePlatformsOpen ? 'rotate-180 text-[#38bdf8]' : ''
+                  }`} 
+                />
+              </button>
+
+              {/* Sub-items inside Platforms dropdown */}
+              {mobilePlatformsOpen && (
+                <div className="mt-3 ml-2 pl-3 border-l border-white/20 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <a
+                    href="https://skygridinc.live"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-between text-base sm:text-lg font-light text-sky-400 hover:text-sky-300 transition-colors py-0.5"
+                  >
+                    <span className="flex items-center space-x-1.5">
+                      <span>Skygrid</span>
+                      <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+                    </span>
+                    <span className="text-[10px] font-mono bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2 py-0.5 rounded-full">
+                      skygridinc.live
+                    </span>
+                  </a>
+
+                  <div className="flex items-center justify-between text-base sm:text-lg font-light text-slate-400 py-0.5">
+                    <span>Affenas</span>
+                    <span className="text-[10px] font-mono bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full">
+                      Coming Soon
+                    </span>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* 3. Missions */}
             <button
               onClick={() => {
                 setMobileOpen(false);
@@ -254,15 +275,8 @@ export default function Navbar({
             >
               Missions
             </button>
-            <button
-              onClick={() => {
-                setMobileOpen(false);
-                onNavigateAtlas ? onNavigateAtlas() : onNavigateHome();
-              }}
-              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
-            >
-              ATLAS
-            </button>
+
+            {/* 4. Labs & Research (replaces Manufacturing) */}
             <button
               onClick={() => {
                 setMobileOpen(false);
@@ -270,8 +284,10 @@ export default function Navbar({
               }}
               className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
             >
-              Manufacturing
+              Labs &amp; Research
             </button>
+
+            {/* 5. Academy */}
             <button
               onClick={() => {
                 setMobileOpen(false);
@@ -281,6 +297,8 @@ export default function Navbar({
             >
               Academy
             </button>
+
+            {/* 6. Join the Team / Contact */}
             <button
               onClick={() => {
                 setMobileOpen(false);
