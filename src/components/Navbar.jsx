@@ -33,7 +33,7 @@ export default function Navbar({
         aria-label="Nethawk Solutions Home"
       >
         <img 
-          src="/assets/images/logo/lockup.png" 
+          src="/assets/images/logo/nethawk-mark-white.png" 
           alt="NETHAWK SOLUTIONS" 
           className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105"
         />

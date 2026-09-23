@@ -69,7 +69,7 @@ export default function Hero({ onOpenContact }) {
             }}
             className="inline-flex items-center px-8 py-3.5 glass-pill hover:bg-white/20 text-white text-xs sm:text-sm font-medium tracking-wider uppercase transition-all duration-300 hover:scale-105 shadow-2xl"
           >
-            Download Capability Document
+            Download Brochure
           </button>
         </div>
       </div>
