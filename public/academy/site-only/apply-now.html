@@ -51,10 +51,6 @@
 </div>
 <!-- Application Multi-Step Container -->
 <div class="w-full max-w-4xl glass-card p-8 md:p-12 relative overflow-hidden">
-<!-- Technical Accent Label -->
-<div class="absolute top-4 right-6 font-label-caps text-[10px] text-outline opacity-40">
-                ADM_PROC_v4.2.0
-            </div>
 <!-- Progress Tracker -->
 <div class="mb-12">
 <div class="flex justify-between items-center relative">
@@ -116,33 +112,56 @@
 <section class="step-transition hidden" id="step2">
 <div class="mb-8">
 <h2 class="font-title-md text-title-md text-primary mb-2">02. Programme Selection</h2>
-<p class="text-on-surface-variant text-sm">Select your primary area of specialization for training.</p>
+<p class="text-on-surface-variant text-sm">Select your primary course and training pathway.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-<label class="relative group cursor-pointer">
-<input class="peer sr-only" name="program" required="required" type="radio"/>
-<div class="p-6 border border-outline-variant bg-surface-container-low transition-all peer-checked:border-secondary peer-checked:bg-primary-container peer-checked:accent-glow">
-<span class="material-symbols-outlined text-secondary mb-3">flight_takeoff</span>
-<div class="font-bold text-sm mb-1">UAV Pilot Certification</div>
-<div class="text-[10px] text-on-surface-variant">Class A &amp; B Drone Operations</div>
-</div>
-</label>
-<label class="relative group cursor-pointer">
-<input class="peer sr-only" name="program" required="required" type="radio"/>
-<div class="p-6 border border-outline-variant bg-surface-container-low transition-all peer-checked:border-secondary peer-checked:bg-primary-container peer-checked:accent-glow">
-<span class="material-symbols-outlined text-secondary mb-3">precision_manufacturing</span>
-<div class="font-bold text-sm mb-1">Aviation Engineering</div>
-<div class="text-[10px] text-on-surface-variant">Maintenance &amp; Avionics Systems</div>
-</div>
-</label>
-<label class="relative group cursor-pointer">
-<input class="peer sr-only" name="program" required="required" type="radio"/>
-<div class="p-6 border border-outline-variant bg-surface-container-low transition-all peer-checked:border-secondary peer-checked:bg-primary-container peer-checked:accent-glow">
-<span class="material-symbols-outlined text-secondary mb-3">radar</span>
-<div class="font-bold text-sm mb-1">Flight Operations</div>
-<div class="text-[10px] text-on-surface-variant">Traffic Control &amp; Mission Planning</div>
-</div>
-</label>
+<div class="space-y-6">
+    <div class="space-y-2">
+        <label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Target Aviation Programme</label>
+        <select class="w-full bg-surface-container-low border border-outline-variant p-4 text-on-surface mission-blue-glow focus:outline-none [color-scheme:dark] rounded" name="specific_course" required="required">
+            <option value="" disabled selected>-- Select a Programme --</option>
+            <optgroup label="Pilot Licences &amp; Initial Flight Training">
+                <option value="SP">SP — Standard Pilot Course (2 Years)</option>
+                <option value="PPL">PPL — Private Pilot Licence Course (6 Months)</option>
+                <option value="CPL">CPL — Commercial Pilot Licence Course (6 Months)</option>
+                <option value="ATPL">ATPL — Airline Transport Pilot Licence (10 Weeks)</option>
+            </optgroup>
+            <optgroup label="Ratings &amp; Simulator Training">
+                <option value="IR">IR — Instrument Rating (5 Months)</option>
+                <option value="MER">MER — Multi-Engine Rating (1 Month)</option>
+                <option value="NR">NR — Night Rating (1 Week)</option>
+                <option value="IR-Sim">IR(Sim) — Instrument Renewal (Simulator) (6 Hours)</option>
+                <option value="IR-Ref">IR(Ref) — Instrument Refresher (Simulator) (15 Hours)</option>
+            </optgroup>
+            <optgroup label="Multi-Crew &amp; Jet Transition">
+                <option value="MCC">MCC — Multi Crew Coordination (7 Days)</option>
+                <option value="JOC">JOC — Jet Orientation Course (7 Days)</option>
+            </optgroup>
+            <optgroup label="Flight Operations &amp; Dispatch">
+                <option value="SFO">SFO — Standard Flight Operation Course (15 Weeks)</option>
+                <option value="SFOR">SFOR — Standard Flight Operation Refresher Course (2 Weeks)</option>
+                <option value="ADC">ADC — Aircraft Dispatcher Currency (1 Week)</option>
+            </optgroup>
+            <optgroup label="Cabin Crew Training (CCT)">
+                <option value="CCT-B">CCT-B — Cabin Crew Initial Training (Ab Initio) (10 Weeks)</option>
+                <option value="CCT-C">CCT-C — Cabin Crew Conversion Course (10 Days)</option>
+                <option value="CCT-RQ">CCT-RQ — Cabin Crew Re-qualification (4 Weeks)</option>
+                <option value="CCT-RC">CCT-RC — Cabin Crew Recurrent (10 Days)</option>
+                <option value="CCT-RF">CCT-RF — Cabin Crew Refresher Course (10 Days)</option>
+            </optgroup>
+            <optgroup label="Unmanned &amp; UAV Systems">
+                <option value="UAV-P1">UAV-P1 — Basic UAV Pilot Training (6 Weeks)</option>
+                <option value="VLOS">VLOS — Visual Line Of Sight Licence (2 Weeks)</option>
+                <option value="BVLOS">BVLOS — Beyond Visual Line Of Sight Course (4 Weeks)</option>
+                <option value="GIS-MAP">GIS-MAP — Drone Survey &amp; Mapping (6 Weeks)</option>
+                <option value="VTOL-OPS">VTOL-OPS — VTOL &amp; Hybrid Operations (4 Weeks)</option>
+            </optgroup>
+            <optgroup label="UAV Engineering">
+                <option value="AME">AME — Aeronautical Maintenance Engineering (24 Months)</option>
+                <option value="DSD">DSD — Drone Systems Design (10 Weeks)</option>
+                <option value="AV-EMB">AV-EMB — Avionics &amp; Embedded Systems (8 Weeks)</option>
+            </optgroup>
+        </select>
+    </div>
 </div>
 </section>
 <!-- Step 3: Educational Background (Hidden initially) -->

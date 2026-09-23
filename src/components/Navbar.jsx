@@ -41,7 +41,7 @@ export default function Navbar({
 
       {/* Floating Pill Navigation on Right (TEKEVER style) */}
       <div className="flex items-center space-x-4">
-        <nav className="hidden lg:flex items-center bg-[#151d28]/80 hover:bg-[#151d28]/95 backdrop-blur-xl border border-white/15 rounded-full px-7 py-2.5 shadow-2xl transition-all">
+        <nav className="hidden lg:flex items-center glass-pill rounded-full px-7 py-2.5 shadow-2xl transition-all">
           <div className="flex items-center space-x-6 text-xs font-medium tracking-wide">
             
             {/* 1. Why us? */}
@@ -73,7 +73,7 @@ export default function Navbar({
               </button>
 
               {platformsDropdown && (
-                <div className="absolute top-full left-0 mt-2 w-48 rounded-2xl bg-[#08121f]/95 backdrop-blur-2xl border border-white/15 p-2 shadow-2xl space-y-1 animate-in fade-in slide-in-from-top-2">
+                <div className="absolute top-full left-0 mt-2 w-48 rounded-2xl glass-card p-2 shadow-2xl space-y-1 animate-in fade-in slide-in-from-top-2">
                   <button
                     onClick={() => {
                       setPlatformsDropdown(false);
@@ -192,140 +192,105 @@ export default function Navbar({
         {/* Hamburger Menu Toggle (Mobile & Tablet) */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden p-2.5 text-white bg-[#151d28]/80 hover:bg-[#151d28]/95 backdrop-blur-xl border border-white/15 rounded-full transition-colors flex items-center justify-center"
-          aria-label="Menu"
+          className="lg:hidden p-1.5 text-white hover:text-slate-200 transition-colors flex items-center justify-center focus:outline-none z-50 relative"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
-          {mobileOpen ? <X className="w-4 h-4" /> : (
-            <div className="w-4 flex flex-col space-y-1">
-              <span className="w-full h-[1.5px] bg-white block"></span>
-              <span className="w-full h-[1.5px] bg-white block"></span>
+          {mobileOpen ? (
+            <X className="w-6 h-6 stroke-[1.5]" />
+          ) : (
+            <div className="p-2.5 glass-pill rounded-full transition-all hover:scale-105 flex items-center justify-center">
+              <div className="w-4 flex flex-col space-y-1">
+                <span className="w-full h-[1.5px] bg-white block"></span>
+                <span className="w-full h-[1.5px] bg-white block"></span>
+              </div>
             </div>
           )}
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Dimmed backdrop overlay for light-dismiss */}
       {mobileOpen && (
-        <div className="fixed inset-x-4 top-20 bg-[#0c1420]/95 backdrop-blur-2xl border border-white/15 rounded-3xl p-6 shadow-2xl space-y-3 lg:hidden z-50 animate-in fade-in slide-in-from-top-4 max-h-[80vh] overflow-y-auto">
-          <button
-            onClick={() => {
-              setMobileOpen(false);
-              onNavigateHome();
-            }}
-            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
-              activePage === 'home' ? 'font-semibold text-white' : 'font-medium text-slate-300'
-            }`}
-          >
-            Home
-          </button>
-          <button
-            onClick={() => {
-              setMobileOpen(false);
-              onNavigateWhyUs ? onNavigateWhyUs() : onNavigateHome();
-            }}
-            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
-              activePage === 'why-us' ? 'font-semibold text-white' : 'font-medium text-slate-300'
-            }`}
-          >
-            Why us?
-          </button>
-          <button
-            onClick={() => {
-              setMobileOpen(false);
-              onNavigatePlatforms ? onNavigatePlatforms() : onNavigateDefenseTech();
-            }}
-            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
-              activePage === 'platforms' ? 'font-semibold text-white' : 'font-medium text-slate-300'
-            }`}
-          >
-            Platforms (AR3, AR5, ARX)
-          </button>
-          <button
-            onClick={() => {
-              setMobileOpen(false);
-              onNavigateMissions();
-            }}
-            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
-              activePage === 'missions' ? 'font-semibold text-white' : 'font-medium text-slate-300'
-            }`}
-          >
-            Missions
-          </button>
-          <button
-            onClick={() => {
-              setMobileOpen(false);
-              onNavigateAtlas ? onNavigateAtlas() : onNavigateHome();
-            }}
-            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
-              activePage === 'atlas' ? 'font-semibold text-white' : 'font-medium text-slate-300'
-            }`}
-          >
-            ATLAS Real-Time Intelligence
-          </button>
-          <button
-            onClick={() => {
-              setMobileOpen(false);
-              onNavigateSpace ? onNavigateSpace() : onNavigateHome();
-            }}
-            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
-              activePage === 'space' ? 'font-semibold text-white' : 'font-medium text-slate-300'
-            }`}
-          >
-            Space &amp; Satellite
-          </button>
-          <button
-            onClick={() => {
-              setMobileOpen(false);
-              onNavigateDigital ? onNavigateDigital() : onNavigateHome();
-            }}
-            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
-              activePage === 'digital' ? 'font-semibold text-white' : 'font-medium text-slate-300'
-            }`}
-          >
-            Digital Systems
-          </button>
-          <button
-            onClick={() => {
-              setMobileOpen(false);
-              onNavigateAbout ? onNavigateAbout() : onNavigateHome();
-            }}
-            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
-              activePage === 'about' ? 'font-semibold text-white' : 'font-medium text-slate-300'
-            }`}
-          >
-            About
-          </button>
-          <button
-            onClick={() => {
-              setMobileOpen(false);
-              onNavigateManufacturing();
-            }}
-            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
-              activePage === 'manufacturing' ? 'font-semibold text-white' : 'font-medium text-slate-300'
-            }`}
-          >
-            Manufacturing
-          </button>
-          <button
-            onClick={() => {
-              setMobileOpen(false);
-              onNavigateAcademy();
-            }}
-            className={`w-full text-left text-sm py-2 border-b border-white/5 ${
-              activePage === 'academy' ? 'font-semibold text-white' : 'font-medium text-slate-300'
-            }`}
-          >
-            Academy &amp; NATI Institute
-          </button>
-          <button
-            onClick={() => {
-              setMobileOpen(false);
-              onNavigateContact ? onNavigateContact() : onOpenContact();
-            }}
-            className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs tracking-wider uppercase rounded-full text-center mt-3 transition-colors"
-          >
-            Contact Team
-          </button>
+        <div 
+          className="fixed inset-0 bg-black/40 backdrop-blur-[3px] z-40 lg:hidden transition-opacity animate-in fade-in duration-200"
+          onClick={() => setMobileOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Floating Glassmorphism Menu Card matching media_1790064312340.jpg */}
+      {mobileOpen && (
+        <div 
+          className="fixed top-20 left-4 right-4 sm:left-auto sm:right-12 w-auto max-w-[340px] sm:w-[380px] mx-auto z-50 lg:hidden glass-card rounded-[32px] px-8 pt-4 pb-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.22),0_25px_60px_-15px_rgba(0,0,0,0.65)] animate-in fade-in zoom-in-95 duration-200"
+        >
+          {/* Subtle Top Handle Pill */}
+          <div className="w-10 h-1 bg-white/25 rounded-full mx-auto mb-7"></div>
+
+          {/* Clean, spacious minimalist typography */}
+          <div className="space-y-4 sm:space-y-5 text-left">
+            <button
+              onClick={() => {
+                setMobileOpen(false);
+                onNavigateWhyUs ? onNavigateWhyUs() : onNavigateHome();
+              }}
+              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
+            >
+              Why us?
+            </button>
+            <button
+              onClick={() => {
+                setMobileOpen(false);
+                onNavigatePlatforms ? onNavigatePlatforms() : onNavigateDefenseTech();
+              }}
+              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
+            >
+              Platforms
+            </button>
+            <button
+              onClick={() => {
+                setMobileOpen(false);
+                onNavigateMissions();
+              }}
+              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
+            >
+              Missions
+            </button>
+            <button
+              onClick={() => {
+                setMobileOpen(false);
+                onNavigateAtlas ? onNavigateAtlas() : onNavigateHome();
+              }}
+              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
+            >
+              ATLAS
+            </button>
+            <button
+              onClick={() => {
+                setMobileOpen(false);
+                onNavigateManufacturing ? onNavigateManufacturing() : onNavigateHome();
+              }}
+              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
+            >
+              Manufacturing
+            </button>
+            <button
+              onClick={() => {
+                setMobileOpen(false);
+                onNavigateAcademy ? onNavigateAcademy() : onNavigateHome();
+              }}
+              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
+            >
+              Academy
+            </button>
+            <button
+              onClick={() => {
+                setMobileOpen(false);
+                onNavigateContact ? onNavigateContact() : onOpenContact();
+              }}
+              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
+            >
+              Join the Team
+            </button>
+          </div>
         </div>
       )}
     </header>

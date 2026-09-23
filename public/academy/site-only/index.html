@@ -1,496 +1,700 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>NATI | Nethawk Aviation Training Institute</title>
-    <meta
-        content="Discover NATI Aviation Academy. Premium flight training, UAV certification, and aviation research facilities."
-        name="description" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <script src="js/tailwind-config.js"></script>
-    <link href="css/styles.css" rel="stylesheet" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NATI | Nethawk Aviation Training Institute</title>
+  <meta name="description" content="NATI (Nethawk Aviation Training Institute) - World-Class Aviation &amp; Aerospace Education."/>
+  <link rel="icon" type="image/png" href="/academy/assets/oneleague/nati-logo-colored.png"/>
+  <link rel="stylesheet" href="/academy/css/oneleague.css"/>
+  <style>
+    /* Replica enhancements and polish */
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      font-family: Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      scroll-behavior: smooth;
+    }
+    .one-league__header-logo {
+      height: 36px;
+      max-width: 190px;
+      width: auto;
+      object-fit: contain;
+      transition: opacity 0.2s ease;
+    }
+    .one-league__header-logo:hover {
+      opacity: 0.85;
+    }
+    .one-league__mentors-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    @media (max-width: 1024px) {
+      .one-league__mentors-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .one-league__mentors-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .one-league__mentors-card {
+      background: #111;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+    }
+    .one-league__mentors-card--box {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+    .one-league__mentors-card--profile {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .one-league__mentors-card--name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .one-league__mentors-card--text {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #ccc;
+      margin: 0.4rem 0;
+    }
+    .one-league__mentors-card--badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.85);
+      border: 1px solid #d4af37;
+      padding: 4px 8px;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      text-align: right;
+    }
+    .one-league__mentors-card--badge-text.cohort {
+      color: #d4af37;
+      font-weight: bold;
+    }
+    .one-league__mentors-card--badge-text.chair {
+      color: #fff;
+    }
+    .one-league__mentors-cta {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .button__transparent-white {
+      display: inline-block;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 12px 28px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      transition: all 0.3s;
+      margin-top: 1rem;
+    }
+    .button__transparent-white:hover {
+      background: #fff;
+      color: #000;
+    }
+    /* Students section grid */
+    .one-league__students-container {
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 0 4rem;
+    }
+    #student-disciplines .one-league__students-container {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 2rem 1.5rem;
+      margin-top: 2.5rem;
+      padding: 0;
+    }
+    @media (max-width: 1024px) {
+      #student-disciplines .one-league__students-container {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      #student-disciplines .one-league__students-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .one-league__students-category {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .one-league__students-icon {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 0.75rem;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+    }
+    .one-league__students-category--text {
+      font-size: 0.85rem;
+      line-height: 1.3;
+      color: #e2e8f0;
+    }
+    .one-league__students-text.active {
+      color: #d4af37;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+    /* Faculty cards */
+    .one-league__faculty-member {
+      display: flex;
+      flex-direction: row;
+      gap: 3rem;
+      margin: 4rem 0;
+      align-items: center;
+    }
+    .one-league__faculty-member.reverse {
+      flex-direction: row-reverse;
+    }
+    .one-league__faculty-member--image {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .one-league__faculty-member--info {
+      flex: 1;
+    }
+    .one-league__faculty-member--header {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+    .one-league__faculty-member--line {
+      width: 60px;
+      height: 3px;
+      background: #d4af37;
+      margin-bottom: 1.5rem;
+    }
+    .one-league__faculty-member--text {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #cbd5e0;
+    }
+    /* Press carousel multi-slide layout */
+    .press-container .carousel-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 900px) {
+      .press-container .carousel-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+    /* Header action & button styling */
+    .one-league__header-action-button {
+      background: transparent;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 6px 18px;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+    .one-league__header-action-button:hover {
+      background: #fff;
+      color: #000;
+    }
+  </style>
 </head>
-
-<body class="bg-background text-on-surface font-body-lg selection:bg-secondary selection:text-on-secondary">
-    <!-- Top Navigation -->
-    <!-- Top Navigation -->
-    <nav
-        class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-md flex justify-between items-center px-grid-margin py-4">
-        <a href="index.html" class="flex items-center"><img src="assets/images/logo-white.png" alt="NATI Logo"
-                class="h-[52px] w-auto" /></a>
-        <div class="hidden md:flex gap-8 items-center">
-            <a class="font-label-caps text-primary font-bold border-b-2 border-secondary pb-1"
-                href="index.html">Home</a>
-            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors"
-                href="about-us.html">About</a>
-            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors"
-                href="training-programmes.html">Programmes</a>
-            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors"
-                href="services.html">Services</a>
-            <!-- <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors"
-                href="#" aria-disabled="true">Admissions</a> -->
-        </div>
-        <div class="flex items-center gap-4">
-            <button aria-label="Toggle Menu" class="md:hidden text-on-surface hover:text-secondary transition-colors"
-                id="mobile-menu-btn"><span class="material-symbols-outlined text-[28px]">menu</span></button>
-            <!-- <a class="bg-secondary text-on-secondary px-6 py-2 rounded font-title-md text-title-md hover:shadow-[0_0_15px_rgba(162,201,255,0.4)] transition-all flex items-center justify-center text-center"
-                href="#" aria-disabled="true">Apply Now</a> -->
-        </div>
-    </nav>
-    <!-- Hero Section -->
-    <header class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent z-10"></div>
-            <img alt="NATI Students and Instructors assembling a UAV drone in a training workshop"
-                class="w-full h-full object-cover" src="assets/images/hero-uav-assembly.jpg" />
-        </div>
-        <div class="relative z-20 px-grid-margin w-full max-w-6xl">
-            <div class="space-y-6">
-
-                <h1 class="font-display-lg text-display-lg text-white max-w-3xl">
-                    Training the Next Generation of <span class="text-secondary">Aviation &amp; UAV</span>
-                    Professionals.
-                </h1>
-                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
-                    NATI provides world-class instruction in manned and unmanned aerial systems, engineering, and
-                    tactical
-                    operations. From flight deck precision to mission mastery, we shape the leaders of tomorrow's
-                    airspace.
-                </p>
-                <div class="flex flex-wrap gap-gutter pt-4">
-                    <a class="bg-secondary text-on-secondary-container px-10 py-4 font-bold rounded-DEFAULT hover:shadow-lg hover:shadow-secondary/20 transition-all flex items-center justify-center text-center"
-                        href="training-programmes.html">Explore Programmes</a>
-                    <!-- <a class="glass-surface text-white border border-outline px-10 py-4 font-bold rounded-DEFAULT hover:bg-white/10 transition-all flex items-center justify-center text-center"
-                        href="#" aria-disabled="true">Apply Now</a>
-                    <a class="text-on-surface font-bold px-6 py-4 flex items-center gap-2 group inline-flex"
-                        href="#" aria-disabled="true">
-                        Admissions <span
-                            class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                    </a> -->
-                </div>
-            </div>
-        </div>
-        <!-- Technical Decoration -->
-        <!-- <div class="absolute bottom-10 left-grid-margin z-20 hidden lg:block">
-            <div class="flex items-center gap-10 font-label-caps text-label-caps text-outline-variant">
-                <div class="flex flex-col">
-                    <span>COORDINATES</span>
-                    <span class="text-on-surface">6.5244° N, 3.3792° E</span>
-                </div>
-                <div class="w-px h-8 bg-outline-variant"></div>
-                <div class="flex flex-col">
-                    <span>ESTABLISHED</span>
-                    <span class="text-on-surface">MMXXIV</span>
-                </div>
-            </div>
-        </div> -->
-    </header>
-    <!-- Value Props / Trust Statements -->
-    <section class="py-section-padding bg-surface-container-lowest relative border-y border-outline-variant/30">
-        <div class="px-grid-margin grid grid-cols-1 md:grid-cols-3 gap-element-gap">
-            <div class="p-8 border-l border-secondary">
-                <!-- <span class="font-label-caps text-label-caps text-secondary mb-2 block">01</span> -->
-                <h3 class="font-display-lg text-title-md text-white mb-4">Professional Training</h3>
-                <p class="text-on-surface-variant">Industry-leading curriculum designed by veterans and technical
-                    experts.</p>
-            </div>
-            <div class="p-8 border-l border-outline-variant">
-                <!-- <span class="font-label-caps text-label-caps text-on-surface-variant mb-2 block">02</span> -->
-                <h3 class="font-display-lg text-title-md text-white mb-4">Mission-Based Learning</h3>
-                <p class="text-on-surface-variant">Real-world scenarios that prepare students for immediate operational
-                    impact.</p>
-            </div>
-            <div class="p-8 border-l border-outline-variant">
-                <!-- <span class="font-label-caps text-label-caps text-on-surface-variant mb-2 block">03</span> -->
-                <h3 class="font-display-lg text-title-md text-white mb-4">Elite Infrastructure</h3>
-                <p class="text-on-surface-variant">State-of-the-art labs and flight zones for comprehensive UAV mastery.
-                </p>
-            </div>
-        </div>
-    </section>
-    <!-- About Section -->
-    <section class="py-section-padding relative overflow-hidden">
-        <div class="grid-accent absolute inset-0 opacity-20"></div>
-        <div class="px-grid-margin grid grid-cols-1 lg:grid-cols-2 gap-grid-margin items-center relative z-10">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-gutter">
-                <div class="glass-surface p-6 accent-glow mt-8">
-                    <span class="material-symbols-outlined text-secondary text-4xl mb-4">school</span>
-                    <h4 class="font-display-lg text-title-md text-white">Courses</h4>
-                    <p class="text-on-surface-variant text-sm mt-2">Specialized curriculum for UAV operations and
-                        aviation engineering.</p>
-                </div>
-                <div class="glass-surface p-6 accent-glow">
-                    <span class="material-symbols-outlined text-secondary text-4xl mb-4">settings_suggest</span>
-                    <h4 class="font-display-lg text-title-md text-white">Services</h4>
-                    <p class="text-on-surface-variant text-sm mt-2">Consultancy and technical support for enterprise
-                        aviation needs.</p>
-                </div>
-                <div class="glass-surface p-6 accent-glow sm:col-span-2">
-                    <span class="material-symbols-outlined text-secondary text-4xl mb-4">groups</span>
-                    <h4 class="font-display-lg text-title-md text-white">Student Life</h4>
-                    <p class="text-on-surface-variant text-sm mt-2">A vibrant community of aviation enthusiasts and
-                        professional trainees.</p>
-                </div>
-            </div>
-            <div class="space-y-8">
-                <h2 class="font-display-lg text-headline-lg text-white">Elevating the Standards of <span
-                        class="text-secondary">Aviation.</span></h2>
-                <div class="tech-line-h w-24"></div>
-                <p class="font-body-lg text-on-surface-variant leading-relaxed">
-                    The Nethawk Aviation Training Institute (NATI) was founded on the principles of technical precision
-                    and operational excellence. We bridge the gap between academic theory and high-stakes field
-                    operations.
-                    <br /><br />
-                    Our graduates enter the workforce with not just a certification, but the experience of thousands of
-                    flight hours and deep engineering insights.
-                </p>
-                <div class="pt-4">
-                    <a class="inline-flex items-center gap-4 text-secondary font-bold hover:gap-6 transition-all"
-                        href="about-us.html">
-                        LEARN MORE ABOUT OUR MISSION
-                        <span class="material-symbols-outlined">trending_flat</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Why Choose NATI (Bento Style Cards) -->
-    <section class="py-section-padding bg-surface-container-low">
-        <div class="px-grid-margin mb-element-gap">
-            <h2 class="font-display-lg text-headline-lg text-white">Engineering Excellence.</h2>
-            <p class="text-on-surface-variant">The NATI Advantage in Numbers and Operations.</p>
-        </div>
-        <div class="px-grid-margin grid grid-cols-1 md:grid-cols-12 gap-gutter">
-            <div class="md:col-span-4 glass-surface p-8 group hover:border-secondary transition-colors cursor-default">
-                <!-- <div class="font-label-caps text-label-caps text-on-surface-variant mb-12">FEATURE_MOD_01</div> -->
-                <h3 class="font-display-lg text-headline-lg text-white mb-4">Practical Training</h3>
-                <p class="text-on-surface-variant">80% of our curriculum is hands-on, ensuring proficiency in diverse
-                    environments.</p>
-            </div>
-            <div
-                class="md:col-span-8 glass-surface p-8 group hover:border-secondary transition-colors cursor-default relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-8">
-                    <span class="material-symbols-outlined text-secondary/30 text-8xl"
-                        style="font-variation-settings: 'FILL' 1;">radar</span>
-                </div>
-                <!-- <div class="font-label-caps text-label-caps text-on-surface-variant mb-12">FEATURE_MOD_02</div> -->
-                <h3 class="font-display-lg text-headline-lg text-white mb-4 max-w-md">Mission Operations</h3>
-                <p class="text-on-surface-variant max-w-sm">From surveillance to industrial inspection, we train for
-                    real-world complexity.</p>
-            </div>
-            <div class="md:col-span-7 glass-surface p-8 group hover:border-secondary transition-colors cursor-default">
-                <!-- <div class="font-label-caps text-label-caps text-on-surface-variant mb-12">FEATURE_MOD_03</div> -->
-                <h3 class="font-display-lg text-headline-lg text-white mb-4">Safety Culture</h3>
-                <p class="text-on-surface-variant">Adhering to global aviation safety standards to minimize risk and
-                    maximize reliability.</p>
-            </div>
-            <div class="md:col-span-5 bg-primary-container p-8 accent-glow border border-primary/20">
-                <!-- <div class="font-label-caps text-label-caps text-primary mb-12">FEATURE_MOD_04</div> -->
-                <h3 class="font-display-lg text-headline-lg text-white mb-4">Engineering</h3>
-                <p class="text-on-primary-container">In-depth training on UAV hardware, flight controllers, and payload
-                    integration.</p>
-            </div>
-        </div>
-    </section>
-    <!-- Programmes Section -->
-    <section class="py-section-padding px-grid-margin">
-        <div class="max-w-4xl mx-auto space-y-12">
-            <div class="text-center">
-                <h2 class="font-display-lg text-headline-lg text-white mb-2">Our Specialized Programmes</h2>
-                <p class="text-on-surface-variant">Global Standard Certifications for Tomorrow's Pilots.</p>
-            </div>
-            <div class="divide-y divide-outline-variant">
-                <a class="group py-8 flex items-center justify-between hover:px-4 transition-all hover:bg-white/5"
-                    href="training-programmes.html">
-                    <div class="flex items-baseline gap-8">
-                        <!-- <span class="font-label-caps text-label-caps text-outline">01</span> -->
-                        <h3
-                            class="font-display-lg text-title-md text-white group-hover:text-secondary transition-colors">
-                            UAV Pilot Training (Advanced)</h3>
-                    </div>
-                    <span
-                        class="material-symbols-outlined text-outline group-hover:text-secondary group-hover:translate-x-2 transition-all">arrow_forward</span>
-                </a>
-                <a class="group py-8 flex items-center justify-between hover:px-4 transition-all hover:bg-white/5"
-                    href="training-programmes.html">
-                    <div class="flex items-baseline gap-8">
-                        <!-- <span class="font-label-caps text-label-caps text-outline">02</span> -->
-                        <h3
-                            class="font-display-lg text-title-md text-white group-hover:text-secondary transition-colors">
-                            Drone Engineering &amp; Maintenance</h3>
-                    </div>
-                    <span
-                        class="material-symbols-outlined text-outline group-hover:text-secondary group-hover:translate-x-2 transition-all">arrow_forward</span>
-                </a>
-                <a class="group py-8 flex items-center justify-between hover:px-4 transition-all hover:bg-white/5"
-                    href="training-programmes.html">
-                    <div class="flex items-baseline gap-8">
-                        <!-- <span class="font-label-caps text-label-caps text-outline">03</span> -->
-                        <h3
-                            class="font-display-lg text-title-md text-white group-hover:text-secondary transition-colors">
-                            Aerial Data Analytics &amp; Photogrammetry</h3>
-                    </div>
-                    <span
-                        class="material-symbols-outlined text-outline group-hover:text-secondary group-hover:translate-x-2 transition-all">arrow_forward</span>
-                </a>
-                <a class="group py-8 flex items-center justify-between hover:px-4 transition-all hover:bg-white/5"
-                    href="training-programmes.html">
-                    <div class="flex items-baseline gap-8">
-                        <!-- <span class="font-label-caps text-label-caps text-outline">04</span> -->
-                        <h3
-                            class="font-display-lg text-title-md text-white group-hover:text-secondary transition-colors">
-                            Tactical Flight Operations</h3>
-                    </div>
-                    <span
-                        class="material-symbols-outlined text-outline group-hover:text-secondary group-hover:translate-x-2 transition-all">arrow_forward</span>
-                </a>
-            </div>
-        </div>
-    </section>
-    <!-- Quote Section -->
-    <section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 bg-background/60 z-10 backdrop-blur-[2px]"></div>
-        <img alt="NATI Aviation Graphic" class="absolute inset-0 w-full h-full object-cover"
-            src="assets/images/simulation-class.png" />
-        <div class="relative z-20 px-grid-margin text-center max-w-4xl">
-            <span class="material-symbols-outlined text-secondary text-6xl mb-6"
-                style="font-variation-settings: 'FILL' 1;">format_quote</span>
-            <blockquote class="font-display-lg text-headline-lg text-white mb-8 italic">
-                "Excellence in aviation begins with discipline, precision, and practical mastery."
-            </blockquote>
-            <cite class="font-label-caps text-label-caps text-secondary uppercase tracking-[0.2em]">— NATI Flight
-                command</cite>
-        </div>
-    </section>
-    <!-- Testimonials & Services Slider Placeholder -->
-    <!-- <section class="py-section-padding bg-surface-container-lowest">
-        <div class="px-grid-margin mb-gutter flex justify-between items-end">
-            <div>
-                <h2 class="font-display-lg text-headline-lg text-white">Student Success</h2>
-                <p class="text-on-surface-variant">Feedback from our certified graduates.</p>
-            </div>
-            <div class="flex gap-2">
-                <button class="p-4 border border-outline-variant hover:bg-white/10 transition-colors"><span
-                        class="material-symbols-outlined">chevron_left</span></button>
-                <button class="p-4 border border-outline-variant hover:bg-white/10 transition-colors"><span
-                        class="material-symbols-outlined">chevron_right</span></button>
-            </div>
-        </div>
-        <div class="flex gap-gutter overflow-x-auto pb-8 px-grid-margin scrollbar-hide">
-            <div class="min-w-[400px] glass-surface p-10 flex flex-col justify-between h-[320px]">
-                <p class="text-on-surface text-body-lg italic">"The engineering module at NATI gave me the confidence to
-                    handle high-value hardware with precision. Truly a world-class institute."</p>
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-secondary-container"></div>
-                    <div>
-                        <div class="font-bold text-white">Olanrewaju K.</div>
-                        <div class="text-xs text-outline-variant font-label-caps">CERTIFIED UAV ENGINEER</div>
-                    </div>
-                </div>
-            </div>
-            <div class="min-w-[400px] glass-surface p-10 flex flex-col justify-between h-[320px]">
-                <p class="text-on-surface text-body-lg italic">"From flight simulation to live field missions, the
-                    transition was seamless thanks to the expert instructors at the institute."</p>
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-surface-bright"></div>
-                    <div>
-                        <div class="font-bold text-white">Chinaza E.</div>
-                        <div class="text-xs text-outline-variant font-label-caps">TACTICAL PILOT GRADUATE</div>
-                    </div>
-                </div>
-            </div>
-            <div class="min-w-[400px] glass-surface p-10 flex flex-col justify-between h-[320px]">
-                <p class="text-on-surface text-body-lg italic">"NATI isn't just about flying; it's about understanding
-                    the entire ecosystem of aviation. The safety protocols are elite."</p>
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-primary-container"></div>
-                    <div>
-                        <div class="font-bold text-white">Samuel B.</div>
-                        <div class="text-xs text-outline-variant font-label-caps">MISSION COMMANDER trainee</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- Gallery Section -->
-    <section class="py-section-padding bg-surface">
-        <div class="px-grid-margin grid grid-cols-1 md:grid-cols-3 gap-element-gap">
-            <div class="md:col-span-2 group relative overflow-hidden h-[400px]">
-                <img alt="NATI trainees and guests observing a flight demonstration outdoors"
-                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                    src="assets/images/life-field-ops.jpg" />
-                <div
-                    class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex items-end">
-                    <span class="font-label-caps text-label-caps text-secondary">FIELD MISSION OPS / AREA 4</span>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden h-[400px]">
-                <img alt="NATI trainees working hands-on with UAV electronics at the lab bench"
-                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                    src="assets/images/life-tech-lab.jpg" />
-                <div
-                    class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex items-end">
-                    <span class="font-label-caps text-label-caps text-secondary">HARDWARE LAB / LAB_X1</span>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden h-[400px]">
-                <img alt="NATI instructor teaching search-and-rescue support operations in a theory session"
-                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                    src="assets/images/life-theory.jpg" />
-                <div
-                    class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex items-end">
-                    <span class="font-label-caps text-label-caps text-secondary">FLIGHT ENGINEERING WORKSHOP</span>
-                </div>
-            </div>
-            <div class="md:col-span-2 glass-surface flex items-center justify-center p-12 text-center">
-                <div class="space-y-4">
-                    <h3 class="font-display-lg text-headline-lg text-white">Join the Elite.</h3>
-                    <p class="text-on-surface-variant max-w-lg">Apply for our upcoming cohort and start your journey
-                        toward professional aviation mastery.</p>
-                    <!-- <a class="bg-secondary text-on-secondary-container px-12 py-4 font-bold rounded-DEFAULT hover:shadow-lg transition-all mt-4 flex items-center justify-center text-center"
-                        href="#" aria-disabled="true">START APPLICATION</a> -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Footer -->
-    <footer class="bg-surface-container-lowest border-t border-outline-variant">
-        <div class="grid grid-cols-3 md:grid-cols-4 gap-element-gap px-grid-margin py-section-padding w-full">
-            <div class="space-y-6 col-span-3 md:col-span-1">
-                <img alt="NATI Logo" class="h-[52px] w-auto" src="assets/images/logo-white.png" />
-                <p class="text-on-surface-variant text-sm leading-relaxed">
-                    Nethawk Aviation Training Institute is a premier facility dedicated to advancing UAV technology and
-                    pilot proficiency across Africa.
-                </p>
-                <div class="flex gap-4">
-                    <a class="w-10 h-10 glass-surface flex items-center justify-center hover:text-secondary transition-colors"
-                        href="index.html"><span class="material-symbols-outlined text-sm">language</span></a>
-                    <a class="w-10 h-10 glass-surface flex items-center justify-center hover:text-secondary transition-colors"
-                        href="index.html"><span class="material-symbols-outlined text-sm">share</span></a>
-                    <a class="w-10 h-10 glass-surface flex items-center justify-center hover:text-secondary transition-colors"
-                        href="mailto:admissions@nati.aero"><span
-                            class="material-symbols-outlined text-sm">mail</span></a>
-                </div>
-            </div>
-            <div class="space-y-4 col-span-1">
-                <h4 class="font-label-caps text-label-caps text-white mb-6">RESOURCES</h4>
-                <ul class="space-y-3">
-                    <li><a class="text-on-surface-variant hover:text-secondary transition-colors text-sm"
-                            href="index.html">Campus Locations</a></li>
-                        <!-- <li><a class="text-on-surface-variant hover:text-secondary transition-colors text-sm"
-                            href="#" aria-disabled="true">Admissions FAQ</a></li> -->
-                    <li><a class="text-on-surface-variant hover:text-secondary transition-colors text-sm"
-                            href="mailto:support@nati.com">Technical Support</a></li>
-                </ul>
-            </div>
-            <div class="space-y-4 col-span-1">
-                <h4 class="font-label-caps text-label-caps text-white mb-6">LEGAL</h4>
-                <ul class="space-y-3">
-                    <li><a class="text-on-surface-variant hover:text-secondary transition-colors text-sm"
-                            href="index.html">Privacy Policy</a></li>
-                    <li><a class="text-on-surface-variant hover:text-secondary transition-colors text-sm"
-                            href="index.html">Terms of Service</a></li>
-                    <li><a class="text-on-surface-variant hover:text-secondary transition-colors text-sm"
-                            href="index.html">Code of Conduct</a></li>
-                </ul>
-            </div>
-            <div class="space-y-4 col-span-1">
-                <h4 class="font-label-caps text-label-caps text-white mb-6">NEWSLETTER</h4>
-                <p class="text-on-surface-variant text-sm mb-4">Stay updated on new cohorts and aviation trends.</p>
-                <div class="flex border-b border-outline-variant pb-2">
-                    <input class="bg-transparent border-none focus:ring-0 text-sm w-full text-white"
-                        placeholder="Email address" type="email" />
-                    <button class="text-secondary hover:translate-x-1 transition-transform"
-                        onclick="alert('Thank you for subscribing to our newsletter!')" type="button">
-                        <span class="material-symbols-outlined">chevron_right</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div
-            class="px-grid-margin py-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="font-body-lg text-label-caps text-on-surface-variant/60">
-                © 2024 Nethawk Aviation Training Institute. All Rights Reserved.
-            </div>
-        </div>
-    </footer>
-    <script>
-        // Simple scroll behavior for nav
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('py-2');
-                nav.classList.remove('py-4');
-            } else {
-                nav.classList.add('py-4');
-                nav.classList.remove('py-2');
-            }
-        });
-    </script>
-    <!-- Mobile Drawer -->
-    <div class="fixed inset-y-0 right-0 z-[100] w-64 bg-surface-container-high/95 backdrop-blur-2xl border-l border-white/10 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col p-6 overflow-y-auto"
-        id="mobile-drawer">
-        <div class="flex justify-between items-center mb-8">
-            <img src="assets/images/logo-white.png" alt="NATI Logo" class="h-[52px] w-auto" />
-            <button class="text-on-surface hover:text-secondary" id="close-menu-btn"><span
-                    class="material-symbols-outlined">close</span></button>
-        </div>
-        <div class="flex flex-col gap-4">
-            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
-                href="index.html">Home</a>
-            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
-                href="about-us.html">About</a>
-            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
-                href="training-programmes.html">Programmes</a>
-            <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
-                href="services.html">Services</a>
-            <!-- <a class="text-on-surface hover:text-secondary font-bold border-b border-outline-variant/30 pb-2"
-                href="#" aria-disabled="true">Admissions</a> -->
-        </div>
+<body class="one-league">
+  <div id="__next">
+    <main class="one-league">
+      <header class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary one-league__header-app-bar one-league__header-app-bar--black one-league__header-app-bar--fixed one-league__header-app-bar--top one-league__header-app-bar--black-bg mui-fixed MuiPaper-elevation0"><div class="MuiToolbar-root MuiToolbar-regular one-league__header-container one-league__header-container-toolbar MuiToolbar-gutters"><a class="one-league__header-brand-link" href="/academy/index.html" style="display:inline-flex;align-items:center;text-decoration:none;gap:12px;"><img alt="NATI Logo" class="one-league__header-logo" src="/academy/assets/oneleague/nati-logo-white.png" style="height:36px;max-width:180px;width:auto;object-fit:contain;"/></a><nav aria-label="Main navigation" class="one-league__header-nav-container"><div class="jss6"><button class="MuiButtonBase-root MuiButton-root MuiButton-text one-league__header-nav-button" onclick="document.querySelector('#academics')?.scrollIntoView({behavior: 'smooth'})" tabindex="0" type="button"><span class="MuiButton-label">ACADEMICS</span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-text one-league__header-nav-button" onclick="document.querySelector('#faculty')?.scrollIntoView({behavior: 'smooth'})" tabindex="0" type="button"><span class="MuiButton-label">FACULTY</span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-text one-league__header-nav-button" onclick="document.querySelector('#mentorship')?.scrollIntoView({behavior: 'smooth'})" tabindex="0" type="button"><span class="MuiButton-label">MENTORSHIP</span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-text one-league__header-nav-button" onclick="document.querySelector('#fellows')?.scrollIntoView({behavior: 'smooth'})" tabindex="0" type="button"><span class="MuiButton-label">FELLOWS</span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-text one-league__header-nav-button" onclick="document.querySelector('#impact')?.scrollIntoView({behavior: 'smooth'})" tabindex="0" type="button"><span class="MuiButton-label">IMPACT</span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-text one-league__header-nav-button" onclick="document.querySelector('#about')?.scrollIntoView({behavior: 'smooth'})" tabindex="0" type="button"><span class="MuiButton-label">ABOUT US</span></button></div></nav><div class="jss6"><ul class="MuiList-root one-league__header-links-list MuiList-padding"><li class="MuiListItem-root one-league__header-links-list-item MuiListItem-gutters"><button class="MuiButtonBase-root MuiButton-root MuiButton-outlined one-league__header-action-button one-league__header-action-button--white MuiButton-colorInherit" tabindex="0" type="button" width="50%"><span class="MuiButton-label">DONATE</span></button></li></ul></div></div></header>
+      <div class="one-league__splash"><div class="carousel-root"><div class="carousel carousel-slider" style="width:100%"><ul class="control-dots"><li aria-label="slide item 1" class="dot selected" role="button" tabindex="0" value="0"></li><li aria-label="slide item 2" class="dot" role="button" tabindex="0" value="1"></li><li aria-label="slide item 3" class="dot" role="button" tabindex="0" value="2"></li><li aria-label="slide item 4" class="dot" role="button" tabindex="0" value="3"></li><li aria-label="slide item 5" class="dot" role="button" tabindex="0" value="4"></li><li aria-label="slide item 6" class="dot" role="button" tabindex="0" value="5"></li></ul><button aria-label="previous slide / item" class="control-arrow control-prev control-disabled" type="button"></button><div class="slider-wrapper axis-horizontal"><ul class="slider animated" style="-webkit-transform:translate3d(-100%,0,0);-ms-transform:translate3d(-100%,0,0);-o-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0);-webkit-transition-duration:350ms;-moz-transition-duration:350ms;-o-transition-duration:350ms;transition-duration:350ms;-ms-transition-duration:350ms"><li class="slide"><section class="one-league__splash"><span class="eif-image"></span><div class="eif-content-container"><p class="eif-title">Entrepreneurial Innovation Fellowship</p><p class="eif-subtitle">Featuring Courses From</p><img alt="Stanford Online logo" class="eif-logo" src="/academy/assets/oneleague/Stanford_Logo.svg"/><a class="Button_button-container__PBTxX" href="/eif" style="width:fit-content;z-index:1" target="_blank"><div class="button transparent small bordered">Learn More</div></a></div></section></li><li class="slide selected previous"><section class="one-league__splash"><span class="starter-image"></span><span class="one-league__bg-image one-league__bg-image--1"></span><span class="one-league__bg-image one-league__bg-image--2"></span><span class="one-league__bg-image one-league__bg-image--3"></span><span class="one-league__bg-image one-league__bg-image--4"></span><div class="one-league__about2"><img alt="NATI Logo" class="one-league__logo mobile" src="/academy/assets/oneleague/nati-logo-white.png"/><div class="one-league__content"><img alt="NATI Logo" class="one-league__logo center desktop" src="/academy/assets/oneleague/nati-logo-white.png"/><div class="one-league__info"><div class="one-league__form"><h1>One League</h1> <h1 class="one-league__intro">is a global education institution providing the world's highest potential change-makers a world-class education and opportunities to realize global impact.</h1></div><div style="padding-top:18px"></div><h1 class="one-league__intro"><b>Now accepting applications.</b> <br/>Application Deadline: <!-- -->October 1, 2026, Midnight PT</h1><div class="align"><a class="Button_button-container__PBTxX" href="https://apply.one-league.org" style="width:fit-content;z-index:1" target="_blank"><div class="button transparent small bordered">APPLY NOW</div></a></div></div></div></div></section></li><li class="slide"><section class="one-league__splash"><span class="ai-venture-lab-image"></span><div class="ai-venture-lab-content-container"><p class="ai-venture-lab-title">AI Venture Lab</p><p class="ai-venture-lab-subtitle tu">4 Weeks | Fully Virtual | Cohort-Based</p><a class="Button_button-container__PBTxX" href="/ai-venture-lab" style="width:fit-content;z-index:1" target="_blank"><div class="button transparent small bordered">Learn More</div></a></div></section></li><li class="slide"><section class="one-league__splash"><span class="promo-image"></span><div class="promo-content-container"><div class="promo-content"><div class="promo-title tu">World-Class <br/> Education</div><div class="promo-subtitle tu">That Knows No Geographic Borders</div></div><div class="promo-logos-container"><div class="promo-logo-description tu">WITH CURRICULUM CURATED FROM</div><div class="promo-logo"><img alt="Harvard Business Impact" class="promo-logo promo-logo-hbi" src="/academy/assets/oneleague/HBI_Logo.svg"/><img alt="MIT IDSS" class="promo-logo promo-logo-mit" src="/academy/assets/oneleague/MIT_white.svg"/><img alt="Stanford Online" class="promo-logo promo-logo-stanford" src="/academy/assets/oneleague/Stanford_Logo.svg"/></div></div></div></section></li><li class="slide"><section class="one-league__splash"><span class="mba-image"></span><div class="mba-content-container"><p class="mba-title">Master of Business Administration (MBA)</p><p class="mba-subtitle">Core Curriculum</p><img alt="Harvard Business Impact logo" class="mba-logo" src="/academy/assets/oneleague/HBI_Logo.svg"/><a class="Button_button-container__PBTxX" href="/mba" style="width:fit-content;z-index:1" target="_blank"><div class="button transparent small bordered">Learn More</div></a></div></section></li><li class="slide"><section class="one-league__splash"><span class="dsf-image"></span><div class="dsf-content-container"><p class="dsf-title">Generative AI &amp; Data Science Fellowship</p><p class="dsf-subtitle">Offered in collaboration with MIT</p><img alt="MIT Statistics and Data Science logo" class="dsf-logo" src="/academy/assets/oneleague/MIT_white.svg"/><a class="Button_button-container__PBTxX" href="/dsf" style="width:fit-content;z-index:1" target="_blank"><div class="button transparent small bordered">Learn More</div></a></div></section></li><li class="slide"><section class="one-league__splash"><span class="eif-image"></span><div class="eif-content-container"><p class="eif-title">Entrepreneurial Innovation Fellowship</p><p class="eif-subtitle">Featuring Courses From</p><img alt="Stanford Online logo" class="eif-logo" src="/academy/assets/oneleague/Stanford_Logo.svg"/><a class="Button_button-container__PBTxX" href="/eif" style="width:fit-content;z-index:1" target="_blank"><div class="button transparent small bordered">Learn More</div></a></div></section></li><li class="slide selected previous"><section class="one-league__splash"><span class="starter-image"></span><span class="one-league__bg-image one-league__bg-image--1"></span><span class="one-league__bg-image one-league__bg-image--2"></span><span class="one-league__bg-image one-league__bg-image--3"></span><span class="one-league__bg-image one-league__bg-image--4"></span><div class="one-league__about2"><img alt="NATI Logo" class="one-league__logo mobile" src="/academy/assets/oneleague/nati-logo-white.png"/><div class="one-league__content"><img alt="NATI Logo" class="one-league__logo center desktop" src="/academy/assets/oneleague/nati-logo-white.png"/><div class="one-league__info"><div class="one-league__form"><h1>One League</h1> <h1 class="one-league__intro">is a global education institution providing the world's highest potential change-makers a world-class education and opportunities to realize global impact.</h1></div><div style="padding-top:18px"></div><h1 class="one-league__intro"><b>Now accepting applications.</b> <br/>Application Deadline: <!-- -->October 1, 2026, Midnight PT</h1><div class="align"><a class="Button_button-container__PBTxX" href="https://apply.one-league.org" style="width:fit-content;z-index:1" target="_blank"><div class="button transparent small bordered">APPLY NOW</div></a></div></div></div></div></section></li></ul></div><button aria-label="next slide / item" class="control-arrow control-next control-disabled" type="button"></button><p class="carousel-status">1 of 6</p></div></div></div>
+      <div class="one-league__fastcompany"><a href="https://tinyurl.com/1LFastCo" target="_blank"><section class="fast_company-container"><div class="fast_company-container box-border"><h3 class="fast_company-header1 tu">One League Named To</h3><div class="fast_company-logo"><img alt="Fast Company Logo" src="/academy/assets/oneleague/Fast-Company-Logo.svg" style="width:40%"/></div><h3 class="fast_company-header2 tu">Most Innovative Companies In the World</h3><div class="center"><a class="Button_button-container__PBTxX" href="https://tinyurl.com/1LFastCo" style="width:fit-content;z-index:1" target="_blank"><div class="button transparent underline small">READ MORE</div></a></div></div></section></a></div>
+      <section class="one-league__welcome"><div class="one-league__welcome-container one-league__container-desktop"><div class="one-league__welcome-animation"><span class="one-league__welcome-title">Welcome</span><span class="one-league__welcome-title">Murakaza Neza</span><span class="one-league__welcome-title">Karibu</span><span class="one-league__welcome-title">أهلاً وسهلاً</span><span class="one-league__welcome-title">Mwaiseni</span><span class="one-league__welcome-title">Takulandilani</span><span class="one-league__welcome-title">Akwaaba</span><span class="one-league__welcome-title">Tinokugamuchirai</span><span class="one-league__welcome-title">स्वागत है</span><span class="one-league__welcome-title">Bem-vindos</span><span class="one-league__welcome-title">Қош келдіңіз!</span><span class="one-league__welcome-title">Mabuhay</span><span class="one-league__welcome-title"> خوش آمدید</span><span class="one-league__welcome-title">Bienvenue</span><span class="one-league__welcome-title">欢迎</span><span class="one-league__welcome-title">እንኳን ደህና መጣችሁ</span><span class="one-league__welcome-title">¡Bienvenidos!</span><span class="one-league__welcome-title">Ekáàbò</span><span class="one-league__welcome-title">Кош келиңиз</span><span class="one-league__welcome-title"> ڀلي ڪري آيا</span></div><p class="one-league__welcome-text">We're happy you're here!</p></div></section>
+      <div><section class="one-league__programs" id="academics"><div class="one-league__programs-banner"><div class="one-league__programs-banner-content"><p class="one-league__programs-header-subheader color-white tu">Explore</p><h2 class="one-league__programs-header tu">Programs</h2><div class="one-league__programs-info"><p class="one-league__programs-text">One League offers a Master of Business Administration (MBA) - along with programs in Generative AI &amp; Data Science and Entrepreneurial Innovation - with curriculum from the world’s leading universities. Classes are conducted in live, online sessions, led by some of the most renowned and accomplished faculty members in the world.</p></div></div></div></section></div>
+      <section class="mba-section"><div class="mba-container"><h2 class="mba-title">Master of Business Administration <br/> (MBA)</h2><div class="mba-content"><div class="mba-description"><p>Complete the <a class="mba-description mba-description-link" href="/mba" target="_blank">Business Management Fellowship</a>, serving as the core curriculum for the MBA program, and choose between the <a class="mba-description mba-description-link" href="/dsf" target="_blank">Generative AI &amp; Data Science Fellowship</a> or <a class="mba-description mba-description-link" href="/eif" target="_blank">Entrepreneurial Innovation Fellowship</a> to receive a graduate-level Master of Business Administration (MBA) degree from One League.</p><br/><p>Fellowships may be completed in any order preferred.</p></div><div class="mba-curriculum"><div class="mba-curriculum-flow"><div class="mba-flow-item"><span class="mba-flow-label">CORE</span><span class="mba-flow-name mba-flow-name-border">Business <br/> Management</span></div><div class="mba-flow-item"><div class="mba-flow-line"></div><span class="mba-flow-label">TRACK</span><span class="mba-flow-name mba-flow-name-border">Generative AI <br/> &amp; Data Science </span><span class="mba-flow-separator">/</span><span class="mba-flow-name">Entrepreneurial <br/> Innovation</span></div></div></div></div><div class="mba-button-container"><a class="Button_button-container__PBTxX" href="https://apply.one-league.org" style="width:fit-content;z-index:1" target="_blank"><div class="button transparent normal bordered">APPLY NOW</div></a></div><div class="mba-deadline">Application Deadline: <!-- -->October 1, 2026, Midnight PT</div></div></section>
+      <section class="Item_curriculum-component__lPjrC" style="background-image:url(https://assets.one-league.org/Curriculum/fob_desktop.png?auto=webp&amp;width=1200)"><div class="curriculum-container"><div class="title-container"><div class="title">Business Management</div><img alt="Business Management program logo" class="" src="/academy/assets/oneleague/HBI_Logo_Black.svg" width="100"/></div><div class="text-container"><div class="text">This program features a selection of case studies from Harvard Business Impact, inspired by the first-year required curriculum at Harvard Business School, taught by our highly distinguished One League faculty members.</div><div class="expanded-content"><p class="expanded-content-title mobile">EXPLORE CURRICULUM</p><div class="desktop-content"><p class="expanded-content-title">EXPLORE CURRICULUM</p><div><ul><li>Leadership &amp; Organizational Behavior</li><li>Strategy</li><li>Financial Reporting &amp; Control</li><li>Leadership &amp; Corporate Accountability</li><li>Technology &amp; Operations Management</li><li>Business, Government and International Economies</li><li>Finance</li><li>Marketing</li></ul></div><div class="Button_button-container__PBTxX" style="width:fit-content;z-index:1"><div class="button transparent mobile-black normal bordered">Learn More</div></div><div class="carousel"></div></div><div class="mobile"><div class="Button_button-container__PBTxX" style="width:fit-content;z-index:1"><div class="button transparent mobile-black normal bordered">Learn More</div></div></div></div></div></div></section>
+      <section class="Item_curriculum-component__lPjrC" style="background-image:url(https://assets.one-league.org/Curriculum/mit-bg-dark.png?auto=webp&amp;width=1200)"><div class="curriculum-container dark-mode"><div class="title-container light"><div class="title">Generative AI &amp; Data Science</div><img alt="Generative AI &amp; Data Science program logo" class="" src="/academy/assets/oneleague/mit_white_logo.png" width="220"/></div><div class="text-container"><div class="text">Offered in collaboration with the MIT Institute for Data, Systems, and Society, this program equips professionals with essential, hands-on skills to drive impact through data science and generative AI. The program offers the opportunity to learn directly from MIT teaching staff as well as attend exclusive MIT IDSS events and seminars.</div><div class="expanded-content"><p class="expanded-content-title mobile">EXPLORE CURRICULUM</p><div class="desktop-content"><p class="expanded-content-title">EXPLORE CURRICULUM</p><div><ul><li>Foundational Workshop</li><li>Data Analysis for Social Scientists</li><li>Business Opportunities and Applications of Generative AI*</li><li>Machine Learning with Python: From Linear Models to Deep Learning</li><li>Capstone Project: Applied Data Science</li></ul></div><div class="Button_button-container__PBTxX" style="width:fit-content;z-index:1"><div class="button transparent normal bordered">Learn More</div></div><div class="subtext">*Course from Stanford Online</div><div class="carousel"></div></div><div class="mobile"><div class="Button_button-container__PBTxX" style="width:fit-content;z-index:1"><div class="button transparent normal bordered">Learn More</div></div></div></div></div></div><div class="bppe-container dark-mode"><div class="title-container desktop"></div></div></section>
+      <section class="Item_curriculum-component__lPjrC" style="background-image:url(https://assets.one-league.org/Curriculum/ie_desktop.png?auto=webp&amp;width=1200)"><div class="curriculum-container"><div class="title-container"><div class="title">Entrepreneurial Innovation</div><img alt="Entrepreneurial Innovation program logo" class="" src="/academy/assets/oneleague/ie_logo.png" width="180"/></div><div class="text-container"><div class="text">The One League Entrepreneurial Innovation fellowship features courses from the Business Innovation Program from Stanford Online, paired with live online classes led by One League faculty.  Whether you’re at the idea stage or looking to scale, starting a new company or driving innovation within an established organization, this fellowship will provide the necessary, hands-on skills to drive real, scalable impact.</div><div class="expanded-content"><p class="expanded-content-title mobile">EXPLORE CURRICULUM</p><div class="desktop-content"><p class="expanded-content-title">EXPLORE CURRICULUM</p><div><ul><li>Essentials of Entrepreneurship*</li><li>Design Thinking</li><li>Business Opportunities and Applications of Generative AI*</li><li>Product Management: Transforming Opportunities into Great Products*</li><li>Business Model Innovation*</li><li>Strategies for Sustainability*</li><li>Idea to Market*</li><li>Capstone</li></ul></div><div class="Button_button-container__PBTxX" style="width:fit-content;z-index:1"><div class="button transparent mobile-black normal bordered">Learn More</div></div><div class="subtext">*Course from Stanford Online</div><div class="carousel"></div></div><div class="mobile"><div class="Button_button-container__PBTxX" style="width:fit-content;z-index:1"><div class="button transparent mobile-black normal bordered">Learn More</div></div></div></div></div></div><div class="bppe-container"><div class="title-container desktop"></div></div></section>
+      <section class="Container_press-container-component__5nvnH"><div class="press-container"><h3 class="title">As Seen In Press</h3><div class="carousel-container"><section class="Carousel_carousel-component__lT9lp"><div class="carousel-container is-centered"><div class="carousel-root"><div class="carousel carousel-slider" style="width:100%"><ul class="control-dots"><li aria-label="slide item 1" class="dot selected" role="button" tabindex="0" value="0"></li><li aria-label="slide item 2" class="dot" role="button" tabindex="0" value="1"></li></ul><div class="slider-wrapper axis-horizontal"><ul class="slider animated" style="-webkit-transform:translate3d(-100%,0,0);-ms-transform:translate3d(-100%,0,0);-o-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0);-webkit-transition-duration:350ms;-moz-transition-duration:350ms;-o-transition-duration:350ms;transition-duration:350ms;-ms-transition-duration:350ms"><li class="slide"><div><div><div><section class="Item_item-component__VGmL_"><div class="card"><main><div class="quote">Our collaboration with One League opens the door for more students, regardless of means, to develop an innovation and entrepreneurial mindset, learning from leading faculty at Stanford and from industry experts, to solve real-world challenges and have lasting positive impact.</div></main><footer><div class="name"><strong>Carissa Little</strong><span>, <!-- -->Executive Director, Stanford Engineering Center for Global &amp; Online Education and Stanford Online</span></div></footer></div></section></div></div></div></li><li class="slide selected previous"><div><div><div><section class="Item_item-component__VGmL_"><div class="card"><main><div class="quote">Harvard Business Impact is pleased to support One League in their mission of democratizing access to world-class management education. The delivery of the core curriculum through the case method pioneered at Harvard Business School is evident of One League’s commitment to rigor and high quality learning experiences that should be accessible to all qualified students, regardless of their means.</div></main><footer><div class="name"><strong>Ellen Desmarais</strong><span>, <!-- -->Co-President, Harvard Business Publishing</span></div></footer></div></section></div></div><div><div><section class="Item_item-component__VGmL_"><div class="card"><main><div class="quote">We're thrilled One League joined the MIT IDSS Alliance to expand our joint mission to provide top-notch online learning with hands-on group interaction. We strongly share One League's commitment to providing high-quality education regardless of financial circumstances.</div></main><footer><div class="name"><strong>Prof. Devavrat Shah</strong><span>, <!-- -->Faculty Director, MIT Institute for Data, Systems, and Society</span></div></footer></div></section></div></div></div></li><li class="slide"><div><div><div><section class="Item_item-component__VGmL_"><div class="card"><main><div class="quote">Our collaboration with One League opens the door for more students, regardless of means, to develop an innovation and entrepreneurial mindset, learning from leading faculty at Stanford and from industry experts, to solve real-world challenges and have lasting positive impact.</div></main><footer><div class="name"><strong>Carissa Little</strong><span>, <!-- -->Executive Director, Stanford Engineering Center for Global &amp; Online Education and Stanford Online</span></div></footer></div></section></div></div></div></li><li class="slide selected previous"><div><div><div><section class="Item_item-component__VGmL_"><div class="card"><main><div class="quote">Harvard Business Impact is pleased to support One League in their mission of democratizing access to world-class management education. The delivery of the core curriculum through the case method pioneered at Harvard Business School is evident of One League’s commitment to rigor and high quality learning experiences that should be accessible to all qualified students, regardless of their means.</div></main><footer><div class="name"><strong>Ellen Desmarais</strong><span>, <!-- -->Co-President, Harvard Business Publishing</span></div></footer></div></section></div></div><div><div><section class="Item_item-component__VGmL_"><div class="card"><main><div class="quote">We're thrilled One League joined the MIT IDSS Alliance to expand our joint mission to provide top-notch online learning with hands-on group interaction. We strongly share One League's commitment to providing high-quality education regardless of financial circumstances.</div></main><footer><div class="name"><strong>Prof. Devavrat Shah</strong><span>, <!-- -->Faculty Director, MIT Institute for Data, Systems, and Society</span></div></footer></div></section></div></div></div></li></ul></div><p class="carousel-status">1 of 2</p></div></div></div></section></div></div></section>
+      <section class="one-league__mentors" id="mentorship">
+  <div class="one-league__mentors-intro">
+    <div class="one-league__mentors-info">
+      <h3 class="one-league__mentors-header tu">Mentorship <span>&amp; Coaching</span></h3>
+      <p class="one-league__mentors-text">One League Global Mentorship Board connects fellows with a worldwide network of accomplished industry leaders and executives who actively guide, champion, and coach them to succeed in their career and personal goals and aspirations.</p>
     </div>
-    <!-- Mobile Overlay -->
-    <div class="fixed inset-0 z-[90] bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
-        id="mobile-overlay"></div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuBtn = document.getElementById('mobile-menu-btn');
-            const closeBtn = document.getElementById('close-menu-btn');
-            const drawer = document.getElementById('mobile-drawer');
-            const overlay = document.getElementById('mobile-overlay');
+  </div>
+  <div class="one-league__mentors-container">
+    <div class="one-league__mentors-box">
+      <p class="one-league__mentors-title tu">Meet Our Global Mentorship Board</p>
+      <div class="one-league__mentors-grid">
+        <div class="one-league__mentors-card">
+      <div class="one-league__mentors-card--box">
+        <div class="one-league__mentors-card--badge tu">
+          <div class="one-league__mentors-card--badge-text cohort">Business Administration</div>
+          <div class="one-league__mentors-card--badge-text chair">Board Chair</div>
+        </div>
+        <img src="/academy/assets/oneleague/mentors/Mentor-Esther2.jpg" alt="Esther (Hsu) Wang" class="one-league__mentors-card--profile" />
+        <h4 class="one-league__mentors-card--name tu">Esther (Hsu) Wang</h4>
+      </div>
+      <p class="one-league__mentors-card--text"><span class="tu">Born in:</span> Wilmington, DE, US |&nbsp;<span class="tu">Lives in:</span> Washington, DC, US</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Graduate of </span> University of Pennsylvania | Harvard Kennedy School | Harvard Business School</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Experience at </span> The Bridgespan Group | IDinsight | Bain & Co. | SHOKAY | TechnoServe | TAMTAM</p>
+    </div><div class="one-league__mentors-card">
+      <div class="one-league__mentors-card--box">
+        
+        <img src="/academy/assets/oneleague/mentors/Mentor-Umaimah.jpg" alt="Umaimah Mendhro" class="one-league__mentors-card--profile" />
+        <h4 class="one-league__mentors-card--name tu">Umaimah Mendhro</h4>
+      </div>
+      <p class="one-league__mentors-card--text"><span class="tu">Born in:</span> Hyderabad, Pakistan |&nbsp;<span class="tu">Lives in:</span> Oakland, CA, US</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Graduate of </span> Cornell University | Harvard Business School</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Experience at </span> One League | VIDA | HOF Capital | Halogen Ventures | Dreamfly | West | Microsoft | Endeavor | McKinsey & Company</p>
+    </div><div class="one-league__mentors-card">
+      <div class="one-league__mentors-card--box">
+        
+        <img src="/academy/assets/oneleague/mentors/Mentor-Aduke.jpg" alt="Aduke Thelwell" class="one-league__mentors-card--profile" />
+        <h4 class="one-league__mentors-card--name tu">Aduke Thelwell</h4>
+      </div>
+      <p class="one-league__mentors-card--text"><span class="tu">Born in:</span> Kingston, Jamaica |&nbsp;<span class="tu">Lives in:</span> Brooklyn, NY, US</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Graduate of </span> Swarthmore College | Harvard Business School</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Experience at </span> Goldman Sachs | Morgan Stanley | Bain & Co. | Serve Robotics</p>
+    </div><div class="one-league__mentors-card">
+      <div class="one-league__mentors-card--box">
+        
+        <img src="/academy/assets/oneleague/mentors/Mentor-Bobby.jpg" alt="Bobby Barnes" class="one-league__mentors-card--profile" />
+        <h4 class="one-league__mentors-card--name tu">Bobby Barnes</h4>
+      </div>
+      <p class="one-league__mentors-card--text"><span class="tu">Born in:</span> Norfolk, VA, US |&nbsp;<span class="tu">Lives in:</span> Boston, MA, US</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Graduate of </span> North Carolina State University | Stanford University | Harvard Business School</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Experience at </span> Fidelity | Motorola | NASA</p>
+    </div><div class="one-league__mentors-card">
+      <div class="one-league__mentors-card--box">
+        
+        <img src="/academy/assets/oneleague/mentors/Mentor-Ajay3.jpg" alt="Ajay Sudan" class="one-league__mentors-card--profile" />
+        <h4 class="one-league__mentors-card--name tu">Ajay Sudan</h4>
+      </div>
+      <p class="one-league__mentors-card--text"><span class="tu">Born in:</span> St. Louis, MO, US |&nbsp;<span class="tu">Lives in:</span> Palo Alto, CA, US</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Graduate of </span> Massachusetts Institute of Technology | Harvard Business School</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Experience at </span> Microsoft | Palantir Technologies | Lightspeed Venture Partners</p>
+    </div><div class="one-league__mentors-card">
+      <div class="one-league__mentors-card--box">
+        
+        <img src="/academy/assets/oneleague/mentors/Mentor-Dalia.jpg" alt="Dalia Rahman" class="one-league__mentors-card--profile" />
+        <h4 class="one-league__mentors-card--name tu">Dalia Rahman</h4>
+      </div>
+      <p class="one-league__mentors-card--text"><span class="tu">Born in:</span> El Obeid, Sudan |&nbsp;<span class="tu">Lives in:</span> New York, NY, US</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Graduate of </span> Vassar College | Harvard Kennedy School | Harvard Business School</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Experience at </span> Goldman Sachs | New York Cares | Ascend Partners | UNDP</p>
+    </div><div class="one-league__mentors-card">
+      <div class="one-league__mentors-card--box">
+        
+        <img src="/academy/assets/oneleague/mentors/Mentor-Alice2.jpg" alt="Alice Lin Fabiano" class="one-league__mentors-card--profile" />
+        <h4 class="one-league__mentors-card--name tu">Alice Lin Fabiano</h4>
+      </div>
+      <p class="one-league__mentors-card--text"><span class="tu">Born in:</span> Rahway, NJ, US |&nbsp;<span class="tu">Lives in:</span> Rumson, NJ, US</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Graduate of </span> Johns Hopkins University | Harvard Business School</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Experience at </span> Morgan Stanley | Children's Investment Fund Foundation | The Bridgespan Group | Johnson & Johnson Impact Ventures</p>
+    </div><div class="one-league__mentors-card">
+      <div class="one-league__mentors-card--box">
+        
+        <img src="/academy/assets/oneleague/mentors/Mentor-John.jpg" alt="John Coleman" class="one-league__mentors-card--profile" />
+        <h4 class="one-league__mentors-card--name tu">John Coleman</h4>
+      </div>
+      <p class="one-league__mentors-card--text"><span class="tu">Born in:</span> Gainesville, FL, US |&nbsp;<span class="tu">Lives in:</span> Atlanta, GA, US</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Graduate of </span> Berry College | Harvard Kennedy School | Harvard Business School</p>
+      <p class="one-league__mentors-card--text"><span class="bold">Experience at </span> Sovereign’s Capital | Invesco | McKinsey & Co.</p>
+    </div>
+      </div>
+      <div class="one-league__mentors-cta">
+        <h3 class="one-league__mentors-cta--text">Interested in joining the One League Global Mentorship Board?</h3>
+        <div class="one-league__mentors-cta--button">
+          <a href="mailto:globalmentors@one-league.org" target="_blank" class="button__transparent button__transparent-white tu">Email Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+      <section class="one-league__students" id="fellows">
+  <div class="one-league__students-container">
+    <h2 class="one-league__students-header">Meet <br class="mobile-hidden"/> One League <br class="mobile-hidden"/> Fellows</h2>
+    
+    <div class="one-league__students-row" id="student-countries">
+      <h4 class="one-league__students-title">Countries Represented</h4>
+      <div class="one-league__students-container">
+        <img class="one-league__students-map desktop" id="student-map" src="/academy/assets/oneleague/World-Map-1L.png" alt="world-map"/>
+        <div class="one-league__students-textbox">
+          <span class="one-league__students-text tu even">Afghanistan </span><span class="one-league__students-text tu">Bangladesh </span><span class="one-league__students-text tu even">Brazil </span><span class="one-league__students-text tu">Cameroon </span><span class="one-league__students-text tu even">Canada </span><span class="one-league__students-text tu">Chad </span><span class="one-league__students-text tu even">Chile </span><span class="one-league__students-text tu">China </span><span class="one-league__students-text tu even">Colombia </span><span class="one-league__students-text tu">Egypt </span><span class="one-league__students-text tu even">Ethiopia </span><span class="one-league__students-text tu">France </span><span class="one-league__students-text tu even">Ghana </span><span class="one-league__students-text tu">Germany </span><span class="one-league__students-text tu even">India </span><span class="one-league__students-text tu">Indonesia </span><span class="one-league__students-text tu even">Iran </span><span class="one-league__students-text tu">Iraq </span><span class="one-league__students-text tu even">Jordan </span><span class="one-league__students-text tu">Kazakhstan </span><span class="one-league__students-text tu even">Kenya </span><span class="one-league__students-text tu">Kyrgyzstan </span><span class="one-league__students-text tu even">Lebanon </span><span class="one-league__students-text tu">Malawi </span><span class="one-league__students-text tu even">Malaysia </span><span class="one-league__students-text tu">Moldova </span><span class="one-league__students-text tu even">Nepal </span><span class="one-league__students-text tu">New Zealand </span><span class="one-league__students-text tu even">Nigeria </span><span class="one-league__students-text tu">Pakistan </span><span class="one-league__students-text tu even">Peru </span><span class="one-league__students-text tu">Russia </span><span class="one-league__students-text tu even">Rwanda </span><span class="one-league__students-text tu">Saudi Arabia </span><span class="one-league__students-text tu even">Sierra Leone </span><span class="one-league__students-text tu">South Africa </span><span class="one-league__students-text tu even">Sri Lanka </span><span class="one-league__students-text tu">Turkey </span><span class="one-league__students-text tu even">Ukraine </span><span class="one-league__students-text tu">United Arab Emirates </span><span class="one-league__students-text tu even">Uganda </span><span class="one-league__students-text tu">United Kingdom </span><span class="one-league__students-text tu even">United States </span><span class="one-league__students-text tu">Uzbekistan </span><span class="one-league__students-text tu even">Vietnam </span><span class="one-league__students-text tu">Zambia </span><span class="one-league__students-text tu even">Zimbabwe </span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="one-league__students-row" id="student-classes">
+      <h4 class="one-league__students-title">Inaugural Class Includes</h4>
+      <div class="one-league__students-container">
+        <div class="one-league__students-textbox" id="class-credentials-container">
+          <span class="one-league__students-text" data-class-idx="0">Forbes 30 Under 30 Fellow, </span><span class="one-league__students-text" data-class-idx="1">Top 100 Women in Tech, </span><span class="one-league__students-text" data-class-idx="2">Climate Reality Leader, </span><span class="one-league__students-text active" data-class-idx="3">Dell Scholar, </span><span class="one-league__students-text" data-class-idx="4">TEDx Organizer, </span><span class="one-league__students-text" data-class-idx="5">Founder & President, </span><span class="one-league__students-text" data-class-idx="6">Fulbright Scholar, </span><span class="one-league__students-text" data-class-idx="7">Young Innovation Leader, </span><span class="one-league__students-text" data-class-idx="8">Presidential Award Winner, </span><span class="one-league__students-text" data-class-idx="9">Oxford University Press Author, </span><span class="one-league__students-text" data-class-idx="10">Harvard Crossroads Emerging Leader, </span><span class="one-league__students-text" data-class-idx="11">US Embassy Scholarship Winner, </span><span class="one-league__students-text" data-class-idx="12">Top 5% of Graduating Class, </span><span class="one-league__students-text" data-class-idx="13">National Olympiad in Mathematics, </span><span class="one-league__students-text" data-class-idx="14">Mastercard Foundation Scholar</span>
+        </div>
+        <p class="one-league__students-display bold" id="fellows-active-badge">DELL SCHOLAR</p>
+      </div>
+    </div>
+    
+    <div class="one-league__students-row" id="student-disciplines">
+      <h4 class="one-league__students-title">Disciplines Represented Include</h4>
+      <div class="one-league__students-container">
+        <div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/accounting-and-finance.png" alt="Accounting & Finance" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Accounting & Finance</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/advertising-and-publicity.png" alt="Advertising & Publicity" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Advertising & Publicity</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/anthropology.png" alt="Anthropology" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Anthropology</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/biotechnology.png" alt="Biotechnology" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Biotechnology</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/biochemistry.png" alt="Biochemistry" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Biochemistry</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/business-administration.png" alt="Business Administration" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Business Administration</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/communications.png" alt="Communications" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Communications</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/civil-engineering.png" alt="Civil Engineering" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Civil Engineering</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/chemical-engineering.png" alt="Chemical Engineering" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Chemical Engineering</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/economics.png" alt="Economics" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Economics</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/education.png" alt="Education" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Education</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/electrical-engineering.png" alt="Electrical Engineering" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Electrical Engineering</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/energy-conservation.png" alt="Energy Conservation" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Energy Conservation</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/global-challenges.png" alt="Global Challenges" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Global Challenges</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/industrial-engineering.png" alt="Industrial Engineering" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Industrial Engineering</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/international-business-and-trade.png" alt="International Business & Trade" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">International Business & Trade</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/machine-learning.png" alt="Machine Learning" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Machine Learning</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/law.png" alt="Law" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Law</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/advanced-mathematics.png" alt="Advanced Mathematics" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Advanced Mathematics</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/mechanical-engineering.png" alt="Mechanical Engineering" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Mechanical Engineering</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/medicine.png" alt="Medicine" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Medicine</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/political-science.png" alt="Political Science" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Political Science</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/social-entrepreneurship.png" alt="Social Entrepreneurship" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Social Entrepreneurship</p>
+    </div><div class="one-league__students-category">
+      <img src="/academy/assets/oneleague/icons/sustainable-development.png" alt="Sustainable Development" class="one-league__students-icon"/>
+      <p class="one-league__students-category--text tc">Sustainable Development</p>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+      <section class="one-league__faculty" id="faculty">
+  <div class="one-league__faculty-container">
+    <div>
+      <p class="one-league__faculty-subheader color-white tu">Distinguished &amp; acclaimed</p>
+      <h3 class="one-league__faculty-header color-white tu">Faculty</h3>
+    </div>
+    <div class="one-league__faculty-member">
+      <img src="/academy/assets/oneleague/faculty/Faculty-Rob2.jpg" alt="Rob Austin" class="one-league__faculty-member--image"/>
+      <div class="one-league__faculty-member--info">
+        <div class="one-league__faculty-member--box">
+          <h4 class="one-league__faculty-member--header color-white tu">Rob Austin</h4>
+          <div class="one-league__faculty-member--line"></div>
+        </div>
+        <p class="one-league__faculty-member--text color-white">Professor Austin earned his Doctorate in Management and Decision Sciences from Carnegie Mellon University, where his dissertation received the Herbert A. Simon Award. He has been a Professor of Technology and Operations Management at the Harvard Business School for 12 years and of Innovation and Digital Transformation at Copenhagen Business School for 9 years. He has published widely in Harvard Business Review, Information Systems Research, MIT Sloan Management Review, Organization Science, Organization Studies, and the Wall Street Journal. He also is the author of over 10 books and more than 100 published cases and notes. He is currently a professor of Information Systems at Ivey Business School and an affiliated faculty member at Harvard Medical School.</p>
+      </div>
+    </div><div class="one-league__faculty-member reverse">
+      <img src="/academy/assets/oneleague/faculty/June-Cotte.png" alt="June Cotte" class="one-league__faculty-member--image"/>
+      <div class="one-league__faculty-member--info">
+        <div class="one-league__faculty-member--box">
+          <h4 class="one-league__faculty-member--header color-white tu">June Cotte</h4>
+          <div class="one-league__faculty-member--line"></div>
+        </div>
+        <p class="one-league__faculty-member--text color-white">Professor Cotte has a PhD in Marketing and over 25 years of experience teaching Marketing at the undergraduate, MBA, PhD, and executive levels. She is the Editor of the Journal of Consumer Research and on the editorial boards of the Journal of Consumer Psychology and the Journal of Marketing. She is the Co-Founder of “Designing Your Career in the Marketing Academy” for young female marketing scholars. Her work has appeared in the Journal of Consumer Research, Journal of Consumer Psychology, MIT/Sloan Management Review, and the Wall Street Journal, amongst others. She is a Professor of Marketing at the Ivey School of Business and has taught at the Duke Fuqua School of Business across the world.</p>
+      </div>
+    </div><div class="one-league__faculty-member">
+      <img src="/academy/assets/oneleague/faculty/Noel-Maurer.jpg" alt="Noel Maurer" class="one-league__faculty-member--image"/>
+      <div class="one-league__faculty-member--info">
+        <div class="one-league__faculty-member--box">
+          <h4 class="one-league__faculty-member--header color-white tu">Noel Maurer</h4>
+          <div class="one-league__faculty-member--line"></div>
+        </div>
+        <p class="one-league__faculty-member--text color-white">Professor Maurer has a B.A. and PhD from Stanford University. He has worked at Harvard Business School in the BGIE unit for over a decade. Before that, he was a professor at ITAM, a university in Mexico City, during which he co-founded an NGO dedicated to helping small rural communities in Chiapas find new business opportunities. Professor Maurer’s research revolves around two different axes: (1) how companies overcome the barriers to commercializing renewable energy; and (2) how private actors defend their property rights under dictatorial governments or political instability. Professor Maurer is presently an Associate Professor of International Affairs and International Business at the George Washington University.</p>
+      </div>
+    </div><div class="one-league__faculty-member reverse">
+      <img src="/academy/assets/oneleague/faculty/Lauren-Taylor.png" alt="Lauren Taylor" class="one-league__faculty-member--image"/>
+      <div class="one-league__faculty-member--info">
+        <div class="one-league__faculty-member--box">
+          <h4 class="one-league__faculty-member--header color-white tu">Lauren Taylor</h4>
+          <div class="one-league__faculty-member--line"></div>
+        </div>
+        <p class="one-league__faculty-member--text color-white">Professor Taylor has a doctorate from Harvard Business School, a Masters of Divinity as a Presidential Scholar from Harvard’s Divinity School, and a Masters in Public Health and Bachelors in the History of Medicine from Yale University. Professor Taylor researches management, governance and ethics, with a focus on multi-stakeholder coalitions. She has worked as a consultant for the Global Fund and Bill and Melinda Gates Foundation and written on the institutionalization of global health and how to reform the World Health Organization. Her path-breaking book, The American Health Care Paradox, is required reading at medical and public health schools across the nation. Professor Taylor taught professional responsibility at New York University Stern and global health ethics at Harvard Medical School. </p>
+      </div>
+    </div><div class="one-league__faculty-member">
+      <img src="/academy/assets/oneleague/faculty/Gautam-Mukunda.jpg" alt="Gautam Mukunda" class="one-league__faculty-member--image"/>
+      <div class="one-league__faculty-member--info">
+        <div class="one-league__faculty-member--box">
+          <h4 class="one-league__faculty-member--header color-white tu">Gautam Mukunda</h4>
+          <div class="one-league__faculty-member--line"></div>
+        </div>
+        <p class="one-league__faculty-member--text color-white">Professor Mukunda has a PhD from Massachusetts Institute of Technology (MIT) and a B.A. magna cum laude from Harvard College. Professor Mukunda is the author of “Indispensable: When Leaders Really Matter” (Harvard Business Review, 2012) and “Picking Presidents: How To Make The Most Important Decision in the World” (University of California Press, 2022). Formerly he was an Assistant Professor at Harvard Business School, Distinguished Visiting Professor at Schwarzman College, Tsinghua University, and a consultant with McKinsey & Company. He is the host of the Nasdaq podcast “World Reimagined with Gautam Mukunda” and the author of numerous articles on leadership, innovation, and policy issues. Professor Mukunda is presently a Research Fellow at Harvard Kennedy School.</p>
+      </div>
+    </div><div class="one-league__faculty-member reverse">
+      <img src="/academy/assets/oneleague/faculty/Colette_Southam_3.png" alt="Colette Southam" class="one-league__faculty-member--image"/>
+      <div class="one-league__faculty-member--info">
+        <div class="one-league__faculty-member--box">
+          <h4 class="one-league__faculty-member--header color-white tu">Colette Southam</h4>
+          <div class="one-league__faculty-member--line"></div>
+        </div>
+        <p class="one-league__faculty-member--text color-white">Professor Southam has a Doctor of Philosophy in Finance from Ivey Business School, Canada and more than 20 years of experience teaching case-based finance courses at the undergraduate, MBA, EMBA, and PhD levels. She founded the Australian Business Case Network and is the recipient of Universities Australia Citation for Outstanding Contribution to Student Learning and the Bond University Vice Chancellor’s Award for Outstanding Contribution to Student Learning through Sustained Innovation. Professor Southam is the author of 40 cases and notes, including “Best-sellers” and “Classics” at Harvard, Ivey, and the Case Centre. Her research focuses on helping companies improve their corporate and international financial decision making with specific interests in corporate financial decision making, ESG, carbon market efficiency and international capital raising.</p>
+      </div>
+    </div><div class="one-league__faculty-member">
+      <img src="/academy/assets/oneleague/faculty/Peter-Scoblic.jpg" alt="J. Peter Scoblic" class="one-league__faculty-member--image"/>
+      <div class="one-league__faculty-member--info">
+        <div class="one-league__faculty-member--box">
+          <h4 class="one-league__faculty-member--header color-white tu">J. Peter Scoblic</h4>
+          <div class="one-league__faculty-member--line"></div>
+        </div>
+        <p class="one-league__faculty-member--text color-white">Professor Scoblic has a doctorate from Harvard Business School and a bachelor’s degree with honors from Brown University. He is a Senior Fellow with the International Security Program at New America, a Fellow at Harvard’s Kennedy School, and Co-Founder of Event Horizon Strategies. He has published widely on strategy and uncertainty, including in The New York Times, The Washington Post, Science, Harvard Business Review, and Foreign Affairs. He served as Executive Editor of The New Republic and Foreign Policy, and he was Deputy Staff Director of the Senate Committee on Foreign Relations. Professor Scoblic is the author of U.S. vs. Them, published by Viking Press. He teaches Behavioral Decision Making in Harvard’s Professional Development Program.</p>
+      </div>
+    </div><div class="one-league__faculty-member reverse">
+      <img src="/academy/assets/oneleague/faculty/Ken-Merchant.png" alt="Ken Merchant" class="one-league__faculty-member--image"/>
+      <div class="one-league__faculty-member--info">
+        <div class="one-league__faculty-member--box">
+          <h4 class="one-league__faculty-member--header color-white tu">Ken Merchant</h4>
+          <div class="one-league__faculty-member--line"></div>
+        </div>
+        <p class="one-league__faculty-member--text color-white">Professor Merchant holds a PhD in Business and Accounting from the University of California, Berkeley, and an MBA from Columbia University. His research specialties include management accounting, management control systems, corporate governance, and ethics. He has authored 11 books, more than 80 articles, nearly 200 teaching cases, and given research presentations in 31 countries. His work has received numerous awards, including five Notable Contribution Awards from the AAA. He served as Senior Associate Dean–Corporate Programs in University of Southern California’s Marshall School of Business and as Dean of USC’s Leventhal School of Accounting. Professor Merchant has over 40 years of teaching experience, including 12 years at Harvard Business School.</p>
+      </div>
+    </div>
+  </div>
+</section>
+      <div><section class="one-league__impact one-league__impact--desktop" id="impact"><div class="one-league__impact-container"><div class="one-league__impact-content"><div class="one-league__impact-text"><h2 class="one-league__impact-title">Alumni Success Stories</h2><p class="one-league__impact-intro">Across the world, One League alumni are turning bold vision into action — building solutions that empower communities, revolutionize industries, and inspire global innovation.</p><div class="one-league__impact-story"><p class="one-league__impact-alumnus">One League alum, Arystan Moldabekov (MBA '23), <br/> CFO at Citibank Kazakhstan was recognized as the</p><div class="one-league__impact-achievement">BEST CFO OF THE <br/> YEAR 2024</div><div class="one-league__impact-event">CFO SUMMIT 2024, KAZAKHSTAN</div><div class="one-league__impact-quote">"One League gave me the knowledge, network, and confidence to achieve what once felt out of reach."<div class="one-league__impact-attribution">Arystan Moldabekov, Kazakhstan</div></div></div></div></div></div></section></div>
+      <section class="one-league__stats" id="stats"><div class="one-league__stats-container"><div class="one-league__stats-section one-league__stats-section--promotion"><div class="one-league__stats-fill-animation"></div><div class="one-league__stats-number">0<!-- -->%</div><div class="one-league__stats-text-content"><span class="one-league__stats-text-desktop">of graduates <br/> experienced <strong>Promotion</strong> <br/> or <strong>Positive Career Change</strong> <br/> within <strong> 6 months </strong></span><span class="one-league__stats-text-mobile">of graduates experienced <strong>Promotion</strong> or <strong>Positive Career Change</strong> within<strong> 6 months </strong></span></div></div><div class="one-league__stats-section one-league__stats-section--salary"><div class="one-league__stats-number">+<!-- -->0<!-- -->%</div><div class="one-league__stats-text-content">Average <strong>Increase</strong> in Salary<br/>within 6 months of graduating<br/>from One League</div></div><div class="one-league__stats-section one-league__stats-section--charts"><div class="one-league__stats-pie-chart"><div class="one-league__stats-pie"><svg class="one-league__stats-pie-svg" preserveaspectratio="xMidYMid meet" viewbox="0 0 228 228"><circle class="one-league__stats-pie-bg" cx="114" cy="114" fill="#000" r="60"></circle><circle class="one-league__stats-pie-animated" cx="114" cy="114" fill="none" r="60" stroke="#4a4a4a" stroke-dasharray="376.99111843077515" stroke-dashoffset="376.99111843077515" stroke-width="108" transform="rotate(-90 114 114)"></circle><circle cx="114" cy="114" fill="#4a4a4a" r="6"></circle></svg><div class="one-league__stats-pie-percentage">98%</div><div class="one-league__stats-pie-label">Very Satisfied with the Program</div></div></div><div class="one-league__stats-pie-chart"><div class="one-league__stats-pie"><svg class="one-league__stats-pie-svg" preserveaspectratio="xMidYMid meet" viewbox="0 0 228 228"><circle class="one-league__stats-pie-bg" cx="114" cy="114" fill="#000" r="60"></circle><circle class="one-league__stats-pie-animated" cx="114" cy="114" fill="none" r="60" stroke="#4a4a4a" stroke-dasharray="376.99111843077515" stroke-dashoffset="376.99111843077515" stroke-width="108" transform="rotate(-90 114 114)"></circle><circle cx="114" cy="114" fill="#4a4a4a" r="6"></circle></svg><div class="one-league__stats-pie-percentage">98%</div><div class="one-league__stats-pie-label">Recommend the Program to Others</div></div></div><div class="one-league__stats-pie-chart"><div class="one-league__stats-pie"><svg class="one-league__stats-pie-svg" preserveaspectratio="xMidYMid meet" viewbox="0 0 228 228"><circle class="one-league__stats-pie-bg" cx="114" cy="114" fill="#000" r="60"></circle><circle class="one-league__stats-pie-animated one-league__stats-pie-animated--full" cx="114" cy="114" fill="none" r="60" stroke="#4a4a4a" stroke-dasharray="376.99111843077515" stroke-dashoffset="376.99111843077515" stroke-width="108" transform="rotate(-90 114 114)"></circle><circle cx="114" cy="114" fill="#4a4a4a" r="6"></circle></svg><div class="one-league__stats-pie-percentage">100%</div><div class="one-league__stats-pie-label">Strengthened desire to make a Positive Impact</div></div></div></div></div></section>
+      <div class="ol__apply_fob-infographic-section one-league__scholarship-infographic" id="mba-value-proposition"><div class="ol__apply_fob-infographic-container"><div class="ol__apply_fob-infographic-top"><div class="ol__apply_fob-infographic-main-title">ACCESS WORLD-CLASS EDUCATION <br/>AT A FRACTION OF THE PRICE</div><div class="ol__apply_fob-infographic-cost-section"><div class="ol__apply_fob-infographic-cost-main-title tu">Tuition Fee <br/> 2 Yr MBA</div><div class="ol__apply_fob-infographic-cost-amount">$20,000<span class="ol__apply_fob-infographic-cost-amount-currency">USD</span></div></div><div class="ol__apply_fob-infographic-cost-details"><div class="ol__apply_fob-infographic-cost-details ol__apply_fob-infographic-cost-details-bold">Total Tuition for 1-Year Fellowship: $10,000 USD</div><div class="ol__apply_fob-infographic-cost-details ol__apply_fob-infographic-cost-details-row">Funding and Scholarship <a class="underline ml5" href="#scholarship">options available</a></div><div class="ol__apply_fob-infographic-cost-details">No application fees required</div></div></div></div></div>
+      <section class="one-league__scholarship one-league__scholarship--desktop" id="scholarship">
+  <div class="one-league__scholarship-container">
+    <div class="one-league__scholarship-content">
+      <div class="one-league__scholarship-text">
+        <h2 class="one-league__scholarship-title">Funding &amp; Scholarship Opportunities</h2>
+        <p class="one-league__scholarship-intro">There is a range of options available to fund your One League education. We remain committed to attracting the most extraordinary change-makers from around the world.</p>
+        <p class="one-league__scholarship-intro">To apply for any of the funding opportunities below, please complete the Financial Assessment application along with your Admissions application.</p>
+        
+        <div class="one-league__scholarship-section">
+          <div class="one-league__scholarship-section-title">Payment Plans</div>
+          <div class="one-league__scholarship-section-subtitle tu">Pay Upfront or Quarterly</div>
+          <div class="one-league__scholarship-section-text">Pay upfront for 2.5% off your tuition fees, or pay quarterly with 0% interest.</div>
+        </div>
+        
+        <div class="one-league__scholarship-section">
+          <div class="one-league__scholarship-section-title">External Funding Options</div>
+          <div class="one-league__scholarship-section-subtitle tu">Find a Sponsor or Raise Funds</div>
+          <div class="one-league__scholarship-section-text">Seek corporate sponsorships, private financial assistance, or government scholarships. One League can provide supporting documents for your submission.</div>
+        </div>
+        
+        <div class="one-league__scholarship-section">
+          <div class="one-league__scholarship-section-title">One League Scholarships</div>
+          <div class="one-league__scholarship-section">
+            <div class="one-league__scholarship-subtitle bold" style="font-size:1.4rem;margin:1rem 0">One League Global Scholarship</div>
+            <div class="one-league__scholarship-section-text">Apply to receive up to 40% off your tuition fees awarded based on merit and financial need, and contingent upon academic performance.*</div>
+          </div>
+          <div class="one-league__scholarship-section">
+            <div class="one-league__scholarship-option-tag tu" style="display:inline-block;padding:2px 8px;background:#e53e3e;color:#fff;font-size:0.75rem;border-radius:4px;margin-bottom:0.5rem">New</div>
+            <div class="one-league__scholarship-subtitle bold" style="font-size:1.4rem;margin:0 0 1rem">One League Presidential Scholarship</div>
+            <div class="one-league__scholarship-section-text">Apply to receive a highly selective award reserved for global change-makers committed to creating tangible, scalable impact in their local communities around the world.*</div>
+          </div>
+        </div>
+        
+        <div class="one-league__scholarship-button-container" style="margin-top:2.5rem">
+          <a href="https://apply.one-league.org/financial-assessment" target="_blank" class="Button_button-container__PBTxX" style="width:fit-content;display:inline-block">
+            <div class="button transparent normal bordered">APPLY NOW</div>
+          </a>
+        </div>
+        
+        <div class="one-league__scholarship-disclaimer" style="margin-top:2rem">
+          <p class="one-league__scholarship-disclaimer-text">Additional funding opportunities and arrangements are available on a case-by-case basis; please <a href="mailto:financialsupport@one-league.org" class="text-blue-500 hover:text-blue-700 underline">reach out</a> to discuss more.</p>
+          <p style="font-size:0.85rem;color:#a0aec0">*Scholarships apply from Q2 onward and are contingent upon satisfactory academic performance and adherence to the One League Code of Conduct.</p>
+        </div>
+      </div>
+      <div class="one-league__scholarship-image">
+        <img src="/academy/assets/oneleague/Scholarships-Desktop.png" alt="Scholarship" class="one-league__scholarship-portrait"/>
+      </div>
+    </div>
+  </div>
+</section>
+      <div><section class="one-league__about" id="about"><div class="one-league__about-container"><h2 class="one-league__about-header tu">About Us</h2><div class="one-league__about-content"><p class="one-league__about-text">One League is a team of highly dedicated, action-oriented idealists, fighting to democratize access to power, promise, and privilege.</p><div class="one-league__about-flex"><div class="one-league__about-founder"><img alt="Umaimah Mendhro" class="one-league__about-image lazyload" data-src="https://assets.one-league.org/V2/desktop-umaimah.jpg?auto=webp" src="/academy/assets/oneleague/desktop-umaimah.jpg"/><p class="one-league__about-title tu bold m0">Umaimah Mendhro</p><p class="one-league__about-title tu last m0">Founder &amp; President</p></div><div class="one-league__about-info"><p class="one-league__about-text">Umaimah Mendhro, Founder &amp; President of One League, grew up without access to formal education for much of her life in rural Pakistan and Saudi Arabia, where she lived in exile. Umaimah went on to attend Cornell University and Harvard Business School, graduating with highest distinction (Baker Scholar, top 5% of class). Umaimah is also the Founder of VIDA &amp; Co., formerly backed by Google Ventures and Y Combinator, currently a multi-million dollar public benefit corporation.</p><p class="one-league__about-text mb0">Umaimah has worked at Microsoft, McKinsey, and West where she led projects with Twitter, Dropbox, and Square. Umaimah is a Venture Partner with Halogen VC, author of select Harvard Business Review case studies and Forbes Op-Ed pieces, and holds 13 patent awards. Under Umaimah’s leadership, VIDA has been recognized by Fast Company for the World Changing Ideas Award and One League has been recognized as a Fast Company Top 10 Most Innovative Companies in Education in the World. Additionally, Umaimah has been recognized by Inc. as a Female Founders 250 Honoree and by CIO Magazine as one of the Most High-Impact Leaders Making a Difference in the World.</p></div></div></div></div></section></div>
+      <footer class="one-league__footer"><div class="one-league__footer-disclaimer order-1"><a href="/academy/index.html" style="display:inline-block;margin-bottom:1.5rem;"><img alt="NATI Logo" src="/academy/assets/oneleague/nati-logo-white.png" style="height:44px;max-width:200px;width:auto;object-fit:contain;"/></a><p>One League is a California based Public Benefit Corporation, approved to operate by the <a class="underline" href="https://www.bppe.ca.gov/" target="_blank">California Bureau for Private Postsecondary Education</a>. Approval to operate means the institution is compliant with the minimum standards contained in the California Private Postsecondary Education Act of 2009 (as amended) and Division 7.5 of Title 5 of the California Code of Regulations.</p><a href="https://www.bppe.ca.gov/" target="_blank"><img alt="BPPE Logo" class="one-league__footer-bppe-logo" src="/academy/assets/oneleague/bppe-white.png"/></a><p>One League Global Scholarship Fund is a 501(c)(3) non-profit and all donations are tax deductible. Our EIN is 90-0750005.</p></div><nav aria-label="Footer navigation" class="one-league__footer-nav order-2"><div class="one-league__footer-column"><ul class="MuiList-root one-league__footer-list MuiList-padding" id="footer-contact"><li class="MuiListItem-root one-league__footer-title bold MuiListItem-gutters">Contact</li><li class="MuiListItem-root one-league__footer-link MuiListItem-gutters"><a class="hover-underline" href="mailto:hi@one-league.org">hi@one-league.org</a></li><li class="MuiListItem-root one-league__footer-link MuiListItem-gutters">11500 Olympic Blvd #400, Los Angeles, CA 90064</li><li class="MuiListItem-root one-league__footer-link MuiListItem-gutters">Office Hours: Wednesdays 12-5pm Pacific Standard Time, except for academic breaks and public holidays</li><li class="MuiListItem-root one-league__footer-link MuiListItem-gutters">Closed: During academic breaks, public holidays, and the month of July</li></ul></div><div class="one-league__footer-column"><li class="MuiListItem-root one-league__footer-title bold MuiListItem-gutters"><a>State<br/>Authorization</a><li class="MuiListItem-root MuiListItem-gutters"></li></li><br class="mt0"/><ul class="MuiList-root one-league__footer-list MuiList-padding" id="footer-press"><li class="MuiListItem-root one-league__footer-title bold MuiListItem-gutters">Press</li><li class="MuiListItem-root one-league__footer-link MuiListItem-gutters" id="footer-press"><a class="one-league__footer-link" href="mailto:press@one-league.org" target="_blank">press@one-league.org</a></li></ul><ul class="MuiList-root one-league__footer-list MuiList-padding" id="footer-terms"><li class="MuiListItem-root one-league__footer-title bold MuiListItem-gutters">Terms</li><li class="MuiListItem-root one-league__footer-link MuiListItem-gutters" id="footer-terms"><a class="one-league__footer-link" href="/privacy-policy" target="_blank">Privacy Policy</a></li><li class="MuiListItem-root one-league__footer-link MuiListItem-gutters"><a href="/terms-conditions" target="_blank">Terms of Service</a></li></ul></div></nav><div class="one-league__footer-last-column order-3"><div class="one-league__footer-text">Join our mailing list and receive exclusive updates from One League:</div><div class="klaviyo-form-Xqx8bN"></div><div class="one-league__footer-icons"><a href="https://www.facebook.com/oneleagueorg" target="_blank"><img alt="Facebook" class="one-league__footer-icon" src="/academy/assets/oneleague/facebook-logo.png"/></a><a href="https://instagram.com/oneleagueorg" target="_blank"><img alt="Instagram" class="one-league__footer-icon" src="/academy/assets/oneleague/Instagram-Icon.png"/></a><a href="https://www.linkedin.com/company/one-league" target="_blank"><img alt="LinkedIn" class="one-league__footer-icon" src="/academy/assets/oneleague/linkedin-logo.png"/></a><a href="https://medium.com/@oneleagueorg" target="_blank"><img alt="Medium" class="one-league__footer-icon" src="/academy/assets/oneleague/Medium.svg"/></a></div><div class="one-league__footer-button"><div class="Button_button-container__PBTxX" style="width:50%;z-index:1"><div class="button transparent normal bordered">DONATE</div></div></div></div></footer>
+    </main>
+  </div>
 
-            if (menuBtn && closeBtn && drawer && overlay) {
-                const toggleMenu = () => {
-                    const isOpen = !drawer.classList.contains('translate-x-full');
-                    if (isOpen) {
-                        drawer.classList.add('translate-x-full');
-                        overlay.classList.remove('opacity-100');
-                        overlay.classList.add('opacity-0');
-                        overlay.classList.add('pointer-events-none');
-                    } else {
-                        drawer.classList.remove('translate-x-full');
-                        overlay.classList.remove('opacity-0');
-                        overlay.classList.add('opacity-100');
-                        overlay.classList.remove('pointer-events-none');
-                    }
-                };
-                menuBtn.addEventListener('click', toggleMenu);
-                closeBtn.addEventListener('click', toggleMenu);
-                overlay.addEventListener('click', toggleMenu);
-            }
+  <script>
+    // Hero Slider Carousel Interactions
+    (function initSlider() {
+      const slider = document.querySelector('.one-league__splash .slider');
+      const dots = document.querySelectorAll('.one-league__splash .control-dots .dot');
+      const prevBtn = document.querySelector('.one-league__splash .control-prev');
+      const nextBtn = document.querySelector('.one-league__splash .control-next');
+      const slides = document.querySelectorAll('.one-league__splash .slider .slide');
+      
+      let currentIndex = 3; // Default to promo slide (Adel + World-Class Education)
+
+      function updateSlide(index) {
+        currentIndex = (index + slides.length) % slides.length;
+        if (slider) {
+          slider.style.transform = `translate3d(-${currentIndex * 100}%, 0, 0)`;
+        }
+        dots.forEach((dot, idx) => {
+          if (idx === currentIndex) {
+            dot.classList.add('selected');
+          } else {
+            dot.classList.remove('selected');
+          }
         });
-    </script>
-</body>
+        slides.forEach((s, idx) => {
+          if (idx === currentIndex) {
+            s.classList.add('selected');
+          } else {
+            s.classList.remove('selected');
+          }
+        });
+      }
 
+      // Init on Promo slide
+      updateSlide(3);
+
+      dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => updateSlide(idx));
+      });
+
+      if (prevBtn) prevBtn.addEventListener('click', () => updateSlide(currentIndex - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => updateSlide(currentIndex + 1));
+
+      // Auto cycle every 8s
+      setInterval(() => {
+        updateSlide(currentIndex + 1);
+      }, 8000);
+    })();
+
+    // Cycling Inaugural Class highlight
+    (function initClassCycling() {
+      const classes = ["Forbes 30 Under 30 Fellow", "Top 100 Women in Tech", "Climate Reality Leader", "Dell Scholar", "TEDx Organizer", "Founder & President", "Fulbright Scholar", "Young Innovation Leader", "Presidential Award Winner", "Oxford University Press Author", "Harvard Crossroads Emerging Leader", "US Embassy Scholarship Winner", "Top 5% of Graduating Class", "National Olympiad in Mathematics", "Mastercard Foundation Scholar"];
+      const badge = document.getElementById('fellows-active-badge');
+      const container = document.getElementById('class-credentials-container');
+      if (!badge || !classes || !classes.length) return;
+
+      let idx = 3; // Dell Scholar default
+      setInterval(() => {
+        idx = (idx + 1) % classes.length;
+        badge.textContent = classes[idx].toUpperCase();
+        if (container) {
+          const spans = container.querySelectorAll('.one-league__students-text');
+          spans.forEach((sp, i) => {
+            if (i === idx) {
+              sp.classList.add('active');
+            } else {
+              sp.classList.remove('active');
+            }
+          });
+        }
+      }, 3000);
+    })();
+
+    // Stats counter animation
+    (function initStatsAnimation() {
+      const promoNumber = document.querySelector('.one-league__stats-section--promotion .one-league__stats-number');
+      const salaryNumber = document.querySelector('.one-league__stats-section--salary .one-league__stats-number');
+      let animated = false;
+
+      function runAnimation() {
+        if (animated) return;
+        const statsSec = document.getElementById('stats');
+        if (!statsSec) return;
+        const rect = statsSec.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.85) {
+          animated = true;
+          let p = 0;
+          const pTimer = setInterval(() => {
+            p += 2;
+            if (p >= 83) {
+              p = 83;
+              clearInterval(pTimer);
+            }
+            if (promoNumber) promoNumber.textContent = p + '%';
+          }, 25);
+
+          let s = 0;
+          const sTimer = setInterval(() => {
+            s += 2;
+            if (s >= 67) {
+              s = 67;
+              clearInterval(sTimer);
+            }
+            if (salaryNumber) salaryNumber.textContent = '+' + s + '%';
+          }, 30);
+
+          // Animate circles
+          const circles = document.querySelectorAll('.one-league__stats-pie-animated');
+          circles.forEach((c, idx) => {
+            const offsets = [7.54, 7.54, 0]; // 98%, 98%, 100%
+            c.style.transition = 'stroke-dashoffset 1.5s ease-out';
+            c.style.strokeDashoffset = offsets[idx];
+          });
+        }
+      }
+
+      window.addEventListener('scroll', runAnimation);
+      runAnimation();
+    })();
+  </script>
+</body>
 </html>

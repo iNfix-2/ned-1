@@ -39,6 +39,178 @@ window.NATI_DATA = {
   },
   programmes: [
     {
+      code: "SP",
+      title: "Standard Pilot Course",
+      category: "Pilot Training",
+      duration: "2 Years",
+      mode: "Integrated Flight & Ground School",
+      outcome: "Graduate with full commercial pilot credentials, multi-engine and instrument ratings ready for airline command.",
+      description: "Comprehensive ab-initio pilot training taking candidates from zero experience through PPL, CPL, Multi-Engine, and Instrument ratings to airline-ready professional certification."
+    },
+    {
+      code: "PPL",
+      title: "Private Pilot Licence Course",
+      category: "Pilot Training",
+      duration: "6 Months",
+      mode: "Ground School & Dual/Solo Flight",
+      outcome: "Earn an official Private Pilot Licence (PPL) to command single-engine aircraft under VFR.",
+      description: "Foundational flight training curriculum covering air law, aerodynamics, navigation, meteorology, and single-engine aircraft handling for private command."
+    },
+    {
+      code: "CPL",
+      title: "Commercial Pilot Licence Course",
+      category: "Pilot Training",
+      duration: "6 Months",
+      mode: "Advanced Flight Training & Complex Aircraft Ops",
+      outcome: "Obtain Commercial Pilot Licence (CPL) authorization for professional commercial flight operations.",
+      description: "Professional-grade pilot syllabus emphasizing advanced aircraft maneuvering, commercial airspace regulations, complex systems, and cross-country navigation."
+    },
+    {
+      code: "ATPL",
+      title: "Airline Transport Pilot Licence",
+      category: "Pilot Training",
+      duration: "10 Weeks",
+      mode: "Advanced Ground Theory & Computer-Based Training",
+      outcome: "Complete mandatory 14 ATPL theoretical examinations for high-capacity airline multi-crew flight ops.",
+      description: "The highest echelon of civil pilot theoretical certification, covering advanced flight planning, mass & balance, meteorology, instrumentation, and airline operations."
+    },
+    {
+      code: "IR",
+      title: "Instrument Rating",
+      category: "Ratings & Simulator",
+      duration: "5 Months",
+      mode: "FNPT II Simulator & IFR Flight Drills",
+      outcome: "Master Instrument Flight Rules (IFR) to fly in adverse weather and IMC conditions.",
+      description: "Rigorous instrument flight rules (IFR) training qualifying pilots to fly in zero-visibility conditions, adverse meteorological environments, and complex instrument approaches."
+    },
+    {
+      code: "MER",
+      title: "Multi-Engine Rating",
+      category: "Ratings & Simulator",
+      duration: "1 Month",
+      mode: "Multi-Engine Aircraft & Systems Lab",
+      outcome: "Command multi-engine piston aircraft with asymmetric thrust proficiency and engine-out emergency mastery.",
+      description: "Advanced transition to multi-engine aircraft, addressing asymmetric aerodynamics, single-engine emergency procedures, and high-performance operations."
+    },
+    {
+      code: "NR",
+      title: "Night Rating",
+      category: "Ratings & Simulator",
+      duration: "1 Week",
+      mode: "Nocturnal Flight Drills & Night Approaches",
+      outcome: "Operate aircraft safely during night hours under visual meteorological conditions.",
+      description: "Specialized flight instruction focused on illuminated cockpit operations, nocturnal navigation, visual reference management, and night approach procedures."
+    },
+    {
+      code: "IR(Sim)",
+      title: "Instrument Renewal (Simulator)",
+      category: "Ratings & Simulator",
+      duration: "6 Hours",
+      mode: "Certified FNPT II Flight Simulator",
+      outcome: "Revalidate statutory Instrument Rating currency through approved flight simulator checks.",
+      description: "Simulator-based proficiency check and instrument rating revalidation for licensed pilots seeking to maintain or renew statutory instrument flight currency."
+    },
+    {
+      code: "IR(Ref)",
+      title: "Instrument Refresher (Simulator)",
+      category: "Ratings & Simulator",
+      duration: "15 Hours",
+      mode: "FNPT II Simulator & Debrief Practicum",
+      outcome: "Restore scan discipline, approach tracking precision, and IFR emergency management skills.",
+      description: "Practical refresher course designed to re-sharpen instrument flying technique, scan patterns, intercept procedures, and complex approach precision."
+    },
+    {
+      code: "MCC",
+      title: "Multi Crew Coordination",
+      category: "Multi-Crew & Jet",
+      duration: "7 Days",
+      mode: "Multi-Pilot Simulator & Cockpit Drills",
+      outcome: "Master multi-crew communication, task sharing, situational awareness, and SOP discipline.",
+      description: "Crucial airline transition training emphasizing Cockpit Resource Management (CRM), communication protocols, checklist discipline, and division of crew duties."
+    },
+    {
+      code: "JOC",
+      title: "Jet Orientation Course",
+      category: "Multi-Crew & Jet",
+      duration: "7 Days",
+      mode: "Jet Flight Simulator & Systems Room",
+      outcome: "Transition confidently to swept-wing jet transport operations, high-speed flight physics, and FMC systems.",
+      description: "Bridging course preparing propeller-rated pilots for turbojet flight dynamics, high-altitude aerodynamics, auto-flight flight guidance, and FMC navigation."
+    },
+    {
+      code: "SFO",
+      title: "Standard Flight Operation Course",
+      category: "Flight Operations",
+      duration: "15 Weeks",
+      mode: "Flight Ops Center & Dispatch Lab",
+      outcome: "Acquire licensed Flight Dispatcher / Flight Operations Officer qualification.",
+      description: "Full-spectrum flight operations officer and dispatcher curriculum covering flight dispatch, payload optimization, NOTAM analysis, route management, and air traffic rules."
+    },
+    {
+      code: "SFOR",
+      title: "Standard Flight Operation Refresher Course",
+      category: "Flight Operations",
+      duration: "2 Weeks",
+      mode: "Operations Review & Contingency Scenarios",
+      outcome: "Maintain regulatory compliance and update modern operational dispatch skills.",
+      description: "Periodic refresher updating flight dispatchers on international civil aviation regulations, updated meteorological analysis, performance charts, and operational contingency management."
+    },
+    {
+      code: "ADC",
+      title: "Aircraft Dispatcher Currency",
+      category: "Flight Operations",
+      duration: "1 Week",
+      mode: "Assessment & Operational Verification",
+      outcome: "Re-establish active statutory flight dispatcher license currency and release authority.",
+      description: "Regulatory currency review and assessment ensuring operational dispatchers meet annual statutory competency and dispatch authorization requirements."
+    },
+    {
+      code: "CCT-B",
+      title: "Cabin Crew Initial Training (Ab Initio)",
+      category: "Cabin Crew",
+      duration: "10 Weeks",
+      mode: "Cabin Mock-Up & Safety Evacuation Labs",
+      outcome: "Attain official Cabin Crew Licence with international airline service and emergency readiness.",
+      description: "Comprehensive ab-initio cabin crew course encompassing aviation safety, emergency evacuation, aviation medicine, first aid, dangerous goods, and luxury inflight service."
+    },
+    {
+      code: "CCT-C",
+      title: "Cabin Crew Conversion Course",
+      category: "Cabin Crew",
+      duration: "10 Days",
+      mode: "Aircraft-Specific Mock-Up Drills",
+      outcome: "Certify on new aircraft types for immediate flight line deployment.",
+      description: "Type-conversion syllabus familiarizing qualified cabin attendants with specific aircraft type door operations, emergency exit slides, equipment locations, and layout configurations."
+    },
+    {
+      code: "CCT-RQ",
+      title: "Cabin Crew Re-qualification",
+      category: "Cabin Crew",
+      duration: "4 Weeks",
+      mode: "Intensive Drills & Re-licensing Exams",
+      outcome: "Reactivate dormant cabin crew license and restore full flight line qualifications.",
+      description: "Structured re-qualification program for previously certified flight attendants resuming flying duties after license dormancy or operational hiatus."
+    },
+    {
+      code: "CCT-RC",
+      title: "Cabin Crew Recurrent",
+      category: "Cabin Crew",
+      duration: "10 Days",
+      mode: "Annual Recurrent Labs & Emergency Ditching",
+      outcome: "Fulfill annual civil aviation regulatory recurrent requirements to maintain flight readiness.",
+      description: "Mandatory periodic recurrent training covering aviation security, safety equipment checkups, crew resource management, and annual emergency evacuation drills."
+    },
+    {
+      code: "CCT-RF",
+      title: "Cabin Crew Refresher Course",
+      category: "Cabin Crew",
+      duration: "10 Days",
+      mode: "Safety Review & Service Practicum",
+      outcome: "Refresh standard operating procedures, medical emergencies, and first-class customer service.",
+      description: "Refresher module reinforcing core cabin safety procedures, standard service excellence, CRM communication, and emergency protocol alignment."
+    },
+    {
+      code: "UAV-P1",
       title: "UAV Pilot Training",
       category: "UAV Training",
       duration: "8 weeks",
@@ -47,6 +219,7 @@ window.NATI_DATA = {
       description: "Flight control, airspace awareness, pre-flight checks, mission execution and emergency drills."
     },
     {
+      code: "UAV-ENG",
       title: "Drone Engineering & Assembly",
       category: "Engineering",
       duration: "10 weeks",
@@ -55,44 +228,13 @@ window.NATI_DATA = {
       description: "Hands-on drone assembly, power systems, sensors, payloads, calibration and maintenance workflows."
     },
     {
+      code: "BVLOS",
       title: "Flight Operations & Mission Planning",
-      category: "Aviation Operations",
+      category: "UAV Training",
       duration: "6 weeks",
       mode: "Mission room, mapping lab and field drills",
       outcome: "Build safe mission plans with defined routes, roles, risks and reporting standards.",
       description: "Operational discipline, route design, crew roles, weather checks, briefings and post-mission reports."
-    },
-    {
-      title: "Aviation Safety & Emergency Procedures",
-      category: "Safety",
-      duration: "4 weeks",
-      mode: "Scenario-led practical training",
-      outcome: "Apply aviation safety culture and emergency response protocols.",
-      description: "Risk assessments, safety checklists, incident response, emergency landing and documentation."
-    },
-    {
-      title: "GIS, Mapping & Aerial Survey",
-      category: "Professional Courses",
-      duration: "6 weeks",
-      mode: "GIS lab and survey fieldwork",
-      outcome: "Capture, process and present aerial survey data for operational use.",
-      description: "Mapping workflows, ground control planning, photogrammetry, survey ethics and client reporting."
-    },
-    {
-      title: "AI & Autonomous Systems in Aviation",
-      category: "Professional Courses",
-      duration: "6 weeks",
-      mode: "Technology lab and case projects",
-      outcome: "Understand autonomous aviation systems, AI use cases and responsible deployment.",
-      description: "Autonomous navigation, mission logic, computer vision concepts and safety-minded AI operations."
-    },
-    {
-      title: "Instructor Development Programme",
-      category: "Short Courses",
-      duration: "3 weeks",
-      mode: "Instructor practicum and assessment",
-      outcome: "Deliver structured UAV and aviation lessons with measurable learning outcomes.",
-      description: "Teaching methods, demonstrations, trainee assessment, briefing discipline and academy standards."
     }
   ],
   services: [

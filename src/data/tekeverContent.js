@@ -499,39 +499,39 @@ export const ABOUT_STORY = [
 
 export const NEWS_ARTICLES = [
   {
-    id: 'corvus-contract',
-    date: '12 February 2026',
-    category: 'DEFENCE CONTRACT',
-    title: 'TEKEVER signs up to £400 million CORVUS contract to deliver next-generation battlefield intelligence capability to the British Army',
-    summary: 'The landmark contract brings TEKEVER’s AR5 long-endurance UAS into service with the British Army, delivering persistent over-the-horizon ISR and anchoring sovereign manufacturing capability.',
-    image: '/assets/platforms/nsl-drone-capture-2.jpg',
+    id: 'defence-modernization',
+    date: '12 September 2026',
+    category: 'DEFENCE TECH & UAS',
+    title: 'Nethawk Solutions expands tactical UAS deployment across strategic defense corridors',
+    summary: 'Delivering sovereign long-endurance autonomous intelligence, persistent over-the-horizon aerial surveillance, and integrated tactical command systems.',
+    image: '/assets/images/defense/nethawk-tactical-uav.jpg',
     readTime: '4 min read'
   },
   {
-    id: 'flowcopter-acquisition',
+    id: 'nati-academy-expansion',
     date: '01 September 2026',
-    category: 'STRATEGIC ACQUISITION',
-    title: 'TEKEVER acquires Flowcopter to expand autonomous capabilities through breakthrough propulsion technology',
-    summary: 'Integration of innovative hydraulic transmission propulsion enables next-generation heavy-lift autonomous aerial systems for harsh contested environments.',
-    image: '/assets/platforms/ops-live-vtol.jpg',
+    category: 'ACADEMY & NATI',
+    title: 'NATI Aviation Training Institute launches advanced tactical BVLOS pilot & mission operator cohorts',
+    summary: 'Accelerating human-capacity development with ICAO-aligned curriculum, flight simulation labs, and sovereign aerospace engineering certifications.',
+    image: '/assets/images/academy/nati-piloting-field.jpg',
     readTime: '3 min read'
   },
   {
-    id: 'maritime-portugal',
-    date: '23 June 2026',
-    category: 'GOVERNMENT CONTRACT',
-    title: 'TEKEVER Wins Contract to Strengthen Maritime Surveillance in Portugal',
-    summary: 'National Maritime Authority selects AR3 EVO systems for persistent coastal surveillance, search and rescue, and fisheries protection with direct operator training.',
-    image: '/assets/images/missions/persistent-awareness.jpg',
+    id: 'manufacturing-scale',
+    date: '23 August 2026',
+    category: 'ADVANCED MANUFACTURING',
+    title: 'Nethawk inaugurates high-precision composite airframe & avionics integration facility',
+    summary: 'Scaling sovereign manufacturing throughput for composite structures, encrypted radio datalinks, and mission-critical avionics.',
+    image: '/assets/images/manufacturing/nethawk-assembly-line.jpg',
     readTime: '3 min read'
   },
   {
-    id: 'sapient-mou',
-    date: '15 May 2026',
-    category: 'TECHNOLOGY PARTNERSHIP',
-    title: 'TEKEVER and Sapient Perception sign MOU to explore next-generation airborne ISR sensing',
-    summary: 'Joint development to integrate open-architecture autonomous sensing and edge-AI target recognition across TEKEVER fixed-wing and VTOL UAS fleets.',
-    image: '/assets/images/missions/nethawk-command-center.jpg',
+    id: 'ai-c2-integration',
+    date: '15 August 2026',
+    category: 'INTELLIGENT SYSTEMS',
+    title: 'SkyGrid Tactical C2 and Edge AI telemetry deployed for multi-domain mission operations',
+    summary: 'Real-time geospatial tracking, automated target classification, and multi-sensor intelligence fusion delivered to field commanders.',
+    image: '/assets/images/skygrid/skygrid-dashboard.webp',
     readTime: '3 min read'
   }
 ];

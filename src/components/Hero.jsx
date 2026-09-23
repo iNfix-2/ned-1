@@ -60,14 +60,14 @@ export default function Hero({ onOpenContact }) {
           </p>
         </div>
 
-        {/* Frosted Translucent Pill Button with Responsive Scroll Border Radius */}
+        {/* Frosted Translucent Glass Pill Button with Responsive Scroll Border Radius */}
         <div className="pt-4">
           <button
             onClick={onOpenContact}
             style={{
               borderRadius: `${buttonRadius}px`,
             }}
-            className="inline-flex items-center px-8 py-3 bg-black/40 hover:bg-black/60 backdrop-blur-md text-white text-xs font-medium tracking-wide border border-white/30 transition-all hover:scale-105 shadow-2xl"
+            className="inline-flex items-center px-8 py-3.5 glass-pill hover:bg-white/20 text-white text-xs sm:text-sm font-medium tracking-wider uppercase transition-all duration-300 hover:scale-105 shadow-2xl"
           >
             Download Capability Document
           </button>
