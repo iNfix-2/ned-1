@@ -75,7 +75,7 @@ body {
   background: #2563eb;
 }
 
-/* Glassmorphism System (Exact TEKEVER aesthetic) */
+/* Glassmorphism System */
 .glass-card {
   background: rgba(2, 14, 28, 0.82);
   backdrop-filter: blur(36px) saturate(160%);

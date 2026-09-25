@@ -6,20 +6,6 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        tekever: {
-          bg: '#020E1C',
-          dark: '#010811',
-          surface: '#051427',
-          card: '#031020',
-          border: 'rgba(255, 255, 255, 0.08)',
-          blue: '#2563eb',
-          blueHover: '#1d4ed8',
-          slate: '#8B9BB4',
-          dim: '#475569',
-          accent: '#38bdf8'
-        }
-      },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
