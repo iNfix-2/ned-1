@@ -69,7 +69,7 @@ export default function WhyUs() {
 
                 <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-slate-400">
                   <span>PILLAR 0{idx + 1}</span>
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <CheckCircle2 className="w-4 h-4 text-sky-400" />
                 </div>
               </div>
             );

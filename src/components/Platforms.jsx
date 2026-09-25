@@ -192,7 +192,7 @@ export default function Platforms({ onOpenContact }) {
                 <div className="grid grid-cols-3 gap-2 text-[10px] font-mono border-t border-white/10 pt-3 text-slate-400">
                   <div>RANGE: {platform.specs.range}</div>
                   <div className="text-center">CEILING: {platform.specs.ceiling}</div>
-                  <div className="text-right text-emerald-400">READY TO DEPLOY</div>
+                  <div className="text-right text-sky-400">READY TO DEPLOY</div>
                 </div>
               </div>
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useNavHandlers } from '../navContext';
 
 const SLIDES = [
   {
@@ -7,25 +8,30 @@ const SLIDES = [
     title: 'INTELLIGENT SYSTEMS',
     subtitle: 'Turning Data into Useful Intelligence',
     description: 'Machine learning, computer vision, automated data processing, and predictive decision-support systems.',
-    cta: 'Explore AI & Data'
+    cta: 'Explore AI & Data',
+    action: 'onNavigatePlatforms'
   },
   {
     image: '/assets/images/skygrid/skygrid-map.webp',
     title: 'SKYGRID GCS',
     subtitle: 'Tactical Command & Real-Time Geospatial C2',
     description: 'Autonomous waypoint flight plans, precision corridor inspection, high-resolution GIS integration, and BVLOS control.',
-    cta: 'Explore GCS & Missions'
+    cta: 'Explore GCS & Missions',
+    action: 'onNavigateMissions'
   },
   {
     image: '/assets/images/skygrid/skygrid-dashboard.webp',
     title: 'MISSION OPERATIONS',
     subtitle: 'Fleet Management & Tactical Telemetry',
     description: 'Live aircraft readiness, pilot dispatch, multi-payload sensor telemetry, and situational awareness dashboards.',
-    cta: 'View Platform Capabilities'
+    cta: 'View Platform Capabilities',
+    action: 'onNavigatePlatforms'
   }
 ];
 
-export default function AtlasSection({ onOpenContact }) {
+export default function AtlasSection(props) {
+  const handlers = useNavHandlers(props);
+  const runSlideAction = (slide) => (handlers[slide.action] || handlers.onOpenContact)?.();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -88,7 +94,7 @@ export default function AtlasSection({ onOpenContact }) {
 
         <div className="pt-4">
           <button
-            onClick={onOpenContact}
+            onClick={() => runSlideAction(SLIDES[currentIndex])}
             className="px-8 py-3 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-xl text-white text-xs font-medium tracking-wide border border-white/25 transition-all hover:scale-105 shadow-xl"
           >
             {SLIDES[currentIndex].cta}

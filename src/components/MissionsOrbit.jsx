@@ -119,7 +119,7 @@ export default function MissionsOrbit({ onOpenContact }) {
 
                   {/* Thumbnail */}
                   <div className="w-24 h-16 rounded-xl overflow-hidden flex-shrink-0 border border-white/10 relative shadow-md">
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={m.thumb}
                       alt={m.title}
                       className="w-full h-full object-cover"

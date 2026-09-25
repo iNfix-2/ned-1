@@ -54,7 +54,7 @@ export default function GlobalPresence() {
 
               <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
                 <span>{hub.coordinates}</span>
-                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span className="w-2 h-2 rounded-full bg-sky-400"></span>
               </div>
             </div>
           ))}
@@ -72,9 +72,9 @@ export default function GlobalPresence() {
                 Dedicated segregated airspace and oceanic testing corridors for continuous BVLOS satellite-guided long-range flight trials and electronic warfare validation.
               </p>
             </div>
-            <div className="pt-6 border-t border-white/10 text-xs font-mono text-emerald-400 flex items-center justify-between">
+            <div className="pt-6 border-t border-white/10 text-xs font-mono text-sky-400 flex items-center justify-between">
               <span>ACTIVE AIRSPACE CORRIDORS</span>
-              <span className="px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+              <span className="px-2 py-0.5 bg-sky-500/10 border border-sky-500/30 text-sky-400">
                 24/7 RESERVED
               </span>
             </div>

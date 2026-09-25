@@ -1,221 +1,214 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { WHY_US_PILLARS, VALUE_CHAIN_STAGES } from '../data/tekeverContent';
-import { ArrowRight, CheckCircle2, ShieldCheck, Cpu, Layers, Activity, Award } from 'lucide-react';
+import { WHY_US_PILLARS, VALUE_CHAIN_STAGES, VALUES_LIST } from '../data/tekeverContent';
+import FullBleedSlideshow from '../components/FullBleedSlideshow';
+import { ArrowRight } from 'lucide-react';
 
-export default function WhyUsPage({
-  onNavigateHome,
-  onNavigateMissions,
-  onNavigateManufacturing,
-  onNavigateAcademy,
-  onNavigateDefenseTech,
-  onNavigatePlatforms,
-  onNavigateWhyUs,
-  onNavigateAtlas,
-  onNavigateSpace,
-  onNavigateDigital,
-  onNavigateAbout,
-  onNavigateNews,
-  onNavigateContact,
-  onOpenContact
-}) {
-  const [activeStage, setActiveStage] = useState(VALUE_CHAIN_STAGES[0].id);
-  const currentStage = VALUE_CHAIN_STAGES.find((s) => s.id === activeStage) || VALUE_CHAIN_STAGES[0];
+// Headline counters — replace with verified company figures when available
+const STATS = [
+  { value: 9, suffix: '+', label: 'Training Programmes' },
+  { value: 7, suffix: '', label: 'Drone Service Lines' },
+  { value: VALUE_CHAIN_STAGES.length, suffix: '', label: 'Value-Chain Stages' },
+];
+
+const PILLAR_IMAGES = [
+  '/assets/images/manufacturing/IMG_6648.jpg',
+  '/assets/images/manufacturing/NTHK-DIASPORA--8950.jpg',
+  '/assets/images/manufacturing/NETHAWK_30.jpg',
+  '/assets/images/nati/gallery-theory.jpg',
+];
+
+const ADVANTAGE_SLIDES = [
+  ...WHY_US_PILLARS.map((p, i) => ({ id: p.id, title: p.title, text: p.description, image: PILLAR_IMAGES[i % PILLAR_IMAGES.length] })),
+  {
+    id: 'vision',
+    title: 'Our Vision',
+    text: 'To become the provider of innovative technology solutions transforming businesses, government institutions, defence, and national development.',
+    image: '/assets/gallery/NTHK-DIASPORA--8847.jpg',
+  },
+  {
+    id: 'mission',
+    title: 'Our Mission',
+    text: 'To build secure, intelligent, and scalable technology solutions that solve real-world problems, strengthen organizations, drive innovation, and create lasting impact.',
+    image: '/assets/gallery/ops-vtol-flight.jpg',
+  },
+];
+
+function OutlineButton({ children, onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/70 text-[11px] font-semibold uppercase tracking-[0.15em] text-white hover:bg-white hover:text-black transition-all"
+    >
+      {children}
+      <ArrowRight className="w-3.5 h-3.5" />
+    </button>
+  );
+}
+
+// Counts up once the stats row scrolls into view
+function CountUp({ value, suffix }) {
+  const ref = useRef(null);
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setDisplay(value);
+      return;
+    }
+    let frame;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+      const start = performance.now();
+      const tick = (now) => {
+        const progress = Math.min(1, (now - start) / 1400);
+        setDisplay(Math.round(value * (1 - Math.pow(1 - progress, 3))));
+        if (progress < 1) frame = requestAnimationFrame(tick);
+      };
+      frame = requestAnimationFrame(tick);
+    }, { threshold: 0.4 });
+    observer.observe(el);
+    return () => { observer.disconnect(); cancelAnimationFrame(frame); };
+  }, [value]);
+
+  return <span ref={ref}>{display}{suffix}</span>;
+}
+
+export default function WhyUsPage(props) {
+  const { onOpenContact, onNavigateManufacturing, onNavigatePlatforms } = props;
 
   return (
-    <div className="min-h-screen bg-[#020e1c] text-white flex flex-col font-sans selection:bg-blue-600 selection:text-white antialiased">
-      <Navbar
-        onOpenContact={onOpenContact}
-        onNavigateHome={onNavigateHome}
-        onNavigateMissions={onNavigateMissions}
-        onNavigateManufacturing={onNavigateManufacturing}
-        onNavigateAcademy={onNavigateAcademy}
-        onNavigateDefenseTech={onNavigateDefenseTech}
-        onNavigatePlatforms={onNavigatePlatforms}
-        onNavigateWhyUs={onNavigateWhyUs}
-        onNavigateAtlas={onNavigateAtlas}
-        onNavigateSpace={onNavigateSpace}
-        onNavigateDigital={onNavigateDigital}
-        onNavigateAbout={onNavigateAbout}
-        onNavigateNews={onNavigateNews}
-        onNavigateContact={onNavigateContact}
-        activePage="why-us"
-      />
+    <div className="min-h-screen bg-[#010811] text-white flex flex-col font-sans selection:bg-blue-600 selection:text-white antialiased">
+      <Navbar {...props} activePage="why-us" />
 
-      <main className="flex-grow pt-28 pb-20 space-y-24 sm:space-y-32">
-        {/* Hero Section */}
-        <section className="relative px-6 sm:px-12 max-w-[1920px] mx-auto">
-          <div className="relative rounded-[32px] sm:rounded-[40px] overflow-hidden min-h-[70vh] flex flex-col justify-end p-8 sm:p-16 border border-white/10 shadow-2xl bg-gradient-to-t from-[#010813] via-[#020e1c]/80 to-transparent">
-            <div
-              className="absolute inset-0 bg-cover bg-center -z-10 opacity-40 scale-105 transition-transform duration-1000"
-              style={{ backgroundImage: "url('/assets/images/missions/nethawk-command-center.jpg')" }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#020e1c] via-[#020e1c]/60 to-transparent -z-10" />
+      <main className="flex-grow">
+        {/* Hero: quote over video */}
+        <section className="relative h-[100svh] min-h-[600px] max-h-[960px] w-full overflow-hidden flex flex-col">
+          <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" poster="/assets/video/nethawk-hero-poster.jpg" preload="metadata">
+            <source src="/assets/video/nethawk-hero.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#010811] via-[#010811]/40 to-[#010811]" />
 
-            <div className="max-w-4xl space-y-6">
-              <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs tracking-wider uppercase text-blue-300">
-                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-                <span>Why Nethawk & TEKEVER UI</span>
-              </div>
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-tight text-white">
-                What are you trying to accomplish? <br />
-                <span className="font-normal text-slate-300">That should be your main question.</span>
-              </h1>
-              <p className="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-3xl font-light">
-                Our UAS systems fit every mission and are intrinsically future-proofed. Through the ability to upgrade individual sub-systems, it's possible to scale and evolve capabilities without complete redesigns. It's not just about technology — it's about your operational success.
+          <div className="relative z-10 flex-1 flex items-center justify-center px-6">
+            <blockquote className="max-w-3xl text-center space-y-5">
+              <p className="text-xl sm:text-3xl font-light leading-snug text-white">
+                “What are you trying to accomplish? That should be your main question.”
               </p>
-              <div className="pt-4 flex flex-wrap gap-4">
-                <button
-                  onClick={onOpenContact}
-                  className="px-8 py-4 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-slate-200 transition-all flex items-center space-x-2 shadow-xl hover:scale-105"
-                >
-                  <span>Request Operational Briefing</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
+              <p className="text-sm text-slate-300 font-light leading-relaxed max-w-2xl mx-auto">
+                Our systems fit every mission and are future-proofed by design. Upgrade individual sub-systems to scale
+                and evolve capability without complete redesigns — because it's not just about technology, it's about
+                your operational success.
+              </p>
+            </blockquote>
           </div>
         </section>
 
-        {/* 4 Core Pillars */}
-        <section className="px-6 sm:px-12 max-w-[1920px] mx-auto space-y-12">
-          <div className="max-w-3xl space-y-3">
-            <h2 className="text-2xl sm:text-4xl font-light tracking-tight text-white">
-              Strategic Advantages
-            </h2>
-            <p className="text-slate-400 text-sm sm:text-base">
-              Built on decades of computer science, real-time edge AI, and thousands of hours in frontline mission environments.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {WHY_US_PILLARS.map((pillar) => (
-              <div
-                key={pillar.id}
-                className="rounded-[32px] bg-[#071322]/80 border border-white/10 p-8 sm:p-10 backdrop-blur-xl hover:border-white/20 transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div className="space-y-4">
-                  <span className="text-3xl sm:text-4xl font-light text-blue-400/60 block font-mono">
-                    {pillar.number}
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-normal text-white group-hover:text-blue-200 transition-colors">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-                    {pillar.description}
-                  </p>
+        {/* Stats */}
+        <section className="py-16 sm:py-24 px-6">
+          <div className="max-w-3xl mx-auto grid grid-cols-3 gap-4 sm:gap-10 text-center">
+            {STATS.map((s) => (
+              <div key={s.label} className="space-y-2">
+                <div className="text-5xl sm:text-7xl font-light tracking-tight text-white tabular-nums">
+                  <CountUp value={s.value} suffix={s.suffix} />
                 </div>
+                <div className="text-[10px] sm:text-xs uppercase tracking-[0.15em] text-slate-400">{s.label}</div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* 6-Stage Value Chain Interactive Breakdown */}
-        <section className="px-6 sm:px-12 max-w-[1920px] mx-auto space-y-12">
-          <div className="space-y-4 max-w-3xl">
-            <div className="text-xs font-semibold tracking-wider uppercase text-blue-400">Complete Value Chain</div>
-            <h2 className="text-2xl sm:text-4xl font-light text-white">
-              Unparalleled coverage of the complete value chain
-            </h2>
-            <p className="text-slate-400 text-sm sm:text-base">
-              From base material formulation to edge AI analytics, full vertical ownership enables agile adaptability and product differentiation.
-            </p>
-          </div>
-
-          {/* Value Chain Interactive Tabs & Details Card */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Left Selector List */}
-            <div className="lg:col-span-5 space-y-3">
-              {VALUE_CHAIN_STAGES.map((stage) => {
-                const isActive = stage.id === activeStage;
-                return (
-                  <button
-                    key={stage.id}
-                    onClick={() => setActiveStage(stage.id)}
-                    className={`w-full text-left p-5 sm:p-6 rounded-[24px] border transition-all flex items-center justify-between ${
-                      isActive
-                        ? 'bg-white/15 border-white/30 text-white shadow-xl'
-                        : 'bg-white/5 border-white/5 text-slate-400 hover:bg-white/10 hover:text-white'
-                    }`}
-                  >
-                    <div className="flex items-center space-x-4">
-                      <span className="text-sm font-mono text-blue-400 font-bold">{stage.step}</span>
-                      <span className="text-sm sm:text-base font-medium">{stage.title}</span>
-                    </div>
-                    <ArrowRight className={`w-4 h-4 transition-transform ${isActive ? 'translate-x-1 text-white' : 'opacity-40'}`} />
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Right Display Card */}
-            <div className="lg:col-span-7 rounded-[32px] bg-[#05111f] border border-white/15 p-8 sm:p-12 shadow-2xl space-y-8 relative overflow-hidden min-h-[420px] flex flex-col justify-between">
-              <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-              
-              <div className="space-y-6 relative z-10">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono text-blue-400 uppercase tracking-widest px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">
-                    Phase {currentStage.step} of 06
-                  </span>
-                  <Award className="w-5 h-5 text-blue-400" />
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-light text-white">
-                  {currentStage.title}
-                </h3>
-                <div className="space-y-4 pt-2">
-                  {currentStage.points.map((pt, idx) => (
-                    <div key={idx} className="flex items-start space-x-3 text-slate-300 text-sm sm:text-base font-light leading-relaxed">
-                      <CheckCircle2 className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
-                      <span>{pt}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-6 border-t border-white/10 flex items-center justify-between relative z-10">
-                <span className="text-xs text-slate-400">Mission-Driven Engineering & Quality Assurance</span>
-                <button
-                  onClick={onOpenContact}
-                  className="text-xs text-blue-300 hover:text-white font-medium flex items-center space-x-1 transition-colors"
-                >
-                  <span>Learn more</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
+        {/* Full-bleed statement */}
+        <section className="relative min-h-[560px] sm:min-h-[700px] w-full flex items-end overflow-hidden">
+          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/assets/images/nati/prog-3.jpg')" }} />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#010811]/95 via-[#010811]/40 to-transparent" />
+          <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-12 pb-16 sm:pb-24">
+            <div className="max-w-md space-y-4">
+              <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight leading-[1.05] text-white">
+                Built Around Your Mission
+              </h2>
+              <p className="text-sm text-slate-300 font-light leading-relaxed">
+                One accountable partner from composite airframes and avionics to certified crews, mission software and
+                the intelligence you act on — engineered in our own labs and proven in the field.
+              </p>
+              <OutlineButton onClick={onNavigateManufacturing}>Explore Labs &amp; Research</OutlineButton>
             </div>
           </div>
         </section>
 
-        {/* Lowest Total Cost of Ownership Banner */}
-        <section className="px-6 sm:px-12 max-w-[1920px] mx-auto">
-          <div className="rounded-[32px] sm:rounded-[40px] bg-gradient-to-r from-[#031326] to-[#08203d] border border-white/15 p-8 sm:p-14 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="space-y-4 max-w-2xl">
-              <h3 className="text-2xl sm:text-3xl font-light text-white">
-                Lowest Total Cost of Ownership (TCO)
-              </h3>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-                With modular and interchangeable architectures, all our UAS systems are engineered to maximize availability while substantially reducing scheduled maintenance and spares overhead.
+        {/* Advantages slideshow */}
+        <FullBleedSlideshow slides={ADVANTAGE_SLIDES} label="Strategic advantages" />
+
+        {/* Image + text */}
+        <section className="max-w-6xl mx-auto px-6 sm:px-12 py-20 sm:py-32 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+          <div className="aspect-square overflow-hidden">
+            <img src="/assets/images/manufacturing/NTHK-DIASPORA--8980.jpg" alt="Nethawk crew preparing an aircraft" loading="lazy" className="w-full h-full object-cover" />
+          </div>
+          <div className="space-y-5 max-w-md">
+            <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight text-white">Lowest Total Cost of Ownership</h2>
+            <p className="text-sm text-slate-300 font-light leading-relaxed">
+              Modular, interchangeable architectures keep every system available for longer while substantially reducing
+              scheduled maintenance and spares overhead.
+            </p>
+            <p className="text-sm text-slate-300 font-light leading-relaxed">
+              Line-replaceable units can be swapped in the field, sub-systems upgrade independently, and a single
+              software ecosystem runs across the fleet — so capability grows without starting over.
+            </p>
+            <p className="text-sm text-slate-300 font-light leading-relaxed">
+              Choose to own the capability outright, or draw on it as a managed service and pay only for the outcome.
+            </p>
+          </div>
+        </section>
+
+        {/* Core values */}
+        <section className="max-w-6xl mx-auto px-6 sm:px-12 pb-20 sm:pb-32 space-y-8">
+          <h2 className="text-xl font-bold uppercase tracking-tight text-white">Our Core Values</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 border-t border-white/15 pt-8">
+            {VALUES_LIST.map((v) => (
+              <div key={v.name} className="space-y-2">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-white">{v.name}</h3>
+                <p className="text-xs text-slate-400 font-light leading-relaxed">{v.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Full-bleed: platforms */}
+        <section className="relative min-h-[560px] sm:min-h-[720px] w-full flex items-center overflow-hidden">
+          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/assets/images/manufacturing/IMG_6631.jpg')" }} />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#010811]/95 via-[#010811]/50 to-transparent" />
+          <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-12">
+            <div className="max-w-md space-y-4">
+              <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight text-white">Our Platforms</h2>
+              <p className="text-sm text-slate-300 font-light leading-relaxed">
+                SkyGrid Command Centre, SkyGrid GCS and Affenas connect every aircraft, operator and commander in one
+                secure operating picture.
               </p>
+              <OutlineButton onClick={onNavigatePlatforms}>Learn More</OutlineButton>
             </div>
+          </div>
+        </section>
+
+        {/* Closing CTA */}
+        <section className="py-24 sm:py-32 px-6 flex flex-col items-center gap-10 text-center">
+          <div className="w-px h-40 bg-gradient-to-b from-transparent via-white/40 to-white/70" />
+          <div className="space-y-5 max-w-md">
+            <p className="text-sm text-slate-300 font-light">
+              Delivering capabilities that protect lives, infrastructure and sovereign nations.
+            </p>
             <button
               onClick={onOpenContact}
-              className="px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs tracking-wider uppercase transition-all shadow-xl shrink-0"
+              className="px-6 py-3 border border-white/70 text-[11px] font-semibold uppercase tracking-[0.2em] text-white hover:bg-white hover:text-black transition-all"
             >
-              Contact Operations Team
+              Connect With Leadership
             </button>
           </div>
         </section>
       </main>
 
-      <Footer
-        onOpenContact={onOpenContact}
-        onNavigateHome={onNavigateHome}
-        onNavigateMissions={onNavigateMissions}
-        onNavigateManufacturing={onNavigateManufacturing}
-        onNavigateAcademy={onNavigateAcademy}
-        onNavigateDefenseTech={onNavigateDefenseTech}
-      />
+      <Footer {...props} />
     </div>
   );
 }

@@ -5,7 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 3000,
+    // Use the port assigned by the launcher when there is one (avoids clashes between parallel dev servers)
+    port: Number(process.env.PORT) || 3000,
     host: '0.0.0.0',
     cors: true,
     allowedHosts: ['.trycloudflare.com', 'localhost', '127.0.0.1', '0.0.0.0']

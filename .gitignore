@@ -30,3 +30,9 @@ dist-ssr
 
 # Temporary / Scratch
 scratch/
+
+# Local-only: Claude Code config, Cloudflare tunnel helper and its output
+.claude/
+.live/
+live-url.txt
+scripts/run-live.ps1

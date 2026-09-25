@@ -1,22 +1,21 @@
 import React from 'react';
+import { useNavHandlers } from '../navContext';
 
-export default function Footer({ 
-  onOpenContact, 
-  onNavigateHome, 
-  onNavigateMissions, 
-  onNavigateManufacturing, 
-  onNavigateAcademy, 
-  onNavigateDefenseTech,
-  onNavigatePlatforms,
-  onNavigateWhyUs,
-  onNavigateAtlas,
-  onNavigateSpace,
-  onNavigateDigital,
-  onNavigateAbout,
-  onNavigateNews,
-  onNavigateContact,
-  onOpenPolicy
-}) {
+export default function Footer(props) {
+  const {
+    onOpenContact,
+    onNavigateHome,
+    onNavigateMissions,
+    onNavigateManufacturing,
+    onNavigateWhyUs,
+    onNavigateNews,
+    onNavigateContact,
+    onNavigateDAS,
+    onNavigateGallery,
+    onNavigateBlog,
+    onNavigateCareers,
+    onOpenPolicy
+  } = useNavHandlers(props);
   return (
     <footer className="bg-[#03070f] text-slate-400 font-sans text-xs relative overflow-hidden border-t border-white/10 pt-20 pb-12">
       
@@ -32,8 +31,8 @@ export default function Footer({
               onClick={onNavigateHome}
               className="text-left focus:outline-none block"
             >
-              <img 
-                src="/assets/images/logo/lockup.png" 
+              <img loading="lazy" decoding="async" 
+                src="/assets/images/logo/nethawk-logo-white.png"
                 alt="NETHAWK SOLUTIONS" 
                 className="h-9 sm:h-10 w-auto object-contain mb-1"
               />
@@ -52,11 +51,10 @@ export default function Footer({
               </h4>
               <ul className="space-y-2 text-[10.5px] sm:text-xs leading-snug sm:leading-relaxed">
                 <li><button onClick={onNavigateWhyUs || onNavigateHome} className="hover:text-white transition-colors text-left block">Why Us</button></li>
+                <li><button onClick={onNavigateDAS} className="hover:text-white transition-colors text-left block">Drone as a Service</button></li>
                 <li><a href="https://skygridinc.live" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-left block">Skygrid Intelligence</a></li>
                 <li><button onClick={onNavigateMissions} className="hover:text-white transition-colors text-left block">Missions</button></li>
                 <li><button onClick={onNavigateManufacturing || onNavigateHome} className="hover:text-white transition-colors text-left block">Labs &amp; Research</button></li>
-                <li><button onClick={onNavigateSpace || onNavigateHome} className="hover:text-white transition-colors text-left block">Space &amp; Satellite</button></li>
-                <li><button onClick={onNavigateDigital || onNavigateHome} className="hover:text-white transition-colors text-left block">Digital Systems</button></li>
               </ul>
             </div>
 
@@ -66,12 +64,14 @@ export default function Footer({
                 Corporate
               </h4>
               <ul className="space-y-2 text-[10.5px] sm:text-xs leading-snug sm:leading-relaxed">
-                <li><button onClick={onNavigateAbout || onNavigateHome} className="hover:text-white transition-colors text-left block">About Nethawk</button></li>
+                <li><button onClick={onNavigateWhyUs || onNavigateHome} className="hover:text-white transition-colors text-left block">About Nethawk</button></li>
                 <li><button onClick={onNavigateManufacturing} className="hover:text-white transition-colors text-left block">Labs &amp; Research</button></li>
                 <li><a href="/academy/index.html" className="hover:text-white transition-colors text-left block font-medium text-sky-400">NATI Academy Hub</a></li>
-                <li><a href="/academy/training-programmes.html" className="hover:text-white transition-colors text-left block">Academy Programmes</a></li>
-                <li><a href="/academy/admissions.html" className="hover:text-white transition-colors text-left block">Admissions &amp; Apply</a></li>
-                <li><button onClick={onNavigateNews || onNavigateHome} className="hover:text-white transition-colors text-left block">In the Media</button></li>
+                <li><a href="/academy/index.html#course-architecture" className="hover:text-white transition-colors text-left block">Academy Programmes</a></li>
+                <li><button onClick={onNavigateCareers} className="hover:text-white transition-colors text-left block">Careers</button></li>
+                <li><button onClick={onNavigateNews || onNavigateHome} className="hover:text-white transition-colors text-left block">News</button></li>
+                <li><button onClick={onNavigateBlog} className="hover:text-white transition-colors text-left block">Blog &amp; Insights</button></li>
+                <li><button onClick={onNavigateGallery} className="hover:text-white transition-colors text-left block">Gallery</button></li>
                 <li><button onClick={onNavigateContact || onOpenContact} className="hover:text-white transition-colors text-left block">How to Reach Us</button></li>
               </ul>
             </div>

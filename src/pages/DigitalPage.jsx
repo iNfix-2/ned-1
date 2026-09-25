@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { DIGITAL_SOLUTIONS } from '../data/tekeverContent';
-import { ArrowRight, Smartphone, Building, Server, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function DigitalPage({
   onNavigateHome,
@@ -43,18 +43,14 @@ export default function DigitalPage({
       <main className="flex-grow pt-28 pb-20 space-y-24 sm:space-y-32">
         {/* Hero Section */}
         <section className="relative px-6 sm:px-12 max-w-[1920px] mx-auto">
-          <div className="relative rounded-[32px] sm:rounded-[40px] overflow-hidden min-h-[75vh] flex flex-col justify-end p-8 sm:p-16 border border-white/10 shadow-2xl bg-gradient-to-t from-[#010813] via-[#020e1c]/80 to-transparent">
+          <div className="relative isolate rounded-[32px] sm:rounded-[40px] overflow-hidden min-h-[75vh] flex flex-col justify-end p-8 sm:p-16 border border-white/10 shadow-2xl bg-gradient-to-t from-[#010813] via-[#020e1c]/80 to-transparent">
             <div
               className="absolute inset-0 bg-cover bg-center -z-10 opacity-35 scale-105 transition-transform duration-1000"
-              style={{ backgroundImage: "url('/assets/images/services/enterprise-digital.jpg')" }}
+              style={{ backgroundImage: "url('/assets/images/manufacturing/IMG_6549.jpg')" }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#020e1c] via-[#020e1c]/60 to-transparent -z-10" />
 
             <div className="max-w-4xl space-y-6">
-              <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs tracking-wider uppercase text-blue-300">
-                <Smartphone className="w-3.5 h-3.5 text-blue-400" />
-                <span>Enterprise &amp; Digital Transformation</span>
-              </div>
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-tight text-white">
                 Digital Systems <br />
                 <span className="font-normal text-slate-300">In Your Day-to-Day Life</span>
@@ -78,7 +74,6 @@ export default function DigitalPage({
         {/* Digital Solution Areas */}
         <section className="px-6 sm:px-12 max-w-[1920px] mx-auto space-y-10">
           <div className="space-y-2 max-w-3xl">
-            <div className="text-xs font-semibold tracking-wider uppercase text-blue-400 font-mono">Expertise</div>
             <h2 className="text-2xl sm:text-4xl font-light text-white">Core Solution Verticals</h2>
           </div>
 

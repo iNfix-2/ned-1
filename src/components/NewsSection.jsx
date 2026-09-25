@@ -55,7 +55,7 @@ export default function NewsSection({ onOpenContact }) {
             <div
               key={article.id}
               className="service-card snap-center shrink-0 w-[82vw] sm:w-[360px] md:w-[400px] lg:w-[420px] h-[62vh] min-h-[460px] max-h-[580px] rounded-[32px] sm:rounded-[36px] overflow-hidden relative border border-white/15 shadow-2xl group cursor-pointer flex flex-col justify-end p-6 sm:p-8 bg-[#020710] select-none transition-transform hover:-translate-y-1 duration-300"
-              onClick={onOpenContact}
+              onClick={() => { window.location.hash = `#/news/${article.id}`; }}
             >
               {/* Background Image */}
               <div 
@@ -72,8 +72,6 @@ export default function NewsSection({ onOpenContact }) {
               <div className="relative z-10 space-y-3 text-left">
                 {/* Date / Category Badge */}
                 <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-300/80 font-normal">
-                  <span className="text-[#38bdf8] font-mono font-semibold text-[11px] sm:text-xs uppercase tracking-wider">{article.category}</span>
-                  <span className="text-slate-400">•</span>
                   <span>{article.date}</span>
                 </div>
 

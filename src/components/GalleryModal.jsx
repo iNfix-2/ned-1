@@ -49,9 +49,6 @@ export default function GalleryModal({ isOpen, onClose, onOpenContact, initialFi
         {/* Header */}
         <div className="flex items-start justify-between gap-4 mb-6">
           <div>
-            <div className="text-xs font-mono text-[#38bdf8] tracking-widest uppercase mb-1">
-              Field Operations Gallery
-            </div>
             <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
               Discover More
             </h3>
@@ -101,9 +98,6 @@ export default function GalleryModal({ isOpen, onClose, onOpenContact, initialFi
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
               <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
-                <div className="text-[10px] font-mono uppercase tracking-widest text-[#38bdf8]">
-                  {g.category}
-                </div>
                 <div className="text-xs sm:text-sm font-semibold text-white leading-snug">
                   {g.caption}
                 </div>
@@ -138,15 +132,12 @@ export default function GalleryModal({ isOpen, onClose, onOpenContact, initialFi
             <ChevronLeft className="w-5 h-5" />
           </button>
           <figure className="max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
-            <img
+            <img loading="lazy" decoding="async"
               src={active.src}
               alt={active.caption}
               className="w-full max-h-[80vh] object-contain rounded-2xl border border-white/15 shadow-2xl"
             />
             <figcaption className="mt-3 text-center text-sm text-slate-300">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#38bdf8] block">
-                {active.category}
-              </span>
               {active.caption} — {lightboxIdx + 1} / {items.length}
             </figcaption>
           </figure>

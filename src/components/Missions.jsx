@@ -121,8 +121,8 @@ export default function Missions({ onOpenContact }) {
               {/* Top HUD bar */}
               <div className="relative z-10 flex justify-between items-center text-[10px] font-mono text-slate-400">
                 <span>SIMULATION FEED: ACTIVE</span>
-                <span className="text-emerald-400 flex items-center">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping mr-1.5"></span>
+                <span className="text-sky-400 flex items-center">
+                  <span className="w-1.5 h-1.5 bg-sky-400 rounded-full animate-ping mr-1.5"></span>
                   LIVE TELEMETRY
                 </span>
               </div>
@@ -134,7 +134,7 @@ export default function Missions({ onOpenContact }) {
                     <div className="w-3 h-3 bg-blue-500 rounded-full animate-ping"></div>
                   </div>
                   {/* Surrounding telemetry points */}
-                  <div className="absolute top-2 right-4 w-2 h-2 bg-emerald-400 rounded-full"></div>
+                  <div className="absolute top-2 right-4 w-2 h-2 bg-sky-400 rounded-full"></div>
                   <div className="absolute bottom-4 left-6 w-2 h-2 bg-sky-400 rounded-full"></div>
                 </div>
 

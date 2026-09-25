@@ -37,7 +37,7 @@ export default function ModularAutonomy({ onOpenContact }) {
 
         {/* 3. "One System, Multiple Aircraft" Featured Card */}
         <div className="relative w-full aspect-[16/8] sm:aspect-[21/9] max-h-[480px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-          <img
+          <img loading="lazy" decoding="async"
             src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1600&q=80"
             alt="One System Multiple Aircraft"
             className="w-full h-full object-cover"
@@ -153,7 +153,7 @@ export default function ModularAutonomy({ onOpenContact }) {
                 </div>
                 <div className="flex justify-between py-1 border-b border-white/5">
                   <span className="text-slate-400">DATALINK PROTOCOL</span>
-                  <span className="text-emerald-400 font-bold">BVLOS SATCOM</span>
+                  <span className="text-sky-400 font-bold">BVLOS SATCOM</span>
                 </div>
               </div>
 
@@ -208,14 +208,14 @@ export default function ModularAutonomy({ onOpenContact }) {
         <div className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="aspect-[16/10] rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-              <img
+              <img loading="lazy" decoding="async"
                 src="/assets/images/missions/nethawk-engineering-team.jpg"
                 alt="Engineering and systems integration team"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
             <div className="aspect-[16/10] rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-              <img
+              <img loading="lazy" decoding="async"
                 src="/assets/images/platforms/nethawk-vtol-isr.jpg"
                 alt="Long-Endurance ISR UAS Platform"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"

@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { SPACE_PRODUCTS } from '../data/tekeverContent';
-import { ArrowRight, ExternalLink, Radio, Satellite, ShieldCheck, Sparkles, Orbit } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 
 export default function SpacePage({
   onNavigateHome,
@@ -46,18 +46,14 @@ export default function SpacePage({
       <main className="flex-grow pt-28 pb-20 space-y-24 sm:space-y-32">
         {/* Hero Section */}
         <section className="relative px-6 sm:px-12 max-w-[1920px] mx-auto">
-          <div className="relative rounded-[32px] sm:rounded-[40px] overflow-hidden min-h-[75vh] flex flex-col justify-end p-8 sm:p-16 border border-white/10 shadow-2xl bg-gradient-to-t from-[#010813] via-[#020e1c]/80 to-transparent">
+          <div className="relative isolate rounded-[32px] sm:rounded-[40px] overflow-hidden min-h-[75vh] flex flex-col justify-end p-8 sm:p-16 border border-white/10 shadow-2xl bg-gradient-to-t from-[#010813] via-[#020e1c]/80 to-transparent">
             <div
               className="absolute inset-0 bg-cover bg-center -z-10 opacity-35 scale-105 transition-transform duration-1000"
-              style={{ backgroundImage: "url('/assets/images/services/research-innovation.jpg')" }}
+              style={{ backgroundImage: "url('/assets/images/manufacturing/IMG_6559.jpg')" }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#020e1c] via-[#020e1c]/60 to-transparent -z-10" />
 
             <div className="max-w-4xl space-y-6">
-              <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs tracking-wider uppercase text-blue-300">
-                <Orbit className="w-3.5 h-3.5 text-blue-400" />
-                <span>Space &amp; Satellite Systems</span>
-              </div>
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-tight text-white">
                 Pushing the Boundaries in Space
               </h1>
@@ -82,10 +78,6 @@ export default function SpacePage({
           {/* GAMALINK Card */}
           <div className="rounded-[36px] bg-[#071322] border border-white/15 p-8 sm:p-12 space-y-8 flex flex-col justify-between shadow-2xl">
             <div className="space-y-4">
-              <div className="flex items-center space-x-3 text-xs font-mono text-blue-400">
-                <Radio className="w-4 h-4" />
-                <span>SOFTWARE-DEFINED RADIO</span>
-              </div>
               <h2 className="text-2xl sm:text-3xl font-light text-white">{gamalink.title}</h2>
               <p className="text-slate-300 text-sm sm:text-base font-light leading-relaxed">
                 {gamalink.desc}
@@ -93,7 +85,6 @@ export default function SpacePage({
             </div>
 
             <div className="space-y-3 pt-6 border-t border-white/10">
-              <span className="text-[11px] font-mono text-blue-400 uppercase tracking-wider block">Key Specifications</span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 {gamalink.specs.slice(0, 6).map((sp, idx) => (
                   <div key={idx} className="p-3 rounded-[16px] bg-white/5 border border-white/5 space-y-1">
@@ -108,10 +99,6 @@ export default function SpacePage({
           {/* GAMASAR Card */}
           <div className="rounded-[36px] bg-[#071322] border border-white/15 p-8 sm:p-12 space-y-8 flex flex-col justify-between shadow-2xl">
             <div className="space-y-4">
-              <div className="flex items-center space-x-3 text-xs font-mono text-blue-400">
-                <Satellite className="w-4 h-4" />
-                <span>SYNTHETIC APERTURE RADAR</span>
-              </div>
               <h2 className="text-2xl sm:text-3xl font-light text-white">{gamasar.title}</h2>
               <p className="text-slate-300 text-sm sm:text-base font-light leading-relaxed">
                 {gamasar.desc}
@@ -130,7 +117,6 @@ export default function SpacePage({
         {/* ESA Heritage Flight Missions */}
         <section className="px-6 sm:px-12 max-w-[1920px] mx-auto space-y-8">
           <div className="space-y-2">
-            <div className="text-xs font-semibold tracking-wider uppercase text-blue-400 font-mono">Flight Heritage</div>
             <h2 className="text-2xl sm:text-4xl font-light text-white">Active Spaceflight Missions</h2>
           </div>
 
@@ -141,7 +127,6 @@ export default function SpacePage({
                 className="rounded-[30px] bg-[#05111f] border border-white/10 p-8 space-y-4 flex flex-col justify-between hover:border-white/20 transition-all"
               >
                 <div className="space-y-3">
-                  <span className="text-[11px] font-mono text-blue-400 uppercase tracking-wider block">{m.role}</span>
                   <h3 className="text-xl font-medium text-white">{m.name}</h3>
                   <p className="text-slate-400 text-xs sm:text-sm font-light leading-relaxed">{m.desc}</p>
                 </div>

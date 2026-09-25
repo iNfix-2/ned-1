@@ -62,7 +62,7 @@ export default function AtlasAI({ onOpenContact }) {
                   <span className="text-slate-600">|</span>
                   <span>CAM: 4K EO/MWIR DUAL GIMBAL</span>
                 </div>
-                <div className="flex items-center space-x-3 text-emerald-400">
+                <div className="flex items-center space-x-3 text-sky-400">
                   <span>AI EDGE INFERENCE: 7.2ms</span>
                   <span>CONFIDENCE: {detectionConfidence}%</span>
                 </div>
@@ -89,11 +89,11 @@ export default function AtlasAI({ onOpenContact }) {
                 </div>
 
                 {/* Target Box 2: Speedboat nearby */}
-                <div className="relative w-36 h-24 border border-emerald-400 bg-emerald-400/10 p-1.5 ml-8 flex flex-col justify-between">
-                  <div className="bg-emerald-500 text-black text-[9px] font-mono px-1 font-bold uppercase self-start">
+                <div className="relative w-36 h-24 border border-sky-400 bg-sky-400/10 p-1.5 ml-8 flex flex-col justify-between">
+                  <div className="bg-sky-500 text-black text-[9px] font-mono px-1 font-bold uppercase self-start">
                     TARGET #02: PATROL VESSEL
                   </div>
-                  <div className="font-mono text-[9px] text-emerald-300">
+                  <div className="font-mono text-[9px] text-sky-300">
                     AIS: FRIENDLY // MMSI: 263884000
                   </div>
                 </div>
@@ -163,7 +163,7 @@ export default function AtlasAI({ onOpenContact }) {
                 </div>
                 <div className="bg-[#020E1C] p-3 border border-white/5 flex items-center justify-between">
                   <span className="text-slate-400">DARK VESSEL DETECTION RATE</span>
-                  <span className="text-emerald-400 font-bold text-sm">99.8%</span>
+                  <span className="text-sky-400 font-bold text-sm">99.8%</span>
                 </div>
                 <div className="bg-[#020E1C] p-3 border border-white/5 flex items-center justify-between">
                   <span className="text-slate-400">C4ISR LINK STANDARDS</span>
