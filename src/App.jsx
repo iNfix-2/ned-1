@@ -45,7 +45,7 @@ const PAGE_META = {
   contact: { title: `Contact Us | ${SITE_NAME}`, description: 'Contact Nethawk Solutions in Kaduna, Nigeria for UAV operations, defence technology, SkyGrid software or NATI training enquiries.' },
   manufacturing: { title: `Nethawk Labs & Research | ${SITE_NAME}`, description: 'Nethawk Labs designs, builds and qualifies UAV airframes, avionics and payloads in-house, from composite fabrication to flight testing.' },
   academy: { title: `NATI Academy | ${SITE_NAME}`, description: 'The Nethawk Aviation Training Institute trains certified UAS pilots, operators and technicians for Nigeria and across Africa.' },
-  'defense-tech': { title: `Defence Technology | ${SITE_NAME}`, description: 'Military-grade software, AI for defence, specialised ammunition and rifles, autonomous military vehicles and UAV systems for armed forces and security agencies.' },
+  'defense-tech': { title: `Defence Technology | ${SITE_NAME}`, description: 'Military-grade software, AI for defence, autonomous military vehicles and UAV systems for armed forces and security agencies.' },
   blog: { title: `Blog & Insights | ${SITE_NAME}`, description: 'Insights on unmanned systems, defence technology and aviation training from the Nethawk team.' },
   das: { title: `Drone as a Service | ${SITE_NAME}`, description: 'Aerial capability on demand: certified crews fly surveillance, mapping, inspection and emergency-response missions so you get the results without owning a fleet.' },
   gallery: { title: `Gallery | ${SITE_NAME}`, description: 'Photos from Nethawk field operations, labs, training and events.' },
@@ -263,8 +263,8 @@ export default function App() {
           <main className="flex-grow">
             <Hero onOpenContact={() => setContactModalOpen(true)} />
             <AboutBrief />
-            <MissionBanner onNavigateMissions={() => navigateTo('missions')} />
             <LabsFeature />
+            <MissionBanner onNavigateMissions={() => navigateTo('missions')} />
             <AcademyFeature />
             <AtlasSection onOpenContact={() => setContactModalOpen(true)} />
             <NewsSection onOpenContact={() => setContactModalOpen(true)} />

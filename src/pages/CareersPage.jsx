@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { AlertTriangle, ArrowRight, MapPin, Briefcase, Search } from 'lucide-react';
+import { ArrowRight, Search } from 'lucide-react';
 
 // Applications are sent here — replace with a dedicated careers inbox if one exists
 const CAREERS_EMAIL = 'info@nethawksolutions.org';
@@ -210,7 +210,6 @@ export default function CareersPage(props) {
             <h2 className="text-center text-2xl sm:text-3xl font-light text-white">Current Openings</h2>
 
             <div className="flex gap-4 rounded-xl border border-white/10 bg-[#071322] p-5 sm:p-6 text-xs sm:text-sm text-slate-300 leading-relaxed">
-              <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
               <div className="space-y-2">
                 <p className="font-semibold text-white">Important Information for Job Seekers</p>
                 <p>
@@ -244,8 +243,8 @@ export default function CareersPage(props) {
                   <div className="flex-1 min-w-0 space-y-1">
                     <p className="text-white font-medium">{job.title}</p>
                     <p className="text-xs text-slate-400 flex flex-wrap gap-x-4 gap-y-1">
-                      <span className="inline-flex items-center gap-1"><Briefcase className="w-3.5 h-3.5" />{job.team}</span>
-                      <span className="inline-flex items-center gap-1"><MapPin className="w-3.5 h-3.5" />{job.location}</span>
+                      <span>{job.team}</span>
+                      <span>{job.location}</span>
                       <span>{job.type}</span>
                     </p>
                   </div>

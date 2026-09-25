@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { ArrowRight, ChevronDown, Eye, Radio, Moon, Map, Layers, Ruler, Route, Zap, History } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 
 // Dedicated pages for the three services in the navbar Products menu, rendered from one template
 export const SERVICE_PAGES = {
@@ -13,9 +13,9 @@ export const SERVICE_PAGES = {
     intro: 'Persistent aerial monitoring for security operations, critical asset protection, and border and perimeter awareness, with live video delivered straight to your command team.',
     summary: 'Nethawk crews fly day and night intelligence, surveillance and reconnaissance missions using long-endurance fixed-wing VTOL and tactical multirotor platforms fitted with stabilised EO/IR payloads.',
     features: [
-      { icon: Moon, title: 'Day & Night Coverage', text: 'Gimbal-stabilised EO/IR payloads keep targets in view in low light and at night.' },
-      { icon: Radio, title: 'Live Feed to Command', text: 'Encrypted video and telemetry streamed to your operations room in real time.' },
-      { icon: Eye, title: 'Patrol & Overwatch', text: 'Scheduled patrols, event overwatch and rapid tasking when an incident develops.' },
+      { title: 'Day & Night Coverage', text: 'Gimbal-stabilised EO/IR payloads keep targets in view in low light and at night.' },
+      { title: 'Live Feed to Command', text: 'Encrypted video and telemetry streamed to your operations room in real time.' },
+      { title: 'Patrol & Overwatch', text: 'Scheduled patrols, event overwatch and rapid tasking when an incident develops.' },
     ],
     panels: [
       { title: 'Border & Perimeter Security', text: 'Wide-area patrols along borders, fences and remote perimeters, flagging movement and intrusion early so ground teams can respond with a clear picture.', image: '/assets/gallery/wa-vtol-gimbal.jpg' },
@@ -32,9 +32,9 @@ export const SERVICE_PAGES = {
     intro: 'Fixed-wing VTOL survey flights that cover large areas in a single sortie, processed into accurate maps and models for planning and decision-making.',
     summary: 'From mining concessions to new road corridors, our crews plan, fly and process mapping missions end to end, delivering GIS-ready outputs your engineers and planners can use immediately.',
     features: [
-      { icon: Map, title: 'Orthomosaics', text: 'High-resolution, georeferenced imagery stitched into a single accurate map.' },
-      { icon: Layers, title: 'Elevation Models', text: 'Digital surface and terrain models for drainage, earthworks and route design.' },
-      { icon: Ruler, title: 'Survey Accuracy', text: 'Ground control and RTK/PPK workflows for measurement-grade results.' },
+      { title: 'Orthomosaics', text: 'High-resolution, georeferenced imagery stitched into a single accurate map.' },
+      { title: 'Elevation Models', text: 'Digital surface and terrain models for drainage, earthworks and route design.' },
+      { title: 'Survey Accuracy', text: 'Ground control and RTK/PPK workflows for measurement-grade results.' },
     ],
     panels: [
       { title: 'Topographic & Mining Surveys', text: 'Rapid, repeatable surveys of pits, stockpiles and concessions, with volumes and change measured flight to flight.', image: '/assets/gallery/ops-vtol-flight.jpg' },
@@ -51,9 +51,9 @@ export const SERVICE_PAGES = {
     intro: 'Linear-asset inspection along pipelines, power lines, roads and rail, spotting faults, encroachment and damage without putting crews at risk.',
     summary: 'Our long-range platforms fly the full length of your network on repeatable routes, so every patrol can be compared with the last and problems are caught before they become outages.',
     features: [
-      { icon: Route, title: 'Pipeline & Power-Line Patrols', text: 'Hundreds of kilometres covered per day on pre-planned, repeatable routes.' },
-      { icon: Zap, title: 'Fault & Leak Detection', text: 'Zoom and thermal payloads that pick out hot spots, leaks and damage.' },
-      { icon: History, title: 'Change Tracking', text: 'Compare patrols over time to catch encroachment and deterioration early.' },
+      { title: 'Pipeline & Power-Line Patrols', text: 'Hundreds of kilometres covered per day on pre-planned, repeatable routes.' },
+      { title: 'Fault & Leak Detection', text: 'Zoom and thermal payloads that pick out hot spots, leaks and damage.' },
+      { title: 'Change Tracking', text: 'Compare patrols over time to catch encroachment and deterioration early.' },
     ],
     panels: [
       { title: 'Oil & Gas Pipelines', text: 'Right-of-way patrols that detect leaks, third-party interference and illegal tapping along remote pipeline routes.', image: '/assets/platforms/ops-live-vtol.jpg' },
@@ -124,12 +124,9 @@ export default function ServicePage(props) {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 border-t border-white/15 pt-10">
-            {service.features.map(({ icon: Icon, title, text }) => (
+            {service.features.map(({ title, text }) => (
               <div key={title} className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <Icon className="w-5 h-5 text-white" strokeWidth={1.5} />
-                  <h3 className="text-xs font-bold uppercase tracking-[0.15em]">{title}</h3>
-                </div>
+                <h3 className="text-xs font-bold uppercase tracking-[0.15em]">{title}</h3>
                 <p className="text-sm text-slate-400 leading-relaxed">{text}</p>
               </div>
             ))}

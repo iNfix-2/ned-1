@@ -276,7 +276,7 @@ export const NEWS_ARTICLES = [
     category: 'DEFENCE PARTNERSHIP',
     title: 'Commandant of the Nigerian Defence Academy visits Nethawk and NATI facility',
     summary: 'The Commandant and senior officers of the Nigerian Defence Academy toured Nethawk\'s UAS operations and training facility, observed live drone demonstrations and discussed collaboration on unmanned systems training for future officers.',
-    image: '/assets/images/news/nda-visit-group.webp',
+    image: '/assets/images/news/nda-visit-group-wide.webp',
     readTime: '4 min read',
     body: [
       { type: 'p', text: 'Nethawk Solutions and the Nethawk Aviation Training Institute (NATI) hosted the Commandant of the Nigerian Defence Academy (NDA), accompanied by senior officers and members of his team, on an official visit to our UAS operations and training facility.' },

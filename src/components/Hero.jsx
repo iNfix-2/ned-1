@@ -1,19 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useNavHandlers } from '../navContext';
 
-// Hero slideshow images (cycled like the NATI Academy hero carousel)
+// Hero slideshow: each photo carries its own heading, write-up and call to action.
+// `action` names a site navigation handler; `href` is used for downloads/links instead.
 const HERO_SLIDES = [
-  '/assets/images/defense/nethawk-tactical-uav.jpg',
-  '/assets/images/missions/border-defense.jpg',
-  '/assets/images/missions/critical-infrastructure.jpg',
-  '/assets/images/manufacturing/nethawk-assembly-line.jpg',
-  '/assets/images/missions/nethawk-command-center.jpg',
+  {
+    image: '/assets/images/defense/nethawk-tactical-uav.jpg',
+    title: 'Nethawk Solutions Securing Africa',
+    text: 'Delivering integrated digital, engineering, automation, security, and defence technology capabilities.',
+    cta: 'Download Brochure',
+    href: '/assets/documents/nethawk-brochure.pdf',
+    download: 'Nethawk-Solutions-Brochure.pdf',
+  },
+  {
+    image: '/assets/images/missions/border-defense.jpg',
+    title: 'Securing Borders from the Sky',
+    text: 'Persistent day-and-night aerial surveillance that gives security forces early warning and a clear picture along borders, checkpoints and remote terrain.',
+    cta: 'Explore Defence Tech',
+    action: 'onNavigateDefenseTech',
+  },
+  {
+    image: '/assets/images/missions/critical-infrastructure.jpg',
+    title: 'Protecting Critical Infrastructure',
+    text: 'Round-the-clock UAV monitoring and inspection of dams, substations, pipelines and power corridors, so operators can act before incidents become outages.',
+    cta: 'Drone as a Service',
+    action: 'onNavigateDAS',
+  },
+  {
+    image: '/assets/images/manufacturing/nethawk-assembly-line.jpg',
+    title: 'Engineered and Built in Nigeria',
+    text: 'From composite airframes to avionics and final assembly, Nethawk Labs designs, manufactures and tests UAV systems at home, building sovereign capability and local talent.',
+    cta: 'Explore Nethawk Labs',
+    action: 'onNavigateManufacturing',
+  },
+  {
+    image: '/assets/images/missions/nethawk-command-center.jpg',
+    title: 'Command, Control & Intelligence',
+    text: 'SkyGrid brings mission planning, live telemetry and aerial intelligence into one command picture, from the pilot in the field to the operations room.',
+    cta: 'Discover SkyGrid',
+    action: 'onNavigatePlatforms',
+  },
 ];
 
 // Each image stays still for this long, then crossfades to the next
 const SLIDE_INTERVAL_MS = 6000;
 
-export default function Hero({ onOpenContact }) {
+export default function Hero(props) {
+  const nav = useNavHandlers(props);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
   // Bumped on manual navigation so the interval restarts and the chosen image gets a full turn
@@ -73,7 +107,7 @@ export default function Hero({ onOpenContact }) {
           borderBottomRightRadius: `${bottomRadius}px`,
         }}
       >
-        {HERO_SLIDES.map((src, idx) => (
+        {HERO_SLIDES.map(({ image: src }, idx) => (
           <div
             key={src}
             className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
@@ -106,7 +140,7 @@ export default function Hero({ onOpenContact }) {
 
       {/* Slide Dots */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
-        {HERO_SLIDES.map((src, idx) => (
+        {HERO_SLIDES.map(({ image: src }, idx) => (
           <button
             key={src}
             type="button"
@@ -119,31 +153,60 @@ export default function Hero({ onOpenContact }) {
         ))}
       </div>
 
-      {/* Center Content from Document */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-6">
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.08] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
-          Nethawk Solutions Securing Africa
-        </h1>
+      {/* Per-slide heading, write-up and call to action; all stacked in one cell and crossfaded with the photos */}
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 grid">
+        {HERO_SLIDES.map((slide, idx) => {
+          const active = idx === currentSlide;
+          const buttonClass = 'inline-flex items-center px-8 py-3.5 glass-pill hover:bg-white/20 text-white text-xs sm:text-sm font-medium tracking-wider uppercase transition-all duration-300 hover:scale-105 shadow-2xl';
+          return (
+            <div
+              key={slide.title}
+              aria-hidden={!active}
+              className={`[grid-area:1/1] self-center text-center space-y-6 transition-all duration-1000 ease-out ${
+                active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+              }`}
+            >
+              {idx === 0 ? (
+                <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.08] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
+                  {slide.title}
+                </h1>
+              ) : (
+                <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.08] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
+                  {slide.title}
+                </h2>
+              )}
 
-        <div className="space-y-2 max-w-2xl mx-auto">
-          <p className="text-sm sm:text-base text-white font-medium drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] leading-relaxed">
-            Delivering integrated digital, engineering, automation, security, and defence technology capabilities.
-          </p>
-        </div>
+              <p className="max-w-2xl mx-auto text-sm sm:text-base text-white font-medium drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] leading-relaxed">
+                {slide.text}
+              </p>
 
-        {/* Frosted Translucent Glass Pill Button with Responsive Scroll Border Radius */}
-        <div className="pt-4">
-          <a
-            href="/assets/documents/nethawk-brochure.pdf"
-            download="Nethawk-Solutions-Brochure.pdf"
-            style={{
-              borderRadius: `${buttonRadius}px`,
-            }}
-            className="inline-flex items-center px-8 py-3.5 glass-pill hover:bg-white/20 text-white text-xs sm:text-sm font-medium tracking-wider uppercase transition-all duration-300 hover:scale-105 shadow-2xl"
-          >
-            Download Brochure
-          </a>
-        </div>
+              {/* Frosted glass pill button with responsive scroll border radius */}
+              <div className="pt-4">
+                {slide.href ? (
+                  <a
+                    href={slide.href}
+                    download={slide.download}
+                    tabIndex={active ? 0 : -1}
+                    style={{ borderRadius: `${buttonRadius}px` }}
+                    className={buttonClass}
+                  >
+                    {slide.cta}
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    tabIndex={active ? 0 : -1}
+                    onClick={() => (nav[slide.action] || nav.onOpenContact)?.()}
+                    style={{ borderRadius: `${buttonRadius}px` }}
+                    className={buttonClass}
+                  >
+                    {slide.cta}
+                  </button>
+                )}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

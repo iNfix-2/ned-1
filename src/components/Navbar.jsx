@@ -131,6 +131,14 @@ export default function Navbar(props) {
               Missions
             </button>
 
+            {/* Nethawk Labs */}
+            <button
+              onClick={onNavigateManufacturing}
+              className={`transition-colors ${activePage === 'manufacturing' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'}`}
+            >
+              Nethawk Labs
+            </button>
+
             {/* Why us? */}
             <button
               onClick={onNavigateWhyUs}
@@ -242,14 +250,6 @@ export default function Navbar(props) {
                 </div>
               )}
             </div>
-
-            {/* Nethawk Labs */}
-            <button
-              onClick={onNavigateManufacturing}
-              className={`transition-colors ${activePage === 'manufacturing' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'}`}
-            >
-              Nethawk Labs
-            </button>
 
             {/* Academy */}
             <button
@@ -372,6 +372,14 @@ export default function Navbar(props) {
               Missions
             </button>
 
+            {/* Nethawk Labs */}
+            <button
+              onClick={() => { setMobileOpen(false); onNavigateManufacturing && onNavigateManufacturing(); }}
+              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
+            >
+              Nethawk Labs
+            </button>
+
             {/* Why us? */}
             <button
               onClick={() => { setMobileOpen(false); onNavigateWhyUs && onNavigateWhyUs(); }}
@@ -418,14 +426,6 @@ export default function Navbar(props) {
                 </div>
               )}
             </div>
-
-            {/* Nethawk Labs */}
-            <button
-              onClick={() => { setMobileOpen(false); onNavigateManufacturing && onNavigateManufacturing(); }}
-              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
-            >
-              Nethawk Labs
-            </button>
 
             {/* Academy */}
             <button

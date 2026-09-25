@@ -2,15 +2,15 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import { OutlineButton, Reveal, CinematicPanel } from '../components/Cinematic';
 import Footer from '../components/Footer';
-import { ChevronDown, PenTool, Cpu, ShieldCheck } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const IMG = '/assets/images/manufacturing';
 
 // Three pillars shown under the intro, in the style of the reference's icon row
 const PILLARS = [
-  { icon: PenTool, title: 'Design & Simulation', text: 'Airframes, payload mounts and systems engineered in CAD and validated in simulation before anything is built.' },
-  { icon: Cpu, title: 'Build & Integrate', text: 'Prototyping, composite fabrication and in-house avionics brought together into complete, flight-ready systems.' },
-  { icon: ShieldCheck, title: 'Test & Qualify', text: 'Every system is bench-tested, ground-tested and flight-tested before it reaches an operator.' },
+  { title: 'Design & Simulation', text: 'Airframes, payload mounts and systems engineered in CAD and validated in simulation before anything is built.' },
+  { title: 'Build & Integrate', text: 'Prototyping, composite fabrication and in-house avionics brought together into complete, flight-ready systems.' },
+  { title: 'Test & Qualify', text: 'Every system is bench-tested, ground-tested and flight-tested before it reaches an operator.' },
 ];
 
 // Full-screen panels, alternating sides
@@ -101,12 +101,9 @@ export default function ManufacturingPage(props) {
         </Reveal>
 
         <Reveal className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8 border-t border-white/15 pt-10">
-          {PILLARS.map(({ icon: Icon, title, text }) => (
+          {PILLARS.map(({ title, text }) => (
             <div key={title} className="space-y-3">
-              <div className="flex items-center gap-3">
-                <Icon className="w-5 h-5" strokeWidth={1.5} />
-                <h3 className="text-xs font-bold uppercase tracking-[0.15em]">{title}</h3>
-              </div>
+              <h3 className="text-xs font-bold uppercase tracking-[0.15em]">{title}</h3>
               <p className="text-sm text-slate-400 leading-relaxed">{text}</p>
             </div>
           ))}

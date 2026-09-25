@@ -14,37 +14,41 @@ const STATS = [
 
 // Team grid: one photo per person in /assets/images/team. Fill in `role` (e.g. 'UAS Pilot') and it
 // shows under the name; names are as given on the headshot files.
+// Commented-out entries are hidden for now; uncomment to show them again.
 const TEAM = [
   { name: 'Mr. Abraham', role: '', photo: 'abraham.jpg' },
-  { name: 'Mr. Ade', role: '', photo: 'ade.jpg' },
-  { name: 'Mr. Alekun Wodo', role: '', photo: 'alekun-wodo.jpg' },
-  { name: 'Mr. Ini-Essiet', role: '', photo: 'ini-essiet.jpg' },
-  { name: 'Mr. Kehinde', role: '', photo: 'kehinde.jpg' },
+  // { name: 'Mr. Ade', role: '', photo: 'ade.jpg' },  (hidden for now)
+  // { name: 'Mr. Alekun Wodo', role: '', photo: 'alekun-wodo.jpg' },  (hidden for now)
+  // { name: 'Mr. Ini-Essiet', role: '', photo: 'ini-essiet.jpg' },  (hidden for now)
+  // { name: 'Mr. Kehinde', role: '', photo: 'kehinde.jpg' },  (hidden for now)
   { name: 'Mr. Nehemiah', role: '', photo: 'nehemiah.jpg' },
-  { name: 'Mr. Oluwatobiloba', role: '', photo: 'oluwatobiloba.jpg' },
-  { name: 'Mr. Opateyibo', role: '', photo: 'opateyibo.jpg' },
+  // { name: 'Mr. Oluwatobiloba', role: '', photo: 'oluwatobiloba.jpg' },  (hidden for now)
+  // { name: 'Mr. Opateyibo', role: '', photo: 'opateyibo.jpg' },  (hidden for now)
   { name: 'Mr. Oshoma', role: '', photo: 'oshoma.jpg' },
   { name: 'Ms. Baraya', role: '', photo: 'baraya.jpg' },
-  { name: 'Ms. Chori', role: '', photo: 'chori.jpg' },
+  // { name: 'Ms. Chori', role: '', photo: 'chori.jpg' },  (hidden for now)
   { name: 'Ms. Jemiamah', role: '', photo: 'jemiamah.jpg' },
-  { name: 'Ms. Jenifa', role: '', photo: 'jenifa.jpg' },
+  // { name: 'Ms. Jenifa', role: '', photo: 'jenifa.jpg' },  (hidden for now)
   { name: 'Miss Favour Elakhe', role: '', photo: 'favour-elakhe.jpg' },
   { name: 'Miss Nkem', role: '', photo: 'nkem.jpg' },
-  { name: 'Miss Patience', role: '', photo: 'patience.jpg' },
+  // { name: 'Miss Patience', role: '', photo: 'patience.jpg' },  (hidden for now)
   { name: 'Miss Peace Jaro', role: '', photo: 'peace-jaro.jpg' },
   { name: 'Miss Sharon', role: '', photo: 'sharon.jpg' },
-  { name: 'Miss Tolu', role: '', photo: 'tolu.jpg' },
+  // { name: 'Miss Tolu', role: '', photo: 'tolu.jpg' },  (hidden for now)
 ];
 
 const PILLAR_IMAGES = [
   '/assets/images/manufacturing/IMG_6648.jpg',
   '/assets/images/manufacturing/NTHK-DIASPORA--8950.jpg',
   '/assets/images/manufacturing/NETHAWK_30.jpg',
-  '/assets/images/nati/gallery-theory.jpg',
+  '/assets/images/missions/field-comms-operators.webp',
 ];
 
+// Crop focus per pillar image (tall photos need an off-centre focus in the wide slide)
+const PILLAR_POSITIONS = [undefined, undefined, undefined, 'center 72%'];
+
 const ADVANTAGE_SLIDES = [
-  ...WHY_US_PILLARS.map((p, i) => ({ id: p.id, title: p.title, text: p.description, image: PILLAR_IMAGES[i % PILLAR_IMAGES.length] })),
+  ...WHY_US_PILLARS.map((p, i) => ({ id: p.id, title: p.title, text: p.description, image: PILLAR_IMAGES[i % PILLAR_IMAGES.length], position: PILLAR_POSITIONS[i] })),
   {
     id: 'vision',
     title: 'Our Vision',
@@ -119,12 +123,11 @@ export default function WhyUsPage(props) {
           <div className="relative z-10 flex-1 flex items-center justify-center px-6">
             <blockquote className="max-w-3xl text-center space-y-5">
               <p className="text-xl sm:text-3xl font-light leading-snug text-white">
-                “What are you trying to accomplish? That should be your main question.”
+                “Built for today’s challenges. Adaptable to tomorrow’s unknown.”
               </p>
               <p className="text-sm text-slate-300 font-light leading-relaxed max-w-2xl mx-auto">
-                Our systems fit every mission and are future-proofed by design. Upgrade individual sub-systems to scale
-                and evolve capability without complete redesigns — because it's not just about technology, it's about
-                your operational success.
+                Our modular systems adapt to any theater of operations. Upgrade components seamlessly without full
+                redesigns—because your operational readiness depends on versatility, not just hardware.
               </p>
             </blockquote>
           </div>
@@ -146,16 +149,16 @@ export default function WhyUsPage(props) {
 
         {/* Full-bleed statement */}
         <section className="relative min-h-[560px] sm:min-h-[700px] w-full flex items-end overflow-hidden">
-          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/assets/images/nati/prog-3.jpg')" }} />
+          <div className="absolute inset-0 bg-cover bg-[center_30%]" style={{ backgroundImage: "url('/assets/images/manufacturing/nethawk-labs-team.webp')" }} />
           <div className="absolute inset-0 bg-gradient-to-t from-[#010811]/95 via-[#010811]/40 to-transparent" />
           <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-12 pb-16 sm:pb-24">
             <div className="max-w-md space-y-4">
               <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight leading-[1.05] text-white">
-                Built Around Your Mission
+                Define the objective. We engineer the capability.
               </h2>
               <p className="text-sm text-slate-300 font-light leading-relaxed">
-                One accountable partner from composite airframes and avionics to certified crews, mission software and
-                the intelligence you act on — engineered in our own labs and proven in the field.
+                Future-proof by design, our architecture allows you to scale sub-systems independently. Avoid disruptive
+                overhauls and maintain continuous capability where it matters most: the field.
               </p>
               <OutlineButton onClick={onNavigateManufacturing}>Explore Labs &amp; Research</OutlineButton>
             </div>

@@ -41,7 +41,7 @@ export default function FullBleedSlideshow({ slides, label }) {
           className={`absolute inset-0 transition-opacity duration-1000 ${i === index ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
           aria-hidden={i !== index}
         >
-          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${s.image}')` }} />
+          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${s.image}')`, backgroundPosition: s.position || 'center' }} />
           <div className="absolute inset-0 bg-gradient-to-r from-[#010811]/95 via-[#010811]/65 to-transparent" />
           <div className="relative z-10 h-full max-w-6xl mx-auto px-14 sm:px-20 flex items-center">
             <div className="max-w-md space-y-4">

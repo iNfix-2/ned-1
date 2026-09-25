@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import InquiryForm from '../components/InquiryForm';
-import { Phone, Mail, MessageCircle, MapPin } from 'lucide-react';
 
 // Contact details shown in the info grid — replace the placeholder numbers with the real ones
 const CONTACT_PHONE = '+234 000 000 0000';
@@ -14,10 +13,10 @@ const MAP_EMBED_URL = 'https://www.google.com/maps?q=Farin+Gida,+Mando,+Kaduna,+
 const digitsOnly = (value) => value.replace(/[^\d]/g, '');
 
 const CONTACT_CHANNELS = [
-  { icon: Phone, title: 'Phone Number', value: CONTACT_PHONE, href: `tel:${CONTACT_PHONE.replace(/\s/g, '')}` },
-  { icon: Mail, title: 'Email Address', value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
-  { icon: MessageCircle, title: 'WhatsApp', value: CONTACT_WHATSAPP, href: `https://wa.me/${digitsOnly(CONTACT_WHATSAPP)}` },
-  { icon: MapPin, title: 'Our Office', value: CONTACT_OFFICE, href: null },
+  { title: 'Phone Number', value: CONTACT_PHONE, href: `tel:${CONTACT_PHONE.replace(/\s/g, '')}` },
+  { title: 'Email Address', value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+  { title: 'WhatsApp', value: CONTACT_WHATSAPP, href: `https://wa.me/${digitsOnly(CONTACT_WHATSAPP)}` },
+  { title: 'Our Office', value: CONTACT_OFFICE, href: null },
 ];
 
 export default function ContactPage({
@@ -89,9 +88,8 @@ export default function ContactPage({
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-10">
-              {CONTACT_CHANNELS.map(({ icon: Icon, title, value, href }) => (
+              {CONTACT_CHANNELS.map(({ title, value, href }) => (
                 <div key={title} className="text-center space-y-3">
-                  <Icon className="w-8 h-8 mx-auto text-white" strokeWidth={1.5} />
                   <h3 className="text-base font-semibold text-white">{title}</h3>
                   {href ? (
                     <a

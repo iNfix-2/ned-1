@@ -1,8 +1,5 @@
 import React, { useState, useRef, useEffect, useId } from 'react';
-import {
-  Shield, Plane, Radar, Cpu, Monitor, Wrench, FlaskConical, GraduationCap,
-  ArrowLeft, ArrowRight, Check, CheckCircle2, Mail,
-} from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, CheckCircle2 } from 'lucide-react';
 
 // Guided 3-step inquiry form shared by the contact modal and the Contact page.
 // Submission is front-end only: the success screen offers a pre-filled email as the delivery path.
@@ -10,14 +7,14 @@ import {
 export const INQUIRY_EMAIL = 'info@nethawksolutions.org';
 
 const SERVICES = [
-  { id: 'defence', label: 'Defence Tech', hint: 'UAV & ISR systems', icon: Shield },
-  { id: 'das', label: 'Drone as a Service', hint: 'Crews & aircraft on demand', icon: Plane },
-  { id: 'software', label: 'SkyGrid & Affenas', hint: 'Mission & comms software', icon: Radar },
-  { id: 'ai', label: 'AI & Data', hint: 'Intelligent systems', icon: Cpu },
-  { id: 'digital', label: 'Enterprise & Digital', hint: 'Digital solutions', icon: Monitor },
-  { id: 'engineering', label: 'Engineering', hint: 'Systems integration', icon: Wrench },
-  { id: 'research', label: 'Research & Innovation', hint: 'Nethawk Labs', icon: FlaskConical },
-  { id: 'academy', label: 'NATI Academy', hint: 'Training & certification', icon: GraduationCap },
+  { id: 'defence', label: 'Defence Tech', hint: 'UAV & ISR systems' },
+  { id: 'das', label: 'Drone as a Service', hint: 'Crews & aircraft on demand' },
+  { id: 'software', label: 'SkyGrid & Affenas', hint: 'Mission & comms software' },
+  { id: 'ai', label: 'AI & Data', hint: 'Intelligent systems' },
+  { id: 'digital', label: 'Enterprise & Digital', hint: 'Digital solutions' },
+  { id: 'engineering', label: 'Engineering', hint: 'Systems integration' },
+  { id: 'research', label: 'Research & Innovation', hint: 'Nethawk Labs' },
+  { id: 'academy', label: 'NATI Academy', hint: 'Training & certification' },
 ];
 
 const TIMELINES = ['As soon as possible', '1–3 months', '3–6 months', 'Just exploring'];
@@ -131,7 +128,7 @@ export default function InquiryForm({ title = 'Discuss Your Requirements', title
           href={buildMailto(data)}
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/25 text-xs font-medium text-slate-200 hover:text-white hover:border-white/60 transition-colors"
         >
-          <Mail className="w-4 h-4" /> Also send it by email
+          Also send it by email
         </a>
         <div className="flex gap-3 pt-2">
           <button type="button" onClick={reset} className="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-xs font-medium text-white transition-all">
@@ -190,7 +187,7 @@ export default function InquiryForm({ title = 'Discuss Your Requirements', title
               What do you need help with? <span className="text-slate-500 font-normal text-sm">Select all that apply.</span>
             </legend>
             <div className="grid grid-cols-2 gap-3">
-              {SERVICES.map(({ id, label, hint, icon: Icon }) => {
+              {SERVICES.map(({ id, label, hint }) => {
                 const active = data.services.includes(id);
                 return (
                   <button
@@ -203,7 +200,6 @@ export default function InquiryForm({ title = 'Discuss Your Requirements', title
                       active ? 'bg-sky-400/10 border-sky-400 shadow-[0_0_0_1px_rgba(56,189,248,0.4)]' : 'bg-white/[0.03] border-white/10 hover:border-white/30 hover:bg-white/[0.06]'
                     }`}
                   >
-                    <Icon className={`w-5 h-5 mb-2 ${active ? 'text-sky-300' : 'text-slate-300'}`} strokeWidth={1.5} />
                     <span className="block text-sm font-medium text-white leading-tight">{label}</span>
                     <span className="block text-[11px] text-slate-400 mt-0.5 leading-snug">{hint}</span>
                     {active && (

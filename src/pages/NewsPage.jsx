@@ -136,7 +136,9 @@ export default function NewsPage({
 
   const openStory = (article) => { window.location.hash = `#/news/${article.id}`; };
   const setOpenArticle = (article) => { window.location.hash = article ? `#/news/${article.id}` : '#/news'; };
-  const categories = ['ALL', 'DEFENCE CONTRACT', 'STRATEGIC ACQUISITION', 'GOVERNMENT CONTRACT', 'TECHNOLOGY PARTNERSHIP'];
+  // Built from the posts themselves so every filter always has matching articles
+  const categories = ['ALL', ...new Set(NEWS_ARTICLES.map((a) => a.category))];
+  const labelFor = (cat) => (cat === 'ALL' ? 'All' : cat.toLowerCase().replace(/\b\w/g, (ch) => ch.toUpperCase()).replace(/\bNati\b/, 'NATI').replace(/\bUas\b/, 'UAS'));
 
   const filteredArticles = selectedCategory === 'ALL'
     ? NEWS_ARTICLES
@@ -182,18 +184,19 @@ export default function NewsPage({
           </p>
 
           {/* Category Filter Pills */}
-          <div className="flex flex-wrap gap-2 pt-4">
+          {/* one swipeable row on phones, wrapping row from sm up */}
+          <div className="flex gap-2 pt-4 -mx-6 px-6 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-5 py-2 rounded-full text-xs font-medium transition-all ${
+                className={`shrink-0 whitespace-nowrap px-4 py-2 rounded-full text-xs font-medium transition-all ${
                   selectedCategory === cat
                     ? 'bg-white text-black font-semibold shadow-lg'
-                    : 'bg-white/5 border border-white/10 text-slate-400 hover:bg-white/10 hover:text-white'
+                    : 'bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 hover:text-white'
                 }`}
               >
-                {cat}
+                {labelFor(cat)}
               </button>
             ))}
           </div>

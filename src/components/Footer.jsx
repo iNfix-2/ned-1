@@ -133,7 +133,7 @@ export default function Footer(props) {
 
       {/* Giant Faint Watermark "NETHAWK" across the bottom */}
       <div className="w-full select-none pointer-events-none mt-12 flex justify-center overflow-hidden">
-        <span className="font-sans text-[12vw] font-black tracking-widest text-white/[0.03] uppercase whitespace-nowrap leading-none block">
+        <span className="font-sans text-[12vw] font-black tracking-widest text-white/[0.08] uppercase whitespace-nowrap leading-none block">
           NETHAWK
         </span>
       </div>

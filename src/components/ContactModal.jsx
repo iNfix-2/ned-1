@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, Mail, ShieldCheck, Clock } from 'lucide-react';
+import { X } from 'lucide-react';
 import InquiryForm, { INQUIRY_EMAIL } from './InquiryForm';
 
 export default function ContactModal({ isOpen, onClose }) {
@@ -51,15 +51,12 @@ export default function ContactModal({ isOpen, onClose }) {
             </p>
             <div className="space-y-3 text-sm">
               <a href={`mailto:${INQUIRY_EMAIL}`} className="flex items-center gap-3 text-slate-300 hover:text-sky-300 transition-colors">
-                <Mail className="w-4 h-4 shrink-0" strokeWidth={1.5} />
                 {INQUIRY_EMAIL}
               </a>
               <div className="flex items-center gap-3 text-slate-300">
-                <Clock className="w-4 h-4 shrink-0" strokeWidth={1.5} />
                 Response within 24 hours
               </div>
               <div className="flex items-center gap-3 text-slate-300">
-                <ShieldCheck className="w-4 h-4 shrink-0" strokeWidth={1.5} />
                 Confidential &amp; direct consultation
               </div>
             </div>

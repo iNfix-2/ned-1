@@ -37,7 +37,7 @@ const MISSION_SECTIONS = [
     id: 'intelligence',
     title: 'Turning Data Into Useful Intelligence',
     description: 'Developing intelligent technologies that help organisations process information, identify patterns, monitor environments, and support better decision-making.',
-    image: '/assets/images/missions/nethawk-tactical-team.jpg',
+    image: '/assets/images/missions/data-intelligence-map.webp',
     cta: 'Learn More',
     action: 'onNavigateWhyUs',
     align: 'right',
