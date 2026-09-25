@@ -10,21 +10,21 @@ const applyHref = (role) =>
   `mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent(`Application: ${role}`)}`;
 
 const OPENINGS = [
-  { title: 'UAV Flight Operations Pilot', team: 'Missions', location: 'Abuja, Nigeria', type: 'Full-time' },
-  { title: 'Avionics & Embedded Systems Engineer', team: 'Labs & Research', location: 'Abuja, Nigeria', type: 'Full-time' },
-  { title: 'Composite Airframe Technician', team: 'Manufacturing', location: 'Abuja, Nigeria', type: 'Full-time' },
-  { title: 'Counter-UAS Systems Analyst', team: 'Defence Technology', location: 'Abuja, Nigeria', type: 'Full-time' },
+  { title: 'UAV Flight Operations Pilot', team: 'Missions', location: 'Kaduna, Nigeria', type: 'Full-time' },
+  { title: 'Avionics & Embedded Systems Engineer', team: 'Labs & Research', location: 'Kaduna, Nigeria', type: 'Full-time' },
+  { title: 'Composite Airframe Technician', team: 'Manufacturing', location: 'Kaduna, Nigeria', type: 'Full-time' },
+  { title: 'Counter-UAS Systems Analyst', team: 'Defence Technology', location: 'Kaduna, Nigeria', type: 'Full-time' },
   { title: 'GIS & Mapping Data Specialist', team: 'Drone as a Service', location: 'Hybrid', type: 'Contract' },
   { title: 'Full-Stack Software Engineer', team: 'Digital Systems', location: 'Hybrid', type: 'Full-time' },
-  { title: 'QA & Flight Test Engineer', team: 'Labs & Research', location: 'Abuja, Nigeria', type: 'Full-time' },
-  { title: 'Graduate Engineering Intern', team: 'Early Careers', location: 'Abuja, Nigeria', type: 'Internship' },
+  { title: 'QA & Flight Test Engineer', team: 'Labs & Research', location: 'Kaduna, Nigeria', type: 'Full-time' },
+  { title: 'Graduate Engineering Intern', team: 'Early Careers', location: 'Kaduna, Nigeria', type: 'Internship' },
 ];
 
 const EXPLORE_CARDS = [
   {
     image: '/assets/images/manufacturing/nethawk-avionics-lab.jpg',
     title: 'Labs & Research Centre',
-    text: 'Visit our engineering and fabrication centre in Abuja, where we design, build and test mission-ready systems.',
+    text: 'Visit our engineering and fabrication centre in Kaduna, where we design, build and test mission-ready systems.',
     cta: 'Visit our labs',
     action: 'labs',
   },

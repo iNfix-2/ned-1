@@ -42,7 +42,7 @@ const PAGE_META = {
   space: { title: `Space & Satellite | ${SITE_NAME}`, description: DEFAULT_DESCRIPTION },
   digital: { title: `Digital Systems | ${SITE_NAME}`, description: DEFAULT_DESCRIPTION },
   news: { title: `News & Media | ${SITE_NAME}`, description: 'The latest news, partnerships and deployments from Nethawk Solutions and the Nethawk Aviation Training Institute.' },
-  contact: { title: `Contact Us | ${SITE_NAME}`, description: 'Contact Nethawk Solutions in Abuja, Nigeria for UAV operations, defence technology, SkyGrid software or NATI training enquiries.' },
+  contact: { title: `Contact Us | ${SITE_NAME}`, description: 'Contact Nethawk Solutions in Kaduna, Nigeria for UAV operations, defence technology, SkyGrid software or NATI training enquiries.' },
   manufacturing: { title: `Nethawk Labs & Research | ${SITE_NAME}`, description: 'Nethawk Labs designs, builds and qualifies UAV airframes, avionics and payloads in-house, from composite fabrication to flight testing.' },
   academy: { title: `NATI Academy | ${SITE_NAME}`, description: 'The Nethawk Aviation Training Institute trains certified UAS pilots, operators and technicians for Nigeria and across Africa.' },
   'defense-tech': { title: `Defence Technology | ${SITE_NAME}`, description: 'Military-grade software, AI for defence, specialised ammunition and rifles, autonomous military vehicles and UAV systems for armed forces and security agencies.' },

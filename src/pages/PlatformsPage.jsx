@@ -68,12 +68,12 @@ const PLATFORMS = [
 
 const CAPABILITIES = [
   {
-    image: '/assets/images/skygrid/skygrid-map.webp',
+    image: '/assets/images/skygrid/gcs-mission-route.webp',
     title: 'Mission Planning',
     text: 'Create routes, validate waypoints and review readiness before any aircraft leaves the ground.',
   },
   {
-    image: '/assets/images/skygrid/skygrid-operator.webp',
+    image: '/assets/images/skygrid/gcs-live-thermal-zoom.webp',
     title: 'Live Telemetry',
     text: 'Monitor position, altitude, battery and link health in real time, with mission status visible to approved users.',
   },

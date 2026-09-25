@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { WHY_US_PILLARS, VALUE_CHAIN_STAGES, VALUES_LIST } from '../data/tekeverContent';
+import { WHY_US_PILLARS, VALUE_CHAIN_STAGES, VALUES_LIST, VISION_TEXT, MISSION_TEXT } from '../data/tekeverContent';
 import FullBleedSlideshow from '../components/FullBleedSlideshow';
 import { ArrowRight } from 'lucide-react';
 
@@ -10,6 +10,30 @@ const STATS = [
   { value: 9, suffix: '+', label: 'Training Programmes' },
   { value: 7, suffix: '', label: 'Drone Service Lines' },
   { value: VALUE_CHAIN_STAGES.length, suffix: '', label: 'Value-Chain Stages' },
+];
+
+// Team grid: one photo per person in /assets/images/team. Fill in `role` (e.g. 'UAS Pilot') and it
+// shows under the name; names are as given on the headshot files.
+const TEAM = [
+  { name: 'Mr. Abraham', role: '', photo: 'abraham.jpg' },
+  { name: 'Mr. Ade', role: '', photo: 'ade.jpg' },
+  { name: 'Mr. Alekun Wodo', role: '', photo: 'alekun-wodo.jpg' },
+  { name: 'Mr. Ini-Essiet', role: '', photo: 'ini-essiet.jpg' },
+  { name: 'Mr. Kehinde', role: '', photo: 'kehinde.jpg' },
+  { name: 'Mr. Nehemiah', role: '', photo: 'nehemiah.jpg' },
+  { name: 'Mr. Oluwatobiloba', role: '', photo: 'oluwatobiloba.jpg' },
+  { name: 'Mr. Opateyibo', role: '', photo: 'opateyibo.jpg' },
+  { name: 'Mr. Oshoma', role: '', photo: 'oshoma.jpg' },
+  { name: 'Ms. Baraya', role: '', photo: 'baraya.jpg' },
+  { name: 'Ms. Chori', role: '', photo: 'chori.jpg' },
+  { name: 'Ms. Jemiamah', role: '', photo: 'jemiamah.jpg' },
+  { name: 'Ms. Jenifa', role: '', photo: 'jenifa.jpg' },
+  { name: 'Miss Favour Elakhe', role: '', photo: 'favour-elakhe.jpg' },
+  { name: 'Miss Nkem', role: '', photo: 'nkem.jpg' },
+  { name: 'Miss Patience', role: '', photo: 'patience.jpg' },
+  { name: 'Miss Peace Jaro', role: '', photo: 'peace-jaro.jpg' },
+  { name: 'Miss Sharon', role: '', photo: 'sharon.jpg' },
+  { name: 'Miss Tolu', role: '', photo: 'tolu.jpg' },
 ];
 
 const PILLAR_IMAGES = [
@@ -24,13 +48,13 @@ const ADVANTAGE_SLIDES = [
   {
     id: 'vision',
     title: 'Our Vision',
-    text: 'To become the provider of innovative technology solutions transforming businesses, government institutions, defence, and national development.',
+    text: VISION_TEXT,
     image: '/assets/gallery/NTHK-DIASPORA--8847.jpg',
   },
   {
     id: 'mission',
     title: 'Our Mission',
-    text: 'To build secure, intelligent, and scalable technology solutions that solve real-world problems, strengthen organizations, drive innovation, and create lasting impact.',
+    text: MISSION_TEXT,
     image: '/assets/gallery/ops-vtol-flight.jpg',
   },
 ];
@@ -164,13 +188,42 @@ export default function WhyUsPage(props) {
 
         {/* Core values */}
         <section className="max-w-6xl mx-auto px-6 sm:px-12 pb-20 sm:pb-32 space-y-8">
-          <h2 className="text-xl font-bold uppercase tracking-tight text-white">Our Core Values</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 border-t border-white/15 pt-8">
+          <h2 className="text-xl font-bold uppercase tracking-tight text-white">Our Values: LIFE</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 border-t border-white/15 pt-8">
             {VALUES_LIST.map((v) => (
               <div key={v.name} className="space-y-2">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-white">{v.name}</h3>
                 <p className="text-xs text-slate-400 font-light leading-relaxed">{v.desc}</p>
               </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Our team */}
+        <section id="our-team" className="max-w-6xl mx-auto px-6 sm:px-12 pb-20 sm:pb-32 space-y-8 scroll-mt-20">
+          <div className="space-y-3 max-w-2xl">
+            <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight text-white">Our Team</h2>
+            <p className="text-sm text-slate-400 font-light leading-relaxed">
+              The engineers, pilots, instructors and specialists behind every Nethawk mission.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-4 gap-y-8 border-t border-white/15 pt-8">
+            {TEAM.map((m) => (
+              <figure key={m.photo} className="space-y-3 group">
+                <div className="aspect-[4/5] overflow-hidden bg-[#071322]">
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    src={`/assets/images/team/${m.photo}`}
+                    alt={m.role ? `${m.name}, ${m.role}` : m.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <figcaption className="space-y-0.5">
+                  <p className="text-xs font-bold uppercase tracking-wider text-white">{m.name}</p>
+                  {m.role && <p className="text-xs text-slate-400 font-light">{m.role}</p>}
+                </figcaption>
+              </figure>
             ))}
           </div>
         </section>

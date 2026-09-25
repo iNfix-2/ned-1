@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavHandlers } from '../navContext';
+import { VALUES_LIST, VISION_TEXT, MISSION_TEXT, HEAD_OFFICE } from '../data/tekeverContent';
 
 export default function Footer(props) {
   const {
@@ -79,14 +80,12 @@ export default function Footer(props) {
             {/* Values & Standards */}
             <div className="space-y-3">
               <h4 className="text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider">
-                Our Values
+                Our Values: LIFE
               </h4>
               <ul className="space-y-2 text-[10.5px] sm:text-xs leading-snug sm:leading-relaxed">
-                <li className="text-slate-300 font-medium">Excellence</li>
-                <li className="text-slate-300 font-medium">Innovation</li>
-                <li className="text-slate-300 font-medium">Precision</li>
-                <li className="text-slate-300 font-medium">Integrity</li>
-                <li className="text-slate-300 font-medium">Security</li>
+                {VALUES_LIST.map((v) => (
+                  <li key={v.name} className="text-slate-300 font-medium"><span className="text-sky-400 font-bold">{v.name[0]}</span>{v.name.slice(1)}</li>
+                ))}
               </ul>
             </div>
           </div>
@@ -101,18 +100,19 @@ export default function Footer(props) {
             <h5 className="text-white font-bold uppercase tracking-wider mb-2">Get In Touch</h5>
             <div><a href="mailto:info@nethawksolutions.org" className="hover:text-white transition-colors">info@nethawksolutions.org</a></div>
             <div><a href="mailto:contact@nethawksolutions.org" className="hover:text-white transition-colors">contact@nethawksolutions.org</a></div>
+            <p className="pt-2 text-slate-400">{HEAD_OFFICE}</p>
           </div>
 
           {/* Vision */}
           <div className="space-y-1">
             <h5 className="text-white font-bold uppercase tracking-wider mb-2">Our Vision</h5>
-            <p className="text-slate-400">To become the provider of innovative technology solutions transforming businesses, government institutions, defence, and national development.</p>
+            <p className="text-slate-400">{VISION_TEXT}</p>
           </div>
 
           {/* Mission */}
           <div className="space-y-1">
             <h5 className="text-white font-bold uppercase tracking-wider mb-2">Our Mission</h5>
-            <p className="text-slate-400">To build secure, intelligent, and scalable technology solutions that solve real-world problems, strengthen organizations, drive innovation, and create lasting impact.</p>
+            <p className="text-slate-400">{MISSION_TEXT}</p>
           </div>
 
         </div>

@@ -8,8 +8,8 @@ import { Phone, Mail, MessageCircle, MapPin } from 'lucide-react';
 const CONTACT_PHONE = '+234 000 000 0000';
 const CONTACT_WHATSAPP = '+234 000 000 0000';
 const CONTACT_EMAIL = 'info@nethawksolutions.org';
-const CONTACT_OFFICE = 'Nethawk Defense Technology Complex, Abuja, Nigeria';
-const MAP_EMBED_URL = 'https://www.google.com/maps?q=Abuja,+Nigeria&output=embed';
+const CONTACT_OFFICE = 'No. 2, The Hub, Industrial Area, Farin Gida, Mando, Kaduna, Nigeria';
+const MAP_EMBED_URL = 'https://www.google.com/maps?q=Farin+Gida,+Mando,+Kaduna,+Nigeria&output=embed';
 
 const digitsOnly = (value) => value.replace(/[^\d]/g, '');
 

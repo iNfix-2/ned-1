@@ -11,7 +11,7 @@ const POLICY_CONTENT = {
     sections: [
       {
         heading: '1. Our Commitment',
-        body: 'NETHAWK SOLUTIONS is a technology company based in Abuja, Nigeria. We process personal data in line with the Nigeria Data Protection Act 2023 (NDPA) and the guidance of the Nigeria Data Protection Commission (NDPC). Consultations with corporate, government and defence clients are handled in confidence.'
+        body: 'NETHAWK SOLUTIONS is a technology company headquartered in Kaduna, Nigeria (No. 2, The Hub, Industrial Area, Farin Gida, Mando). We process personal data in line with the Nigeria Data Protection Act 2023 (NDPA) and the guidance of the Nigeria Data Protection Commission (NDPC). Consultations with corporate, government and defence clients are handled in confidence.'
       },
       {
         heading: '2. Information We Collect',
@@ -143,7 +143,7 @@ export default function PolicyModal({ isOpen, type = 'privacy', onClose }) {
           {/* Footer Action */}
           <div className="pt-6 flex items-center justify-between">
             <span className="text-[10px] font-mono text-slate-500">
-              NETHAWK SOLUTIONS // ABUJA, NIGERIA
+              NETHAWK SOLUTIONS // KADUNA, NIGERIA
             </span>
             <button
               onClick={onClose}

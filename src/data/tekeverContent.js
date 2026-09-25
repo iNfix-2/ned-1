@@ -345,7 +345,7 @@ export const NEWS_ARTICLES = [
     category: 'ACADEMY & NATI',
     title: 'NATI Aviation Training Institute launches advanced tactical BVLOS pilot & mission operator cohorts',
     summary: 'Accelerating human-capacity development with ICAO-aligned curriculum, flight simulation labs, and sovereign aerospace engineering certifications.',
-    image: '/assets/images/academy/nati-piloting-field.jpg',
+    image: '/assets/images/nati/IMG_1829.jpg',
     readTime: '3 min read'
   },
   {
@@ -368,10 +368,14 @@ export const NEWS_ARTICLES = [
   }
 ];
 
+// Our Values: LIFE
 export const VALUES_LIST = [
-  { name: 'Excellence', desc: 'We pursue high standards in technology, engineering, service, and delivery.' },
-  { name: 'Innovation', desc: 'We continuously explore better ways to solve complex problems.' },
-  { name: 'Precision', desc: 'We value disciplined execution and attention to detail.' },
-  { name: 'Integrity', desc: 'We operate with professionalism, accountability, and responsibility.' },
-  { name: 'Security', desc: 'We protect people, systems, information, infrastructure, and mission-critical capabilities.' }
+  { name: 'Loyalty', desc: 'We stand by our clients, our people and the communities we serve.' },
+  { name: 'Integrity', desc: 'We operate with honesty, accountability and professionalism in everything we do.' },
+  { name: 'Fearlessness', desc: 'We take on hard problems and demanding missions with courage and resolve.' },
+  { name: 'Excellence', desc: 'We hold ourselves to the rigorous standards of certified aviation and security professionals.' }
 ];
+
+export const VISION_TEXT = 'To position Africa at the forefront of sustainable security and Pan-African community safety, where innovative aerial intelligence serves the everyday well-being of people across all nations, allowing citizens, businesses, and communities to flourish together.';
+export const MISSION_TEXT = 'To deliver people-centric Defence-Technology solutions that combine cutting-edge enterprise UAS technology with the rigorous standards of certified aviation and security professionals, ensuring a safe foundation for sustainable Pan-African development.';
+export const HEAD_OFFICE = 'No. 2, The Hub, Industrial Area, Farin Gida, Mando, Kaduna, Nigeria';

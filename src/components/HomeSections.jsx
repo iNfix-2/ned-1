@@ -47,8 +47,9 @@ export function AboutBrief(props) {
               aviation professionals at the Nethawk Aviation Training Institute.
             </p>
             <p>
-              Our mission is to build secure, intelligent and scalable technology that solves real-world problems,
-              strengthens organisations and creates lasting impact, securing Africa one mission at a time.
+              Our mission is to deliver people-centric Defence-Technology solutions that combine cutting-edge
+              enterprise UAS technology with the rigorous standards of certified aviation and security professionals,
+              ensuring a safe foundation for sustainable Pan-African development.
             </p>
           </div>
           <button
@@ -148,7 +149,7 @@ export function AcademyFeature(props) {
         <div className="relative w-full min-h-[560px] sm:min-h-[600px] rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white/15 shadow-2xl group">
           <div
             className="absolute inset-0 bg-cover bg-center group-hover:scale-[1.02] transition-transform duration-1000"
-            style={{ backgroundImage: "url('/assets/images/academy/nati-flight-simulation.jpg')" }}
+            style={{ backgroundImage: "url('/assets/images/nati/IMG_1804.jpg')" }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
