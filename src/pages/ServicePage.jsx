@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { TitleReveal } from '../components/Cinematic';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 
 // Dedicated pages for the three services in the navbar Products menu, rendered from one template
@@ -89,19 +90,18 @@ export default function ServicePage(props) {
   const related = Object.entries(SERVICE_PAGES).filter(([id]) => id !== serviceId);
 
   return (
-    <div className="min-h-screen bg-[#010811] text-white flex flex-col font-sans selection:bg-blue-600 selection:text-white antialiased">
+    <div className="min-h-screen bg-[#000000] text-white flex flex-col font-sans selection:bg-accent selection:text-white antialiased">
       <Navbar {...props} activePage="products" />
 
       <main className="flex-grow">
         {/* Hero */}
         <section className="relative h-[100svh] min-h-[560px] max-h-[960px] w-full flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${service.hero}')` }} />
-          <div className="absolute inset-0 bg-[#010811]/55" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#010811] via-transparent to-[#010811]/50" />
+          <div key={service.hero} className="absolute inset-0 bg-cover bg-center motion-kenburns" style={{ backgroundImage: `url('${service.hero}')` }} />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.5)_0%,rgba(0,0,0,0.3)_45%,#000_100%)]" />
 
           <div className="relative z-10 text-center px-6 space-y-4">
-            <h1 className="text-4xl sm:text-7xl font-bold uppercase tracking-tight text-white">{service.title}</h1>
-            <p className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.3em] text-slate-300">{service.tagline}</p>
+            <TitleReveal lines={[service.title]} className="font-normal text-4xl sm:text-7xl tracking-tight text-white" />
+            <p className="motion-fade-up text-[11px] sm:text-xs font-medium uppercase tracking-[0.3em] text-zinc-300" style={{ '--d': '500ms' }}>{service.tagline}</p>
           </div>
 
           <button
@@ -116,8 +116,8 @@ export default function ServicePage(props) {
         {/* Overview + key features */}
         <section id="service-overview" className="scroll-mt-16 max-w-6xl mx-auto px-6 sm:px-12 py-20 sm:py-28 space-y-14">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-            <h2 className="text-2xl sm:text-4xl font-bold uppercase tracking-tight leading-[1.1]">{service.headline}</h2>
-            <div className="space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed">
+            <h2 className="font-normal text-2xl sm:text-4xl tracking-tight leading-[1.1]">{service.headline}</h2>
+            <div className="space-y-4 text-sm sm:text-base text-zinc-300 leading-relaxed">
               <p>{service.intro}</p>
               <p>{service.summary}</p>
             </div>
@@ -126,8 +126,8 @@ export default function ServicePage(props) {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 border-t border-white/15 pt-10">
             {service.features.map(({ title, text }) => (
               <div key={title} className="space-y-3">
-                <h3 className="text-xs font-bold uppercase tracking-[0.15em]">{title}</h3>
-                <p className="text-sm text-slate-400 leading-relaxed">{text}</p>
+                <h3 className="font-medium text-xs tracking-tight">{title}</h3>
+                <p className="text-sm text-zinc-400 leading-relaxed">{text}</p>
               </div>
             ))}
           </div>
@@ -143,7 +143,7 @@ export default function ServicePage(props) {
               <div className={`absolute inset-0 hidden md:block ${isRight ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-black/85 via-black/40 to-transparent`} />
               <div className={`relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-12 flex self-end md:self-center pb-14 md:pb-0 ${isRight ? 'md:justify-end' : ''}`}>
                 <div className="max-w-md space-y-4">
-                  <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight leading-[1.1]">{panel.title}</h2>
+                  <h2 className="font-normal text-3xl sm:text-4xl tracking-tight leading-[1.1]">{panel.title}</h2>
                   <p className="text-sm sm:text-base text-white/85 leading-relaxed">{panel.text}</p>
                 </div>
               </div>
@@ -154,11 +154,11 @@ export default function ServicePage(props) {
         {/* Deliverables + process */}
         <section className="max-w-6xl mx-auto px-6 sm:px-12 py-20 sm:py-28 grid grid-cols-1 lg:grid-cols-2 gap-14">
           <div className="space-y-6">
-            <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-tight">What You Receive</h2>
+            <h2 className="font-normal text-2xl sm:text-3xl tracking-tight">What You Receive</h2>
             <ul className="divide-y divide-white/10 border-y border-white/10">
               {service.deliverables.map((d) => (
-                <li key={d} className="py-4 flex items-center gap-4 text-sm sm:text-base text-slate-200">
-                  <span className="w-1.5 h-1.5 bg-sky-400 shrink-0" />
+                <li key={d} className="py-4 flex items-center gap-4 text-sm sm:text-base text-zinc-200">
+                  <span className="w-1.5 h-1.5 bg-accent shrink-0" />
                   {d}
                 </li>
               ))}
@@ -166,14 +166,14 @@ export default function ServicePage(props) {
           </div>
 
           <div className="space-y-6">
-            <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-tight">How It Works</h2>
+            <h2 className="font-normal text-2xl sm:text-3xl tracking-tight">How It Works</h2>
             <ol className="space-y-6">
               {PROCESS.map((p) => (
                 <li key={p.step} className="grid grid-cols-[2.5rem_1fr] gap-x-4">
-                  <span className="font-mono text-sm text-sky-400 pt-0.5">{p.step}</span>
+                  <span className="font-mono text-sm text-accent-bright pt-0.5">{p.step}</span>
                   <div className="space-y-1">
-                    <h3 className="text-sm font-bold uppercase tracking-[0.12em]">{p.title}</h3>
-                    <p className="text-sm text-slate-400 leading-relaxed">{p.text}</p>
+                    <h3 className="font-medium text-sm tracking-tight">{p.title}</h3>
+                    <p className="text-sm text-zinc-400 leading-relaxed">{p.text}</p>
                   </div>
                 </li>
               ))}
@@ -184,21 +184,21 @@ export default function ServicePage(props) {
         {/* Related services */}
         <section className="max-w-6xl mx-auto px-6 sm:px-12 pb-20 sm:pb-28 space-y-8">
           <div className="flex items-end justify-between gap-6 flex-wrap">
-            <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-tight">Related Services</h2>
+            <h2 className="font-normal text-2xl sm:text-3xl tracking-tight">Related Services</h2>
             {onNavigateDAS && (
-              <button onClick={onNavigateDAS} className="text-xs font-semibold uppercase tracking-[0.15em] text-sky-300 hover:text-white inline-flex items-center gap-2 transition-colors">
+              <button onClick={onNavigateDAS} className="text-xs font-semibold uppercase tracking-[0.15em] text-accent-bright hover:text-white inline-flex items-center gap-2 transition-colors">
                 All Drone Services <ArrowRight className="w-3.5 h-3.5" />
               </button>
             )}
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {related.map(([id, s]) => (
-              <button key={id} onClick={() => onNavigateService && onNavigateService(id)} className="group relative h-64 overflow-hidden text-left border border-white/10">
+              <button key={id} onClick={() => onNavigateService && onNavigateService(id)} className="group card-lift relative h-64 overflow-hidden text-left border border-white/10">
                 <img loading="lazy" decoding="async" src={s.hero} alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 p-6 space-y-1">
-                  <h3 className="text-lg font-bold uppercase tracking-tight">{s.title}</h3>
-                  <p className="text-xs text-slate-300">{s.tagline}</p>
+                  <h3 className="font-medium text-lg tracking-tight">{s.title}</h3>
+                  <p className="text-xs text-zinc-300">{s.tagline}</p>
                 </div>
               </button>
             ))}
@@ -208,8 +208,8 @@ export default function ServicePage(props) {
         {/* CTA */}
         <section className="border-t border-white/10">
           <div className="max-w-4xl mx-auto px-6 py-20 sm:py-24 text-center space-y-6">
-            <h2 className="text-3xl sm:text-5xl font-bold uppercase tracking-tight">Plan Your Mission</h2>
-            <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto">
+            <h2 className="font-normal text-3xl sm:text-5xl tracking-tight">Plan Your Mission</h2>
+            <p className="text-sm sm:text-base text-zinc-300 max-w-xl mx-auto">
               Tell us the area, the objective and the timeline. Our operations team will scope the right crew, platform and deliverables.
             </p>
             <OutlineButton onClick={onOpenContact}>Request a Quote</OutlineButton>

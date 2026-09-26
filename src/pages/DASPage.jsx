@@ -102,7 +102,7 @@ function MissionDiagram({ activeStep }) {
       <circle cx="200" cy="185" r="150" stroke="rgba(255,255,255,0.12)" />
       <circle cx="200" cy="185" r="130" stroke="rgba(255,255,255,0.2)" strokeDasharray="3 5" />
       <circle cx="200" cy="185" r="110" stroke="rgba(255,255,255,0.6)" />
-      <g clipPath="url(#survey-area)" stroke="rgba(56,189,248,0.55)">
+      <g clipPath="url(#survey-area)" stroke="rgba(59,130,246,0.55)">
         {surveyLines.map((y, i) => (
           <path key={y} d={i % 2 ? `M320 ${y}H80` : `M80 ${y}H320`} />
         ))}
@@ -121,7 +121,7 @@ function MissionDiagram({ activeStep }) {
       <text x="575" y="345" textAnchor="middle" className="font-mono" fontSize="11" letterSpacing="2" fill="rgba(255,255,255,0.6)">FIELD CREW</text>
 
       {/* Live data link to operations room */}
-      <path d="M300 150 C 480 40, 700 40, 815 105" stroke="rgba(56,189,248,0.7)" strokeDasharray="2 6" />
+      <path d="M300 150 C 480 40, 700 40, 815 105" stroke="rgba(59,130,246,0.7)" strokeDasharray="2 6" />
       <g stroke="white" strokeWidth="1.3">
         <rect x="815" y="95" width="70" height="46" />
         <path d="M825 108H875M825 118H862M825 128H870M835 141V152M865 141V152M825 152H875" />
@@ -138,9 +138,9 @@ function MissionDiagram({ activeStep }) {
         const [x, y] = s.marker;
         return (
           <g key={s.step}>
-            {active && <circle cx={x} cy={y} r="17" stroke="#38bdf8" strokeOpacity="0.45" />}
-            <circle cx={x} cy={y} r="11" fill="#010811" stroke={active ? '#38bdf8' : 'white'} strokeWidth="1.3" />
-            <text x={x} y={y + 3.5} textAnchor="middle" className="font-mono" fontSize="9" fill={active ? '#38bdf8' : 'white'}>
+            {active && <circle cx={x} cy={y} r="17" stroke="#3b82f6" strokeOpacity="0.45" />}
+            <circle cx={x} cy={y} r="11" fill="#000000" stroke={active ? '#3b82f6' : 'white'} strokeWidth="1.3" />
+            <text x={x} y={y + 3.5} textAnchor="middle" className="font-mono" fontSize="9" fill={active ? '#3b82f6' : 'white'}>
               {s.step}
             </text>
           </g>
@@ -158,7 +158,7 @@ export default function DASPage(props) {
   const platform = PLATFORMS_LIST[platformIdx];
   const currentStep = MISSION_STEPS.find((s) => s.step === activeStep);
 
-  const serviceSlides = DAS_SERVICES.map((s, i) => ({
+  const serviceSlides = DAS_SERVICES.map((s) => ({
     id: s.id,
     title: s.title,
     text: s.desc,
@@ -167,19 +167,19 @@ export default function DASPage(props) {
   }));
 
   return (
-    <div className="min-h-screen bg-[#010811] text-white flex flex-col font-sans selection:bg-blue-600 selection:text-white antialiased">
+    <div className="min-h-screen bg-[#000000] text-white flex flex-col font-sans selection:bg-accent selection:text-white antialiased">
       <Navbar {...props} activePage="das" />
 
       <main className="flex-grow">
         {/* Hero */}
         <section className="relative h-[100svh] min-h-[560px] max-h-[960px] w-full flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/assets/gallery/ops-vtol-flight.jpg')" }} />
-          <div className="absolute inset-0 bg-[#010811]/55" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#010811] via-transparent to-[#010811]/50" />
+          <div className="absolute inset-0 bg-[#000000]/55" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-[#000000]/50" />
 
           <div className="relative z-10 text-center px-6 space-y-4">
-            <h1 className="text-4xl sm:text-7xl lg:text-8xl font-bold uppercase tracking-tight text-white">Drone as a Service</h1>
-            <p className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.3em] text-slate-300">Aerial capability on demand</p>
+            <h1 className="font-normal text-4xl sm:text-7xl lg:text-8xl tracking-tight text-white">Drone as a Service</h1>
+            <p className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.3em] text-zinc-300">Aerial capability on demand</p>
           </div>
 
           <a
@@ -195,7 +195,7 @@ export default function DASPage(props) {
         {/* Overview */}
         <section id="das-overview" className="relative scroll-mt-16">
           <div className="max-w-3xl mx-auto px-6 pt-20 sm:pt-28 pb-12 text-center">
-            <p className="text-xs sm:text-sm uppercase tracking-[0.12em] leading-relaxed text-slate-200">
+            <p className="text-xs sm:text-sm uppercase tracking-[0.12em] leading-relaxed text-zinc-200">
               Nethawk deploys certified crews, enterprise UAS platforms and SkyGrid mission software to deliver
               surveillance, mapping and inspection as a managed service. We fly, you get the results — without owning
               or operating the fleet.
@@ -203,7 +203,7 @@ export default function DASPage(props) {
           </div>
           <div className="relative h-[280px] sm:h-[420px] overflow-hidden">
             <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/assets/gallery/wa-vtol-gimbal.jpg')" }} />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#010811] via-transparent to-[#010811]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-transparent to-[#000000]" />
           </div>
         </section>
 
@@ -226,11 +226,11 @@ export default function DASPage(props) {
         ].map((p) => (
           <section key={p.id} className="relative min-h-[520px] sm:min-h-[680px] w-full flex items-center overflow-hidden">
             <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${p.image}')` }} />
-            <div className={`absolute inset-0 ${p.right ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-[#010811]/95 via-[#010811]/55 to-transparent`} />
+            <div className={`absolute inset-0 ${p.right ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-[#000000]/95 via-[#000000]/55 to-transparent`} />
             <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-12 grid grid-cols-1 lg:grid-cols-2">
               <div className={`max-w-md space-y-4 ${p.right ? 'lg:col-start-2' : ''}`}>
-                <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight leading-[1.05] text-white">{p.title}</h2>
-                <p className="text-sm text-slate-300 font-light leading-relaxed">{p.text}</p>
+                <h2 className="font-normal text-3xl sm:text-4xl tracking-tight leading-[1.05] text-white">{p.title}</h2>
+                <p className="text-sm text-zinc-300 font-light leading-relaxed">{p.text}</p>
               </div>
             </div>
           </section>
@@ -239,15 +239,15 @@ export default function DASPage(props) {
         {/* Fleet spotlight */}
         <section className="max-w-6xl mx-auto px-6 sm:px-12 py-20 sm:py-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-5 max-w-md">
-            <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight leading-[1.05] text-white">{platform.name}</h2>
-            <p className="text-sm text-slate-300 font-light leading-relaxed">{platform.desc}</p>
+            <h2 className="font-normal text-3xl sm:text-4xl tracking-tight leading-[1.05] text-white">{platform.name}</h2>
+            <p className="text-sm text-zinc-300 font-light leading-relaxed">{platform.desc}</p>
             <div className="flex flex-wrap gap-2 pt-2">
               {PLATFORMS_LIST.map((p, i) => (
                 <button
                   key={p.id}
                   onClick={() => setPlatformIdx(i)}
                   className={`px-3 py-1.5 border text-[10px] font-mono uppercase tracking-wider transition-colors ${
-                    i === platformIdx ? 'border-sky-400 text-sky-400' : 'border-white/20 text-slate-400 hover:text-white hover:border-white/50'
+                    i === platformIdx ? 'border-accent-bright text-accent-bright' : 'border-white/20 text-zinc-400 hover:text-white hover:border-white/50'
                   }`}
                 >
                   {p.name.split(' (')[0]}
@@ -260,15 +260,15 @@ export default function DASPage(props) {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden">
             <img loading="lazy" decoding="async" key={platform.id} src={platform.image} alt={platform.name} className="w-full h-full object-cover animate-in fade-in duration-500" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,#010811_100%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,#000000_100%)]" />
           </div>
         </section>
 
         {/* Mission profile */}
         <section className="max-w-6xl mx-auto px-6 sm:px-12 pb-20 sm:pb-32 space-y-10">
           <div className="max-w-md space-y-4">
-            <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight leading-[1.05] text-white">From Brief to Deliverable</h2>
-            <p className="text-sm text-slate-300 font-light leading-relaxed">
+            <h2 className="font-normal text-3xl sm:text-4xl tracking-tight leading-[1.05] text-white">From Brief to Deliverable</h2>
+            <p className="text-sm text-zinc-300 font-light leading-relaxed">
               Every sortie follows the same disciplined profile, from the first scoping call to data in your hands.
             </p>
           </div>
@@ -282,14 +282,14 @@ export default function DASPage(props) {
                 onClick={() => setActiveStep(s.step)}
                 onMouseEnter={() => setActiveStep(s.step)}
                 className={`text-left pt-4 pb-3 pr-3 border-t-2 -mt-px text-[10px] sm:text-[11px] font-mono uppercase tracking-wider transition-colors ${
-                  s.step === activeStep ? 'border-sky-400 text-white' : 'border-transparent text-slate-500 hover:text-slate-200'
+                  s.step === activeStep ? 'border-accent-bright text-white' : 'border-transparent text-zinc-500 hover:text-zinc-200'
                 }`}
               >
                 {s.step}. {s.title}
               </button>
             ))}
           </div>
-          <p className="text-sm text-slate-300 font-light leading-relaxed max-w-2xl min-h-[3rem]">{currentStep.desc}</p>
+          <p className="text-sm text-zinc-300 font-light leading-relaxed max-w-2xl min-h-[3rem]">{currentStep.desc}</p>
         </section>
 
         {/* Services slideshow */}
@@ -298,17 +298,17 @@ export default function DASPage(props) {
         {/* Capability without the overhead */}
         <section className="relative min-h-[620px] sm:min-h-[720px] w-full flex items-center overflow-hidden">
           <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/assets/gallery/ops-team-matrice.jpg')" }} />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#010811]/95 via-[#010811]/70 to-[#010811]/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#000000]/95 via-[#000000]/70 to-[#000000]/20" />
           <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-12 py-16">
             <div className="max-w-md space-y-5">
-              <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight leading-[1.05] text-white">Capability Without the Overhead</h2>
-              <p className="text-sm text-slate-300 font-light leading-relaxed">
+              <h2 className="font-normal text-3xl sm:text-4xl tracking-tight leading-[1.05] text-white">Capability Without the Overhead</h2>
+              <p className="text-sm text-zinc-300 font-light leading-relaxed">
                 Buying, maintaining and crewing a UAS fleet takes time and capital. With Drone as a Service you pay for
-                the outcome and draw on Nethawk's aircraft, crews and software whenever you need them.
+                the outcome and draw on Nethawk’s aircraft, crews and software whenever you need them.
               </p>
               <ul className="divide-y divide-white/15 border-y border-white/15">
                 {DAS_BENEFITS.map((b) => (
-                  <li key={b} className="py-3 text-[11px] uppercase tracking-wider text-slate-200">{b}</li>
+                  <li key={b} className="py-3 text-[11px] uppercase tracking-wider text-zinc-200">{b}</li>
                 ))}
               </ul>
             </div>
@@ -318,11 +318,11 @@ export default function DASPage(props) {
         {/* Final panel */}
         <section className="relative min-h-[520px] sm:min-h-[640px] w-full flex items-end overflow-hidden">
           <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/assets/images/skygrid/skygrid-flight-center-demo.webp')" }} />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#010811] via-[#010811]/50 to-[#010811]/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-[#000000]/50 to-[#000000]/10" />
           <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-12 pb-16 sm:pb-24">
             <div className="max-w-md space-y-4">
-              <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight leading-[1.05] text-white">Have a Mission in Mind?</h2>
-              <p className="text-sm text-slate-300 font-light leading-relaxed">
+              <h2 className="font-normal text-3xl sm:text-4xl tracking-tight leading-[1.05] text-white">Have a Mission in Mind?</h2>
+              <p className="text-sm text-zinc-300 font-light leading-relaxed">
                 Tell us the area, the objective and the timeline. Missions are planned and tracked on SkyGrid, so you see
                 exactly what was flown and when.
               </p>
@@ -337,9 +337,9 @@ export default function DASPage(props) {
         {/* Closing */}
         <section className="py-24 sm:py-32 px-6 flex flex-col items-center gap-8 text-center">
           <div className="w-px h-40 bg-gradient-to-b from-transparent via-white/40 to-white/70" />
-          <p className="text-[11px] uppercase tracking-[0.15em] text-slate-400 max-w-md leading-relaxed">
+          <p className="text-[11px] uppercase tracking-[0.15em] text-zinc-400 max-w-md leading-relaxed">
             For mission enquiries, contact our operations team at{' '}
-            <a href="mailto:info@nethawksolutions.org" className="text-white hover:text-sky-300">info@nethawksolutions.org</a>
+            <a href="mailto:info@nethawksolutions.org" className="text-white hover:text-accent-bright">info@nethawksolutions.org</a>
           </p>
           <button
             onClick={onNavigateContact}

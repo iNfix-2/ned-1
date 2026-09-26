@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown, X, ArrowRight } from 'lucide-react';
-import { useNavHandlers } from '../navContext';
+import { useNavHandlers, pageHref } from '../navContext';
+import NavLink from './NavLink';
 
 const SERVICES = [
   {
@@ -88,18 +89,19 @@ export default function Navbar(props) {
     {/* Desktop dropdown backdrop: dims the page so menu text doesn't blend with content behind it.
         Lives outside <header> because the header's backdrop-filter would clip a fixed child to the header box. */}
     <div
-      className={`fixed inset-0 z-40 hidden xl:block bg-[#010812]/70 backdrop-blur-sm pointer-events-none transition-opacity duration-200 ${
+      className={`fixed inset-0 z-40 hidden xl:block bg-black/70 backdrop-blur-sm pointer-events-none transition-opacity duration-200 ${
         productsOpen || mediaOpen ? 'opacity-100' : 'opacity-0'
       }`}
       aria-hidden="true"
     />
     <header className={`fixed top-0 left-0 right-0 z-50 px-6 sm:px-12 py-5 flex items-center justify-between transition-colors duration-300 ${
-      scrolled ? 'bg-[#020e1c]/85 backdrop-blur-md shadow-lg shadow-black/30' : 'bg-transparent'
+      scrolled ? 'bg-[#000000]/85 backdrop-blur-md shadow-lg shadow-black/30' : 'bg-transparent'
     }`}>
 
       {/* Logo */}
-      <button
-        onClick={onNavigateHome}
+      <NavLink
+        href={pageHref('home')}
+        onNavigate={onNavigateHome}
         className="flex items-center space-x-2 group focus:outline-none"
         aria-label="Nethawk Solutions Home"
       >
@@ -108,7 +110,7 @@ export default function Navbar(props) {
           alt="NETHAWK SOLUTIONS"
           className="h-8 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105"
         />
-      </button>
+      </NavLink>
 
       {/* Desktop nav pill */}
       <div className="flex items-center space-x-4">
@@ -116,36 +118,40 @@ export default function Navbar(props) {
           <div className="flex items-center space-x-6 text-xs font-medium tracking-wide">
 
             {/* Home */}
-            <button
-              onClick={onNavigateHome}
-              className={`transition-colors ${activePage === 'home' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'}`}
+            <NavLink
+              href={pageHref('home')}
+              onNavigate={onNavigateHome}
+              className={`transition-colors ${activePage === 'home' ? 'text-white font-bold' : 'text-zinc-300 hover:text-white'}`}
             >
               Home
-            </button>
+            </NavLink>
 
             {/* Missions */}
-            <button
-              onClick={onNavigateMissions}
-              className={`transition-colors ${activePage === 'missions' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'}`}
+            <NavLink
+              href={pageHref('missions')}
+              onNavigate={onNavigateMissions}
+              className={`transition-colors ${activePage === 'missions' ? 'text-white font-bold' : 'text-zinc-300 hover:text-white'}`}
             >
               Missions
-            </button>
+            </NavLink>
 
             {/* Nethawk Labs */}
-            <button
-              onClick={onNavigateManufacturing}
-              className={`transition-colors ${activePage === 'manufacturing' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'}`}
+            <NavLink
+              href={pageHref('manufacturing')}
+              onNavigate={onNavigateManufacturing}
+              className={`transition-colors ${activePage === 'manufacturing' ? 'text-white font-bold' : 'text-zinc-300 hover:text-white'}`}
             >
               Nethawk Labs
-            </button>
+            </NavLink>
 
             {/* Why us? */}
-            <button
-              onClick={onNavigateWhyUs}
-              className={`transition-colors ${activePage === 'why-us' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'}`}
+            <NavLink
+              href={pageHref('why-us')}
+              onNavigate={onNavigateWhyUs}
+              className={`transition-colors ${activePage === 'why-us' ? 'text-white font-bold' : 'text-zinc-300 hover:text-white'}`}
             >
               Why us?
-            </button>
+            </NavLink>
 
             {/* Services mega-dropdown */}
             <div
@@ -155,8 +161,10 @@ export default function Navbar(props) {
             >
               <button
                 onClick={() => { setProductsOpen(true); setMediaOpen(false); }}
+                aria-expanded={productsOpen}
+                aria-haspopup="true"
                 className={`flex items-center space-x-1.5 transition-colors ${
-                  activePage === 'products' || activePage === 'platforms' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
+                  activePage === 'products' || activePage === 'platforms' ? 'text-white font-bold' : 'text-zinc-300 hover:text-white'
                 }`}
               >
                 <span>Products</span>
@@ -164,8 +172,8 @@ export default function Navbar(props) {
               </button>
 
               {productsOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[820px] rounded-3xl before:content-[''] before:absolute before:-top-4 before:left-0 before:right-0 before:h-4 bg-[#020e1c] border border-white/15 shadow-[0_32px_80px_-16px_rgba(0,0,0,0.8)] p-7">
-                  <p className="text-[10px] font-semibold tracking-[0.18em] uppercase text-slate-500 mb-5">Services</p>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[820px] rounded-3xl before:content-[''] before:absolute before:-top-4 before:left-0 before:right-0 before:h-4 bg-[#000000] border border-white/15 shadow-[0_32px_80px_-16px_rgba(0,0,0,0.8)] p-7">
+                  <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-zinc-400 mb-5">Services</p>
 
                   <div className="grid grid-cols-4 gap-4">
                     {/* 3 service tiles */}
@@ -175,7 +183,7 @@ export default function Navbar(props) {
                         onClick={() => handleServiceClick(svc)}
                         className="group text-left focus:outline-none col-span-1"
                       >
-                        <div className="relative rounded-2xl overflow-hidden h-[148px] mb-3 border border-white/8">
+                        <div className="relative rounded-2xl overflow-hidden h-[148px] mb-3 border border-white/10">
                           <img
                             src={svc.image}
                             alt={svc.name}
@@ -183,23 +191,23 @@ export default function Navbar(props) {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
                         </div>
-                        <p className="text-xs font-semibold text-white leading-snug group-hover:text-blue-300 transition-colors">
+                        <p className="text-xs font-semibold text-white leading-snug group-hover:text-accent-bright transition-colors">
                           {svc.name}
                         </p>
-                        <p className="text-[10px] text-slate-400 mt-1 leading-relaxed">{svc.role}</p>
+                        <p className="text-[11px] text-zinc-400 mt-1 leading-relaxed">{svc.role}</p>
                       </button>
                     ))}
 
                     {/* Contact CTA panel */}
                     <div className="col-span-1 flex flex-col justify-between bg-white/[0.04] border border-white/10 rounded-2xl p-5">
                       <div className="space-y-2">
-                        <p className="text-xs text-slate-300 leading-relaxed">
+                        <p className="text-xs text-zinc-300 leading-relaxed">
                           Ready to deploy? Speak with our operations team about the right capability for your mission.
                         </p>
                       </div>
                       <button
                         onClick={() => { closeAll(); onOpenContact && onOpenContact(); }}
-                        className="mt-4 w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-semibold tracking-wider uppercase rounded-xl transition-colors flex items-center justify-center space-x-1.5"
+                        className="mt-4 w-full py-2.5 px-4 bg-accent hover:bg-blue-600 text-white text-[10px] font-semibold tracking-wider uppercase rounded-xl transition-colors flex items-center justify-center space-x-1.5"
                       >
                         <span>Contact Us</span>
                         <ArrowRight className="w-3 h-3" />
@@ -208,8 +216,8 @@ export default function Navbar(props) {
                   </div>
 
                   {/* Products row: Skygrid & Affenas */}
-                  <div className="mt-6 pt-5 border-t border-white/8">
-                    <p className="text-[10px] font-semibold tracking-[0.18em] uppercase text-slate-500 mb-5">Products</p>
+                  <div className="mt-6 pt-5 border-t border-white/10">
+                    <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-zinc-400 mb-5">Products</p>
                     <div className="grid grid-cols-4 gap-4">
                       <a
                         href="https://skygridinc.live"
@@ -218,7 +226,7 @@ export default function Navbar(props) {
                         onClick={closeAll}
                         className="group text-left"
                       >
-                        <div className="relative rounded-2xl overflow-hidden h-[110px] mb-3 border border-white/8">
+                        <div className="relative rounded-2xl overflow-hidden h-[110px] mb-3 border border-white/10">
                           <img
                             src="/assets/images/skygrid/skygrid-dashboard.webp"
                             alt="Skygrid"
@@ -226,12 +234,13 @@ export default function Navbar(props) {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                         </div>
-                        <p className="text-xs font-semibold text-white group-hover:text-blue-300 transition-colors">Skygrid</p>
-                        <p className="text-[10px] text-slate-400 mt-1">Intelligence Platform</p>
+                        <p className="text-xs font-semibold text-white group-hover:text-accent-bright transition-colors">Skygrid</p>
+                        <p className="text-[11px] text-zinc-400 mt-1">Intelligence Platform</p>
                       </a>
 
-                      <button
-                        onClick={() => { closeAll(); onNavigateAffenas && onNavigateAffenas(); }}
+                      <NavLink
+                        href={pageHref('platforms')}
+                        onNavigate={() => { closeAll(); onNavigateAffenas(); }}
                         className="group text-left focus:outline-none"
                       >
                         <div className="relative rounded-2xl overflow-hidden h-[110px] mb-3 border border-white/10">
@@ -242,9 +251,9 @@ export default function Navbar(props) {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                         </div>
-                        <p className="text-xs font-semibold text-white group-hover:text-blue-300 transition-colors">Affenas</p>
-                        <p className="text-[10px] text-slate-400 mt-1">Intelligence Communication</p>
-                      </button>
+                        <p className="text-xs font-semibold text-white group-hover:text-accent-bright transition-colors">Affenas</p>
+                        <p className="text-[11px] text-zinc-400 mt-1">Intelligence Communication</p>
+                      </NavLink>
                     </div>
                   </div>
                 </div>
@@ -252,20 +261,22 @@ export default function Navbar(props) {
             </div>
 
             {/* Academy */}
-            <button
-              onClick={onNavigateAcademy}
-              className={`transition-colors whitespace-nowrap ${activePage === 'academy' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'}`}
+            <NavLink
+              href={'/academy/index.html'}
+              onNavigate={onNavigateAcademy}
+              className={`transition-colors whitespace-nowrap ${activePage === 'academy' ? 'text-white font-bold' : 'text-zinc-300 hover:text-white'}`}
             >
               Our Academy
-            </button>
+            </NavLink>
 
             {/* Drone as a Service */}
-            <button
-              onClick={onNavigateDAS}
-              className={`transition-colors whitespace-nowrap ${activePage === 'das' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'}`}
+            <NavLink
+              href={pageHref('das')}
+              onNavigate={onNavigateDAS}
+              className={`transition-colors whitespace-nowrap ${activePage === 'das' ? 'text-white font-bold' : 'text-zinc-300 hover:text-white'}`}
             >
               Drone as a Service (DAS)
-            </button>
+            </NavLink>
 
             {/* Media Centre dropdown */}
             <div
@@ -275,8 +286,10 @@ export default function Navbar(props) {
             >
               <button
                 onClick={() => { setMediaOpen(true); setProductsOpen(false); }}
+                aria-expanded={mediaOpen}
+                aria-haspopup="true"
                 className={`flex items-center space-x-1.5 transition-colors ${
-                  ['news', 'blog', 'gallery'].includes(activePage) ? 'text-white font-bold' : 'text-slate-300 hover:text-white'
+                  ['news', 'blog', 'gallery'].includes(activePage) ? 'text-white font-bold' : 'text-zinc-300 hover:text-white'
                 }`}
               >
                 <span>Media Centre</span>
@@ -284,40 +297,44 @@ export default function Navbar(props) {
               </button>
 
               {mediaOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-52 rounded-2xl before:content-[''] before:absolute before:-top-4 before:left-0 before:right-0 before:h-4 glass-card border border-white/12 shadow-2xl p-2 space-y-0.5 !bg-[#020e1c]">
-                  <button
-                    onClick={() => { closeAll(); onNavigateGallery && onNavigateGallery(); }}
-                    className="w-full text-left px-4 py-2.5 rounded-xl text-xs text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-52 rounded-2xl before:content-[''] before:absolute before:-top-4 before:left-0 before:right-0 before:h-4 glass-card border border-white/10 shadow-2xl p-2 space-y-0.5 !bg-[#000000]">
+                  <NavLink
+                    href={pageHref('gallery')}
+                    onNavigate={() => { closeAll(); onNavigateGallery(); }}
+                    className="w-full text-left px-4 py-2.5 rounded-xl text-xs text-zinc-300 hover:text-white hover:bg-white/10 transition-colors"
                   >
                     Gallery
-                  </button>
-                  <button
-                    onClick={() => { closeAll(); onNavigateBlog && onNavigateBlog(); }}
+                  </NavLink>
+                  <NavLink
+                    href={pageHref('blog')}
+                    onNavigate={() => { closeAll(); onNavigateBlog(); }}
                     className={`w-full text-left px-4 py-2.5 rounded-xl text-xs transition-colors ${
-                      activePage === 'blog' ? 'text-white bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/10'
+                      activePage === 'blog' ? 'text-white bg-white/10' : 'text-zinc-300 hover:text-white hover:bg-white/10'
                     }`}
                   >
                     Blog &amp; Insights
-                  </button>
-                  <button
-                    onClick={() => { closeAll(); onNavigateNews && onNavigateNews(); }}
+                  </NavLink>
+                  <NavLink
+                    href={pageHref('news')}
+                    onNavigate={() => { closeAll(); onNavigateNews(); }}
                     className={`w-full text-left px-4 py-2.5 rounded-xl text-xs transition-colors ${
-                      activePage === 'news' ? 'text-white bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/10'
+                      activePage === 'news' ? 'text-white bg-white/10' : 'text-zinc-300 hover:text-white hover:bg-white/10'
                     }`}
                   >
                     Newsletter
-                  </button>
+                  </NavLink>
                 </div>
               )}
             </div>
 
             {/* Contact */}
-            <button
-              onClick={onNavigateContact || onOpenContact}
-              className={`transition-colors ${activePage === 'contact' ? 'text-white font-bold' : 'text-slate-300 hover:text-white'}`}
+            <NavLink
+              href={pageHref('contact')}
+              onNavigate={onNavigateContact || onOpenContact}
+              className={`transition-colors ${activePage === 'contact' ? 'text-white font-bold' : 'text-zinc-300 hover:text-white'}`}
             >
               Contact Us
-            </button>
+            </NavLink>
 
           </div>
         </nav>
@@ -325,8 +342,9 @@ export default function Navbar(props) {
         {/* Hamburger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="xl:hidden p-1.5 text-white hover:text-slate-200 transition-colors flex items-center justify-center focus:outline-none z-50 relative"
+          className="xl:hidden p-1.5 text-white hover:text-zinc-200 transition-colors flex items-center justify-center focus:outline-none z-50 relative"
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileOpen}
         >
           {mobileOpen ? (
             <X className="w-6 h-6 stroke-[1.5]" />
@@ -357,45 +375,50 @@ export default function Navbar(props) {
 
           <div className="space-y-4 sm:space-y-5 text-left">
             {/* Home */}
-            <button
-              onClick={() => { setMobileOpen(false); onNavigateHome && onNavigateHome(); }}
-              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
+            <NavLink
+              href={pageHref('home')}
+              onNavigate={() => { setMobileOpen(false); onNavigateHome(); }}
+              className="block w-full text-left text-xl sm:text-2xl font-light text-zinc-200 hover:text-white transition-all tracking-wide"
             >
               Home
-            </button>
+            </NavLink>
 
             {/* Missions */}
-            <button
-              onClick={() => { setMobileOpen(false); onNavigateMissions && onNavigateMissions(); }}
-              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
+            <NavLink
+              href={pageHref('missions')}
+              onNavigate={() => { setMobileOpen(false); onNavigateMissions(); }}
+              className="block w-full text-left text-xl sm:text-2xl font-light text-zinc-200 hover:text-white transition-all tracking-wide"
             >
               Missions
-            </button>
+            </NavLink>
 
             {/* Nethawk Labs */}
-            <button
-              onClick={() => { setMobileOpen(false); onNavigateManufacturing && onNavigateManufacturing(); }}
-              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
+            <NavLink
+              href={pageHref('manufacturing')}
+              onNavigate={() => { setMobileOpen(false); onNavigateManufacturing(); }}
+              className="block w-full text-left text-xl sm:text-2xl font-light text-zinc-200 hover:text-white transition-all tracking-wide"
             >
               Nethawk Labs
-            </button>
+            </NavLink>
 
             {/* Why us? */}
-            <button
-              onClick={() => { setMobileOpen(false); onNavigateWhyUs && onNavigateWhyUs(); }}
-              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
+            <NavLink
+              href={pageHref('why-us')}
+              onNavigate={() => { setMobileOpen(false); onNavigateWhyUs(); }}
+              className="block w-full text-left text-xl sm:text-2xl font-light text-zinc-200 hover:text-white transition-all tracking-wide"
             >
               Why us?
-            </button>
+            </NavLink>
 
             {/* Services */}
             <div>
               <button
                 onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
-                className="w-full flex items-center justify-between text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide group"
+                aria-expanded={mobileProductsOpen}
+                className="w-full flex items-center justify-between text-left text-xl sm:text-2xl font-light text-zinc-200 hover:text-white transition-all tracking-wide group"
               >
                 <span>Products</span>
-                <ChevronDown className={`w-5 h-5 text-slate-400 group-hover:text-white transition-transform duration-300 ${mobileProductsOpen ? 'rotate-180 text-[#38bdf8]' : ''}`} />
+                <ChevronDown className={`w-5 h-5 text-zinc-400 group-hover:text-white transition-transform duration-300 ${mobileProductsOpen ? 'rotate-180 text-[#3b82f6]' : ''}`} />
               </button>
               {mobileProductsOpen && (
                 <div className="mt-3 ml-2 pl-3 border-l border-white/20 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
@@ -403,7 +426,7 @@ export default function Navbar(props) {
                     <button
                       key={svc.id}
                       onClick={() => { setMobileOpen(false); handleServiceClick(svc); }}
-                      className="block w-full text-left text-base sm:text-lg font-light text-slate-300 hover:text-white transition-colors py-0.5"
+                      className="block w-full text-left text-base sm:text-lg font-light text-zinc-300 hover:text-white transition-colors py-0.5"
                     >
                       {svc.name}
                     </button>
@@ -413,76 +436,84 @@ export default function Navbar(props) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setMobileOpen(false)}
-                    className="block text-base sm:text-lg font-light text-slate-300 hover:text-white transition-colors py-0.5"
+                    className="block text-base sm:text-lg font-light text-zinc-300 hover:text-white transition-colors py-0.5"
                   >
                     Skygrid
                   </a>
-                  <button
-                    onClick={() => { setMobileOpen(false); onNavigateAffenas && onNavigateAffenas(); }}
-                    className="block w-full text-left text-base sm:text-lg font-light text-slate-300 hover:text-white transition-colors py-0.5"
+                  <NavLink
+                    href={pageHref('platforms')}
+                    onNavigate={() => { setMobileOpen(false); onNavigateAffenas(); }}
+                    className="block w-full text-left text-base sm:text-lg font-light text-zinc-300 hover:text-white transition-colors py-0.5"
                   >
                     Affenas
-                  </button>
+                  </NavLink>
                 </div>
               )}
             </div>
 
             {/* Academy */}
-            <button
-              onClick={() => { setMobileOpen(false); onNavigateAcademy && onNavigateAcademy(); }}
-              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
+            <NavLink
+              href={'/academy/index.html'}
+              onNavigate={() => { setMobileOpen(false); onNavigateAcademy(); }}
+              className="block w-full text-left text-xl sm:text-2xl font-light text-zinc-200 hover:text-white transition-all tracking-wide"
             >
               Our Academy
-            </button>
+            </NavLink>
 
             {/* Drone as a Service */}
-            <button
-              onClick={() => { setMobileOpen(false); onNavigateDAS && onNavigateDAS(); }}
-              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
+            <NavLink
+              href={pageHref('das')}
+              onNavigate={() => { setMobileOpen(false); onNavigateDAS(); }}
+              className="block w-full text-left text-xl sm:text-2xl font-light text-zinc-200 hover:text-white transition-all tracking-wide"
             >
               Drone as a Service (DAS)
-            </button>
+            </NavLink>
 
             {/* Media Centre */}
             <div>
               <button
                 onClick={() => setMobileMediaOpen(!mobileMediaOpen)}
-                className="w-full flex items-center justify-between text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide group"
+                aria-expanded={mobileMediaOpen}
+                className="w-full flex items-center justify-between text-left text-xl sm:text-2xl font-light text-zinc-200 hover:text-white transition-all tracking-wide group"
               >
                 <span>Media Centre</span>
-                <ChevronDown className={`w-5 h-5 text-slate-400 group-hover:text-white transition-transform duration-300 ${mobileMediaOpen ? 'rotate-180 text-[#38bdf8]' : ''}`} />
+                <ChevronDown className={`w-5 h-5 text-zinc-400 group-hover:text-white transition-transform duration-300 ${mobileMediaOpen ? 'rotate-180 text-[#3b82f6]' : ''}`} />
               </button>
               {mobileMediaOpen && (
                 <div className="mt-3 ml-2 pl-3 border-l border-white/20 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
-                  <button
-                    onClick={() => { setMobileOpen(false); onNavigateGallery && onNavigateGallery(); }}
-                    className="block w-full text-left text-base sm:text-lg font-light text-slate-300 hover:text-white transition-colors py-0.5"
+                  <NavLink
+                    href={pageHref('gallery')}
+                    onNavigate={() => { setMobileOpen(false); onNavigateGallery(); }}
+                    className="block w-full text-left text-base sm:text-lg font-light text-zinc-300 hover:text-white transition-colors py-0.5"
                   >
                     Gallery
-                  </button>
-                  <button
-                    onClick={() => { setMobileOpen(false); onNavigateBlog && onNavigateBlog(); }}
-                    className="block w-full text-left text-base sm:text-lg font-light text-slate-300 hover:text-white transition-colors py-0.5"
+                  </NavLink>
+                  <NavLink
+                    href={pageHref('blog')}
+                    onNavigate={() => { setMobileOpen(false); onNavigateBlog(); }}
+                    className="block w-full text-left text-base sm:text-lg font-light text-zinc-300 hover:text-white transition-colors py-0.5"
                   >
                     Blog &amp; Insights
-                  </button>
-                  <button
-                    onClick={() => { setMobileOpen(false); onNavigateNews && onNavigateNews(); }}
-                    className="block w-full text-left text-base sm:text-lg font-light text-slate-300 hover:text-white transition-colors py-0.5"
+                  </NavLink>
+                  <NavLink
+                    href={pageHref('news')}
+                    onNavigate={() => { setMobileOpen(false); onNavigateNews(); }}
+                    className="block w-full text-left text-base sm:text-lg font-light text-zinc-300 hover:text-white transition-colors py-0.5"
                   >
                     Newsletter
-                  </button>
+                  </NavLink>
                 </div>
               )}
             </div>
 
             {/* Contact */}
-            <button
-              onClick={() => { setMobileOpen(false); onNavigateContact ? onNavigateContact() : onOpenContact && onOpenContact(); }}
-              className="block w-full text-left text-xl sm:text-2xl font-light text-slate-200 hover:text-white transition-all tracking-wide"
+            <NavLink
+              href={pageHref('contact')}
+              onNavigate={() => { setMobileOpen(false); onNavigateContact(); }}
+              className="block w-full text-left text-xl sm:text-2xl font-light text-zinc-200 hover:text-white transition-all tracking-wide"
             >
               Contact Us
-            </button>
+            </NavLink>
 
           </div>
         </div>

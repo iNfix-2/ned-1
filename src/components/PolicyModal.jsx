@@ -1,33 +1,59 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import useModal from '../useModal';
 import { X, Lock, FileText, Shield } from 'lucide-react';
 
 const CONTACT_EMAIL = 'info@nethawksolutions.org';
+// Registered company name, the privacy contact and the date the policies last changed.
+// Replace DPO_EMAIL with the Data Protection Officer's mailbox once it exists, and have counsel review the text.
+const LEGAL_NAME = 'Nethawk Solutions';
+const DPO_EMAIL = CONTACT_EMAIL;
+const POLICY_UPDATED = '25 September 2026';
 
 const POLICY_CONTENT = {
   privacy: {
     title: 'Privacy Policy',
-    subtitle: 'How we collect, use and protect personal data',
+    subtitle: `How we collect, use and protect personal data · Last updated ${POLICY_UPDATED}`,
     icon: Lock,
     sections: [
       {
-        heading: '1. Our Commitment',
-        body: 'NETHAWK SOLUTIONS is a technology company headquartered in Kaduna, Nigeria (No. 2, The Hub, Industrial Area, Farin Gida, Mando). We process personal data in line with the Nigeria Data Protection Act 2023 (NDPA) and the guidance of the Nigeria Data Protection Commission (NDPC). Consultations with corporate, government and defence clients are handled in confidence.'
+        heading: '1. Who we are',
+        body: `${LEGAL_NAME} ("Nethawk", "we") of No. 2, The Hub, Industrial Area, Farin Gida, Mando, Kaduna, Nigeria is the data controller for personal data collected through this website, including for the Nethawk Aviation Training Institute (NATI). We process personal data in line with the Nigeria Data Protection Act 2023 (NDPA) and the regulations and directives of the Nigeria Data Protection Commission (NDPC). Questions about this policy can be sent to our Data Protection Officer at ${DPO_EMAIL}.`
       },
       {
-        heading: '2. Information We Collect',
-        body: 'We collect the information you give us directly: for example your name, email, phone number and organisation when you submit an inquiry, request a quote, apply to NATI (Nethawk Aviation Training Institute), or apply for a role. We use it only to respond to your request and manage our relationship with you. We do not sell or rent personal data.'
+        heading: '2. What we collect',
+        body: 'Only what you give us: your name, email, phone number (optional), organisation, the services you are interested in and the details of your request when you use our enquiry form or email us; your CV and application details when you apply for a role; and your application, identity and contact details when you apply to or enrol at NATI. We do not use analytics, advertising or tracking cookies on this website.'
       },
       {
-        heading: '3. Data Security & Retention',
-        body: 'We apply appropriate technical and organisational measures to protect personal data against unauthorised access, loss or misuse, and keep it only for as long as needed for the purpose it was collected or as required by law.'
+        heading: '3. Why we use it and our lawful basis',
+        body: 'Responding to enquiries and preparing proposals: steps taken at your request before a contract, and our legitimate interest in answering business enquiries. Recruitment: steps before an employment contract and our legitimate interest in assessing applicants. NATI admissions and training records: performance of the enrolment contract and legal obligations (for example certification and regulatory records). Security and end-user checks required for defence and surveillance work: legal obligation and legitimate interest. Where we rely on consent, you may withdraw it at any time.'
       },
       {
-        heading: '4. Your Rights',
-        body: 'Under the NDPA you may request access to, correction of, or deletion of your personal data, object to certain processing, or withdraw consent. You may also lodge a complaint with the Nigeria Data Protection Commission.'
+        heading: '4. How long we keep it',
+        body: 'Enquiries that do not lead to an engagement: up to 24 months after our last contact. Unsuccessful job applications: 12 months, unless you ask us to keep your CV on file longer. Client, contract and NATI training records: for the life of the relationship and then as long as required by law, accounting rules or aviation certification requirements. Data is then deleted or anonymised.'
       },
       {
-        heading: '5. Contact',
-        body: `For privacy questions or to exercise your rights, contact us at ${CONTACT_EMAIL}.`
+        heading: '5. Who we share it with',
+        body: 'We do not sell or rent personal data. We share it only with service providers who help us run our business (such as our email and IT hosting providers) under written data-processing terms, with professional advisers, and with public authorities where the law requires. Some providers store data outside Nigeria; where that happens we rely on the transfer safeguards set out in Part VIII of the NDPA, such as adequacy or contractual protections.'
+      },
+      {
+        heading: '6. Third-party content on this site',
+        body: 'The map on our Contact page is provided by Google and only loads after you choose to show it; Google then processes your IP address under its own privacy policy. Links to other websites (for example SkyGrid or social networks) are governed by those sites\' own policies.'
+      },
+      {
+        heading: '7. Security and breaches',
+        body: 'We apply appropriate technical and organisational measures, including access control and encryption in transit, to protect personal data. If a breach is likely to put your rights at risk, we will notify the NDPC within 72 hours of becoming aware of it and inform you where required by law.'
+      },
+      {
+        heading: '8. Your rights',
+        body: `Under the NDPA you can ask to access, correct or delete your personal data, restrict or object to processing, receive a copy in a portable format, and withdraw consent. Email ${DPO_EMAIL}; we will respond within 30 days. If you are not satisfied with our response you may complain to the Nigeria Data Protection Commission (ndpc.gov.ng).`
+      },
+      {
+        heading: '9. Children',
+        body: 'This website is not directed at children. NATI applicants under 18 must apply with the consent of a parent or guardian, and we process their data only for admission and training.'
+      },
+      {
+        heading: '10. Changes to this policy',
+        body: 'We may update this policy from time to time. The date at the top shows when it last changed.'
       }
     ]
   },
@@ -80,19 +106,7 @@ const POLICY_CONTENT = {
 };
 
 export default function PolicyModal({ isOpen, type = 'privacy', onClose }) {
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose();
-    };
-    if (isOpen) {
-      document.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden';
-    }
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'auto';
-    };
-  }, [isOpen, onClose]);
+  const panelRef = useModal(isOpen, onClose);
 
   if (!isOpen) return null;
 
@@ -100,18 +114,25 @@ export default function PolicyModal({ isOpen, type = 'privacy', onClose }) {
   const Icon = content.icon;
 
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- backdrop click; Escape closes via useModal
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="policy-modal-title"
     >
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- backdrop click; Escape closes via useModal */}
       <div
-        className="bg-[#020E1C] w-full max-w-2xl p-5 sm:p-8 relative shadow-2xl text-left rounded-3xl max-h-[90vh] overflow-y-auto"
+        ref={panelRef}
+        tabIndex={-1}
+        className="focus:outline-none bg-[#000000] w-full max-w-2xl p-5 sm:p-8 relative shadow-2xl text-left rounded-3xl max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 sm:top-6 sm:right-6 text-slate-400 hover:text-white p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 text-zinc-400 hover:text-white p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
           aria-label="Close dialog"
         >
           <X className="w-5 h-5" />
@@ -120,29 +141,29 @@ export default function PolicyModal({ isOpen, type = 'privacy', onClose }) {
         <div className="space-y-6">
           {/* Header */}
           <div className="space-y-2 pb-2 pr-10">
-            <h3 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
+            <h2 id="policy-modal-title" className="font-normal text-xl sm:text-3xl text-white tracking-tight">
               {content.title}
-            </h3>
-            <p className="text-xs text-slate-400">
+            </h2>
+            <p className="text-xs text-zinc-400">
               {content.subtitle}
             </p>
           </div>
 
           {/* Policy Sections */}
-          <div className="space-y-5 text-xs text-slate-300 font-sans leading-relaxed">
+          <div className="space-y-5 text-xs text-zinc-300 font-sans leading-relaxed">
             {content.sections.map((sec, i) => (
               <div key={i} className="space-y-1.5">
                 <h4 className="text-white font-bold text-sm flex items-center space-x-2">
                   <span>{sec.heading}</span>
                 </h4>
-                <p className="text-slate-300 pl-5">{sec.body}</p>
+                <p className="text-zinc-300 pl-5">{sec.body}</p>
               </div>
             ))}
           </div>
 
           {/* Footer Action */}
           <div className="pt-6 flex items-center justify-between">
-            <span className="text-[10px] font-mono text-slate-500">
+            <span className="text-[10px] font-mono text-zinc-500">
               NETHAWK SOLUTIONS // KADUNA, NIGERIA
             </span>
             <button

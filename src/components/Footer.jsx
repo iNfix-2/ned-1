@@ -1,6 +1,12 @@
 import React from 'react';
-import { useNavHandlers } from '../navContext';
+import { useNavHandlers, pageHref } from '../navContext';
+import NavLink from './NavLink';
 import { VALUES_LIST, VISION_TEXT, MISSION_TEXT, HEAD_OFFICE } from '../data/tekeverContent';
+
+// Registered company name and CAC registration number shown in the copyright line.
+// Fill in RC_NUMBER (and the entity type, e.g. 'Nethawk Solutions Ltd') once confirmed; the RC part stays hidden while empty.
+const LEGAL_NAME = 'Nethawk Solutions';
+const RC_NUMBER = '';
 
 export default function Footer(props) {
   const {
@@ -14,11 +20,10 @@ export default function Footer(props) {
     onNavigateDAS,
     onNavigateGallery,
     onNavigateBlog,
-    onNavigateCareers,
-    onOpenPolicy
+    onNavigateCareers
   } = useNavHandlers(props);
   return (
-    <footer className="bg-[#03070f] text-slate-400 font-sans text-xs relative overflow-hidden border-t border-white/10 pt-20 pb-12">
+    <footer className="bg-[#000000] text-zinc-400 font-sans text-xs relative overflow-hidden border-t border-white/10 pt-20 pb-12">
       
       {/* Main Footer Directory */}
       <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10 space-y-16">
@@ -28,8 +33,9 @@ export default function Footer(props) {
           
           {/* Brand Logo & Tagline */}
           <div className="lg:col-span-2 space-y-3">
-            <button 
-              onClick={onNavigateHome}
+            <NavLink 
+              href={pageHref('home')} 
+              onNavigate={onNavigateHome}
               className="text-left focus:outline-none block"
             >
               <img loading="lazy" decoding="async" 
@@ -37,8 +43,8 @@ export default function Footer(props) {
                 alt="NETHAWK SOLUTIONS" 
                 className="h-9 sm:h-10 w-auto object-contain mb-1"
               />
-            </button>
-            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+            </NavLink>
+            <p className="text-xs text-zinc-400 leading-relaxed max-w-sm">
               Delivering integrated digital, engineering, automation, security, and defence technology capabilities.
             </p>
           </div>
@@ -50,12 +56,12 @@ export default function Footer(props) {
               <h4 className="text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider">
                 What We Do
               </h4>
-              <ul className="space-y-2 text-[10.5px] sm:text-xs leading-snug sm:leading-relaxed">
-                <li><button onClick={onNavigateWhyUs || onNavigateHome} className="hover:text-white transition-colors text-left block">Why Us</button></li>
-                <li><button onClick={onNavigateDAS} className="hover:text-white transition-colors text-left block">Drone as a Service</button></li>
+              <ul className="space-y-2 text-xs leading-snug sm:leading-relaxed">
+                <li><NavLink href={pageHref('why-us')} onNavigate={onNavigateWhyUs || onNavigateHome} className="hover:text-white transition-colors text-left block">Why Us</NavLink></li>
+                <li><NavLink href={pageHref('das')} onNavigate={onNavigateDAS} className="hover:text-white transition-colors text-left block">Drone as a Service</NavLink></li>
                 <li><a href="https://skygridinc.live" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-left block">Skygrid Intelligence</a></li>
-                <li><button onClick={onNavigateMissions} className="hover:text-white transition-colors text-left block">Missions</button></li>
-                <li><button onClick={onNavigateManufacturing || onNavigateHome} className="hover:text-white transition-colors text-left block">Labs &amp; Research</button></li>
+                <li><NavLink href={pageHref('missions')} onNavigate={onNavigateMissions} className="hover:text-white transition-colors text-left block">Missions</NavLink></li>
+                <li><NavLink href={pageHref('manufacturing')} onNavigate={onNavigateManufacturing || onNavigateHome} className="hover:text-white transition-colors text-left block">Labs &amp; Research</NavLink></li>
               </ul>
             </div>
 
@@ -64,16 +70,16 @@ export default function Footer(props) {
               <h4 className="text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider">
                 Corporate
               </h4>
-              <ul className="space-y-2 text-[10.5px] sm:text-xs leading-snug sm:leading-relaxed">
-                <li><button onClick={onNavigateWhyUs || onNavigateHome} className="hover:text-white transition-colors text-left block">About Nethawk</button></li>
-                <li><button onClick={onNavigateManufacturing} className="hover:text-white transition-colors text-left block">Labs &amp; Research</button></li>
-                <li><a href="/academy/index.html" className="hover:text-white transition-colors text-left block font-medium text-sky-400">NATI Academy Hub</a></li>
+              <ul className="space-y-2 text-xs leading-snug sm:leading-relaxed">
+                <li><NavLink href={pageHref('why-us')} onNavigate={onNavigateWhyUs || onNavigateHome} className="hover:text-white transition-colors text-left block">About Nethawk</NavLink></li>
+                <li><NavLink href={pageHref('manufacturing')} onNavigate={onNavigateManufacturing} className="hover:text-white transition-colors text-left block">Labs &amp; Research</NavLink></li>
+                <li><a href="/academy/index.html" className="hover:text-white transition-colors text-left block font-medium text-accent-bright">NATI Academy Hub</a></li>
                 <li><a href="/academy/index.html#course-architecture" className="hover:text-white transition-colors text-left block">Academy Programmes</a></li>
-                <li><button onClick={onNavigateCareers} className="hover:text-white transition-colors text-left block">Careers</button></li>
-                <li><button onClick={onNavigateNews || onNavigateHome} className="hover:text-white transition-colors text-left block">News</button></li>
-                <li><button onClick={onNavigateBlog} className="hover:text-white transition-colors text-left block">Blog &amp; Insights</button></li>
-                <li><button onClick={onNavigateGallery} className="hover:text-white transition-colors text-left block">Gallery</button></li>
-                <li><button onClick={onNavigateContact || onOpenContact} className="hover:text-white transition-colors text-left block">How to Reach Us</button></li>
+                <li><NavLink href={pageHref('careers')} onNavigate={onNavigateCareers} className="hover:text-white transition-colors text-left block">Careers</NavLink></li>
+                <li><NavLink href={pageHref('news')} onNavigate={onNavigateNews || onNavigateHome} className="hover:text-white transition-colors text-left block">News</NavLink></li>
+                <li><NavLink href={pageHref('blog')} onNavigate={onNavigateBlog} className="hover:text-white transition-colors text-left block">Blog &amp; Insights</NavLink></li>
+                <li><NavLink href={pageHref('gallery')} onNavigate={onNavigateGallery} className="hover:text-white transition-colors text-left block">Gallery</NavLink></li>
+                <li><NavLink href={pageHref('contact')} onNavigate={onNavigateContact || onOpenContact} className="hover:text-white transition-colors text-left block">How to Reach Us</NavLink></li>
               </ul>
             </div>
 
@@ -82,9 +88,9 @@ export default function Footer(props) {
               <h4 className="text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider">
                 Our Values: LIFE
               </h4>
-              <ul className="space-y-2 text-[10.5px] sm:text-xs leading-snug sm:leading-relaxed">
+              <ul className="space-y-2 text-xs leading-snug sm:leading-relaxed">
                 {VALUES_LIST.map((v) => (
-                  <li key={v.name} className="text-slate-300 font-medium"><span className="text-sky-400 font-bold">{v.name[0]}</span>{v.name.slice(1)}</li>
+                  <li key={v.name} className="text-zinc-300 font-medium"><span className="text-accent-bright font-bold">{v.name[0]}</span>{v.name.slice(1)}</li>
                 ))}
               </ul>
             </div>
@@ -100,42 +106,54 @@ export default function Footer(props) {
             <h5 className="text-white font-bold uppercase tracking-wider mb-2">Get In Touch</h5>
             <div><a href="mailto:info@nethawksolutions.org" className="hover:text-white transition-colors">info@nethawksolutions.org</a></div>
             <div><a href="mailto:contact@nethawksolutions.org" className="hover:text-white transition-colors">contact@nethawksolutions.org</a></div>
-            <p className="pt-2 text-slate-400">{HEAD_OFFICE}</p>
+            <p className="pt-2 text-zinc-400">{HEAD_OFFICE}</p>
           </div>
 
           {/* Vision */}
           <div className="space-y-1">
             <h5 className="text-white font-bold uppercase tracking-wider mb-2">Our Vision</h5>
-            <p className="text-slate-400">{VISION_TEXT}</p>
+            <p className="text-zinc-400">{VISION_TEXT}</p>
           </div>
 
           {/* Mission */}
           <div className="space-y-1">
             <h5 className="text-white font-bold uppercase tracking-wider mb-2">Our Mission</h5>
-            <p className="text-slate-400">{MISSION_TEXT}</p>
+            <p className="text-zinc-400">{MISSION_TEXT}</p>
           </div>
 
         </div>
 
         {/* Legal Row */}
-        <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400">
+        <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-zinc-400">
           <div>
-            Copyright NETHAWK SOLUTIONS. All Rights Reserved.
+            &copy; {new Date().getFullYear()} {LEGAL_NAME}{RC_NUMBER && <>, RC {RC_NUMBER}</>}. All rights reserved.
           </div>
           <div className="flex space-x-6 mt-4 sm:mt-0">
-            <button onClick={() => onOpenPolicy ? onOpenPolicy('privacy') : null} className="hover:text-white transition-colors">Privacy Policy</button>
-            <button onClick={() => onOpenPolicy ? onOpenPolicy('terms') : null} className="hover:text-white transition-colors">Terms of Service</button>
-            <button onClick={() => onOpenPolicy ? onOpenPolicy('security') : null} className="hover:text-white transition-colors">Security Standards</button>
+            <a href={pageHref('privacy')} className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href={pageHref('terms')} className="hover:text-white transition-colors">Terms of Service</a>
+            <a href={pageHref('security')} className="hover:text-white transition-colors">Security Standards</a>
           </div>
         </div>
 
       </div>
 
-      {/* Giant Faint Watermark "NETHAWK" across the bottom */}
-      <div className="w-full select-none pointer-events-none mt-12 flex justify-center overflow-hidden">
-        <span className="font-sans text-[12vw] font-black tracking-widest text-white/[0.08] uppercase whitespace-nowrap leading-none block">
-          NETHAWK
-        </span>
+      {/* Giant faint "NETHAWK" watermark, stretched edge to edge at every screen width
+          (textLength pins it to the full SVG width; letter spacing absorbs font differences) */}
+      <div className="w-full select-none pointer-events-none mt-12 overflow-hidden" aria-hidden="true">
+        <svg viewBox="0 0 1000 134" className="block w-full h-auto text-white/[0.08]">
+          <text
+            x="0"
+            y="128"
+            textLength="1000"
+            lengthAdjust="spacing"
+            fontSize="176"
+            fontWeight="700"
+            fill="currentColor"
+            className="font-sans"
+          >
+            NETHAWK
+          </text>
+        </svg>
       </div>
 
     </footer>

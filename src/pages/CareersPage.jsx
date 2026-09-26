@@ -58,7 +58,7 @@ const FEATURES = [
     text: "Whether you're pursuing aerospace training, hold an engineering qualification, or bring hands-on maintenance experience, we support you at every stage of your career. From airframes to avionics, you'll work on a wide range of unmanned systems while helping shape the future of flight.",
     cta: 'Explore engineering careers',
     action: 'openings',
-    tone: 'light',
+    tone: 'surface',
     imageSide: 'left',
   },
   {
@@ -67,7 +67,7 @@ const FEATURES = [
     text: "We value the military community and the unparalleled training, skills and perspectives they bring. It's why you'll find service-affiliated colleagues making an impact across our company. If you're part of the military community, we invite you to explore our opportunities and the support we offer as you move into the civilian workforce.",
     cta: 'Learn more',
     action: 'contact',
-    tone: 'light',
+    tone: 'surface',
     imageSide: 'right',
   },
   {
@@ -122,16 +122,16 @@ const HIRING_STEPS = [
 ];
 
 const featureTones = {
-  light: 'bg-[#f4f6f9] text-slate-900',
-  dark: 'bg-[#010811] text-white',
-  surface: 'bg-[#051427] text-white',
+  light: 'bg-[#f4f6f9] text-zinc-900',
+  dark: 'bg-[#000000] text-white',
+  surface: 'bg-[#0a0a0a] text-white',
 };
 
 function LinkArrow({ children, onClick }) {
   return (
     <button
       onClick={onClick}
-      className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-sky-400 hover:text-sky-300 transition-colors"
+      className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-accent-bright hover:text-accent-bright transition-colors"
     >
       {children}
       <ArrowRight className="w-3.5 h-3.5" />
@@ -168,7 +168,7 @@ export default function CareersPage(props) {
   const visibleJobs = showAll || query ? filtered : filtered.slice(0, 4);
 
   return (
-    <div className="min-h-screen bg-[#020e1c] text-white flex flex-col font-sans selection:bg-blue-600 selection:text-white antialiased">
+    <div className="min-h-screen bg-[#000000] text-white flex flex-col font-sans selection:bg-accent selection:text-white antialiased">
       <Navbar {...props} activePage="careers" />
 
       {/* Hero */}
@@ -177,21 +177,21 @@ export default function CareersPage(props) {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/assets/images/manufacturing/nethawk-composite-fabrication.jpg')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#020e1c]/50 via-[#020e1c]/40 to-[#020e1c]/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#000000]/50 via-[#000000]/40 to-[#000000]/95" />
 
         <div className="relative z-10 w-full max-w-4xl mx-auto px-6 pb-16 sm:pb-20 text-center space-y-5">
-          <nav aria-label="Breadcrumb" className="text-sm text-slate-300 flex items-center justify-center gap-3">
+          <nav aria-label="Breadcrumb" className="text-sm text-zinc-300 flex items-center justify-center gap-3">
             <button onClick={onNavigateHome} className="hover:text-white transition-colors">Home</button>
-            <span className="text-slate-500">/</span>
+            <span className="text-zinc-500">/</span>
             <span className="text-white">Careers</span>
           </nav>
-          <h1 className="text-4xl sm:text-6xl font-light tracking-tight text-white">
+          <h1 className="font-normal text-4xl sm:text-6xl tracking-tight text-white">
             Be Valued. Be Inspired. Be Legendary.
           </h1>
-          <p className="text-slate-300 text-sm sm:text-base font-light leading-relaxed max-w-3xl mx-auto">
-            Join Nethawk Solutions and you'll be among the best in the business. We don't just build world-class
-            unmanned systems — we build an environment that challenges, empowers and encourages growth. Here you'll
-            have the opportunities and support to build your legacy, one where the sky isn't the limit.
+          <p className="text-zinc-300 text-sm sm:text-base font-light leading-relaxed max-w-3xl mx-auto">
+            Join Nethawk Solutions and you’ll be among the best in the business. We don’t just build world-class
+            unmanned systems — we build an environment that challenges, empowers and encourages growth. Here you’ll
+            have the opportunities and support to build your legacy, one where the sky isn’t the limit.
           </p>
         </div>
       </section>
@@ -200,16 +200,16 @@ export default function CareersPage(props) {
         {/* Current Openings */}
         <section
           id="careers-openings"
-          className="relative bg-[#010811] py-16 sm:py-20 px-6 sm:px-12 scroll-mt-20"
+          className="relative bg-[#000000] py-16 sm:py-20 px-6 sm:px-12 scroll-mt-20"
           style={{
             backgroundImage: 'radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)',
             backgroundSize: '22px 22px',
           }}
         >
           <div className="max-w-3xl mx-auto space-y-8">
-            <h2 className="text-center text-2xl sm:text-3xl font-light text-white">Current Openings</h2>
+            <h2 className="font-normal text-center text-2xl sm:text-3xl text-white">Current Openings</h2>
 
-            <div className="flex gap-4 rounded-xl border border-white/10 bg-[#071322] p-5 sm:p-6 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <div className="flex gap-4 rounded-xl border border-white/10 bg-[#0a0a0a] p-5 sm:p-6 text-xs sm:text-sm text-zinc-300 leading-relaxed">
               <div className="space-y-2">
                 <p className="font-semibold text-white">Important Information for Job Seekers</p>
                 <p>
@@ -220,20 +220,20 @@ export default function CareersPage(props) {
                 <p>
                   If you receive a message from someone claiming to be a Nethawk recruiter using a public domain,
                   please report it to{' '}
-                  <a href={`mailto:${CAREERS_EMAIL}`} className="text-sky-400 hover:text-sky-300">{CAREERS_EMAIL}</a>.
+                  <a href={`mailto:${CAREERS_EMAIL}`} className="text-accent-bright hover:text-accent-bright">{CAREERS_EMAIL}</a>.
                 </p>
               </div>
             </div>
 
             <div className="relative max-w-md mx-auto">
-              <Search className="w-4 h-4 text-slate-500 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <Search className="w-4 h-4 text-zinc-500 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search jobs by keyword..."
                 aria-label="Search jobs by keyword"
-                className="w-full pl-11 pr-4 py-3 rounded-lg bg-white/5 border border-white/15 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-400 transition-colors"
+                className="w-full pl-11 pr-4 py-3 rounded-lg bg-white/5 border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-accent-bright transition-colors"
               />
             </div>
 
@@ -242,7 +242,7 @@ export default function CareersPage(props) {
                 <li key={job.title} className="py-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
                   <div className="flex-1 min-w-0 space-y-1">
                     <p className="text-white font-medium">{job.title}</p>
-                    <p className="text-xs text-slate-400 flex flex-wrap gap-x-4 gap-y-1">
+                    <p className="text-xs text-zinc-400 flex flex-wrap gap-x-4 gap-y-1">
                       <span>{job.team}</span>
                       <span>{job.location}</span>
                       <span>{job.type}</span>
@@ -257,9 +257,9 @@ export default function CareersPage(props) {
                 </li>
               ))}
               {visibleJobs.length === 0 && (
-                <li className="py-8 text-center text-sm text-slate-400">
+                <li className="py-8 text-center text-sm text-zinc-400">
                   No openings match “{query}”. Send us your CV at{' '}
-                  <a href={applyHref('General Application')} className="text-sky-400 hover:text-sky-300">{CAREERS_EMAIL}</a>.
+                  <a href={applyHref('General Application')} className="text-accent-bright hover:text-accent-bright">{CAREERS_EMAIL}</a>.
                 </li>
               )}
             </ul>
@@ -268,7 +268,7 @@ export default function CareersPage(props) {
               <div className="text-center">
                 <button
                   onClick={() => setShowAll(true)}
-                  className="px-6 py-2.5 border border-white/60 text-[11px] font-bold uppercase tracking-[0.2em] text-white hover:bg-white hover:text-black transition-all"
+                  className="px-6 py-2.5 rounded-full border border-white/60 text-xs font-medium text-white hover:bg-white hover:text-black transition-all"
                 >
                   View All Current Openings
                 </button>
@@ -285,8 +285,8 @@ export default function CareersPage(props) {
                 <div className="aspect-[4/3] overflow-hidden rounded-lg border border-white/10">
                   <img src={card.image} alt="" loading="lazy" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                 </div>
-                <h3 className="text-white font-medium">{card.title}</h3>
-                <p className="text-sm text-slate-400 leading-relaxed">{card.text}</p>
+                <h3 className="font-medium text-white">{card.title}</h3>
+                <p className="text-sm text-zinc-400 leading-relaxed">{card.text}</p>
                 <LinkArrow onClick={actions[card.action]}>{card.cta}</LinkArrow>
               </article>
             ))}
@@ -306,22 +306,22 @@ export default function CareersPage(props) {
                     className={`hidden lg:block absolute inset-0 ${
                       imageLeft ? 'bg-gradient-to-r' : 'bg-gradient-to-l'
                     } from-transparent via-transparent ${
-                      isLight ? 'to-[#f4f6f9]' : feature.tone === 'dark' ? 'to-[#010811]' : 'to-[#051427]'
+                      isLight ? 'to-[#f4f6f9]' : feature.tone === 'dark' ? 'to-[#000000]' : 'to-[#0a0a0a]'
                     }`}
                   />
                 </div>
                 <div className={`flex items-center px-6 sm:px-12 lg:px-16 py-12 lg:py-16 ${imageLeft ? '' : 'lg:order-1'}`}>
                   <div className="max-w-xl space-y-5">
-                    <h2 className={`text-2xl sm:text-3xl font-light leading-tight ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                    <h2 className={`font-normal text-2xl sm:text-3xl leading-tight ${isLight ? 'text-zinc-900' : 'text-white'}`}>
                       {feature.title}
                     </h2>
-                    <p className={`text-sm leading-relaxed ${isLight ? 'text-slate-600' : 'text-slate-300'}`}>{feature.text}</p>
+                    <p className={`text-sm leading-relaxed ${isLight ? 'text-zinc-600' : 'text-zinc-300'}`}>{feature.text}</p>
                     <button
                       onClick={actions[feature.action]}
-                      className={`px-5 py-2.5 border-2 text-[11px] font-bold uppercase tracking-[0.15em] transition-all ${
+                      className={`px-6 py-2.5 rounded-full border-2 text-xs font-medium transition-all ${
                         isLight
-                          ? 'border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white'
-                          : 'border-sky-400 text-white hover:bg-sky-400 hover:text-black'
+                          ? 'border-accent-bright text-accent hover:bg-accent hover:text-white'
+                          : 'border-accent-bright text-white hover:bg-accent hover:text-black'
                       }`}
                     >
                       {feature.cta}
@@ -341,8 +341,8 @@ export default function CareersPage(props) {
                 <div className="aspect-[4/3] overflow-hidden rounded-lg border border-white/10">
                   <img src={card.image} alt="" loading="lazy" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                 </div>
-                <h3 className="text-white font-medium">{card.title}</h3>
-                <p className="text-sm text-slate-400 leading-relaxed">{card.text}</p>
+                <h3 className="font-medium text-white">{card.title}</h3>
+                <p className="text-sm text-zinc-400 leading-relaxed">{card.text}</p>
                 <LinkArrow onClick={actions[card.action]}>{card.cta}</LinkArrow>
               </article>
             ))}
@@ -351,23 +351,23 @@ export default function CareersPage(props) {
 
         {/* Hiring Process */}
         <section id="careers-hiring-process" className="px-6 sm:px-12 pb-20 sm:pb-28 scroll-mt-20">
-          <div className="max-w-5xl mx-auto rounded-2xl border border-white/10 bg-[#071322] p-8 sm:p-12 space-y-10">
+          <div className="max-w-5xl mx-auto rounded-2xl border border-white/10 bg-[#0a0a0a] p-8 sm:p-12 space-y-10">
             <div className="text-center space-y-2">
-              <h2 className="text-3xl sm:text-4xl font-semibold text-white">Our Hiring Process</h2>
+              <h2 className="font-normal text-3xl sm:text-4xl text-white">Our Hiring Process</h2>
             </div>
             <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {HIRING_STEPS.map((item) => (
                 <li key={item.step} className="space-y-2">
-                  <span className="font-mono text-sky-400 text-sm">{item.step}</span>
-                  <h3 className="text-white font-medium">{item.title}</h3>
-                  <p className="text-sm text-slate-400 leading-relaxed">{item.text}</p>
+                  <span className="font-mono text-accent-bright text-sm">{item.step}</span>
+                  <h3 className="font-medium text-white">{item.title}</h3>
+                  <p className="text-sm text-zinc-400 leading-relaxed">{item.text}</p>
                 </li>
               ))}
             </ol>
             <div className="text-center">
               <a
                 href={applyHref('General Application')}
-                className="inline-block px-7 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-slate-200 transition-all hover:scale-105 shadow-xl"
+                className="inline-block px-7 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-zinc-200 transition-all hover:scale-105 shadow-xl"
               >
                 Send a General Application
               </a>

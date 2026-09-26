@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import { useNavHandlers } from '../navContext';
+import useReducedMotion from '../useReducedMotion';
 
 // Hero slideshow: each photo carries its own heading, write-up and call to action.
 // `action` names a site navigation handler; `href` is used for downloads/links instead.
@@ -53,25 +54,37 @@ export default function Hero(props) {
   // Bumped on manual navigation so the interval restarts and the chosen image gets a full turn
   const [timerKey, setTimerKey] = useState(0);
 
+  // Visitors can pause the slideshow; it never auto-advances for people who prefer reduced motion
+  const reducedMotion = useReducedMotion();
+  const [userPaused, setUserPaused] = useState(false);
+  const paused = userPaused || reducedMotion;
+
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY || window.pageYOffset;
+    // At most one update per frame, and only when the rounded value changes, so scrolling doesn't re-render constantly
+    let frame = 0;
+    const update = () => {
+      frame = 0;
       // Progressively increase as user scrolls down from hero (0 at top, 1 at 350px)
-      const progress = Math.min(1, Math.max(0, scrollY / 350));
-      setScrollProgress(progress);
+      const progress = Math.min(1, Math.max(0, window.scrollY / 350));
+      setScrollProgress(Math.round(progress * 50) / 50);
     };
+    const handleScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    update();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, []);
 
   useEffect(() => {
+    if (paused) return undefined;
     const id = setInterval(() => {
       setCurrentSlide((i) => (i + 1) % HERO_SLIDES.length);
     }, SLIDE_INTERVAL_MS);
     return () => clearInterval(id);
-  }, [timerKey]);
+  }, [timerKey, paused]);
 
   // Only fetch an image once it is showing or next in line, so the first load pulls one photo, not five
   const [loaded, setLoaded] = useState(() => new Set([0, 1]));
@@ -83,6 +96,15 @@ export default function Hero(props) {
     });
   }, [currentSlide]);
 
+  // Each time a slide becomes current its counter bumps; used as a React key so the push-in and title
+  // reveal replay on that slide only, while the outgoing slide keeps its state as it fades out
+  const activation = useRef({ slide: -1 });
+  if (activation.current.slide !== currentSlide) {
+    activation.current.slide = currentSlide;
+    activation.current[currentSlide] = (activation.current[currentSlide] || 0) + 1;
+  }
+  const activationKey = (idx) => `${idx}-${activation.current[idx] || 0}`;
+
   const goToSlide = (index) => {
     setCurrentSlide((index + HERO_SLIDES.length) % HERO_SLIDES.length);
     setTimerKey((k) => k + 1);
@@ -93,7 +115,7 @@ export default function Hero(props) {
 
   return (
     <section
-      className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden bg-black transition-all duration-200"
+      className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden bg-[#000000] transition-all duration-200"
       style={{
         borderBottomLeftRadius: `${bottomRadius}px`,
         borderBottomRightRadius: `${bottomRadius}px`,
@@ -110,14 +132,20 @@ export default function Hero(props) {
         {HERO_SLIDES.map(({ image: src }, idx) => (
           <div
             key={src}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
+            className={`absolute inset-0 overflow-hidden transition-opacity duration-1000 ease-in-out ${
               idx === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
-            style={loaded.has(idx) ? { backgroundImage: `url('${src}')` } : undefined}
             aria-hidden={idx !== currentSlide}
-          />
+          >
+            <div
+              key={activationKey(idx)}
+              className={`absolute inset-0 bg-cover bg-center ${activation.current[idx] ? 'motion-kenburns' : ''}`}
+              style={loaded.has(idx) ? { backgroundImage: `url('${src}')` } : undefined}
+            />
+          </div>
         ))}
-        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.25)_45%,rgba(0,0,0,0.6)_100%)] pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-[radial-gradient(ellipse_70%_60%_at_50%_100%,rgba(11,31,77,0.55),transparent_70%)] pointer-events-none" />
       </div>
 
       {/* Prev / Next Arrows */}
@@ -138,13 +166,24 @@ export default function Hero(props) {
         <ChevronRight className="w-5 h-5" />
       </button>
 
-      {/* Slide Dots */}
+      {/* Slide Dots + pause control */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+        {!reducedMotion && (
+          <button
+            type="button"
+            onClick={() => setUserPaused((p) => !p)}
+            aria-label={userPaused ? 'Play slideshow' : 'Pause slideshow'}
+            className="mr-1 p-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+          >
+            {userPaused ? <Play className="w-3.5 h-3.5" /> : <Pause className="w-3.5 h-3.5" />}
+          </button>
+        )}
         {HERO_SLIDES.map(({ image: src }, idx) => (
           <button
             key={src}
             type="button"
             aria-label={`Go to slide ${idx + 1}`}
+            aria-current={idx === currentSlide ? 'true' : undefined}
             onClick={() => goToSlide(idx)}
             className={`h-2.5 rounded-full transition-all duration-300 ${
               idx === currentSlide ? 'w-8 bg-white' : 'w-2.5 bg-white/50 hover:bg-white/80'
@@ -160,28 +199,28 @@ export default function Hero(props) {
           const buttonClass = 'inline-flex items-center px-8 py-3.5 glass-pill hover:bg-white/20 text-white text-xs sm:text-sm font-medium tracking-wider uppercase transition-all duration-300 hover:scale-105 shadow-2xl';
           return (
             <div
-              key={slide.title}
+              key={`${slide.title}-${activationKey(idx)}`}
               aria-hidden={!active}
               className={`[grid-area:1/1] self-center text-center space-y-6 transition-all duration-1000 ease-out ${
                 active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
               }`}
             >
               {idx === 0 ? (
-                <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.08] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
-                  {slide.title}
+                <h1 className="font-normal text-4xl sm:text-6xl md:text-7xl text-white tracking-tight leading-[1.08] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
+                  <span className="mask-line"><span style={{ '--d': '150ms' }}>{slide.title}</span></span>
                 </h1>
               ) : (
-                <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.08] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
-                  {slide.title}
+                <h2 className="font-normal text-4xl sm:text-6xl md:text-7xl text-white tracking-tight leading-[1.08] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
+                  <span className="mask-line"><span style={{ '--d': '150ms' }}>{slide.title}</span></span>
                 </h2>
               )}
 
-              <p className="max-w-2xl mx-auto text-sm sm:text-base text-white font-medium drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] leading-relaxed">
+              <p className="motion-fade-up max-w-2xl mx-auto text-sm sm:text-base text-white font-medium drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] leading-relaxed" style={{ '--d': '450ms' }}>
                 {slide.text}
               </p>
 
               {/* Frosted glass pill button with responsive scroll border radius */}
-              <div className="pt-4">
+              <div className="pt-4 motion-fade-up" style={{ '--d': '650ms' }}>
                 {slide.href ? (
                   <a
                     href={slide.href}

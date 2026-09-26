@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useNavHandlers } from '../navContext';
+import useReducedMotion from '../useReducedMotion';
 
 const SLIDES = [
   {
     image: '/assets/images/skygrid/skygrid-operator.webp',
-    title: 'INTELLIGENT SYSTEMS',
+    title: 'Intelligent Systems',
     subtitle: 'Turning Data into Useful Intelligence',
     description: 'Machine learning, computer vision, automated data processing, and predictive decision-support systems.',
     cta: 'Explore AI & Data',
@@ -13,7 +14,7 @@ const SLIDES = [
   },
   {
     image: '/assets/images/skygrid/skygrid-map.webp',
-    title: 'SKYGRID GCS',
+    title: 'SkyGrid GCS',
     subtitle: 'Tactical Command & Real-Time Geospatial C2',
     description: 'Autonomous waypoint flight plans, precision corridor inspection, high-resolution GIS integration, and BVLOS control.',
     cta: 'Explore GCS & Missions',
@@ -21,7 +22,7 @@ const SLIDES = [
   },
   {
     image: '/assets/images/skygrid/skygrid-dashboard.webp',
-    title: 'MISSION OPERATIONS',
+    title: 'Mission Operations',
     subtitle: 'Fleet Management & Tactical Telemetry',
     description: 'Live aircraft readiness, pilot dispatch, multi-payload sensor telemetry, and situational awareness dashboards.',
     cta: 'View Platform Capabilities',
@@ -34,14 +35,15 @@ export default function AtlasSection(props) {
   const runSlideAction = (slide) => (handlers[slide.action] || handlers.onOpenContact)?.();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || reducedMotion) return undefined;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % SLIDES.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, reducedMotion]);
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev === 0 ? SLIDES.length - 1 : prev - 1));
@@ -54,9 +56,11 @@ export default function AtlasSection(props) {
   return (
     <section
       id="ai-systems"
-      className="relative w-full min-h-[75vh] lg:min-h-[640px] overflow-hidden flex flex-col justify-between items-center bg-[#020e1c] text-center pt-4 sm:pt-8 pb-10 sm:pb-16"
+      className="relative w-full min-h-[75vh] lg:min-h-[640px] overflow-hidden flex flex-col justify-between items-center bg-[#000000] text-center pt-4 sm:pt-8 pb-10 sm:pb-16"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setIsPaused(false); }}
     >
       {/* 1. Full-Bleed Background Images taking 100% View Width */}
       {SLIDES.map((slide, idx) => (
@@ -80,15 +84,15 @@ export default function AtlasSection(props) {
 
       {/* 2. Central AI, Data & Intelligent Systems Typography */}
       <div className="relative z-10 space-y-4 px-6 max-w-3xl mx-auto my-auto transition-all duration-500">
-        <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-widest drop-shadow-2xl">
+        <h2 className="font-normal text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight drop-shadow-2xl">
           {SLIDES[currentIndex].title}
         </h2>
         
-        <p className="text-xs sm:text-sm font-mono text-[#38bdf8] tracking-widest uppercase font-semibold drop-shadow">
+        <p className="text-xs sm:text-sm font-mono text-white tracking-widest uppercase font-semibold drop-shadow">
           {SLIDES[currentIndex].subtitle}
         </p>
 
-        <p className="text-xs sm:text-sm text-slate-200/90 max-w-lg mx-auto drop-shadow leading-relaxed hidden sm:block">
+        <p className="text-xs sm:text-sm text-white max-w-lg mx-auto drop-shadow leading-relaxed hidden sm:block">
           {SLIDES[currentIndex].description}
         </p>
 
@@ -109,7 +113,7 @@ export default function AtlasSection(props) {
             key={idx}
             onClick={() => setCurrentIndex(idx)}
             className={`h-1.5 rounded-full transition-all duration-300 ${
-              idx === currentIndex ? 'w-8 bg-[#38bdf8] shadow-[0_0_8px_#38bdf8]' : 'w-2 bg-white/40 hover:bg-white/70'
+              idx === currentIndex ? 'w-8 bg-[#3b82f6] shadow-[0_0_8px_#3b82f6]' : 'w-2 bg-white/40 hover:bg-white/70'
             }`}
             aria-label={`Go to slide ${idx + 1}`}
           />

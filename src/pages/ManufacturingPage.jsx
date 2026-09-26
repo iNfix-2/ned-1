@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import { OutlineButton, Reveal, CinematicPanel } from '../components/Cinematic';
+import { OutlineButton, Reveal, CinematicPanel, TitleReveal } from '../components/Cinematic';
 import Footer from '../components/Footer';
 import { ChevronDown } from 'lucide-react';
 
@@ -63,21 +63,20 @@ export default function ManufacturingPage(props) {
   const { onOpenContact, onNavigateContact } = props;
 
   return (
-    <div className="relative min-h-screen w-full bg-black text-white font-sans antialiased overflow-x-hidden">
+    <div className="relative min-h-screen w-full bg-[#000000] text-white font-sans antialiased overflow-x-hidden">
       <Navbar {...props} activePage="manufacturing" />
 
       {/* Hero: centred title over full-bleed image */}
       <section className="relative h-screen min-h-[640px] w-full overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${IMG}/IMG_6631.jpg')` }} />
-        <div className="absolute inset-0 bg-black/55" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50" />
+        <div className="absolute inset-0 bg-cover bg-center motion-kenburns" style={{ backgroundImage: `url('${IMG}/IMG_6631.jpg')` }} />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.5)_0%,rgba(0,0,0,0.3)_45%,#000_100%)]" />
 
-        <Reveal className="relative z-10 text-center px-6 space-y-4">
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold uppercase tracking-tight">Nethawk Labs</h1>
-          <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-white/80">
+        <div className="relative z-10 text-center px-6 space-y-4">
+          <TitleReveal lines={['Nethawk Labs']} className="font-normal text-5xl sm:text-7xl lg:text-8xl tracking-tight text-white" />
+          <p className="motion-fade-up text-[11px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-white/80" style={{ '--d': '500ms' }}>
             Research · Engineering · Manufacturing
           </p>
-        </Reveal>
+        </div>
 
         <button
           onClick={() => document.getElementById('labs-overview')?.scrollIntoView({ behavior: 'smooth' })}
@@ -91,10 +90,10 @@ export default function ManufacturingPage(props) {
       {/* Intro + pillars */}
       <section id="labs-overview" className="scroll-mt-16 max-w-6xl mx-auto px-6 sm:px-12 py-24 sm:py-32 space-y-16">
         <Reveal className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-          <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight leading-[1.08]">
+          <h2 className="font-normal text-3xl sm:text-4xl tracking-tight leading-[1.08]">
             Sovereign Engineering, Designed And Built In Nigeria
           </h2>
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+          <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
             Nethawk Labs is where our systems are conceived, prototyped, built and proven. Owning the full cycle, from first
             sketch to flight test, lets us move fast, adapt every platform to the mission, and keep critical capability at home.
           </p>
@@ -103,8 +102,8 @@ export default function ManufacturingPage(props) {
         <Reveal className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8 border-t border-white/15 pt-10">
           {PILLARS.map(({ title, text }) => (
             <div key={title} className="space-y-3">
-              <h3 className="text-xs font-bold uppercase tracking-[0.15em]">{title}</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">{text}</p>
+              <h3 className="font-medium text-xs tracking-tight">{title}</h3>
+              <p className="text-sm text-zinc-400 leading-relaxed">{text}</p>
             </div>
           ))}
         </Reveal>
@@ -113,7 +112,7 @@ export default function ManufacturingPage(props) {
       {/* Capability panels */}
       {PANELS.map((panel) => (
         <CinematicPanel key={panel.title} image={panel.image} align={panel.align}>
-          <h2 className="text-3xl sm:text-5xl font-bold uppercase tracking-tight leading-[1.05]">{panel.title}</h2>
+          <h2 className="font-normal text-3xl sm:text-5xl tracking-tight leading-[1.05]">{panel.title}</h2>
           <p className="text-sm sm:text-base text-white/85 leading-relaxed">{panel.text}</p>
         </CinematicPanel>
       ))}

@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { GALLERY_FILTERS, GALLERY_ITEMS } from '../data/gallery';
 import { X, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import useModal from '../useModal';
 
 export default function GalleryPage(props) {
   const { onOpenContact } = props;
@@ -13,23 +14,20 @@ export default function GalleryPage(props) {
 
   const step = (dir) => setLightbox((i) => (i + dir + items.length) % items.length);
 
+  const lightboxRef = useModal(lightbox !== null, () => setLightbox(null));
+
   useEffect(() => {
     if (lightbox === null) return;
     const onKey = (e) => {
-      if (e.key === 'Escape') setLightbox(null);
       if (e.key === 'ArrowRight') step(1);
       if (e.key === 'ArrowLeft') step(-1);
     };
     document.addEventListener('keydown', onKey);
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.body.style.overflow = 'auto';
-    };
+    return () => document.removeEventListener('keydown', onKey);
   }, [lightbox, items.length]);
 
   return (
-    <div className="min-h-screen bg-[#020e1c] text-white flex flex-col font-sans selection:bg-blue-600 selection:text-white antialiased">
+    <div className="min-h-screen bg-[#000000] text-white flex flex-col font-sans selection:bg-accent selection:text-white antialiased">
       <Navbar {...props} activePage="gallery" />
 
       <main className="flex-grow pt-28 pb-20 space-y-14 sm:space-y-20">
@@ -37,11 +35,11 @@ export default function GalleryPage(props) {
         {/* Hero */}
         <section className="px-6 sm:px-12 max-w-[1920px] mx-auto">
           <div className="space-y-5 max-w-3xl">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-tight text-white">
+            <h1 className="font-normal text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-tight text-white">
               Field operations <br />
-              <span className="text-slate-300">in pictures.</span>
+              <span className="text-zinc-300">in pictures.</span>
             </h1>
-            <p className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl">
+            <p className="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-2xl">
               Aircraft, missions and the teams behind them, from pre-flight checks to live operations.
             </p>
           </div>
@@ -57,7 +55,7 @@ export default function GalleryPage(props) {
                 className={`px-5 py-2 rounded-full text-xs font-medium tracking-wide transition-all ${
                   filter === f.id
                     ? 'bg-white text-black'
-                    : 'bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10'
+                    : 'bg-white/5 border border-white/10 text-zinc-300 hover:text-white hover:bg-white/10'
                 }`}
               >
                 {f.label}
@@ -80,7 +78,7 @@ export default function GalleryPage(props) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <span className="text-[10px] font-mono text-blue-300 uppercase tracking-wider">{item.category}</span>
+                  <span className="text-[10px] font-mono text-accent-bright uppercase tracking-wider">{item.category}</span>
                   <p className="text-sm text-white font-medium mt-1">{item.caption}</p>
                 </div>
               </button>
@@ -92,14 +90,14 @@ export default function GalleryPage(props) {
         <section className="px-6 sm:px-12 max-w-[1920px] mx-auto">
           <div className="rounded-[32px] bg-gradient-to-r from-[#031326] to-[#08203d] border border-white/15 p-8 sm:p-14 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="space-y-3 max-w-xl">
-              <h3 className="text-2xl sm:text-3xl font-light text-white">Media & press enquiries</h3>
-              <p className="text-slate-300 text-sm leading-relaxed">
+              <h3 className="font-medium text-2xl sm:text-3xl text-white">Media & press enquiries</h3>
+              <p className="text-zinc-300 text-sm leading-relaxed">
                 Need high-resolution imagery or footage for publication? Get in touch with our media team.
               </p>
             </div>
             <button
               onClick={onOpenContact}
-              className="px-8 py-4 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-slate-200 transition-all shadow-xl shrink-0 flex items-center space-x-2"
+              className="px-8 py-4 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-zinc-200 transition-all shadow-xl shrink-0 flex items-center space-x-2"
             >
               <span>Contact Media Team</span>
               <ArrowRight className="w-4 h-4" />
@@ -112,8 +110,14 @@ export default function GalleryPage(props) {
 
       {/* Lightbox */}
       {lightbox !== null && items[lightbox] && (
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- backdrop click; Escape closes via useModal
         <div
-          className="fixed inset-0 z-[60] bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-10"
+          ref={lightboxRef}
+          tabIndex={-1}
+          role="dialog"
+          aria-modal="true"
+          aria-label={items[lightbox].caption}
+          className="fixed inset-0 z-[60] bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-10 focus:outline-none"
           onClick={() => setLightbox(null)}
         >
           <button
@@ -130,15 +134,16 @@ export default function GalleryPage(props) {
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- backdrop click; Escape closes via useModal */}
           <figure className="max-w-6xl w-full space-y-4" onClick={(e) => e.stopPropagation()}>
             <img loading="lazy" decoding="async"
               src={items[lightbox].src}
               alt={items[lightbox].caption}
               className="w-full max-h-[78vh] object-contain rounded-2xl"
             />
-            <figcaption className="text-center text-sm text-slate-300">
+            <figcaption className="text-center text-sm text-zinc-300">
               {items[lightbox].caption}
-              <span className="text-slate-500"> · {lightbox + 1} / {items.length}</span>
+              <span className="text-zinc-400"> · {lightbox + 1} / {items.length}</span>
             </figcaption>
           </figure>
           <button

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import useReducedMotion from '../useReducedMotion';
 
 // SpaceX-style full-width slideshow: one image per slide with text on the left,
 // side arrows, dots, 6s autoplay (paused on hover) and swipe on touch screens.
@@ -7,16 +8,17 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 export default function FullBleedSlideshow({ slides, label }) {
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const reducedMotion = useReducedMotion();
   const touchStartX = useRef(null);
 
   const next = () => setIndex((i) => (i + 1) % slides.length);
   const prev = () => setIndex((i) => (i - 1 + slides.length) % slides.length);
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || reducedMotion) return undefined;
     const id = setInterval(next, 6000);
     return () => clearInterval(id);
-  }, [isPaused, slides.length]);
+  }, [isPaused, reducedMotion, slides.length]);
 
   const onTouchEnd = (e) => {
     if (touchStartX.current === null) return;
@@ -27,9 +29,11 @@ export default function FullBleedSlideshow({ slides, label }) {
 
   return (
     <section
-      className="relative h-[620px] sm:h-[720px] w-full overflow-hidden bg-[#010811]"
+      className="relative h-[620px] sm:h-[720px] w-full overflow-hidden bg-[#000000]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setIsPaused(false); }}
       onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
       onTouchEnd={onTouchEnd}
       aria-roledescription="carousel"
@@ -42,15 +46,15 @@ export default function FullBleedSlideshow({ slides, label }) {
           aria-hidden={i !== index}
         >
           <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${s.image}')`, backgroundPosition: s.position || 'center' }} />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#010811]/95 via-[#010811]/65 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#000000]/95 via-[#000000]/65 to-transparent" />
           <div className="relative z-10 h-full max-w-6xl mx-auto px-14 sm:px-20 flex items-center">
             <div className="max-w-md space-y-4">
-              <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight leading-[1.05] text-white">{s.title}</h2>
-              <p className="text-sm text-slate-300 font-light leading-relaxed">{s.text}</p>
+              <h2 className="font-normal text-3xl sm:text-4xl tracking-tight leading-[1.05] text-white">{s.title}</h2>
+              <p className="text-sm text-zinc-300 font-light leading-relaxed">{s.text}</p>
               {s.points && (
                 <ul className="pt-2 divide-y divide-white/15 border-y border-white/15">
                   {s.points.map((pt) => (
-                    <li key={pt} className="py-2.5 text-[11px] uppercase tracking-wider text-slate-200">{pt}</li>
+                    <li key={pt} className="py-2.5 text-[11px] uppercase tracking-wider text-zinc-200">{pt}</li>
                   ))}
                 </ul>
               )}

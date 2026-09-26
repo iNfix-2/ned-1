@@ -131,7 +131,7 @@ export default function PlatformsPage(props) {
   const { onOpenContact } = props;
 
   return (
-    <div className="min-h-screen bg-[#010811] text-white flex flex-col font-sans selection:bg-blue-600 selection:text-white antialiased">
+    <div className="min-h-screen bg-[#000000] text-white flex flex-col font-sans selection:bg-accent selection:text-white antialiased">
       <Navbar {...props} activePage="platforms" />
 
       <main className="flex-grow">
@@ -141,12 +141,12 @@ export default function PlatformsPage(props) {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: "url('/assets/images/manufacturing/IMG_6555.jpg')" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#010811] via-[#010811]/70 to-[#010811]/20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#010811] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/70 to-[#000000]/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-transparent" />
 
           <div className="relative z-10 w-full max-w-[1920px] mx-auto px-6 sm:px-12 space-y-5">
-            <h1 className="text-4xl sm:text-6xl font-light tracking-tight text-white">Platforms</h1>
-            <p className="text-slate-300 text-sm sm:text-lg font-light leading-relaxed max-w-md">
+            <h1 className="font-normal text-4xl sm:text-6xl tracking-tight text-white">Platforms</h1>
+            <p className="text-zinc-300 text-sm sm:text-lg font-light leading-relaxed max-w-md">
               Software that plans, flies, manages and connects enterprise and defence UAV operations.
             </p>
             <OutlineButton href={SKYGRID_URL}>Explore SkyGrid</OutlineButton>
@@ -155,16 +155,16 @@ export default function PlatformsPage(props) {
 
         {/* Pillars */}
         <section className="max-w-[1920px] mx-auto px-6 sm:px-12 py-20 sm:py-32 grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
-          <h2 className="text-3xl sm:text-5xl font-light tracking-tight leading-tight text-white">
+          <h2 className="font-normal text-3xl sm:text-5xl tracking-tight leading-tight text-white">
             Building the software backbone of modern air operations
           </h2>
           <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-12">
             {PILLARS.map((p) => (
               <div key={p.num} className="grid grid-cols-[2.5rem_1fr] gap-x-4">
-                <span className="font-mono text-xs text-slate-500 pt-1">{p.num}</span>
+                <span className="font-mono text-xs text-zinc-500 pt-1">{p.num}</span>
                 <div className="space-y-3">
-                  <h3 className="text-base text-white">{p.title}</h3>
-                  <p className="text-sm text-slate-400 font-light leading-relaxed">{p.text}</p>
+                  <h3 className="font-medium text-base text-white">{p.title}</h3>
+                  <p className="text-sm text-zinc-400 font-light leading-relaxed">{p.text}</p>
                 </div>
               </div>
             ))}
@@ -175,12 +175,12 @@ export default function PlatformsPage(props) {
         {PLATFORMS.map((p) => (
           <section key={p.id} id={p.id} className="relative min-h-[520px] sm:min-h-[640px] w-full flex items-center overflow-hidden">
             <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${p.image}')` }} />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#010811]/95 via-[#010811]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#000000]/95 via-[#000000]/60 to-transparent" />
 
             <div className="relative z-10 w-full max-w-[1920px] mx-auto px-6 sm:px-12 py-16">
               <div className="max-w-md space-y-5">
-                <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white">{p.title}</h2>
-                <p className="text-sm text-slate-300 font-light leading-relaxed">{p.text}</p>
+                <h2 className="font-normal text-3xl sm:text-5xl tracking-tight text-white">{p.title}</h2>
+                <p className="text-sm text-zinc-300 font-light leading-relaxed">{p.text}</p>
                 {p.href ? (
                   <OutlineButton href={p.href}>Learn More</OutlineButton>
                 ) : (
@@ -194,8 +194,8 @@ export default function PlatformsPage(props) {
         {/* Capabilities Grid */}
         <section className="max-w-[1920px] mx-auto px-6 sm:px-12 py-20 sm:py-28 space-y-12">
           <div className="max-w-2xl space-y-3">
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight text-white">Core capabilities</h2>
-            <p className="text-sm text-slate-400 font-light">What every team gets across SkyGrid and Affenas.</p>
+            <h2 className="font-normal text-3xl sm:text-4xl tracking-tight text-white">Core capabilities</h2>
+            <p className="text-sm text-zinc-400 font-light">What every team gets across SkyGrid and Affenas.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
             {CAPABILITIES.map((c) => (
@@ -203,8 +203,8 @@ export default function PlatformsPage(props) {
                 <div className="aspect-[16/10] overflow-hidden">
                   <img src={c.image} alt="" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>
-                <h3 className="text-sm text-white">{c.title}</h3>
-                <p className="text-xs sm:text-sm text-slate-400 font-light leading-relaxed">{c.text}</p>
+                <h3 className="font-medium text-sm text-white">{c.title}</h3>
+                <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">{c.text}</p>
               </article>
             ))}
           </div>
@@ -213,21 +213,21 @@ export default function PlatformsPage(props) {
         {/* Comparison Table */}
         <section className="max-w-[1920px] mx-auto px-6 sm:px-12 pb-20 sm:pb-28 space-y-8">
           <div className="space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-light text-white">Platform Comparison</h2>
-            <p className="text-slate-400 text-xs sm:text-sm">How each product fits into your operation.</p>
+            <h2 className="font-normal text-2xl sm:text-3xl text-white">Platform Comparison</h2>
+            <p className="text-zinc-400 text-xs sm:text-sm">How each product fits into your operation.</p>
           </div>
 
-          <div className="overflow-x-auto rounded-[28px] border border-white/15 bg-[#0f1a26] shadow-xl">
+          <div className="overflow-x-auto rounded-[28px] border border-white/15 bg-[#0a0a0a] shadow-xl">
             <table className="w-full min-w-[720px] text-left text-xs sm:text-sm">
-              <thead className="border-b border-white/10 bg-white/5 text-slate-300 uppercase tracking-wider font-mono text-[11px]">
+              <thead className="border-b border-white/10 bg-white/5 text-zinc-300 uppercase tracking-wider font-mono text-[11px]">
                 <tr>
                   <th className="p-4 sm:p-6">Specification</th>
-                  <th className="p-4 sm:p-6 text-blue-300">Command Centre</th>
-                  <th className="p-4 sm:p-6 text-blue-300">SkyGrid GCS</th>
-                  <th className="p-4 sm:p-6 text-blue-300">Affenas</th>
+                  <th className="p-4 sm:p-6 text-accent-bright">Command Centre</th>
+                  <th className="p-4 sm:p-6 text-accent-bright">SkyGrid GCS</th>
+                  <th className="p-4 sm:p-6 text-accent-bright">Affenas</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5 font-light text-slate-300">
+              <tbody className="divide-y divide-white/5 font-light text-zinc-300">
                 {COMPARISON.map((row) => (
                   <tr key={row.spec}>
                     <td className="p-4 sm:p-6 font-medium text-white">{row.spec}</td>
@@ -244,8 +244,8 @@ export default function PlatformsPage(props) {
         {/* CTA */}
         <section className="max-w-[1920px] mx-auto px-6 sm:px-12 pb-24 sm:pb-32">
           <div className="max-w-md space-y-5">
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight text-white">Get started</h2>
-            <p className="text-sm text-slate-400 font-light leading-relaxed">
+            <h2 className="font-normal text-3xl sm:text-4xl tracking-tight text-white">Get started</h2>
+            <p className="text-sm text-zinc-400 font-light leading-relaxed">
               Download SkyGrid GCS, onboard your organisation to Command Centre, or request a secure briefing on Affenas.
             </p>
             <div className="flex flex-wrap gap-3">

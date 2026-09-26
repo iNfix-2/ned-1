@@ -6,8 +6,19 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        // Nethawk palette, 60/30/10: black base, neutral (zinc) greys, deep-blue accent used sparingly.
+        ink: { DEFAULT: '#000000', card: '#0A0A0A' },
+        accent: {
+          DEFAULT: '#1D4ED8', // fills: primary buttons, active states, progress, selection (white text on it)
+          bright: '#3B82F6',  // blue that must be read on black: small labels, icons, strokes, focus rings
+          navy: '#0B1F4D',    // glows and tints
+        },
+        mist: '#F4F6F9',
+      },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Roboto', 'system-ui', '-apple-system', 'sans-serif'],
+        heading: ['"Pilcrow Rounded"', 'Roboto', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
         display: ['"Bebas Neue"', 'Impact', '"Arial Narrow"', 'sans-serif']
       },

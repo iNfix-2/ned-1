@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { NEWS_ARTICLES } from '../data/tekeverContent';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
-export default function NewsSection({ onOpenContact }) {
+export default function NewsSection() {
   const scrollRef = useRef(null);
 
   const handleScroll = (direction) => {
@@ -16,13 +16,13 @@ export default function NewsSection({ onOpenContact }) {
   return (
     <section
       id="news"
-      className="relative min-h-[85vh] lg:min-h-screen py-16 sm:py-24 bg-gradient-to-b from-[#020e1c] via-[#041427] to-[#010813] overflow-hidden flex flex-col justify-center"
+      className="relative min-h-[85vh] lg:min-h-screen py-16 sm:py-24 bg-gradient-to-b from-black via-ink-card to-black overflow-hidden flex flex-col justify-center"
     >
       <div className="w-full max-w-[1920px] mx-auto space-y-6 sm:space-y-8">
         
         {/* Header Row: Big 'News' Title + Circular Navigation Arrows */}
         <div className="flex items-center justify-between px-6 sm:px-12">
-          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-normal text-slate-300/40 tracking-tight select-none">
+          <h2 className="font-normal text-4xl sm:text-6xl lg:text-7xl text-white/25 tracking-tight select-none">
             News
           </h2>
 
@@ -33,14 +33,14 @@ export default function NewsSection({ onOpenContact }) {
               className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 backdrop-blur-xl border border-white/15 text-white flex items-center justify-center transition-all shadow-lg"
               aria-label="Previous news"
             >
-              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-slate-200" />
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-200" />
             </button>
             <button
               onClick={() => handleScroll('right')}
               className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 backdrop-blur-xl border border-white/15 text-white flex items-center justify-center transition-all shadow-lg"
               aria-label="Next news"
             >
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-200" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-200" />
             </button>
           </div>
         </div>
@@ -54,8 +54,11 @@ export default function NewsSection({ onOpenContact }) {
           {NEWS_ARTICLES.map((article) => (
             <div
               key={article.id}
-              className="service-card snap-center shrink-0 w-[82vw] sm:w-[360px] md:w-[400px] lg:w-[420px] h-[62vh] min-h-[460px] max-h-[580px] rounded-[32px] sm:rounded-[36px] overflow-hidden relative border border-white/15 shadow-2xl group cursor-pointer flex flex-col justify-end p-6 sm:p-8 bg-[#020710] select-none transition-transform hover:-translate-y-1 duration-300"
+              className="service-card card-lift snap-center shrink-0 w-[82vw] sm:w-[360px] md:w-[400px] lg:w-[420px] h-[62vh] min-h-[460px] max-h-[580px] rounded-[32px] sm:rounded-[36px] overflow-hidden relative border border-white/15 shadow-2xl group cursor-pointer flex flex-col justify-end p-6 sm:p-8 bg-[#000000] select-none transition-transform hover:-translate-y-1 duration-300"
               onClick={() => { window.location.hash = `#/news/${article.id}`; }}
+              role="link"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Enter') window.location.hash = `#/news/${article.id}`; }}
             >
               {/* Background Image */}
               <div 
@@ -71,17 +74,17 @@ export default function NewsSection({ onOpenContact }) {
               {/* Card Story Content Overlay */}
               <div className="relative z-10 space-y-3 text-left">
                 {/* Date / Category Badge */}
-                <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-300/80 font-normal">
+                <div className="flex items-center space-x-2 text-xs sm:text-sm text-zinc-300/80 font-normal">
                   <span>{article.date}</span>
                 </div>
 
                 {/* News Title */}
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white leading-snug group-hover:text-slate-100 transition-colors drop-shadow">
+                <h3 className="font-medium text-lg sm:text-xl md:text-2xl text-white leading-snug group-hover:text-zinc-100 transition-colors drop-shadow">
                   {article.title}
                 </h3>
 
                 {/* Short Summary Description */}
-                <p className="text-xs sm:text-sm text-slate-300/90 line-clamp-2 leading-relaxed font-normal">
+                <p className="text-xs sm:text-sm text-zinc-300/90 line-clamp-2 leading-relaxed font-normal">
                   {article.summary}
                 </p>
 

@@ -130,7 +130,7 @@ export const MISSIONS_LIST = [
   {
     id: 'infrastructure',
     badge: 'MISSION 05',
-    title: 'Critical Infrastructure Defense',
+    title: 'Critical Infrastructure Defence',
     description: 'Persistent 24/7 patrol of land borders, energy pipelines, offshore platforms, and strategic military installations with automated anomaly detection.',
     image: '/assets/images/missions/border-defense.jpg',
     thumb: '/assets/images/missions/border-defense.jpg',

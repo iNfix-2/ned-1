@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
-import { OutlineButton, Reveal, CinematicPanel } from '../components/Cinematic';
+import { OutlineButton, CinematicPanel, TitleReveal } from '../components/Cinematic';
 import Footer from '../components/Footer';
+import BackgroundVideo from '../components/BackgroundVideo';
 import { X } from 'lucide-react';
+import useModal from '../useModal';
 
 // Full-screen stacked mission panels; `align` sets which side the copy sits on
 const MISSION_SECTIONS = [
@@ -65,35 +67,33 @@ const MISSION_SECTIONS = [
 export default function MissionsPage(props) {
   const { onOpenContact } = props;
   const [videoModalOpen, setVideoModalOpen] = useState(false);
+  const videoPanelRef = useModal(videoModalOpen, () => setVideoModalOpen(false));
 
   const runAction = (name) => (props[name] || onOpenContact)?.();
 
   return (
-    <div className="relative min-h-screen w-full bg-black text-white font-sans antialiased overflow-x-hidden">
+    <div className="relative min-h-screen w-full bg-[#000000] text-white font-sans antialiased overflow-x-hidden">
       <Navbar {...props} activePage="missions" />
 
       {/* Hero: full-screen video with title bottom-left */}
       <section className="relative h-screen min-h-[640px] w-full overflow-hidden">
-        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" poster="/assets/video/nethawk-hero-poster.jpg" preload="metadata">
-          <source src="/assets/video/nethawk-hero.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/40" />
+        <BackgroundVideo src="/assets/video/nethawk-hero.mp4" poster="/assets/video/nethawk-hero-poster.jpg" controlClassName="top-24 right-6 sm:right-12" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.8)_0%,rgba(0,0,0,0.15)_40%,transparent_65%,rgba(0,0,0,0.35)_100%)]" />
 
         <div className="relative z-10 h-full max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-20 flex flex-col justify-end pb-20 sm:pb-28">
-          <Reveal className="space-y-5 max-w-2xl">
-            <p className="text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase text-white/80">Nethawk Missions</p>
-            <h1 className="text-4xl sm:text-6xl font-bold uppercase tracking-tight leading-[1.05]">
-              Wings To Rise,<br />Eyes To See
-            </h1>
-            <OutlineButton onClick={() => setVideoModalOpen(true)}>Watch</OutlineButton>
-          </Reveal>
+          <div className="space-y-5 max-w-2xl">
+            <TitleReveal lines={['Wings To Rise,', 'Eyes To See']} className="font-normal text-4xl sm:text-6xl tracking-tight leading-[1.05] text-white" startDelay={250} />
+            <div className="motion-fade-up pt-1" style={{ '--d': '700ms' }}>
+              <OutlineButton onClick={() => setVideoModalOpen(true)}>Watch</OutlineButton>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Mission Panels */}
       {MISSION_SECTIONS.map((section) => (
         <CinematicPanel key={section.id} image={section.image} align={section.align}>
-          <h2 className="text-3xl sm:text-5xl font-bold uppercase tracking-tight leading-[1.05]">
+          <h2 className="font-normal text-3xl sm:text-5xl tracking-tight leading-[1.05]">
             {section.title}
           </h2>
           <p className="text-sm sm:text-base text-white/85 leading-relaxed">
@@ -109,8 +109,8 @@ export default function MissionsPage(props) {
 
       {/* Video Player Modal */}
       {videoModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-2xl animate-in fade-in">
-          <div className="relative w-full max-w-5xl aspect-video bg-black overflow-hidden border border-white/20 shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-2xl animate-in fade-in" role="dialog" aria-modal="true" aria-label="Nethawk operations video">
+          <div ref={videoPanelRef} tabIndex={-1} className="focus:outline-none relative w-full max-w-5xl aspect-video bg-[#000000] overflow-hidden border border-white/20 shadow-2xl">
             <button
               onClick={() => setVideoModalOpen(false)}
               className="absolute top-4 right-4 z-30 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white transition-colors border border-white/20"
@@ -118,6 +118,8 @@ export default function MissionsPage(props) {
             >
               <X className="w-6 h-6" />
             </button>
+            {/* TODO: add <track kind="captions"> once a caption file exists for any speech in this video */}
+            {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
             <video autoPlay controls loop playsInline className="w-full h-full object-contain" poster="/assets/video/nethawk-hero-poster.jpg" preload="metadata">
               <source src="/assets/video/nethawk-hero.mp4" type="video/mp4" />
             </video>

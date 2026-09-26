@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import BackgroundVideo from '../components/BackgroundVideo';
 import { WHY_US_PILLARS, VALUE_CHAIN_STAGES, VALUES_LIST, VISION_TEXT, MISSION_TEXT } from '../data/tekeverContent';
 import FullBleedSlideshow from '../components/FullBleedSlideshow';
 import { ArrowRight } from 'lucide-react';
@@ -109,23 +110,22 @@ export default function WhyUsPage(props) {
   const { onOpenContact, onNavigateManufacturing, onNavigatePlatforms } = props;
 
   return (
-    <div className="min-h-screen bg-[#010811] text-white flex flex-col font-sans selection:bg-blue-600 selection:text-white antialiased">
+    <div className="min-h-screen bg-[#000000] text-white flex flex-col font-sans selection:bg-accent selection:text-white antialiased">
       <Navbar {...props} activePage="why-us" />
 
       <main className="flex-grow">
         {/* Hero: quote over video */}
         <section className="relative h-[100svh] min-h-[600px] max-h-[960px] w-full overflow-hidden flex flex-col">
-          <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" poster="/assets/video/nethawk-hero-poster.jpg" preload="metadata">
-            <source src="/assets/video/nethawk-hero.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#010811] via-[#010811]/40 to-[#010811]" />
+          <BackgroundVideo src="/assets/video/nethawk-hero.mp4" poster="/assets/video/nethawk-hero-poster.jpg" controlClassName="bottom-6 right-6 sm:right-12" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0.05)_22%,rgba(0,0,0,0.05)_75%,#000_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_40%_at_center,rgba(0,0,0,0.45),transparent_70%)]" />
 
           <div className="relative z-10 flex-1 flex items-center justify-center px-6">
             <blockquote className="max-w-3xl text-center space-y-5">
               <p className="text-xl sm:text-3xl font-light leading-snug text-white">
                 “Built for today’s challenges. Adaptable to tomorrow’s unknown.”
               </p>
-              <p className="text-sm text-slate-300 font-light leading-relaxed max-w-2xl mx-auto">
+              <p className="text-sm text-zinc-300 font-light leading-relaxed max-w-2xl mx-auto">
                 Our modular systems adapt to any theater of operations. Upgrade components seamlessly without full
                 redesigns—because your operational readiness depends on versatility, not just hardware.
               </p>
@@ -141,7 +141,7 @@ export default function WhyUsPage(props) {
                 <div className="text-5xl sm:text-7xl font-light tracking-tight text-white tabular-nums">
                   <CountUp value={s.value} suffix={s.suffix} />
                 </div>
-                <div className="text-[10px] sm:text-xs uppercase tracking-[0.15em] text-slate-400">{s.label}</div>
+                <div className="text-[10px] sm:text-xs uppercase tracking-[0.15em] text-zinc-400">{s.label}</div>
               </div>
             ))}
           </div>
@@ -150,13 +150,13 @@ export default function WhyUsPage(props) {
         {/* Full-bleed statement */}
         <section className="relative min-h-[560px] sm:min-h-[700px] w-full flex items-end overflow-hidden">
           <div className="absolute inset-0 bg-cover bg-[center_30%]" style={{ backgroundImage: "url('/assets/images/manufacturing/nethawk-labs-team.webp')" }} />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#010811]/95 via-[#010811]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/95 via-[#000000]/40 to-transparent" />
           <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-12 pb-16 sm:pb-24">
             <div className="max-w-md space-y-4">
-              <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight leading-[1.05] text-white">
+              <h2 className="font-normal text-3xl sm:text-4xl tracking-tight leading-[1.05] text-white">
                 Define the objective. We engineer the capability.
               </h2>
-              <p className="text-sm text-slate-300 font-light leading-relaxed">
+              <p className="text-sm text-zinc-300 font-light leading-relaxed">
                 Future-proof by design, our architecture allows you to scale sub-systems independently. Avoid disruptive
                 overhauls and maintain continuous capability where it matters most: the field.
               </p>
@@ -174,16 +174,16 @@ export default function WhyUsPage(props) {
             <img src="/assets/images/manufacturing/NTHK-DIASPORA--8980.jpg" alt="Nethawk crew preparing an aircraft" loading="lazy" className="w-full h-full object-cover" />
           </div>
           <div className="space-y-5 max-w-md">
-            <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight text-white">Lowest Total Cost of Ownership</h2>
-            <p className="text-sm text-slate-300 font-light leading-relaxed">
+            <h2 className="font-normal text-3xl sm:text-4xl tracking-tight text-white">Lowest Total Cost of Ownership</h2>
+            <p className="text-sm text-zinc-300 font-light leading-relaxed">
               Modular, interchangeable architectures keep every system available for longer while substantially reducing
               scheduled maintenance and spares overhead.
             </p>
-            <p className="text-sm text-slate-300 font-light leading-relaxed">
+            <p className="text-sm text-zinc-300 font-light leading-relaxed">
               Line-replaceable units can be swapped in the field, sub-systems upgrade independently, and a single
               software ecosystem runs across the fleet — so capability grows without starting over.
             </p>
-            <p className="text-sm text-slate-300 font-light leading-relaxed">
+            <p className="text-sm text-zinc-300 font-light leading-relaxed">
               Choose to own the capability outright, or draw on it as a managed service and pay only for the outcome.
             </p>
           </div>
@@ -191,12 +191,12 @@ export default function WhyUsPage(props) {
 
         {/* Core values */}
         <section className="max-w-6xl mx-auto px-6 sm:px-12 pb-20 sm:pb-32 space-y-8">
-          <h2 className="text-xl font-bold uppercase tracking-tight text-white">Our Values: LIFE</h2>
+          <h2 className="font-normal text-xl tracking-tight text-white">Our Values: LIFE</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 border-t border-white/15 pt-8">
             {VALUES_LIST.map((v) => (
               <div key={v.name} className="space-y-2">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-white">{v.name}</h3>
-                <p className="text-xs text-slate-400 font-light leading-relaxed">{v.desc}</p>
+                <h3 className="font-medium text-xs tracking-tight text-white">{v.name}</h3>
+                <p className="text-xs text-zinc-400 font-light leading-relaxed">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -205,15 +205,15 @@ export default function WhyUsPage(props) {
         {/* Our team */}
         <section id="our-team" className="max-w-6xl mx-auto px-6 sm:px-12 pb-20 sm:pb-32 space-y-8 scroll-mt-20">
           <div className="space-y-3 max-w-2xl">
-            <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight text-white">Our Team</h2>
-            <p className="text-sm text-slate-400 font-light leading-relaxed">
+            <h2 className="font-normal text-3xl sm:text-4xl tracking-tight text-white">Our Team</h2>
+            <p className="text-sm text-zinc-400 font-light leading-relaxed">
               The engineers, pilots, instructors and specialists behind every Nethawk mission.
             </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-4 gap-y-8 border-t border-white/15 pt-8">
             {TEAM.map((m) => (
               <figure key={m.photo} className="space-y-3 group">
-                <div className="aspect-[4/5] overflow-hidden bg-[#071322]">
+                <div className="aspect-[4/5] overflow-hidden bg-[#0a0a0a]">
                   <img
                     loading="lazy"
                     decoding="async"
@@ -224,7 +224,7 @@ export default function WhyUsPage(props) {
                 </div>
                 <figcaption className="space-y-0.5">
                   <p className="text-xs font-bold uppercase tracking-wider text-white">{m.name}</p>
-                  {m.role && <p className="text-xs text-slate-400 font-light">{m.role}</p>}
+                  {m.role && <p className="text-xs text-zinc-400 font-light">{m.role}</p>}
                 </figcaption>
               </figure>
             ))}
@@ -234,11 +234,11 @@ export default function WhyUsPage(props) {
         {/* Full-bleed: platforms */}
         <section className="relative min-h-[560px] sm:min-h-[720px] w-full flex items-center overflow-hidden">
           <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/assets/images/manufacturing/IMG_6631.jpg')" }} />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#010811]/95 via-[#010811]/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#000000]/95 via-[#000000]/50 to-transparent" />
           <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-12">
             <div className="max-w-md space-y-4">
-              <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight text-white">Our Platforms</h2>
-              <p className="text-sm text-slate-300 font-light leading-relaxed">
+              <h2 className="font-normal text-3xl sm:text-4xl tracking-tight text-white">Our Platforms</h2>
+              <p className="text-sm text-zinc-300 font-light leading-relaxed">
                 SkyGrid Command Centre, SkyGrid GCS and Affenas connect every aircraft, operator and commander in one
                 secure operating picture.
               </p>
@@ -251,7 +251,7 @@ export default function WhyUsPage(props) {
         <section className="py-24 sm:py-32 px-6 flex flex-col items-center gap-10 text-center">
           <div className="w-px h-40 bg-gradient-to-b from-transparent via-white/40 to-white/70" />
           <div className="space-y-5 max-w-md">
-            <p className="text-sm text-slate-300 font-light">
+            <p className="text-sm text-zinc-300 font-light">
               Delivering capabilities that protect lives, infrastructure and sovereign nations.
             </p>
             <button

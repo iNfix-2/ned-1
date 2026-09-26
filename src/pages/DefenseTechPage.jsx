@@ -53,7 +53,7 @@ export default function DefenseTechPage(props) {
   const { onOpenContact, onNavigateContact } = props;
 
   return (
-    <div className="min-h-screen bg-[#010811] text-white flex flex-col font-sans selection:bg-blue-600 selection:text-white antialiased">
+    <div className="min-h-screen bg-[#000000] text-white flex flex-col font-sans selection:bg-accent selection:text-white antialiased">
       <Navbar {...props} activePage="defense-tech" />
 
       <main className="flex-grow">
@@ -63,12 +63,12 @@ export default function DefenseTechPage(props) {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: "url('/assets/gallery/ops-vtol-flight.jpg')" }}
           />
-          <div className="absolute inset-0 bg-[#010811]/60" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#010811] via-transparent to-[#010811]/40" />
+          <div className="absolute inset-0 bg-[#000000]/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-[#000000]/40" />
 
           <div className="relative z-10 text-center px-6 space-y-4">
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold uppercase tracking-tight text-white">Defence Tech</h1>
-            <p className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.3em] text-slate-300">Supporting National Security</p>
+            <h1 className="font-normal text-5xl sm:text-7xl lg:text-8xl tracking-tight text-white">Defence Tech</h1>
+            <p className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.3em] text-zinc-300">Supporting National Security</p>
           </div>
 
           <a
@@ -84,10 +84,10 @@ export default function DefenseTechPage(props) {
         {/* Overview */}
         <section id="defense-overview" className="max-w-6xl mx-auto px-6 sm:px-12 py-20 sm:py-32 space-y-16 scroll-mt-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-            <h2 className="text-2xl sm:text-4xl font-bold uppercase tracking-tight leading-tight text-white">
+            <h2 className="font-normal text-2xl sm:text-4xl tracking-tight leading-tight text-white">
               Sovereign defence technology for armed forces &amp; security agencies
             </h2>
-            <p className="text-sm sm:text-base text-slate-300 font-light leading-relaxed">
+            <p className="text-sm sm:text-base text-zinc-300 font-light leading-relaxed">
               Nethawk combines military-grade software, artificial intelligence, autonomous ground
               vehicles and unmanned aircraft into one integrated defence capability — designed, supported and operated
               for government and military end users.
@@ -97,8 +97,8 @@ export default function DefenseTechPage(props) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 border-t border-white/15 pt-10">
             {CAPABILITIES.map(({ title, text }) => (
               <div key={title} className="space-y-3">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-white">{title}</h3>
-                <p className="text-xs text-slate-400 font-light leading-relaxed">{text}</p>
+                <h3 className="font-medium text-xs tracking-tight text-white">{title}</h3>
+                <p className="text-xs text-zinc-400 font-light leading-relaxed">{text}</p>
               </div>
             ))}
           </div>
@@ -108,16 +108,16 @@ export default function DefenseTechPage(props) {
         {PANELS.map((p) => {
           const textRight = p.side === 'right';
           return (
-            <section key={p.id} id={p.id} className="relative min-h-[520px] sm:min-h-[680px] w-full flex items-center overflow-hidden bg-[#010811]">
+            <section key={p.id} id={p.id} className="relative min-h-[520px] sm:min-h-[680px] w-full flex items-center overflow-hidden bg-[#000000]">
               <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${p.image}')` }} />
               <div
-                className={`absolute inset-0 ${textRight ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-[#010811]/95 via-[#010811]/60 to-[#010811]/10`}
+                className={`absolute inset-0 ${textRight ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-[#000000]/95 via-[#000000]/60 to-[#000000]/10`}
               />
 
               <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-12 py-16 grid grid-cols-1 lg:grid-cols-2">
                 <div className={`max-w-md space-y-4 ${textRight ? 'lg:col-start-2' : ''}`}>
-                  <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight leading-[1.05] text-white">{p.title}</h2>
-                  <p className="text-sm text-slate-300 font-light leading-relaxed">{p.text}</p>
+                  <h2 className="font-normal text-3xl sm:text-4xl tracking-tight leading-[1.05] text-white">{p.title}</h2>
+                  <p className="text-sm text-zinc-300 font-light leading-relaxed">{p.text}</p>
                 </div>
               </div>
             </section>
@@ -136,7 +136,7 @@ export default function DefenseTechPage(props) {
             </button>
             <button
               onClick={onNavigateContact}
-              className="px-6 py-3 border border-white/30 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-300 hover:text-white hover:border-white/70 transition-all"
+              className="px-6 py-3 border border-white/30 text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-300 hover:text-white hover:border-white/70 transition-all"
             >
               Contact Us
             </button>

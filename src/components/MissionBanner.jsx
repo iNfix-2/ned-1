@@ -1,26 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { MISSIONS_LIST } from '../data/tekeverContent';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import useReducedMotion from '../useReducedMotion';
 
 export default function MissionBanner({ onOpenContact, onNavigateMissions }) {
   const [activeIdx, setActiveIdx] = useState(0); // 'ISR & Aerial Surveillance'
   const [isPaused, setIsPaused] = useState(false);
+  const reducedMotion = useReducedMotion();
   const activeMission = MISSIONS_LIST[activeIdx];
 
   // Auto-slide every 5s, pause on hover
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || reducedMotion) return undefined;
     const id = setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % MISSIONS_LIST.length);
     }, 5000);
     return () => clearInterval(id);
-  }, [isPaused]);
+  }, [isPaused, reducedMotion]);
 
   return (
     <section
-      className="relative w-full pt-12 sm:pt-16 flex flex-col items-center bg-[#020e1c] overflow-hidden"
+      className="relative w-full pt-12 sm:pt-16 flex flex-col items-center bg-[#000000] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setIsPaused(false); }}
     >
       {/* Subtle Orbital Curved White Line */}
       <div className="absolute inset-0 pointer-events-none opacity-15 z-0">
@@ -33,10 +37,10 @@ export default function MissionBanner({ onOpenContact, onNavigateMissions }) {
         
         {/* 1. Header Text positioned cleanly ABOVE the image card */}
         <div className="text-center max-w-3xl mx-auto space-y-2 sm:space-y-3 px-4">
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight drop-shadow-md">
-            Securing Africa's Critical Infrastructures
+          <h2 className="font-normal text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight drop-shadow-md">
+            Securing Africa’s Critical Infrastructures
           </h2>
-          <p className="text-xs sm:text-sm md:text-base text-slate-300/90 max-w-2xl mx-auto leading-relaxed drop-shadow">
+          <p className="text-xs sm:text-sm md:text-base text-zinc-300/90 max-w-2xl mx-auto leading-relaxed drop-shadow">
             Persistent operational intelligence, tactical integration, and sovereign defence capabilities across air, land, and sea.
           </p>
         </div>
@@ -84,7 +88,7 @@ export default function MissionBanner({ onOpenContact, onNavigateMissions }) {
             <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
               
               <div className="space-y-3 max-w-xl">
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight drop-shadow-md">
+                <h3 className="font-medium text-2xl sm:text-3xl md:text-4xl text-white tracking-tight drop-shadow-md">
                   {activeMission.title}
                 </h3>
                 
@@ -95,7 +99,7 @@ export default function MissionBanner({ onOpenContact, onNavigateMissions }) {
                       key={i}
                       onClick={() => setActiveIdx(i)}
                       className={`h-1.5 rounded-full transition-all duration-300 ${
-                        activeIdx === i ? 'w-8 bg-[#38bdf8] shadow-[0_0_8px_#38bdf8]' : 'w-2 bg-white/40 hover:bg-white/70'
+                        activeIdx === i ? 'w-8 bg-[#3b82f6] shadow-[0_0_8px_#3b82f6]' : 'w-2 bg-white/40 hover:bg-white/70'
                       }`}
                       aria-label={`Go to mission ${i + 1}`}
                     />
