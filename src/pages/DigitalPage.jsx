@@ -81,7 +81,7 @@ export default function DigitalPage({
             {DIGITAL_SOLUTIONS.map((sol, idx) => (
               <div
                 key={idx}
-                className="rounded-[32px] bg-[#0a0a0a] border border-white/10 p-8 sm:p-10 space-y-6 flex flex-col justify-between hover:border-white/20 transition-all shadow-xl"
+                className="rounded-[32px] bg-[#0a0a0a] border border-white/10 p-8 sm:p-10 space-y-6 flex flex-col justify-between hover:border-accent-bright/30 hover:bg-accent-wash transition-all shadow-xl"
               >
                 <div className="space-y-4">
                   <h3 className="font-medium text-2xl text-white">{sol.title}</h3>

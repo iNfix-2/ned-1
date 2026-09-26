@@ -148,9 +148,28 @@ body {
 
 /* Cards: lift and pick up the accent on hover */
 .card-lift { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.5s ease; }
-.card-lift:hover { transform: translateY(-4px); border-color: rgba(59, 130, 246, 0.5); box-shadow: 0 24px 48px -24px rgba(29, 78, 216, 0.55); }
+.card-lift:hover { transform: translateY(-4px); border-color: rgba(59, 130, 246, 0.5); box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.10), 0 24px 48px -24px rgba(29, 78, 216, 0.55); }
+
+/* Atmosphere: a faint horizon of 10% blue at the top of a black section, like
+   light spilling over the edge of the frame. Sits under the content. */
+.atmos {
+  background-image: radial-gradient(ellipse 70% 45% at 50% 0%, rgba(59, 130, 246, 0.10), transparent 70%);
+  background-repeat: no-repeat;
+}
+
+/* Hero scan line: a thin 10% blue band that sweeps down the frame every few
+   seconds, like a sensor pass over the image */
+@keyframes nh-scan { 0% { transform: translateY(-10vh); opacity: 0; } 10% { opacity: 1; } 70% { opacity: 1; } 100% { transform: translateY(110vh); opacity: 0; } }
+.scan-line {
+  position: absolute; left: 0; right: 0; top: 0; height: 18vh; pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.10) 85%, rgba(59, 130, 246, 0.35) 100%);
+  animation: nh-scan 7s cubic-bezier(0.45, 0, 0.55, 1) 1.2s infinite;
+  opacity: 0;
+  will-change: transform;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .motion-kenburns, .mask-line > span, .motion-fade-up { animation: none !important; }
+  .scan-line { display: none; }
   .card-lift, .card-lift:hover { transition: none; transform: none; }
 }

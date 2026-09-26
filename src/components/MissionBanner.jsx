@@ -20,7 +20,7 @@ export default function MissionBanner({ onOpenContact, onNavigateMissions }) {
 
   return (
     <section
-      className="relative w-full pt-12 sm:pt-16 flex flex-col items-center bg-[#000000] overflow-hidden"
+      className="relative w-full pt-12 sm:pt-16 flex flex-col items-center bg-[#000000] atmos overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocus={() => setIsPaused(true)}

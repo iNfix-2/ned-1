@@ -124,7 +124,7 @@ export default function SpacePage({
             {SPACE_PRODUCTS.missions.map((m, idx) => (
               <div
                 key={idx}
-                className="rounded-[30px] bg-[#0a0a0a] border border-white/10 p-8 space-y-4 flex flex-col justify-between hover:border-white/20 transition-all"
+                className="rounded-[30px] bg-[#0a0a0a] border border-white/10 p-8 space-y-4 flex flex-col justify-between hover:border-accent-bright/30 hover:bg-accent-wash transition-all"
               >
                 <div className="space-y-3">
                   <h3 className="font-medium text-xl text-white">{m.name}</h3>

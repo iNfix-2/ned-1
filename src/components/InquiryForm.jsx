@@ -32,7 +32,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const fieldClass = (hasError) =>
   `w-full px-4 py-3 rounded-lg bg-white/5 border text-white placeholder-zinc-500 text-sm focus:outline-none transition-colors ${
-    hasError ? 'border-rose-400/70 focus:border-rose-400' : 'border-white/15 focus:border-accent-bright'
+    hasError ? 'border-rose-400/70 focus:border-rose-400' : 'border-white/15 focus:border-accent-bright focus:bg-accent-wash'
   }`;
 
 function validate(step, data) {

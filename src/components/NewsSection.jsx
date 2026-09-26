@@ -16,7 +16,7 @@ export default function NewsSection() {
   return (
     <section
       id="news"
-      className="relative min-h-[85vh] lg:min-h-screen py-16 sm:py-24 bg-gradient-to-b from-black via-ink-card to-black overflow-hidden flex flex-col justify-center"
+      className="relative min-h-[85vh] lg:min-h-screen py-16 sm:py-24 bg-black atmos overflow-hidden flex flex-col justify-center"
     >
       <div className="w-full max-w-[1920px] mx-auto space-y-6 sm:space-y-8">
         

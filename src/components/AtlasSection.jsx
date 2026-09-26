@@ -56,7 +56,7 @@ export default function AtlasSection(props) {
   return (
     <section
       id="ai-systems"
-      className="relative w-full min-h-[75vh] lg:min-h-[640px] overflow-hidden flex flex-col justify-between items-center bg-[#000000] text-center pt-4 sm:pt-8 pb-10 sm:pb-16"
+      className="relative w-full min-h-[75vh] lg:min-h-[640px] overflow-hidden flex flex-col justify-between items-center bg-[#000000] atmos text-center pt-4 sm:pt-8 pb-10 sm:pb-16"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocus={() => setIsPaused(true)}

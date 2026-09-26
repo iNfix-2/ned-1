@@ -27,7 +27,7 @@ export function AboutBrief(props) {
   const { onNavigateWhyUs } = useNavHandlers(props);
 
   return (
-    <section className="relative w-full bg-black px-6 sm:px-8 lg:px-12 py-20 sm:py-28 overflow-hidden">
+    <section className="relative w-full bg-black atmos px-6 sm:px-8 lg:px-12 py-20 sm:py-28 overflow-hidden">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-10 lg:gap-16 items-center">
         {/* Heading: solid "ABOUT" with an outlined "US" */}
         <h2 className="font-sans font-extrabold uppercase tracking-tight leading-none whitespace-nowrap text-6xl sm:text-7xl lg:text-8xl text-white">
@@ -79,7 +79,7 @@ export function LabsFeature(props) {
   const { onNavigateManufacturing } = useNavHandlers(props);
 
   return (
-    <section className="relative w-full bg-ink-card px-4 sm:px-8 lg:px-12 py-20 sm:py-28">
+    <section className="relative w-full bg-black atmos px-4 sm:px-8 lg:px-12 py-20 sm:py-28">
       <div className="max-w-6xl mx-auto space-y-8 sm:space-y-10">
         <SectionHeader
           title="Building UAV Solutions For The Mission"
@@ -101,7 +101,7 @@ export function LabsFeature(props) {
           </div>
 
           {/* Copy card */}
-          <div className="lg:col-span-5 rounded-[28px] bg-black border border-white/10 p-7 sm:p-10 flex flex-col justify-between gap-8">
+          <div className="lg:col-span-5 rounded-[28px] bg-accent-wash border border-accent-wash p-7 sm:p-10 flex flex-col justify-between gap-8">
             <div className="space-y-6">
               <h3 className="font-medium text-xl sm:text-2xl text-white tracking-tight leading-snug">
                 From first sketch to flight-ready system
@@ -140,7 +140,7 @@ export function AcademyFeature(props) {
   const { onNavigateAcademy } = useNavHandlers(props);
 
   return (
-    <section className="relative w-full bg-black px-4 sm:px-8 lg:px-12 py-20 sm:py-28">
+    <section className="relative w-full bg-black atmos px-4 sm:px-8 lg:px-12 py-20 sm:py-28">
       <div className="max-w-6xl mx-auto space-y-8 sm:space-y-10">
         <SectionHeader
           title="Training Africa's Next Generation Of Aviators"
@@ -158,7 +158,7 @@ export function AcademyFeature(props) {
           <div className="absolute inset-0 p-6 sm:p-10 flex flex-col justify-end gap-6 sm:gap-8">
             <div className="grid grid-cols-3 gap-3 sm:gap-5 max-w-2xl">
               {PROGRAMMES.map((p) => (
-                <div key={p.title} className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 p-3 sm:p-5">
+                <div key={p.title} className="rounded-2xl bg-accent-wash backdrop-blur-md border border-accent-bright/25 p-3 sm:p-5">
                   <p className="text-2xl sm:text-4xl font-extrabold text-white leading-none">
                     {p.weeks}<span className="text-xs sm:text-sm font-medium text-zinc-300 ml-1.5">{p.label}</span>
                   </p>

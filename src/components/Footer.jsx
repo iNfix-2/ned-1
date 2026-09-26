@@ -23,7 +23,7 @@ export default function Footer(props) {
     onNavigateCareers
   } = useNavHandlers(props);
   return (
-    <footer className="bg-[#000000] text-zinc-400 font-sans text-xs relative overflow-hidden border-t border-white/10 pt-20 pb-12">
+    <footer className="bg-[#000000] text-zinc-400 font-sans text-xs relative overflow-hidden atmos border-t border-accent-wash pt-20 pb-12">
       
       {/* Main Footer Directory */}
       <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10 space-y-16">

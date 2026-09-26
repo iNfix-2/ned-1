@@ -145,7 +145,8 @@ export default function Hero(props) {
           </div>
         ))}
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.25)_45%,rgba(0,0,0,0.6)_100%)] pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-[radial-gradient(ellipse_70%_60%_at_50%_100%,rgba(11,31,77,0.55),transparent_70%)] pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-[radial-gradient(ellipse_70%_60%_at_50%_100%,rgba(59,130,246,0.10),transparent_70%)] pointer-events-none" />
+        <div className="scan-line" aria-hidden="true" />
       </div>
 
       {/* Prev / Next Arrows */}

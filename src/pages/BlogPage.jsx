@@ -137,7 +137,7 @@ export default function BlogPage(props) {
             {BLOG_POSTS.slice(1).map((post) => (
               <div
                 key={post.id}
-                className="rounded-[28px] bg-[#0a0a0a] border border-white/10 overflow-hidden hover:border-white/20 transition-all duration-300 group cursor-pointer flex flex-col"
+                className="rounded-[28px] bg-[#0a0a0a] border border-white/10 overflow-hidden hover:border-accent-bright/30 hover:bg-accent-wash transition-all duration-300 group cursor-pointer flex flex-col"
               >
                 <div className="relative h-[180px] overflow-hidden">
                   <img loading="lazy" decoding="async"

@@ -84,7 +84,7 @@ function ArticlePage({ article, related, onBack, onOpen, onOpenContact }) {
                 <button
                   key={r.id}
                   onClick={() => onOpen(r)}
-                  className="w-full flex gap-4 items-center text-left rounded-lg border border-white/10 bg-ink-card hover:bg-white/5 transition-colors overflow-hidden"
+                  className="w-full flex gap-4 items-center text-left rounded-lg border border-white/10 bg-ink-card hover:bg-accent-wash transition-colors overflow-hidden"
                 >
                   <img loading="lazy" decoding="async" src={r.image} alt="" onError={withFallback} className="w-32 sm:w-44 h-24 sm:h-28 object-cover shrink-0" />
                   <div className="py-3 pr-4 min-w-0">
@@ -212,7 +212,7 @@ export default function NewsPage({
               role="link"
               tabIndex={0}
               onKeyDown={(e) => { if (e.key === 'Enter') openStory(article); }}
-              className="rounded-[36px] bg-[#0a0a0a] border border-white/15 overflow-hidden flex flex-col justify-between group cursor-pointer hover:border-white/30 transition-all duration-500 shadow-2xl hover:-translate-y-1.5"
+              className="rounded-[36px] bg-[#0a0a0a] border border-white/15 overflow-hidden flex flex-col justify-between group cursor-pointer hover:border-accent-bright/30 hover:bg-accent-wash transition-all duration-500 shadow-2xl hover:-translate-y-1.5"
             >
               <div className="relative h-[280px] sm:h-[320px] overflow-hidden">
                 <div

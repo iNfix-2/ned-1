@@ -95,7 +95,7 @@ export default function Navbar(props) {
       aria-hidden="true"
     />
     <header className={`fixed top-0 left-0 right-0 z-50 px-6 sm:px-12 py-5 flex items-center justify-between transition-colors duration-300 ${
-      scrolled ? 'bg-[#000000]/85 backdrop-blur-md shadow-lg shadow-black/30' : 'bg-transparent'
+      scrolled ? 'bg-[#000000]/85 backdrop-blur-md shadow-lg shadow-black/30 border-b border-accent-wash' : 'bg-transparent'
     }`}>
 
       {/* Logo */}

@@ -8,11 +8,13 @@ export default {
     extend: {
       colors: {
         // Nethawk palette, 60/30/10: black base, neutral (zinc) greys, deep-blue accent used sparingly.
+        // The 10% blue wash (accent-wash) is the atmosphere layer: section glows, card hovers, tinted tiles, hairlines.
         ink: { DEFAULT: '#000000', card: '#0A0A0A' },
         accent: {
           DEFAULT: '#1D4ED8', // fills: primary buttons, active states, progress, selection (white text on it)
           bright: '#3B82F6',  // blue that must be read on black: small labels, icons, strokes, focus rings
-          navy: '#0B1F4D',    // glows and tints
+          navy: '#0B1F4D',    // deep glows
+          wash: 'rgb(59 130 246 / 0.10)', // accent-bright at 10%: tints and hairlines, never text
         },
         mist: '#F4F6F9',
       },

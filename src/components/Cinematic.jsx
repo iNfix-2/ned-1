@@ -17,7 +17,7 @@ export function OutlineButton({ children, onClick }) {
   );
 }
 
-// Fades its children up the first time they scroll into view (`delay` in ms staggers siblings)
+// Fades its children up and pulls them into focus the first time they scroll into view (`delay` in ms staggers siblings)
 export function Reveal({ children, className = '', delay = 0 }) {
   const ref = useRef(null);
   const reducedMotion = useReducedMotion();
@@ -43,7 +43,7 @@ export function Reveal({ children, className = '', delay = 0 }) {
     <div
       ref={ref}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
-      className={`transition-[opacity,transform] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} ${className}`}
+      className={`transition-[opacity,transform,filter] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${visible ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-sm'} ${className}`}
     >
       {children}
     </div>
@@ -129,7 +129,7 @@ export function MinimalFooter(props) {
   ].filter(([, handler]) => handler);
 
   return (
-    <footer className="bg-[#000000] border-t border-white/10">
+    <footer className="bg-[#000000] border-t border-accent-wash">
       <div className="max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-20 py-8 flex flex-col md:flex-row items-center justify-between gap-5 text-[11px] font-semibold tracking-[0.2em] uppercase text-white/60">
         <span>© {new Date().getFullYear()} Nethawk Solutions</span>
         <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
