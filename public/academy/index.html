@@ -369,6 +369,55 @@
       line-height: 1.7;
       color: #cbd5e0;
     }
+    /* Phones: stack photo over copy at full width, heading above its divider */
+    @media (max-width: 768px) {
+      .one-league__faculty-member,
+      .one-league__faculty-member.reverse {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+        margin: 2.5rem 0;
+      }
+      .one-league__faculty-member--image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        object-position: center 60%;
+        margin: 0;
+      }
+      .one-league__faculty-member--info {
+        width: 100%;
+      }
+      .one-league__faculty-member--box,
+      .one-league__faculty-member.reverse .one-league__faculty-member--box {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 0 1rem;
+      }
+      .one-league__faculty-member--header,
+      .one-league__faculty-member.reverse .one-league__faculty-member--header {
+        font-size: clamp(1.3rem, 6vw, 1.7rem);
+        line-height: 1.15;
+        letter-spacing: 0.5px;
+        margin: 0 0 0.75rem;
+      }
+      .one-league__faculty-member--line {
+        flex: none;
+        width: 48px;
+        height: 3px;
+        border: 0;
+        margin: 0;
+      }
+      .one-league__faculty-member--text {
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+      .one-league__faculty-header {
+        font-size: clamp(1.9rem, 9vw, 2.4rem);
+        line-height: 1.1;
+        margin: 0 0 1rem;
+      }
+    }
     /* Press carousel multi-slide layout */
     .press-container .carousel-wrapper {
       display: grid;
